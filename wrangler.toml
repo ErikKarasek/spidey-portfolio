@@ -1,0 +1,4 @@
+# Cloudflare Pages — `npm run deploy` builds and ships dist/ plus functions/ (the /api/live endpoint).
+name = "erik-karasek"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-09-01"
