@@ -36,7 +36,7 @@ export type Content = {
   loader: string
   hero: { tagline: string; cta: string; cv: string; cvHref: string }
   marquee: string[]
-  about: { label: string; paragraphs: string[]; stack: string }
+  about: { label: string; paragraphs: string[]; stack: string; certs: { heading: string; items: { title: string; subtitle: string }[] } }
   experience: { label: string; title: string; now: string; items: Job[] }
   eggs: { venomOn: string; venomOff: string }
   skills: { label: string; title: string; items: Skill[] }
@@ -102,6 +102,10 @@ export const content: Record<Lang, Content> = {
         'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
       ],
       stack: 'Co používám nejvíc',
+      certs: {
+        heading: 'Certifikáty',
+        items: [{ title: 'Cambridge English First', subtitle: 'FCE, úroveň B2' }],
+      },
     },
     experience: {
       label: 'Kariéra',
@@ -227,6 +231,10 @@ export const content: Record<Lang, Content> = {
         'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
       ],
       stack: 'What I use most',
+      certs: {
+        heading: 'Certificates',
+        items: [{ title: 'Cambridge English First', subtitle: 'FCE, level B2' }],
+      },
     },
     experience: {
       label: 'Career',
