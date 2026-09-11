@@ -13,12 +13,17 @@ function initialLang(): Lang {
   return /^(cs|sk)/i.test(navigator.language) ? 'cs' : 'en'
 }
 
-export function LangProvider({ children }: { children: ReactNode }) {
+type Meta = Record<Lang, { title: string; description: string }>
+
+/** `meta` lets a second page (the case study) keep its own title and description when the language changes. */
+export function LangProvider({ children, meta }: { children: ReactNode; meta?: Meta }) {
   const [lang, setLang] = useState<Lang>(initialLang)
 
   useEffect(() => {
+    const page = meta?.[lang] ?? content[lang].meta
     document.documentElement.lang = lang
-    document.title = content[lang].meta.title
+    document.title = page.title
+    document.querySelector('meta[name="description"]')?.setAttribute('content', page.description)
     try {
       localStorage.setItem('lang', lang)
     } catch {

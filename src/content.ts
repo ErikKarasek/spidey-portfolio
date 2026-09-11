@@ -25,7 +25,8 @@ export const socials: { id: SocialId; label: string; href: string; live?: 'twitc
 export type Skill = { name: string; category: string; level: string }
 export type Job = { role: string; company: string; when: string; points: string[]; current?: boolean }
 // `downloads`: the card shows Mac/Windows buttons for the latest nexus-grind-releases build instead of being one big link.
-export type Project = { title: string; description: string; tags: string[]; image: string; link?: string; downloads?: boolean }
+// `study`: link to a case study page for the project.
+export type Project = { title: string; description: string; tags: string[]; image: string; link?: string; downloads?: boolean; study?: string }
 
 export const CHANNELS = { twitch: 'erickos007', kick: 'erickos007', youtube: 'https://www.youtube.com/channel/UCLxpYwapavqjQy9vtq5KM3g' }
 
@@ -39,7 +40,7 @@ export type Content = {
   experience: { label: string; title: string; now: string; items: Job[] }
   eggs: { venomOn: string; venomOff: string }
   skills: { label: string; title: string; items: Skill[] }
-  projects: { label: string; title: string; items: Project[] }
+  projects: { label: string; title: string; study: string; items: Project[] }
   downloads: { mac: string; win: string; macHint: string; all: string }
   live: { label: string; title: string; openOn: string }
   clips: { label: string; title: string; channel: string; fallback: string }
@@ -145,6 +146,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       label: 'Na čem pracuju',
       title: 'Projekty.',
+      study: 'Případová studie',
       items: [
         {
           title: 'Nexus Grind',
@@ -153,6 +155,7 @@ export const content: Record<Lang, Content> = {
           tags: ['React', 'Tauri', 'Rust', 'Supabase'],
           image: `${IMG}/nexusgrind.webp`,
           downloads: true,
+          study: '/nexus-grind/',
         },
         {
           title: 'LoL Stats',
@@ -268,6 +271,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       label: 'What I work on',
       title: 'Projects.',
+      study: 'Case study',
       items: [
         {
           title: 'Nexus Grind',
@@ -276,6 +280,7 @@ export const content: Record<Lang, Content> = {
           tags: ['React', 'Tauri', 'Rust', 'Supabase'],
           image: `${IMG}/nexusgrind.webp`,
           downloads: true,
+          study: '/nexus-grind/',
         },
         {
           title: 'LoL Stats',
