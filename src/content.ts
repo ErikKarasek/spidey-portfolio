@@ -3,6 +3,12 @@
 export type Lang = 'cs' | 'en'
 export type SocialId = 'twitch' | 'kick' | 'youtube' | 'tiktok' | 'instagram' | 'donate'
 
+// Cloudflare Turnstile (spam protection for the contact form). Paste the *site* key from the
+// Cloudflare dashboard here to switch it on; the matching secret belongs in the Pages project
+// (`npx wrangler pages secret put TURNSTILE_SECRET --project-name erik-karasek`). Empty = off, and
+// the form posts straight to FormSubmit as before.
+export const TURNSTILE_SITE_KEY = ''
+
 export const profile = {
   first: 'Erik',
   last: 'Karásek',

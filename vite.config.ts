@@ -30,12 +30,13 @@ const api: Plugin = {
 // means adding its origin here, or the browser will quietly block it.
 const CSP = {
   'default-src': ["'self'"],
-  'script-src': ["'self'", 'https://static.cloudflareinsights.com'], // + hashes of the inline scripts, filled in below
+  // challenges.cloudflare.com = Turnstile, the contact form's spam check (only loaded with a site key).
+  'script-src': ["'self'", 'https://static.cloudflareinsights.com', 'https://challenges.cloudflare.com'], // + hashes of the inline scripts, filled in below
   'style-src': ["'self'", "'unsafe-inline'"],
   'img-src': ["'self'", 'data:', 'https://i.ytimg.com'],
   'font-src': ["'self'"],
   'connect-src': ["'self'", 'https://formsubmit.co', 'https://api.github.com', 'https://cloudflareinsights.com'],
-  'frame-src': ['https://player.twitch.tv', 'https://player.kick.com'],
+  'frame-src': ['https://player.twitch.tv', 'https://player.kick.com', 'https://challenges.cloudflare.com'],
   'object-src': ["'none'"],
   'base-uri': ["'self'"],
   'form-action': ["'self'", 'https://formsubmit.co'],

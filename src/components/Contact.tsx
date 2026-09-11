@@ -1,6 +1,6 @@
-import { useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { gsap, useGSAP } from '../gsap'
-import { profile, socials } from '../content'
+import { profile, socials, TURNSTILE_SITE_KEY } from '../content'
 import { useLang } from '../i18n'
 import type { LiveStatus } from '../live'
 import { Hanging } from './Hanging'
@@ -9,7 +9,8 @@ import { SocialIcon } from './SocialIcon'
 
 // FormSubmit relays the form to your inbox — no account or backend. The very first message sends
 // you an "Activate Form" e-mail instead; click it once and every later message arrives normally.
-const ENDPOINT = `https://formsubmit.co/ajax/${profile.email}`
+// With Turnstile on, the message goes through our own function, which checks the token first.
+const ENDPOINT = TURNSTILE_SITE_KEY ? '/api/contact' : `https://formsubmit.co/ajax/${profile.email}`
 
 const field =
   'w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm font-medium text-ink placeholder:text-mute-2 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent'
@@ -24,6 +25,7 @@ export function Contact({ live }: { live: LiveStatus }) {
   const web = useRef<HTMLImageElement>(null)
   const spidey = useRef<HTMLDivElement>(null)
   const [status, setStatus] = useState<Status>({ state: 'idle' })
+  const widget = useRef<HTMLDivElement>(null)
   const { t } = useLang()
   const c = t.contact
 
@@ -40,6 +42,16 @@ export function Contact({ live }: { live: LiveStatus }) {
     { scope: root },
   )
 
+  // Turnstile's script is only fetched when a site key exists, so nothing extra loads while it is off.
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return
+    const script = document.createElement('script')
+    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js'
+    script.async = true
+    document.head.append(script)
+    return () => script.remove()
+  }, [])
+
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formEl = e.currentTarget
@@ -52,17 +64,28 @@ export function Contact({ live }: { live: LiveStatus }) {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          name,
-          email: String(form.get('email') ?? '').trim(),
-          message: String(form.get('message') ?? '').trim(),
-          _subject: c.subject(name),
-          _template: 'table',
-        }),
+        body: JSON.stringify(
+          TURNSTILE_SITE_KEY
+            ? {
+                name,
+                email: String(form.get('email') ?? '').trim(),
+                message: String(form.get('message') ?? '').trim(),
+                subject: c.subject(name),
+                token: String(form.get('cf-turnstile-response') ?? ''),
+              }
+            : {
+                name,
+                email: String(form.get('email') ?? '').trim(),
+                message: String(form.get('message') ?? '').trim(),
+                _subject: c.subject(name),
+                _template: 'table',
+              },
+        ),
       })
       const data = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string }
       if (res.ok && String(data.success) === 'true') {
         formEl.reset()
+        window.turnstile?.reset(widget.current ?? undefined)
         setStatus({ state: 'sent' })
       } else if (data.message && /activat/i.test(data.message)) {
         setStatus({ state: 'error', note: c.activate })
@@ -102,6 +125,7 @@ export function Contact({ live }: { live: LiveStatus }) {
             <span className={labelCls}>{c.message}</span>
             <textarea name="message" required rows={4} className={`${field} resize-none`} placeholder={c.messagePh} />
           </label>
+          {TURNSTILE_SITE_KEY && <div ref={widget} className="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-theme="auto" />}
           <button
             type="submit"
             disabled={sending}
