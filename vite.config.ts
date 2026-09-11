@@ -51,7 +51,7 @@ const securityHeaders: Plugin = {
   apply: 'build',
   closeBundle() {
     const hashes = new Set<string>()
-    for (const page of ['dist/index.html', 'dist/404.html']) {
+    for (const page of ['dist/index.html', 'dist/404.html', 'dist/nexus-grind/index.html']) {
       const html = readFileSync(page, 'utf8')
       for (const [, body] of html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>([\s\S]*?)<\/script>/g)) {
         hashes.add(`'sha256-${createHash('sha256').update(body).digest('base64')}'`)
@@ -83,4 +83,6 @@ const securityHeaders: Plugin = {
 export default defineConfig({
   plugins: [react(), tailwindcss(), api, securityHeaders],
   server: { port: 5190 },
+  // Two pages: the portfolio and the Nexus Grind case study at /nexus-grind/.
+  build: { rollupOptions: { input: { main: 'index.html', caseStudy: 'nexus-grind/index.html' } } },
 })

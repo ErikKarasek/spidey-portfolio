@@ -63,6 +63,15 @@ export function Projects() {
                   )}
                 </div>
                 <p className="mb-6 text-xs font-medium leading-relaxed text-ink-3 md:text-sm">{p.description}</p>
+                {p.study && (
+                  <a
+                    href={p.study}
+                    className="mb-5 inline-flex items-center gap-1.5 rounded-xl border border-line px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+                  >
+                    {t.projects.study}
+                    <span aria-hidden>→</span>
+                  </a>
+                )}
                 {p.downloads && <Downloads />}
               </div>
               <div className="flex flex-wrap gap-2 border-t border-line/60 pt-2">
