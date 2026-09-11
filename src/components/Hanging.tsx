@@ -9,7 +9,8 @@ export function Hanging({ className = '', threadClass = 'h-16 md:h-24', imgClass
   return (
     <div ref={ref} className={`pointer-events-none absolute top-0 z-30 flex origin-top flex-col items-center ${className}`}>
       <div className={`w-[2px] bg-linear-to-b from-transparent to-mute-2 opacity-60 ${threadClass}`} />
-      <img src={suit('/img/spidey-hang.webp')} alt="" className={`suit-img -mt-2 h-auto object-contain drop-shadow-lg ${imgClass}`} />
+      {/* data-spidey: clicking him sends him swinging (EasterEggs), without making him block the form below. */}
+      <img src={suit('/img/spidey-hang.webp')} alt="" data-spidey className={`suit-img -mt-2 h-auto object-contain drop-shadow-lg ${imgClass}`} />
     </div>
   )
 }

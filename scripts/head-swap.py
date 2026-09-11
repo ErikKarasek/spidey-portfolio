@@ -73,8 +73,11 @@ def neck_edges(img, row):
 
 # 1. Stretch the masked neck to the real neck's width. Rows above --warp-from are left alone, then the
 #    warp eases in so the head's lower half widens smoothly instead of kinking.
+#    Only ever widen: squeezing a neck that is already wider than the real one pinches the whole jaw
+#    (the symbiote head looked deformed). A wider neck simply covers the skin and meets the collar.
 mL, mR = neck_edges(mask, args.neck_row)
 fL, fR = neck_edges(face, args.neck_row)
+fL, fR = min(fL, mL), max(fR, mR)
 xs = np.arange(W, dtype=np.float32)
 warped = mask.copy()
 for y in range(args.warp_from, H):
@@ -111,6 +114,8 @@ for x in range(W):
 first_solid = lambda img, x: next((y for y in range(args.neck_row, H) if not is_bg(img[y, x])), H)
 for x in range(W):
     if round(fL) - 4 <= x <= round(fR) + 4:
+        # Seam a few rows into the suit, so the blur never pulls the skin's edge in as a brown line.
+        collar[x] += 4
         continue
     # A few rows of margin so the blur below doesn't smear the higher shoulder's edge into a halo.
     collar[x] = min(collar[x], first_solid(face, x), first_solid(mask, x)) - 6

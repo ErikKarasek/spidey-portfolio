@@ -34,7 +34,7 @@ export function Projects() {
         <img ref={web} src="/img/web.webp" alt="" className="web-img h-[500px] w-[500px] translate-x-1/4 -translate-y-1/4 object-contain opacity-[0.04] md:h-[700px] md:w-[700px]" />
       </div>
       <div className="pointer-events-none absolute bottom-0 left-4 z-30 max-lg:hidden md:left-12">
-        <img ref={spidey} src={suit('/img/spidey-stand.webp')} alt="" className="suit-img h-auto w-32 object-contain drop-shadow-2xl md:w-48" />
+        <img ref={spidey} src={suit('/img/spidey-stand.webp')} alt="" data-spidey className="suit-img h-auto w-32 object-contain drop-shadow-2xl md:w-48" />
       </div>
 
       <SectionHeader ref={header} label={t.projects.label} title={t.projects.title} />
