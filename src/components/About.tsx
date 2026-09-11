@@ -94,6 +94,25 @@ export function About() {
               ))}
             </div>
           </div>
+          <div className="mt-8">
+            <h3 className="mb-4 inline-block border-b border-line pb-2 text-xs font-bold uppercase tracking-widest text-mute">{t.about.certs.heading}</h3>
+            <div className="flex flex-wrap gap-3">
+              {t.about.certs.items.map((cert) => (
+                <div key={cert.title} className="flex items-center gap-3 rounded-xl border border-line bg-surface px-4 py-3 shadow-sm">
+                  {/* A rosette: reads as a certificate without needing an image. */}
+                  <svg viewBox="0 0 24 24" className="h-7 w-7 shrink-0 text-accent" fill="none" stroke="currentColor" strokeWidth={1.8} aria-hidden>
+                    <circle cx="12" cy="9" r="6" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m9 14.5-1.5 6L12 18.5l4.5 2-1.5-6" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m9.8 9 1.5 1.6L14.4 7.5" />
+                  </svg>
+                  <div>
+                    <div className="text-sm font-black uppercase tracking-tight text-ink">{cert.title}</div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-mute">{cert.subtitle}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="relative flex min-h-[550px] w-full flex-1 items-start justify-center">
