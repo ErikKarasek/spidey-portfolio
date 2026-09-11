@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Grind | případová studie | Erik Karásek</title>
+    <meta
+      name="description"
+      content="Jak vznikl Nexus Grind: tracker úkolů, návyků, spánku a ranked her pro Mac, Windows, iPhone i Android. Jedna sdílená logika, data u tebe v počítači."
+    />
+    <meta name="theme-color" content="#a31515" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Nexus Grind | případová studie" />
+    <meta property="og:description" content="Tracker úkolů, návyků, spánku a ranked her pro Mac, Windows, iPhone i Android. Jak je postavený a proč tak." />
+    <meta property="og:image" content="https://erik-karasek.pages.dev/img/nexus/today.webp" />
+    <meta property="og:url" content="https://erik-karasek.pages.dev/nexus-grind/" />
+    <meta property="og:site_name" content="Erik Karásek" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://erik-karasek.pages.dev/nexus-grind/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>" />
+    <script>
+      // Put the saved suit on before first paint so Symbiote mode doesn't flash white.
+      try {
+        if (localStorage.getItem('symbiote') === '1') document.documentElement.classList.add('symbiote')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <h1>Nexus Grind</h1>
+      <p>
+        Tracker produktivity pro Mac, Windows, iPhone i Android: úkoly, návyky, spánek a ranked hry na jednom místě. Logiku sdílí desktopová i mobilní
+        aplikace, data zůstávají v zařízení a synchronizace přes Supabase je dobrovolná.
+      </p>
+      <p><a href="/">Zpět na portfolio</a></p>
+    </noscript>
+    <script type="module" src="/src/case-study/main.tsx"></script>
+  </body>
+</html>
