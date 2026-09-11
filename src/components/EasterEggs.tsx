@@ -5,17 +5,18 @@ import { playSwoosh, playThwip } from '../sound'
 import { switchSuit, useIsSymbiote, useSuit } from '../theme'
 
 const KONAMI = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']
-
 /**
- * Typing "venom" anywhere switches suits; typing "spidey" (or the Konami code) sends Spider-Man swinging across the screen.
- * A hint waits in the browser console for anyone who opens dev tools.
+ * Typing "venom" anywhere switches suits; typing "spidey" (or the Konami code, or clicking a [data-spidey] figure) sends Spider-Man
+ * swinging across the screen. A hint waits in the browser console for anyone who opens dev tools.
+ * `?keys` in the URL shows what the page receives, for browsers where typing doesn't seem to work.
  */
 export function EasterEggs() {
   const { t } = useLang()
   const symbiote = useIsSymbiote()
   const [toast, setToast] = useState<{ id: number; text: string } | null>(null)
   const [swing, setSwing] = useState(0)
-  const live = useRef({ typed: '', keys: [] as string[], symbiote, t })
+  const [keyLog, setKeyLog] = useState<string[] | null>(() => (new URLSearchParams(location.search).has('keys') ? [] : null))
+  const live = useRef({ typed: '', keys: [] as string[], symbiote, t, logging: keyLog !== null })
   live.current.symbiote = symbiote
   live.current.t = t
 
@@ -24,19 +25,20 @@ export function EasterEggs() {
   }, [])
 
   useEffect(() => {
+    const swingNow = () => {
+      setSwing((n) => n + 1)
+      playThwip()
+      playSwoosh(2.6)
+    }
     const onKey = (e: KeyboardEvent) => {
-      if (e.target instanceof Element && e.target.closest('input, textarea, select, [contenteditable]')) return
-      if (e.ctrlKey || e.metaKey) return
       const s = live.current
+      const inField = e.target instanceof Element && !!e.target.closest('input, textarea, select, [contenteditable]')
+      if (s.logging) setKeyLog((log) => [...(log ?? []), `${e.key} (${e.code})${inField ? ' v poli' : ''}`].slice(-8))
+      if (inField || e.ctrlKey || e.metaKey) return
       // Some keyboards/IMEs report letters as "Unidentified" or "Process"; the physical key still names it.
       const fromCode = /^Key[A-Z]$/.test(e.code) ? e.code.slice(3).toLowerCase() : e.key
       const key = e.key.length === 1 ? e.key.toLowerCase() : e.key === 'Unidentified' || e.key === 'Process' ? fromCode : e.key
       s.keys = [...s.keys, key].slice(-KONAMI.length)
-      const swingNow = () => {
-        setSwing((n) => n + 1)
-        playThwip()
-        playSwoosh(2.6)
-      }
       if (s.keys.join() === KONAMI.join()) {
         s.keys = []
         swingNow()
@@ -46,25 +48,47 @@ export function EasterEggs() {
         // "spidez": a Czech QWERTZ layout on a keyboard printed QWERTY swaps Y and Z.
         if (s.typed.endsWith('spidey') || s.typed.endsWith('spidez')) {
           s.typed = ''
+          // The last letter is ours: don't let a browser's single-key shortcut (Opera: Z = back) act on it too.
+          e.preventDefault()
           swingNow()
         }
         if (s.typed.endsWith('venom')) {
           s.typed = ''
+          e.preventDefault()
           const next = !s.symbiote
           void switchSuit(next)
           setToast({ id: Date.now(), text: next ? s.t.eggs.venomOn : s.t.eggs.venomOff })
         }
       }
     }
+    // The figures stay pointer-events-none (they overlap the form at some widths), so a click that
+    // didn't land on a control is checked against where they are instead.
+    const onClick = (e: MouseEvent) => {
+      if (e.target instanceof Element && e.target.closest('a, button, input, textarea, select, label')) return
+      for (const img of document.querySelectorAll('[data-spidey]')) {
+        const r = img.getBoundingClientRect()
+        if (r.width && e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom) return swingNow()
+      }
+    }
     // Capture phase: nothing on the page (or a player/widget script) can swallow the keys first.
     window.addEventListener('keydown', onKey, true)
-    return () => window.removeEventListener('keydown', onKey, true)
+    window.addEventListener('click', onClick)
+    return () => {
+      window.removeEventListener('keydown', onKey, true)
+      window.removeEventListener('click', onClick)
+    }
   }, [])
 
   return (
     <>
       {toast && <Toast key={toast.id} text={toast.text} onDone={() => setToast(null)} />}
       {swing > 0 && <Swing key={swing} onDone={() => setSwing(0)} />}
+      {keyLog && (
+        <div className="fixed bottom-4 left-4 z-[90] rounded-xl bg-black/85 px-4 py-3 font-mono text-xs text-white shadow-lg">
+          <div className="mb-1 font-bold">Klávesy, které web dostává:</div>
+          {keyLog.length ? keyLog.map((k, i) => <div key={i}>{k}</div>) : <div className="opacity-60">zatím nic, klikni na stránku a piš</div>}
+        </div>
+      )}
     </>
   )
 }
