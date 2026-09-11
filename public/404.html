@@ -7,9 +7,11 @@
     <meta name="robots" content="noindex" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>" />
     <script>
-      // Same suit as the rest of the site.
+      // Same suit as the rest of the site: the saved choice, otherwise the system's dark mode.
       try {
-        if (localStorage.getItem('symbiote') === '1') document.documentElement.classList.add('symbiote')
+        var saved = localStorage.getItem('symbiote')
+        var on = saved === null ? matchMedia('(prefers-color-scheme: dark)').matches : saved === '1'
+        if (on) document.documentElement.classList.add('symbiote')
       } catch (e) {}
     </script>
     <style>

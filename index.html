@@ -23,9 +23,12 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Erik Karásek", "url": "https://erik-karasek.pages.dev/", "image": "https://erik-karasek.pages.dev/img/me.jpg", "jobTitle": "Analytik / Tester", "worksFor": {"@type": "Organization", "name": "Unicorn"}, "address": {"@type": "PostalAddress", "addressLocality": "Hradec Králové", "addressCountry": "CZ"}, "knowsAbout": ["React", "TypeScript", "Tauri", "React Native", "Supabase", "Python", "Software testing", "AI"], "sameAs": ["https://github.com/ErikKarasek", "https://kick.com/erickos007", "https://www.twitch.tv/erickos007", "https://www.youtube.com/channel/UCLxpYwapavqjQy9vtq5KM3g", "https://www.tiktok.com/@erickos007", "https://www.instagram.com/erikkarasek/"]}</script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>" />
     <script>
-      // Put the saved suit on before first paint so Symbiote mode doesn't flash white.
+      // Put the suit on before first paint so Symbiote mode doesn't flash white. With no saved choice,
+      // follow the system's dark mode.
       try {
-        if (localStorage.getItem('symbiote') === '1') document.documentElement.classList.add('symbiote')
+        var saved = localStorage.getItem('symbiote')
+        var on = saved === null ? matchMedia('(prefers-color-scheme: dark)').matches : saved === '1'
+        if (on) document.documentElement.classList.add('symbiote')
       } catch (e) {}
     </script>
   </head>

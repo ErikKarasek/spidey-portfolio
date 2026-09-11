@@ -28,6 +28,23 @@ function setSymbiote(on: boolean) {
 
 export const useIsSymbiote = () => useSyncExternalStore(subscribe, read)
 
+// Without a choice of their own, visitors get the suit their system is set to (index.html does the
+// same before first paint). Once they pick a suit, the system stops deciding for them.
+if (typeof matchMedia !== 'undefined') {
+  const dark = matchMedia('(prefers-color-scheme: dark)')
+  dark.addEventListener('change', (e) => {
+    try {
+      if (localStorage.getItem('symbiote') !== null) return
+    } catch {
+      // storage blocked: no saved choice to respect either
+    }
+    void preloadSuit(e.matches).then(() => {
+      document.documentElement.classList.toggle('symbiote', e.matches)
+      listeners.forEach((l) => l())
+    })
+  })
+}
+
 /** Returns a function mapping a Spider-Man image to the suit currently worn. */
 export function useSuit() {
   const on = useIsSymbiote()
