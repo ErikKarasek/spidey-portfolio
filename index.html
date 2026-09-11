@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Erik Karásek | tvůj přátelský sousedský vývojář</title>
+    <meta name="description" content="Portfolio Erika Karáska. Dělám appky pro počítač, mobil i web: Nexus Grind, LoL Stats a Monster Watch." />
+    <meta name="theme-color" content="#a31515" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Erik Karásek | tvůj přátelský sousedský vývojář" />
+    <meta property="og:description" content="Appky pro počítač, mobil i web: Nexus Grind, LoL Stats a Monster Watch." />
+    <meta property="og:image" content="https://erik-karasek.pages.dev/og.jpg" />
+    <meta property="og:url" content="https://erik-karasek.pages.dev/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://erik-karasek.pages.dev/" />
+    <!-- The hero shot is the largest thing on the first screen: fetch it before the JS even asks. -->
+    <link rel="preload" as="image" href="/img/hero-mask.webp" type="image/webp" fetchpriority="high" />
+    <meta name="google-site-verification" content="DqmCeu4oMDGGf43kEmT4DCHvcBsDjOldUjsWPqeT92c" />
+    <meta property="og:site_name" content="Erik Karásek" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <!-- Tells Google who this site is about, for the knowledge panel and search results. -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Erik Karásek", "url": "https://erik-karasek.pages.dev/", "image": "https://erik-karasek.pages.dev/img/me.jpg", "jobTitle": "Analytik / Tester", "worksFor": {"@type": "Organization", "name": "Unicorn"}, "address": {"@type": "PostalAddress", "addressLocality": "Hradec Králové", "addressCountry": "CZ"}, "knowsAbout": ["React", "TypeScript", "Tauri", "React Native", "Supabase", "Python", "Software testing", "AI"], "sameAs": ["https://github.com/ErikKarasek", "https://kick.com/erickos007", "https://www.twitch.tv/erickos007", "https://www.youtube.com/channel/UCLxpYwapavqjQy9vtq5KM3g", "https://www.tiktok.com/@erickos007", "https://www.instagram.com/erikkarasek/"]}</script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>" />
+    <script>
+      // Put the saved suit on before first paint so Symbiote mode doesn't flash white.
+      try {
+        if (localStorage.getItem('symbiote') === '1') document.documentElement.classList.add('symbiote')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <h1>Erik Karásek</h1>
+      <p>Portfolio: desktopové, mobilní a webové appky (Nexus Grind, LoL Stats, Monster Watch). Analytik / tester, React, TypeScript, Tauri, React Native.</p>
+      <p><a href="https://github.com/ErikKarasek">GitHub</a> · <a href="/cv/erik-karasek-zivotopis.pdf">Životopis</a> · <a href="/cv/erik-karasek-resume.pdf">Resume</a></p>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
