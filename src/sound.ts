@@ -7,14 +7,19 @@ let ctx: AudioContext | null = null
 let master: GainNode | null = null
 
 function audio() {
-  if (!ctx) {
-    ctx = new AudioContext()
-    master = ctx.createGain()
-    master.gain.value = 0.35
-    master.connect(ctx.destination)
+  try {
+    if (!ctx) {
+      ctx = new AudioContext()
+      master = ctx.createGain()
+      master.gain.value = 0.35
+      master.connect(ctx.destination)
+    }
+    if (ctx.state === 'suspended') void ctx.resume()
+    return { c: ctx, out: master! }
+  } catch {
+    // No audio device, or the browser refuses: the site just stays silent instead of breaking the click.
+    return null
   }
-  if (ctx.state === 'suspended') void ctx.resume()
-  return { c: ctx, out: master! }
 }
 
 // ── mute switch (remembered) ────────────────────────────────────────────────
@@ -70,7 +75,9 @@ function envelope(c: AudioContext, t: number, peak: number, attack: number, rele
 /** "Thwip!": a hiss of web fluid swept down through a band-pass, plus a quick zip. */
 export function playThwip() {
   if (muted) return
-  const { c, out } = audio()
+  const a = audio()
+  if (!a) return
+  const { c, out } = a
   const t = c.currentTime
 
   const hiss = noise(c, 0.25)
@@ -95,7 +102,9 @@ export function playThwip() {
 /** The symbiote: a low growl that sinks when it takes over and rises when it lets go. */
 export function playSymbiote(takingOver: boolean) {
   if (muted) return
-  const { c, out } = audio()
+  const a = audio()
+  if (!a) return
+  const { c, out } = a
   const t = c.currentTime
 
   const low = c.createBiquadFilter()
@@ -128,7 +137,9 @@ export function playSymbiote(takingOver: boolean) {
 /** A whoosh that rises and falls, for Spider-Man swinging past. */
 export function playSwoosh(seconds = 2.2) {
   if (muted) return
-  const { c, out } = audio()
+  const a = audio()
+  if (!a) return
+  const { c, out } = a
   const t = c.currentTime
   const air = noise(c, seconds)
   const band = c.createBiquadFilter()

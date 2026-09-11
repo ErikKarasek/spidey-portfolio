@@ -25,9 +25,12 @@ export function EasterEggs() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if ((e.target as HTMLElement).closest('input, textarea, select, [contenteditable]')) return
+      if (e.target instanceof Element && e.target.closest('input, textarea, select, [contenteditable]')) return
+      if (e.ctrlKey || e.metaKey) return
       const s = live.current
-      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key
+      // Some keyboards/IMEs report letters as "Unidentified" or "Process"; the physical key still names it.
+      const fromCode = /^Key[A-Z]$/.test(e.code) ? e.code.slice(3).toLowerCase() : e.key
+      const key = e.key.length === 1 ? e.key.toLowerCase() : e.key === 'Unidentified' || e.key === 'Process' ? fromCode : e.key
       s.keys = [...s.keys, key].slice(-KONAMI.length)
       const swingNow = () => {
         setSwing((n) => n + 1)
@@ -40,7 +43,8 @@ export function EasterEggs() {
       }
       if (key.length === 1) {
         s.typed = (s.typed + key).slice(-6)
-        if (s.typed.endsWith('spidey')) {
+        // "spidez": a Czech QWERTZ layout on a keyboard printed QWERTY swaps Y and Z.
+        if (s.typed.endsWith('spidey') || s.typed.endsWith('spidez')) {
           s.typed = ''
           swingNow()
         }
@@ -52,8 +56,9 @@ export function EasterEggs() {
         }
       }
     }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
+    // Capture phase: nothing on the page (or a player/widget script) can swallow the keys first.
+    window.addEventListener('keydown', onKey, true)
+    return () => window.removeEventListener('keydown', onKey, true)
   }, [])
 
   return (
