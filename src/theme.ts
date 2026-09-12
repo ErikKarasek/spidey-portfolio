@@ -6,7 +6,7 @@ import { playSymbiote } from './sound'
 
 // Every Spider-Man picture has a black-suit twin in public/img/symbiote/ (built by scripts/symbiote.sh).
 const HERO = ['/img/hero-mask.webp', '/img/hero-face.webp']
-const SUITS = [...HERO, '/img/spidey-hang.webp', '/img/spidey-stand.webp', '/img/spidey-band.webp']
+const SUITS = [...HERO, '/img/spidey-hang.webp', '/img/spidey-stand.webp', '/img/spidey-band.webp', '/img/me-suit.webp']
 const blackSuit = (src: string) => (SUITS.includes(src) ? src.replace('/img/', '/img/symbiote/') : src)
 
 const listeners = new Set<() => void>()

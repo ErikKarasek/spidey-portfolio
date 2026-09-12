@@ -15,12 +15,12 @@ export type CaseStudyContent = {
   build: { heading: string; items: { title: string; text: string }[] }
   decisions: { heading: string; items: { title: string; text: string }[] }
   status: { heading: string; body: string[] }
-  cta: { text: string; button: string }
+  cta: { text: string; button: string; href?: string }  // no href = the Nexus Grind download buttons
 }
 
-const shot = (name: string) => `/img/nexus/${name}.webp`
+const shot = (name: string) => `/img/case/nexus/${name}.webp`
 
-export const caseStudy: Record<Lang, CaseStudyContent> = {
+const nexusGrind: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
       title: 'Nexus Grind | případová studie | Erik Karásek',
@@ -234,3 +234,284 @@ export const caseStudy: Record<Lang, CaseStudyContent> = {
     cta: { text: 'Want to try it?', button: 'Download Nexus Grind' },
   },
 }
+
+const lolStats: Record<Lang, CaseStudyContent> = {
+  cs: {
+    meta: {
+      title: 'LoL Stats | případová studie | Erik Karásek',
+      description: 'Vlastní statistiky z League of Legends přes Riot API. Tierlist šampionů podle mé winrate, rozbor podle lajny a detail zápasu. API klíč zůstává v prohlížeči.',
+    },
+    back: 'Zpět na portfolio',
+    label: 'Případová studie',
+    title: 'LoL Stats.',
+    lead: 'Web, který si z Riot API stáhne moje ranked zápasy a spočítá z nich to, co mě zajímá: kterým šampionům se mnou opravdu daří, jak mi jde která lajna a co se dělo v konkrétní hře. API klíč přitom nikdy neopustí prohlížeč.',
+    stats: [
+      { value: '100', label: 'Her na jedno načtení' },
+      { value: '5', label: 'Herních front' },
+      { value: '0', label: 'Serverů, kde leží tvůj klíč' },
+      { value: 'EUNE', label: 'Region' },
+    ],
+    problem: {
+      heading: 'Co to řeší',
+      body: [
+        'Stránky jako op.gg ukazují průměry všech hráčů. Mě ale nezajímá, jak je šampion dobrý obecně, ale jak je dobrý se mnou. To je často úplně jiné číslo.',
+        'Tak jsem si udělal vlastní tierlist: zápasy si stáhnu přes Riot API, spočítám z nich winrate a KDA na šampiona a seřadím je podle sebe. K tomu rozbor podle lajny, historie her a detail zápasu ve stylu op.gg.',
+      ],
+    },
+    shotsHeading: 'Jak to vypadá',
+    shots: [
+      {
+        src: '/img/case/lolstats-start.webp',
+        title: 'Načtení dat',
+        text: 'Zadáš Riot ID, vlastní API klíč, frontu a kolik her chceš. Web rovnou říká, kde klíč vzít, že platí 24 hodin a že se nikam neodesílá. Sto her se stahuje minutu až dvě, protože Riot API má limity a nemá smysl je obcházet.',
+      },
+    ],
+    build: {
+      heading: 'Jak je to postavené',
+      items: [
+        {
+          title: 'Běží na Cloudflare Workers',
+          text: 'Celý web je statický a hostovaný na Cloudflare Workers, takže se nestará o server a je zdarma i při nule návštěv. Žádná databáze, žádné přihlašování.',
+        },
+        {
+          title: 'Data tahá prohlížeč',
+          text: 'Volání Riot API dělá přímo prohlížeč tvým klíčem. Výpočty (winrate, KDA, rozpad podle lajny) běží taky v prohlížeči, grafy kreslí Chart.js.',
+        },
+        {
+          title: 'Klíč zůstává u tebe',
+          text: 'Klíč se neukládá ani neposílá na žádný můj server. Riot dává vývojářský klíč s platností 24 hodin, takže se stejně každý den obnovuje. To je pro takovouhle hračku ta nejbezpečnější varianta.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'Rozhodnutí, která stála nejvíc přemýšlení',
+      items: [
+        {
+          title: 'Raději pomalu než zablokovaně',
+          text: 'Riot API má přísné limity na počet dotazů. Načítání sta her proto trvá minutu až dvě a web to dopředu říká, místo aby to vypadalo, že zamrzl.',
+        },
+        {
+          title: 'Vlastní čísla místo cizích průměrů',
+          text: 'Tierlist se počítá jen z mých zápasů. Když jsem s někým hrál pětkrát, je to vidět, a číslo neberu jako hotovou pravdu.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Kde to je teď',
+      body: ['Web běží a používám ho po ranked session. Dál by mi dávalo smysl ukládat si historii mezi načteními, aby šlo srovnávat sezony.'],
+    },
+    cta: { text: 'Chceš to zkusit?', button: 'Otevřít LoL Stats', href: 'https://lolstats.erikkarasek2005.workers.dev' },
+  },
+  en: {
+    meta: {
+      title: 'LoL Stats | case study | Erik Karásek',
+      description: 'My own League of Legends stats through the Riot API. A champion tier list from my own win rate, a breakdown by lane and match detail. The API key stays in the browser.',
+    },
+    back: 'Back to portfolio',
+    label: 'Case study',
+    title: 'LoL Stats.',
+    lead: 'A site that pulls my ranked matches from the Riot API and works out what I actually care about: which champions do well with me, how each lane is going and what happened in a given game. The API key never leaves the browser.',
+    stats: [
+      { value: '100', label: 'Matches per load' },
+      { value: '5', label: 'Queue types' },
+      { value: '0', label: 'Servers holding your key' },
+      { value: 'EUNE', label: 'Region' },
+    ],
+    problem: {
+      heading: 'What it solves',
+      body: [
+        'Sites like op.gg show averages across every player. I do not care how good a champion is in general, I care how good it is with me, and that is often a very different number.',
+        'So I built my own tier list: matches come from the Riot API, win rate and KDA per champion are worked out from them, and the list is sorted by me. Plus a breakdown by lane, match history and an op.gg style match detail.',
+      ],
+    },
+    shotsHeading: 'What it looks like',
+    shots: [
+      {
+        src: '/img/case/lolstats-start.webp',
+        title: 'Loading your data',
+        text: 'You enter your Riot ID, your own API key, a queue and how many games to fetch. The page says up front where to get the key, that it lasts 24 hours and that it is never sent anywhere. A hundred games take a minute or two, because the Riot API has rate limits and there is no point fighting them.',
+      },
+    ],
+    build: {
+      heading: 'How it is built',
+      items: [
+        {
+          title: 'Runs on Cloudflare Workers',
+          text: 'The whole site is static and hosted on Cloudflare Workers, so there is no server to look after and it costs nothing at zero traffic. No database, no sign-in.',
+        },
+        {
+          title: 'The browser fetches the data',
+          text: 'The Riot API is called straight from the browser with your key. The maths (win rate, KDA, the per-lane breakdown) happens in the browser too, and Chart.js draws the charts.',
+        },
+        {
+          title: 'The key stays with you',
+          text: 'The key is never stored and never sent to a server of mine. Riot hands out a developer key that expires after 24 hours anyway, so for a toy like this that is the safest option there is.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'The decisions that took the most thinking',
+      items: [
+        {
+          title: 'Slow beats blocked',
+          text: 'The Riot API limits how many requests you may make. Loading a hundred games therefore takes a minute or two, and the page says so in advance instead of looking frozen.',
+        },
+        {
+          title: "My numbers, not someone else's averages",
+          text: 'The tier list is built from my matches only. If I played a champion five times, that shows, and I do not treat the number as settled truth.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Where it is now',
+      body: ['The site is up and I use it after a ranked session. The obvious next step is keeping history between loads, so seasons can be compared.'],
+    },
+    cta: { text: 'Want to try it?', button: 'Open LoL Stats', href: 'https://lolstats.erikkarasek2005.workers.dev' },
+  },
+}
+
+const monsterWatch: Record<Lang, CaseStudyContent> = {
+  cs: {
+    meta: {
+      title: 'Monster Watch | případová studie | Erik Karásek',
+      description: 'Appka, která hlídá, kde je Monster ve slevě. Ceny z letáků stahuje backend v Pythonu, mobilní appka je ukazuje na 3D plechovkách.',
+    },
+    back: 'Zpět na portfolio',
+    label: 'Případová studie',
+    title: 'Monster Watch.',
+    lead: 'Appka, která na jedné obrazovce ukáže všechny příchutě Monsteru a cenu, za kterou je zrovna někde v akci. Data si tahá vlastní backend z letáků, appka je ukazuje na plechovkách ve 3D.',
+    stats: [
+      { value: '20', label: 'Příchutí' },
+      { value: '2', label: 'Služby: appka a API' },
+      { value: '3D', label: 'Model plechovky' },
+      { value: 'Kč', label: 'Ceny z letáků' },
+    ],
+    problem: {
+      heading: 'Co to řeší',
+      body: [
+        'Monster je skoro pořád někde v akci, jenže v jiném obchodě a v jiný týden. Projít kvůli plechovce pět letáků je otrava.',
+        'Monster Watch to udělá za tebe: sesbírá aktuální akce, přiřadí je k příchutím a ukáže je jako mřížku plechovek s cenou a obchodem. Když někde akce není, plechovka to přizná, místo aby ukazovala starou cenu.',
+      ],
+    },
+    shotsHeading: 'Jak to vypadá',
+    shots: [
+      {
+        src: '/img/case/monster-grid.webp',
+        title: 'Přehled příchutí',
+        text: 'Každá plechovka má cenu, štítek s obchodem a označení, že jde o akci z letáku. Vzhled je schválně jako herní HUD, protože tomu odpovídá i značka.',
+      },
+    ],
+    build: {
+      heading: 'Jak je to postavené',
+      items: [
+        {
+          title: 'Appka v React Native',
+          text: 'Mobilní appka přes Expo, takže jeden kód pro iOS i Android a web. Plechovky se vykreslují jako 3D model, který se dá otáčet.',
+        },
+        {
+          title: 'Vlastní API v Pythonu',
+          text: 'Backend ve Flasku běží zvlášť a jeho jediná práce je sbírat akce z letáků a vydat je jako jednoduché JSON API. Appka tak nikdy nesahá na cizí web přímo.',
+        },
+        {
+          title: 'Dvě služby, dvě nasazení',
+          text: 'Appka i API běží na Renderu. Oddělené jsou schválně: když se změní struktura letáků, opravuju jen backend a appka zůstává, jak je.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'Rozhodnutí, která stála nejvíc přemýšlení',
+      items: [
+        {
+          title: 'Scraping patří na server',
+          text: 'Kdyby data tahala appka sama, rozbila by se každému uživateli ve chvíli, kdy zdroj změní stránku. Takhle stačí nasadit nový backend a všem to začne fungovat zpátky.',
+        },
+        {
+          title: 'Žádná cena je lepší než stará cena',
+          text: 'Když k příchuti není aktuální akce, appka to řekne. Zobrazit cenu z minulého týdne by znamenalo poslat člověka do obchodu zbytečně.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Kde to je teď',
+      body: [
+        'Appka i API běží na bezplatném tarifu Renderu, takže po delší nečinnosti chvíli trvá, než se backend probudí. První načtení proto může být pomalejší.',
+      ],
+    },
+    cta: { text: 'Chceš to zkusit?', button: 'Otevřít Monster Watch', href: 'https://monster-watch.onrender.com' },
+  },
+  en: {
+    meta: {
+      title: 'Monster Watch | case study | Erik Karásek',
+      description: 'An app that tracks where Monster is on sale. A Python backend collects prices from shop leaflets and the app shows them on 3D cans.',
+    },
+    back: 'Back to portfolio',
+    label: 'Case study',
+    title: 'Monster Watch.',
+    lead: 'An app that shows every Monster flavour on one screen, along with the price it is currently discounted to. A backend of my own collects the deals from shop leaflets, and the app shows them on 3D cans.',
+    stats: [
+      { value: '20', label: 'Flavours' },
+      { value: '2', label: 'Services: app and API' },
+      { value: '3D', label: 'Can model' },
+      { value: 'CZK', label: 'Prices from leaflets' },
+    ],
+    problem: {
+      heading: 'What it solves',
+      body: [
+        'Monster is almost always on sale somewhere, just in a different shop and a different week. Going through five leaflets for a can of energy drink is a chore.',
+        "Monster Watch does it for you: it collects the current deals, matches them to flavours and shows them as a grid of cans with a price and a shop. When there is no deal, the can says so instead of showing last week's price.",
+      ],
+    },
+    shotsHeading: 'What it looks like',
+    shots: [
+      {
+        src: '/img/case/monster-grid.webp',
+        title: 'The flavour grid',
+        text: 'Every can carries a price, a shop tag and a mark saying the deal comes from a leaflet. The look is deliberately a game HUD, which is about right for the brand.',
+      },
+    ],
+    build: {
+      heading: 'How it is built',
+      items: [
+        {
+          title: 'React Native app',
+          text: 'The mobile app runs on Expo, so one codebase covers iOS, Android and the web. The cans are drawn as a 3D model you can spin.',
+        },
+        {
+          title: 'A Python API of my own',
+          text: "A Flask backend runs separately, and its only job is to collect the leaflet deals and serve them as a simple JSON API. The app never touches someone else's site directly.",
+        },
+        {
+          title: 'Two services, two deployments',
+          text: 'The app and the API both run on Render, kept apart on purpose: when the leaflets change shape, I fix the backend and the app stays exactly as it is.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'The decisions that took the most thinking',
+      items: [
+        {
+          title: 'Scraping belongs on a server',
+          text: 'If the app fetched the data itself, it would break for every user the moment the source changed its pages. This way I deploy a new backend and everyone is working again.',
+        },
+        {
+          title: 'No price beats a stale price',
+          text: "When a flavour has no current deal, the app says so. Showing last week's price would send someone to the shop for nothing.",
+        },
+      ],
+    },
+    status: {
+      heading: 'Where it is now',
+      body: ["Both the app and the API sit on Render's free tier, so after a quiet spell the backend needs a moment to wake up and the first load can be slow."],
+    },
+    cta: { text: 'Want to try it?', button: 'Open Monster Watch', href: 'https://monster-watch.onrender.com' },
+  },
+}
+
+/** Every case study, keyed by the folder it is published under (/nexus-grind/, /lol-stats/, …). */
+export const studies = {
+  'nexus-grind': nexusGrind,
+  'lol-stats': lolStats,
+  'monster-watch': monsterWatch,
+} satisfies Record<string, Record<Lang, CaseStudyContent>>
+
+export type StudySlug = keyof typeof studies
