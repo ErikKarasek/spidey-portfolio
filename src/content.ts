@@ -179,7 +179,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Monster Watch',
           description:
-            'Hlídá, kde je Monster zrovna v akci. Ukazuje všech 20 příchutí s cenami z aktuálních letáků. Slevy stahuje z kupi.cz backend v Pythonu a appka je zobrazuje ve 3D.',
+            'Hlídá, kde je Monster zrovna v akci. Ukazuje všech 20 příchutí s cenami z aktuálních letáků. Slevy stahuje z kupi.cz backend v Pythonu a appka je zobrazuje jako mřížku příchutí.',
           tags: ['React Native', 'Expo', 'Python', 'Flask'],
           image: `${IMG}/monsterwatch.webp`,
           link: 'https://monster-watch.onrender.com',
@@ -310,7 +310,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Monster Watch',
           description:
-            'Shows where Monster Energy is on sale. All 20 flavours with prices from the current store flyers. A Python backend pulls the deals from kupi.cz and the app shows them in 3D.',
+            'Shows where Monster Energy is on sale. All 20 flavours with prices from the current store flyers. A Python backend pulls the deals from kupi.cz and the app shows them as a grid of flavours.',
           tags: ['React Native', 'Expo', 'Python', 'Flask'],
           image: `${IMG}/monsterwatch.webp`,
           link: 'https://monster-watch.onrender.com',

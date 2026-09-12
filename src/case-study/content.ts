@@ -404,16 +404,16 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
       title: 'Monster Watch | případová studie | Erik Karásek',
-      description: 'Appka, která hlídá, kde je Monster ve slevě. Ceny z letáků stahuje backend v Pythonu, mobilní appka je ukazuje na 3D plechovkách.',
+      description: 'Appka, která hlídá, kde je Monster ve slevě. Ceny z letáků stahuje backend v Pythonu, mobilní appka je ukazuje jako mřížku příchutí.',
     },
     back: 'Zpět na portfolio',
     label: 'Případová studie',
     title: 'Monster Watch.',
-    lead: 'Appka, která na jedné obrazovce ukáže všechny příchutě Monsteru a cenu, za kterou je zrovna někde v akci. Data si tahá vlastní backend z letáků, appka je ukazuje na plechovkách ve 3D.',
+    lead: 'Appka, která na jedné obrazovce ukáže všechny příchutě Monsteru a cenu, za kterou je zrovna někde v akci. Data si tahá vlastní backend z letáků a appku otevírá 3D animace plechovky.',
     stats: [
       { value: '20', label: 'Příchutí' },
       { value: '2', label: 'Služby: appka a API' },
-      { value: '3D', label: 'Model plechovky' },
+      { value: '3D', label: 'Úvodní animace' },
       { value: 'Kč', label: 'Ceny z letáků' },
     ],
     problem: {
@@ -436,7 +436,7 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Appka v React Native',
-          text: 'Mobilní appka přes Expo, takže jeden kód pro iOS i Android a web. Plechovky se vykreslují jako 3D model, který se dá otáčet.',
+          text: 'Mobilní appka přes Expo, takže jeden kód pro iOS i Android a web. Na úvod se přehraje 3D animace plechovky, pak už jde o mřížku příchutí s cenami.',
         },
         {
           title: 'Vlastní API v Pythonu',
@@ -472,16 +472,16 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
   en: {
     meta: {
       title: 'Monster Watch | case study | Erik Karásek',
-      description: 'An app that tracks where Monster is on sale. A Python backend collects prices from shop leaflets and the app shows them on 3D cans.',
+      description: 'An app that tracks where Monster is on sale. A Python backend collects prices from shop leaflets and the app shows them as a grid of flavours.',
     },
     back: 'Back to portfolio',
     label: 'Case study',
     title: 'Monster Watch.',
-    lead: 'An app that shows every Monster flavour on one screen, along with the price it is currently discounted to. A backend of my own collects the deals from shop leaflets, and the app shows them on 3D cans.',
+    lead: 'An app that shows every Monster flavour on one screen, along with the price it is currently discounted to. A backend of my own collects the deals from shop leaflets, and a 3D can animation opens the app.',
     stats: [
       { value: '20', label: 'Flavours' },
       { value: '2', label: 'Services: app and API' },
-      { value: '3D', label: 'Can model' },
+      { value: '3D', label: 'Intro animation' },
       { value: 'CZK', label: 'Prices from leaflets' },
     ],
     problem: {
@@ -504,7 +504,7 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'React Native app',
-          text: 'The mobile app runs on Expo, so one codebase covers iOS, Android and the web. The cans are drawn as a 3D model you can spin.',
+          text: 'The mobile app runs on Expo, so one codebase covers iOS, Android and the web. A 3D can animation plays on open, then it is a grid of flavours with prices.',
         },
         {
           title: 'A Python API of my own',
