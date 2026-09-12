@@ -125,6 +125,17 @@ export const cv = {
           'Vývoj s podporou AI nástrojů (Claude, Gemini CLI): coding, debugging, optimalizace.',
         ],
       },
+      {
+        name: 'Job Tracker',
+        when: '2026',
+        link: 'job-tracker-10s.pages.dev',
+        study: 'erik-karasek.pages.dev/job-tracker',
+        points: [
+          'Kanban nástroj na sledování přihlášek do práce: karta na pozici, fáze wishlist → applied → interview → offer/rejected.',
+          'Statistiky nad historií přechodů: funnel podle fází, denní timeline a hlídání přihlášek bez aktivity.',
+          'React 19 + Vite + Tailwind v4, REST API v Hono jako Cloudflare Pages Function, data v Cloudflare D1; TypeScript se sdílenými typy, jeden deploy pro web i API.',
+        ],
+      },
     ],
     skills: [
       ['Umělá inteligence', 'Claude, Gemini CLI a další; kódování, debugging, analýza dat, učení.'],
@@ -253,6 +264,17 @@ export const cv = {
           'Automated price tracking and comparison of the cheapest options.',
           'React Native (Expo) app, Python (Flask) backend, web scraper, JSON API.',
           'Built with AI tools (Claude, Gemini CLI): coding, debugging, optimisation.',
+        ],
+      },
+      {
+        name: 'Job Tracker',
+        when: '2026',
+        link: 'job-tracker-10s.pages.dev',
+        study: 'erik-karasek.pages.dev/job-tracker',
+        points: [
+          'Kanban tool for tracking job applications: a card per role, moving wishlist → applied → interview → offer/rejected.',
+          'Stats built on the history of stage changes: a funnel by stage, a per-day timeline and a watch on applications with no activity.',
+          'React 19 + Vite + Tailwind v4, REST API in Hono as a Cloudflare Pages Function, data in Cloudflare D1; TypeScript with shared types, one deploy for the site and the API.',
         ],
       },
     ],
