@@ -537,11 +537,191 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
   },
 }
 
+const jobTracker: Record<Lang, CaseStudyContent> = {
+  cs: {
+    meta: {
+      title: 'Job Tracker | případová studie | Erik Karásek',
+      description: 'Kanban na sledování přihlášek do práce, postavený na Cloudflare D1 a Hono. Funnel počítá z historie přechodů, ne z aktuálního stavu.',
+    },
+    back: 'Zpět na portfolio',
+    label: 'Případová studie',
+    title: 'Job Tracker.',
+    lead: 'Kanban na hledání práce. Každá pozice je karta, kterou posouváš přes fáze od „zajímavé“ až po nabídku nebo zamítnutí. Nad tím jsou statistiky, které počítají z historie přechodů, ne z toho, kde karta leží dneska.',
+    stats: [
+      { value: '5', label: 'Fází náboru' },
+      { value: '2', label: 'Tabulky v databázi' },
+      { value: '1', label: 'Deploy pro web i API' },
+      { value: 'D1', label: 'SQLite na edge' },
+    ],
+    problem: {
+      heading: 'Co to řeší',
+      body: [
+        'Hledání práce se obvykle odehrává v tabulce, která má sloupce „firma“, „kdy jsem psal“ a „odpověděli?“. Funguje to do chvíle, než je přihlášek dvacet — pak přestaneš vědět, u kterých se dlouho nic nestalo, a hlavně ti nikdy neřekne, jestli je problém v tom, že se málo hlásíš, nebo v tom, že tě po pohovoru nikdo nechce.',
+        'Job Tracker je na to postavený jako board: karta nese firmu, roli, odkaz na inzerát, lokaci, mzdové rozpětí, zdroj a poznámky, a posouvá se přes fáze wishlist → applied → interview → offer nebo rejected.',
+        'Druhá polovina je statistika. Funnel ukazuje, kolik přihlášek se kterou fází vůbec prošlo, timeline kolik jich denně přibylo, a samostatný seznam hlídá ty, u kterých už dlouho nebyla žádná aktivita, aby nezapadly.',
+      ],
+    },
+    shotsHeading: 'Jak to vypadá',
+    shots: [
+      {
+        src: '/img/case/jobtracker-board.webp',
+        title: 'Board',
+        text: 'Pět sloupců podle fáze, karta se posouvá výběrem cílové fáze. Když se u přihlášky dlouho nic nestalo, dostane štítek s počtem dní ticha — přímo na kartě, ne schovaný ve statistikách. (Na snímku jsou ukázková data.)',
+      },
+      {
+        src: '/img/case/jobtracker-editor.webp',
+        title: 'Detail karty',
+        text: 'Editace v panelu vedle boardu: odkaz na inzerát, lokalita, zdroj, mzdové rozpětí a poznámky. Mzda je uložená jako dvě čísla, ne jako text, aby se s ní dalo později počítat.',
+      },
+      {
+        src: '/img/case/jobtracker-stats.webp',
+        title: 'Statistiky',
+        text: 'Nahoře poměry mezi fázemi, pod tím kolik přihlášek kterou fází prošlo, denní timeline a seznam těch, co potřebují připomenout.',
+      },
+    ],
+    build: {
+      heading: 'Jak je to postavené',
+      items: [
+        {
+          title: 'Jeden deploy pro frontend i API',
+          text: 'React 19 s Vite se sestaví do statických souborů, API je Hono běžící jako Cloudflare Pages Function na catch-all routě /api/*. Obojí jde ven jedním nasazením, takže neexistuje stav, kdy je web novější než API.',
+        },
+        {
+          title: 'Cloudflare D1 jako databáze',
+          text: 'SQLite běžící na edge. Schéma má tabulku applications se samotnými přihláškami a status_events, kam se zapisuje každý přechod mezi fázemi. Vývoj běží přes wrangler pages dev, který nastartuje Pages Functions i D1 lokálně.',
+        },
+        {
+          title: 'Žádná knihovna na state',
+          text: 'Data drží vlastní hook useBoardData nad fetch API. Na aplikaci, která má jeden zdroj pravdy a pár akcí, je Redux nebo podobná knihovna víc kódu než užitku.',
+        },
+        {
+          title: 'TypeScript na obou stranách',
+          text: 'Typy Application a Stage jsou sdílené mezi frontendem a API, takže přejmenování fáze neprojde buildem, dokud ho nedotáhnu do obou půlek.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'Rozhodnutí, která stála nejvíc přemýšlení',
+      items: [
+        {
+          title: 'Funnel se počítá z historie, ne ze současnosti',
+          text: 'Kdyby se počítalo z aktuálního sloupce, přihláška zamítnutá po pohovoru by v statistice vypadala, jako by k pohovoru nikdy nedošlo — a úspěšnost pohovorů by vycházela směšně nízko. Proto se každý přechod loguje do status_events a funnel počítá, kolik přihlášek danou fází někdy prošlo.',
+        },
+        {
+          title: 'Ticho je taky informace',
+          text: 'Seznam „needs follow-up“ bere přihlášky, u kterých je poslední aktivita starší než zvolený počet dní, a schválně z nich vynechává nabídky a zamítnutí — tam už není co urgovat. Prahová hodnota je parametr dotazu, ne zadrátované číslo.',
+        },
+        {
+          title: 'Mzda jako rozpětí, ne jako text',
+          text: 'salary_min a salary_max jsou čísla. Uložit „55–70k dle zkušeností“ jako řetězec je pohodlné při psaní a k ničemu při jakémkoli pozdějším třídění nebo porovnání.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Kde to je teď',
+      body: [
+        'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
+        'Co zatím chybí: API nemá autentizaci, takže veřejná instance je otevřená komukoli, kdo zná adresu. Než se to doplní, je to ukázka architektury, ne nástroj, do kterého patří ostrá data.',
+      ],
+    },
+    cta: { text: 'Chceš to zkusit?', button: 'Otevřít Job Tracker', href: 'https://job-tracker-10s.pages.dev' },
+  },
+  en: {
+    meta: {
+      title: 'Job Tracker | case study | Erik Karásek',
+      description: 'A kanban board for job applications, built on Cloudflare D1 and Hono. The funnel counts from the history of stage changes, not the current column.',
+    },
+    back: 'Back to portfolio',
+    label: 'Case study',
+    title: 'Job Tracker.',
+    lead: 'A kanban board for a job hunt. Every role is a card you move through the stages, from "worth a look" to an offer or a rejection. On top of it sit stats that count from the history of stage changes, not from where a card happens to sit today.',
+    stats: [
+      { value: '5', label: 'Hiring stages' },
+      { value: '2', label: 'Database tables' },
+      { value: '1', label: 'Deploy for site and API' },
+      { value: 'D1', label: 'SQLite on the edge' },
+    ],
+    problem: {
+      heading: 'What it solves',
+      body: [
+        'A job hunt usually lives in a spreadsheet with columns for company, date sent and "did they reply?". That works until you are twenty applications in — then you stop knowing which ones have gone quiet, and it never tells you whether the problem is that you are not applying enough or that nobody wants you after the interview.',
+        'Job Tracker is a board instead. A card carries the company, the role, a link to the posting, location, salary range, where you found it and your notes, and moves through wishlist → applied → interview → offer or rejected.',
+        'The other half is the stats. A funnel shows how many applications ever got through each stage, a timeline shows how many you started per day, and a separate list watches the ones with no activity for a while so they do not quietly disappear.',
+      ],
+    },
+    shotsHeading: 'What it looks like',
+    shots: [
+      {
+        src: '/img/case/jobtracker-board.webp',
+        title: 'Board',
+        text: 'Five columns, one per stage; a card moves by picking its new stage. When an application has been quiet for a while it gets a badge with the day count, on the card itself rather than buried in the stats. (The screenshot uses sample data.)',
+      },
+      {
+        src: '/img/case/jobtracker-editor.webp',
+        title: 'Card detail',
+        text: 'Editing happens in a panel beside the board: link to the posting, location, source, salary range and notes. The salary is stored as two numbers rather than text, so it can be counted on later.',
+      },
+      {
+        src: '/img/case/jobtracker-stats.webp',
+        title: 'Stats',
+        text: 'Stage-to-stage rates on top, then how many applications reached each stage, a per-day timeline, and the list of the ones that need chasing.',
+      },
+    ],
+    build: {
+      heading: 'How it is built',
+      items: [
+        {
+          title: 'One deploy for the front end and the API',
+          text: 'React 19 with Vite builds to static files; the API is Hono running as a Cloudflare Pages Function on a catch-all /api/* route. Both ship in a single deploy, so there is no window where the site is newer than the API.',
+        },
+        {
+          title: 'Cloudflare D1 for storage',
+          text: 'SQLite running at the edge. The schema is an applications table for the applications themselves and status_events for every move between stages. Development runs through wrangler pages dev, which starts Pages Functions and D1 locally.',
+        },
+        {
+          title: 'No state library',
+          text: 'A hook of its own, useBoardData, holds the data over the fetch API. For an app with one source of truth and a handful of actions, Redux or anything like it is more code than it is worth.',
+        },
+        {
+          title: 'TypeScript on both sides',
+          text: 'The Application and Stage types are shared between the front end and the API, so renaming a stage fails the build until it is carried through both halves.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'The decisions that took the most thought',
+      items: [
+        {
+          title: 'The funnel counts history, not the present',
+          text: 'Counting the current column would make an application rejected after an interview look as though the interview never happened, and the interview rate would come out absurdly low. So every move is logged to status_events, and the funnel counts how many applications ever passed through each stage.',
+        },
+        {
+          title: 'Silence is information too',
+          text: 'The "needs follow-up" list takes applications whose last activity is older than a chosen number of days, and deliberately leaves out offers and rejections — there is nothing left to chase there. The threshold is a query parameter, not a hard-coded number.',
+        },
+        {
+          title: 'Salary as a range, not as text',
+          text: 'salary_min and salary_max are numbers. Storing "55–70k depending on experience" as a string is convenient while typing and useless for any sorting or comparison afterwards.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Where it stands',
+      body: [
+        'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
+        "What is missing: the API has no authentication, so the public instance is open to anyone who knows the address. Until that is added it is a demonstration of the architecture, not somewhere real data belongs.",
+      ],
+    },
+    cta: { text: 'Want to try it?', button: 'Open Job Tracker', href: 'https://job-tracker-10s.pages.dev' },
+  },
+}
+
 /** Every case study, keyed by the folder it is published under (/nexus-grind/, /lol-stats/, …). */
 export const studies = {
   'nexus-grind': nexusGrind,
   'lol-stats': lolStats,
   'monster-watch': monsterWatch,
+  'job-tracker': jobTracker,
 } satisfies Record<string, Record<Lang, CaseStudyContent>>
 
 export type StudySlug = keyof typeof studies
