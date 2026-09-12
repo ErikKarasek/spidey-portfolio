@@ -7,7 +7,7 @@ export type SocialId = 'twitch' | 'kick' | 'youtube' | 'tiktok' | 'instagram' | 
 // Cloudflare dashboard here to switch it on; the matching secret belongs in the Pages project
 // (`npx wrangler pages secret put TURNSTILE_SECRET --project-name erik-karasek`). Empty = off, and
 // the form posts straight to FormSubmit as before.
-export const TURNSTILE_SITE_KEY = ''
+export const TURNSTILE_SITE_KEY = '0x4AAAAAAEww7ttbS74hu2_T'
 
 export const profile = {
   first: 'Erik',
