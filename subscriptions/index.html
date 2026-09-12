@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscription Tracker | o projektu | Erik Karásek</title>
+    <meta
+      name="description"
+      content="Přehled předplatných na Cloudflare Workers: denní cron posouvá obnovení a posílá e-maily, Workers AI vytáhne údaje ze screenshotu platby."
+    />
+    <meta name="theme-color" content="#a31515" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Subscription Tracker | o projektu" />
+    <meta property="og:description" content="Přehled toho, co ti měsíčně odchází z účtu. Denní cron, e-mailová upozornění a import ze screenshotu přes Workers AI." />
+    <meta property="og:image" content="https://erik-karasek.pages.dev/img/case/subscriptions-overview.webp" />
+    <meta property="og:url" content="https://erik-karasek.pages.dev/subscriptions/" />
+    <meta property="og:site_name" content="Erik Karásek" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://erik-karasek.pages.dev/subscriptions/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>" />
+    <script>
+      // Put the suit on before first paint so Symbiote mode doesn't flash white. With no saved choice,
+      // follow the system's dark mode.
+      try {
+        var saved = localStorage.getItem('symbiote')
+        var on = saved === null ? matchMedia('(prefers-color-scheme: dark)').matches : saved === '1'
+        if (on) document.documentElement.classList.add('symbiote')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <h1>Subscription Tracker</h1>
+      <p>Přehled předplatných s hlídáním útraty a obnovení. Denní cron ve workeru posouvá data obnovení, zapisuje je do historie a posílá e-mail na to, co se blíží nebo dlouho leží ladem. Postavené na Reactu, Hono, Cloudflare Workers a D1.</p>
+      <p><a href="/">Zpět na portfolio</a></p>
+    </noscript>
+    <script type="module" src="/src/case-study/subscriptions.tsx"></script>
+  </body>
+</html>
