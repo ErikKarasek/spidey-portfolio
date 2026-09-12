@@ -159,7 +159,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       label: 'Na čem pracuju',
       title: 'Projekty.',
-      study: 'Případová studie',
+      study: 'Víc o projektu',
       items: [
         {
           title: 'Nexus Grind',
