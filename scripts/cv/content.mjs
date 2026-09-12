@@ -136,6 +136,17 @@ export const cv = {
           'React 19 + Vite + Tailwind v4, REST API v Hono jako Cloudflare Pages Function, data v Cloudflare D1; TypeScript se sdílenými typy, jeden deploy pro web i API.',
         ],
       },
+      {
+        name: 'Subscription Tracker',
+        when: '2026',
+        link: 'github.com/ErikKarasek/subscription-tracker',
+        study: 'erik-karasek.pages.dev/subscriptions',
+        points: [
+          'Přehled předplatných: útrata po kategoriích, skutečně zaplacené částky v čase, hlídání blížících se plateb a nevyužívaných služeb.',
+          'Cloudflare Worker se statickými assety hostí web i Hono API a denní cron trigger posouvá platby a rozesílá e-maily přes Resend.',
+          'Data v Cloudflare D1; import ze screenshotu platby přes obrazový model na Cloudflare Workers AI, převod měn přes kurzy ECB.',
+        ],
+      },
     ],
     skills: [
       ['Umělá inteligence', 'Claude, Gemini CLI a další; kódování, debugging, analýza dat, učení.'],
@@ -275,6 +286,17 @@ export const cv = {
           'Kanban tool for tracking job applications: a card per role, moving wishlist → applied → interview → offer/rejected.',
           'Stats built on the history of stage changes: a funnel by stage, a per-day timeline and a watch on applications with no activity.',
           'React 19 + Vite + Tailwind v4, REST API in Hono as a Cloudflare Pages Function, data in Cloudflare D1; TypeScript with shared types, one deploy for the site and the API.',
+        ],
+      },
+      {
+        name: 'Subscription Tracker',
+        when: '2026',
+        link: 'github.com/ErikKarasek/subscription-tracker',
+        study: 'erik-karasek.pages.dev/subscriptions',
+        points: [
+          'Subscription overview: spend by category, what was actually paid over time, and a watch on upcoming payments and unused services.',
+          'A Cloudflare Worker with static assets serves the site and a Hono API, and a daily cron trigger rolls payments forward and sends email through Resend.',
+          'Data in Cloudflare D1; payment screenshots imported through a vision model on Cloudflare Workers AI, currencies converted at ECB rates.',
         ],
       },
     ],
