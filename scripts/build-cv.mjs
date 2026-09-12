@@ -5,6 +5,12 @@ import puppeteer from 'puppeteer-core'
 import QRCode from 'qrcode'
 import { cv, PHONE } from './cv/content.mjs'
 
+// `CV_PHONE="+420 ..." npm run cv` builds a second, private pair of PDFs into cv-private/ (gitignored,
+// never deployed) with the phone number on them, for attaching to applications. The public PDFs on the
+// site never carry it: they sit in public/cv and anyone can download them.
+const phone = process.env.CV_PHONE || PHONE
+const outDir = process.env.CV_PHONE ? 'cv-private' : 'public/cv'
+
 const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
@@ -13,7 +19,7 @@ const QR = await QRCode.toString('https://erik-karasek.pages.dev', { type: 'svg'
 
 function html(d) {
   const photo = `data:image/jpeg;base64,${readFileSync(d.photo).toString('base64')}`
-  const contact = [PHONE, d.email, d.city, d.github, d.web].filter(Boolean).map(esc).join('<i>·</i>')
+  const contact = [phone, d.email, d.city, d.github, d.web].filter(Boolean).map(esc).join('<i>·</i>')
   const head = (label) => `<h2><span></span>${esc(label)}</h2>`
   const pair = ([k, v]) => `<div class="pair"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`
   const list = (points) => `<ul>${points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`
@@ -69,7 +75,13 @@ function html(d) {
         .map((j) => `<div class="item"><div class="row"><span class="role">${esc(j.role)}</span><span class="when">${esc(j.when)}</span></div><p class="where">${esc(j.where)}</p>${list(j.points)}</div>`)
         .join('')}</section>
       <section>${head(d.labels.projects)}${d.projects
-        .map((p) => `<div class="item"><div class="row"><span class="role">${esc(p.name)}</span><span class="when">${esc(p.when)}</span></div><p class="where">${esc(p.link)}</p>${list(p.points)}</div>`)
+        .map(
+          (p) =>
+            `<div class="item"><div class="row"><span class="role">${esc(p.name)}</span><span class="when">${esc(p.when)}</span></div><p class="where">${esc(p.link)}${
+              // a project with a case study carries the link to it, so a reader can go one click deeper
+              p.study ? ` <b>·</b> ${esc(d.studyLabel)}: ${esc(p.study)}` : ''
+            }</p>${list(p.points)}</div>`,
+        )
         .join('')}</section>
     </main>
     <aside>
@@ -83,15 +95,15 @@ function html(d) {
 </div></body></html>`
 }
 
-mkdirSync('public/cv', { recursive: true })
+mkdirSync(outDir, { recursive: true })
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new' })
 for (const [lang, d] of Object.entries(cv)) {
   const page = await browser.newPage()
   await page.setContent(html(d), { waitUntil: 'networkidle0' })
   await page.evaluate(() => document.fonts.ready)
   const pdf = await page.pdf({ format: 'A4', printBackground: true, preferCSSPageSize: true })
-  writeFileSync(`public/cv/${d.file}`, pdf)
+  writeFileSync(`${outDir}/${d.file}`, pdf)
   if (process.env.CV_PREVIEW) writeFileSync(`${process.env.CV_PREVIEW}/cv-${lang}.html`, html(d))
-  console.log(`public/cv/${d.file}  (${Math.round(pdf.length / 1024)} kB)`)
+  console.log(`${outDir}/${d.file}  (${Math.round(pdf.length / 1024)} kB)`)
 }
 await browser.close()
