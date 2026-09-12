@@ -9,6 +9,8 @@ export type SocialId = 'twitch' | 'kick' | 'youtube' | 'tiktok' | 'instagram' | 
 // the form posts straight to FormSubmit as before.
 export const TURNSTILE_SITE_KEY = '0x4AAAAAAEww7ttbS74hu2_T'
 
+export const REPO = 'https://github.com/ErikKarasek/spidey-portfolio'
+
 export const profile = {
   first: 'Erik',
   last: 'Karásek',
@@ -42,7 +44,7 @@ export type Content = {
   loader: string
   hero: { tagline: string; cta: string; cv: string; cvHref: string }
   marquee: string[]
-  about: { label: string; paragraphs: string[]; stack: string; certs: { heading: string; items: { title: string; subtitle: string }[] } }
+  about: { label: string; paragraphs: string[]; stack: string; source: string; certs: { heading: string; items: { title: string; subtitle: string }[] } }
   experience: { label: string; title: string; now: string; items: Job[] }
   eggs: { venomOn: string; venomOff: string }
   skills: { label: string; title: string; items: Skill[] }
@@ -108,6 +110,7 @@ export const content: Record<Lang, Content> = {
         'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
       ],
       stack: 'Co používám nejvíc',
+      source: 'Kód tohoto webu na GitHubu',
       certs: {
         heading: 'Certifikáty',
         items: [{ title: 'Cambridge English First', subtitle: 'FCE, úroveň B2' }],
@@ -239,6 +242,7 @@ export const content: Record<Lang, Content> = {
         'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
       ],
       stack: 'What I use most',
+      source: "This site's code on GitHub",
       certs: {
         heading: 'Certificates',
         items: [{ title: 'Cambridge English First', subtitle: 'FCE, level B2' }],

@@ -20,6 +20,7 @@ export const cv = {
     file: 'erik-karasek-zivotopis.pdf',
     title: 'Analytik / Tester · Vývoj & AI · IT podpora',
     city: 'Hradec Králové',
+    studyLabel: 'Případová studie',
     labels: {
       profile: 'Profil',
       experience: 'Pracovní zkušenosti',
@@ -94,6 +95,7 @@ export const cv = {
         name: 'Nexus Grind',
         when: '2026',
         link: 'github.com/ErikKarasek/nexus-grind-releases',
+        study: 'erik-karasek.pages.dev/nexus-grind',
         points: [
           'Cross-platform produktivní tracker (úkoly, návyky, projekty, spánek/wellness) s gamifikovaným companion stromem a AI Coachem.',
           'Desktop (React + Vite + Tauri) i mobil (React Native / Expo), sdílená doménová logika s unit testy, vícejazyčnost CS/EN.',
@@ -104,6 +106,7 @@ export const cv = {
         name: 'LolStats',
         when: '2026',
         link: 'lolstats.erikkarasek2005.workers.dev',
+        study: 'erik-karasek.pages.dev/lol-stats',
         points: [
           'Osobní webová aplikace pro statistiky League of Legends: historie zápasů, výkonnost šampionů, win rate, KDA, tier list.',
           'Nasazeno na Cloudflare Workers, zpracování dat na straně klienta (client-side).',
@@ -114,6 +117,7 @@ export const cv = {
         name: 'Monster-Watch',
         when: '2026',
         link: 'monster-watch.onrender.com',
+        study: 'erik-karasek.pages.dev/monster-watch',
         points: [
           'Web aplikace pro monitoring dostupnosti energetických nápojů v obchodech po ČR.',
           'Automatizované sledování cen a srovnání nejlevnějších variant.',
@@ -149,6 +153,7 @@ export const cv = {
     file: 'erik-karasek-resume.pdf',
     title: 'Analyst / Tester · Development & AI · IT Support',
     city: 'Hradec Králové, CZ',
+    studyLabel: 'Case study',
     labels: {
       profile: 'Profile',
       experience: 'Experience',
@@ -220,6 +225,7 @@ export const cv = {
         name: 'Nexus Grind',
         when: '2026',
         link: 'github.com/ErikKarasek/nexus-grind-releases',
+        study: 'erik-karasek.pages.dev/nexus-grind',
         points: [
           'Cross-platform productivity tracker (tasks, habits, projects, sleep/wellness) with a gamified companion tree and an AI Coach.',
           'Desktop (React + Vite + Tauri) and mobile (React Native / Expo), shared domain logic with unit tests, CS/EN localisation.',
@@ -230,6 +236,7 @@ export const cv = {
         name: 'LolStats',
         when: '2026',
         link: 'lolstats.erikkarasek2005.workers.dev',
+        study: 'erik-karasek.pages.dev/lol-stats',
         points: [
           'Personal web app for League of Legends stats: match history, champion performance, win rate, KDA, tier list.',
           'Deployed on Cloudflare Workers, all data processed client-side.',
@@ -240,6 +247,7 @@ export const cv = {
         name: 'Monster-Watch',
         when: '2026',
         link: 'monster-watch.onrender.com',
+        study: 'erik-karasek.pages.dev/monster-watch',
         points: [
           'Web app that tracks energy drink availability in stores across the Czech Republic.',
           'Automated price tracking and comparison of the cheapest options.',
