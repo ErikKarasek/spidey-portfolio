@@ -716,12 +716,202 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
   },
 }
 
+const subscriptions: Record<Lang, CaseStudyContent> = {
+  cs: {
+    meta: {
+      title: 'Subscription Tracker | o projektu | Erik Karásek',
+      description: 'Přehled předplatných na Cloudflare Workers: denní cron posouvá obnovení a posílá e-maily, Workers AI vytáhne údaje ze screenshotu platby.',
+    },
+    back: 'Zpět na portfolio',
+    label: 'O projektu',
+    title: 'Subscription Tracker.',
+    lead: 'Přehled všeho, co ti měsíčně odchází z účtu. Kolik utrácíš a za co, co se brzy obnoví a co dlouho nepoužíváš. Jednou denně se sám probudí, posune obnovení a pošle e-mail — nemusíš appku vůbec otevřít.',
+    stats: [
+      { value: '07:00', label: 'Denní cron (UTC)' },
+      { value: '5', label: 'Kategorií útraty' },
+      { value: '2', label: 'Tabulky v databázi' },
+      { value: '1', label: 'Worker na web, API i cron' },
+    ],
+    problem: {
+      heading: 'Co to řeší',
+      body: [
+        'Předplatná jsou zákeřná tím, že si o sebe neřeknou. Strhne se to samo, je to malá částka a člověk si po roce ani nevzpomene, že Disney+ vůbec platí. Součet ale malý není.',
+        'Tenhle nástroj drží každé předplatné jako kartu s částkou, cyklem a datem dalšího obnovení a nad tím počítá tři věci: kolik měsíčně a ročně opravdu odchází a v jakých kategoriích, co se obnoví v nejbližších dnech, a co jsi dlouho neoznačil jako použité — tedy kandidáty na zrušení.',
+        'Když si něco jen zamrazíš, třeba posilovnu přes léto, dá se to pozastavit místo smazání. Zmizí to ze součtů, ale historie zůstane a jde to kdykoli obnovit.',
+      ],
+    },
+    shotsHeading: 'Jak to vypadá',
+    shots: [
+      {
+        src: '/img/case/subscriptions-subs.webp',
+        title: 'Předplatná',
+        text: 'Karty s filtrem podle kategorie. Co se obnoví do tří dnů, svítí oranžově. Pozastavené předplatné zešedne a řekne rovnou, že se do součtů nepočítá. (Na snímku jsou ukázková data.)',
+      },
+      {
+        src: '/img/case/subscriptions-overview.webp',
+        title: 'Přehled',
+        text: 'Nahoře měsíční a roční součet, pod tím útrata po kategoriích a skutečně zaplacené částky po měsících — ta se nepočítá z dnešního nastavení, ale z logu obnovení. Dole to, co se blíží, a to, co leží ladem.',
+      },
+      {
+        src: '/img/case/subscriptions-editor.webp',
+        title: 'Detail a import ze screenshotu',
+        text: 'Ruční zadání má všechna pole pohromadě. Vedle toho jde nahrát screenshot platby a nechat model předvyplnit název, částku, měnu i cyklus — s tím, že výsledek se pak kontroluje očima.',
+      },
+    ],
+    build: {
+      heading: 'Jak je to postavené',
+      items: [
+        {
+          title: 'Jeden Worker na všechno',
+          text: 'React 19 s Vite se sestaví do statických souborů, které servíruje ten samý Cloudflare Worker, ve kterém běží Hono API. Worker se static assets to umí i s cron triggery, což klasické Pages Functions neumí — a právě cron je tady půlka nápadu.',
+        },
+        {
+          title: 'Denní cron v 7:00 UTC',
+          text: 'Jednou za den worker projde, co mezitím vypršelo, posune datum na další období a zapíše obnovení do historie. Pak se podívá tři dny dopředu a na předplatná bez použití přes měsíc, a jestli je co hlásit, pošle jeden e-mail přes Resend.',
+        },
+        {
+          title: 'Cloudflare D1 a dvě tabulky',
+          text: 'subscriptions drží samotná předplatná včetně příznaku pro pauzu, renewal_events je log každého obnovení. Graf skutečné útraty se kreslí z toho logu, takže i když dnes cenu změníš, minulé měsíce zůstanou takové, jaké byly.',
+        },
+        {
+          title: 'Import obrázku přes Workers AI',
+          text: 'Nahraný screenshot platby projde vision modelem LLaVA 1.5 běžícím na Cloudflare Workers AI. Vejde se to do bezplatného denního limitu, takže za tuhle funkci neplatí žádný API klíč.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'Rozhodnutí, která stála nejvíc přemýšlení',
+      items: [
+        {
+          title: 'Model formulář vyplní, ale neodešle',
+          text: 'Malý vision model zdarma čte částky a data znatelně hůř než placený frontier model. Místo abych předstíral přesnost, kterou nemá, jeho výstup jen předvyplní formulář a uložení zůstává na člověku. Chyba modelu tak stojí jednu opravu, ne špatné číslo v ročním součtu.',
+        },
+        {
+          title: 'Pauza místo mazání',
+          text: 'Zamrazená posilovna není zrušená posilovna. Smazání by vzalo i historii plateb, takže existuje pauza: ze součtů to zmizí, z databáze ne, a jde to jedním tlačítkem vrátit.',
+        },
+        {
+          title: 'Barvy kategorií nejsou jediné vodítko',
+          text: 'Paleta je vybraná tak, aby se odstíny nepletly ani při poruchách barvocitu, a hlavně: u každé kategorie je vždycky i textový popisek. Kdo barvy rozliší, má to rychlejší; kdo ne, nepřijde o nic.',
+        },
+        {
+          title: 'Zámek místo vlastního přihlašování',
+          text: 'Jsou to data o tom, kolik utrácím, takže nemůžou být veřejná. Místo psaní vlastní autentizace stojí před celou appkou Cloudflare Access — bez přihlášení se k ní nedostane nikdo, včetně API.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Kde to je teď',
+      body: [
+        'Běží to jako Worker na Cloudflare a je hotové od databáze přes cron a e-maily až po grafy. Snímky výše jsou z ukázkových dat.',
+        'Živá appka je schválně za Cloudflare Access, takže si ji nemůžeš otevřít — jsou v ní údaje o mých vlastních platbách. Kód je ale celý veřejný na GitHubu.',
+        'Co vím, že je špatně: součty zatím sčítají částky bez ohledu na měnu, takže dvacet dolarů a dvě stě korun se sečte na dvě stě dvacet. Dokud tam nebude převod kurzem, dává smysl vést všechno v jedné měně.',
+      ],
+    },
+    cta: { text: 'Chceš se podívat na kód?', button: 'Otevřít na GitHubu', href: 'https://github.com/ErikKarasek/subscription-tracker' },
+  },
+  en: {
+    meta: {
+      title: 'Subscription Tracker | about the project | Erik Karásek',
+      description: 'A subscription overview on Cloudflare Workers: a daily cron rolls renewals forward and sends email, Workers AI reads a payment screenshot.',
+    },
+    back: 'Back to portfolio',
+    label: 'About the project',
+    title: 'Subscription Tracker.',
+    lead: 'An overview of everything leaving your account each month. What you spend and on what, what renews soon, and what you have not touched in a while. Once a day it wakes up on its own, rolls the renewals forward and sends an email — you never have to open it.',
+    stats: [
+      { value: '07:00', label: 'Daily cron (UTC)' },
+      { value: '5', label: 'Spending categories' },
+      { value: '2', label: 'Database tables' },
+      { value: '1', label: 'Worker for site, API and cron' },
+    ],
+    problem: {
+      heading: 'What it solves',
+      body: [
+        'Subscriptions are sneaky because they never ask. The money goes on its own, each one is small, and a year later you cannot remember you are still paying for Disney+. The total is not small, though.',
+        'This keeps every subscription as a card with its amount, cycle and next renewal date, and works out three things on top: how much really leaves each month and year and in which categories, what renews in the next few days, and what you have not marked as used in a long time — the candidates for cancelling.',
+        'When something is only frozen, a gym over the summer say, it can be paused instead of deleted. It drops out of the totals but keeps its history, and comes back with one click.',
+      ],
+    },
+    shotsHeading: 'What it looks like',
+    shots: [
+      {
+        src: '/img/case/subscriptions-subs.webp',
+        title: 'Subscriptions',
+        text: 'Cards with a filter per category. Anything renewing within three days is picked out in orange. A paused subscription greys out and says plainly that it is not being counted. (The screenshot uses sample data.)',
+      },
+      {
+        src: '/img/case/subscriptions-overview.webp',
+        title: 'Overview',
+        text: 'Monthly and yearly totals on top, then spend by category and what was actually paid per month — drawn from the renewal log rather than from today\'s settings, so changing a price does not rewrite the past. Below that, what is coming and what is lying idle.',
+      },
+      {
+        src: '/img/case/subscriptions-editor.webp',
+        title: 'Detail and screenshot import',
+        text: 'Entering by hand keeps every field in one place. Next to it, a payment screenshot can be uploaded and a model asked to pre-fill the name, amount, currency and cycle — on the understanding that a human then checks it.',
+      },
+    ],
+    build: {
+      heading: 'How it is built',
+      items: [
+        {
+          title: 'One Worker for everything',
+          text: 'React 19 with Vite builds to static files, served by the same Cloudflare Worker that runs the Hono API. A Worker with static assets can also carry cron triggers, which plain Pages Functions cannot — and the cron is half the idea here.',
+        },
+        {
+          title: 'A daily cron at 07:00 UTC',
+          text: 'Once a day the worker walks everything that has expired, moves the date to the next period and writes the renewal into the history. Then it looks three days ahead, and at anything unused for over a month, and if there is something to say it sends one email through Resend.',
+        },
+        {
+          title: 'Cloudflare D1 and two tables',
+          text: 'subscriptions holds the subscriptions themselves, including the paused flag; renewal_events is a log of every renewal. The actual-spend chart is drawn from that log, so changing a price today leaves past months as they were.',
+        },
+        {
+          title: 'Image import through Workers AI',
+          text: 'An uploaded payment screenshot goes through the LLaVA 1.5 vision model on Cloudflare Workers AI. It fits inside the free daily allowance, so the feature costs no API key.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'The decisions that took the most thinking',
+      items: [
+        {
+          title: 'The model fills the form in, it does not submit it',
+          text: 'A small free vision model reads amounts and dates noticeably worse than a paid frontier one. Rather than pretend to an accuracy it does not have, its output only pre-fills the form and saving stays with the person. A misread then costs one correction, not a wrong number in the yearly total.',
+        },
+        {
+          title: 'Pause rather than delete',
+          text: 'A frozen gym membership is not a cancelled one. Deleting would take the payment history with it, so there is a pause: it leaves the totals, not the database, and one button brings it back.',
+        },
+        {
+          title: 'Category colour is never the only clue',
+          text: 'The palette is picked so the hues stay apart for colour vision deficiencies, and more importantly every category always carries a text label as well. If you can tell the colours apart it is quicker; if you cannot, you lose nothing.',
+        },
+        {
+          title: 'A lock instead of my own login',
+          text: 'This is data about what I spend, so it cannot be public. Instead of writing authentication, Cloudflare Access sits in front of the whole app — nobody gets in without signing in, the API included.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Where it is now',
+      body: [
+        'It runs as a Worker on Cloudflare and is finished from the database through the cron and the emails to the charts. The screenshots above use sample data.',
+        'The live app is deliberately behind Cloudflare Access, so you cannot open it — it holds my own payment details. The code, though, is entirely public on GitHub.',
+        'What I know is wrong: the totals still add amounts up regardless of currency, so twenty dollars and two hundred crowns come to two hundred and twenty. Until there is a rate conversion, it makes sense to keep everything in one currency.',
+      ],
+    },
+    cta: { text: 'Want to look at the code?', button: 'Open on GitHub', href: 'https://github.com/ErikKarasek/subscription-tracker' },
+  },
+}
+
 /** Every case study, keyed by the folder it is published under (/nexus-grind/, /lol-stats/, …). */
 export const studies = {
   'nexus-grind': nexusGrind,
   'lol-stats': lolStats,
   'monster-watch': monsterWatch,
   'job-tracker': jobTracker,
+  'subscriptions': subscriptions,
 } satisfies Record<string, Record<Lang, CaseStudyContent>>
 
 export type StudySlug = keyof typeof studies
