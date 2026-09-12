@@ -1,12 +1,12 @@
 import { Downloads } from '../components/Downloads'
 import { useLang } from '../i18n'
 import { useSuit, useSymbiote } from '../theme'
-import { caseStudy } from './content'
+import { studies, type StudySlug } from './content'
 
-/** The Nexus Grind case study at /nexus-grind/ — its own page, sharing the site's look and both languages. */
-export function CaseStudy() {
+/** A project case study (its own page at /<slug>/), sharing the site's look and both languages. */
+export function CaseStudy({ slug }: { slug: StudySlug }) {
   const { lang, setLang } = useLang()
-  const c = caseStudy[lang]
+  const c = studies[slug][lang]
   const suit = useSuit()
   const symbiote = useSymbiote()
 
@@ -99,7 +99,19 @@ export function CaseStudy() {
         <section className="mt-14 rounded-2xl border border-line bg-surface-2/90 p-8 text-center">
           <h2 className="text-2xl font-black italic uppercase tracking-tighter text-ink md:text-3xl">{c.cta.text}</h2>
           <div className="mx-auto mt-6 max-w-sm text-left">
-            <Downloads />
+            {c.cta.href ? (
+              <a
+                href={c.cta.href}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center justify-center gap-2 rounded-xl border border-accent bg-accent px-4 py-3 text-xs font-bold uppercase tracking-wider text-accent-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-[0_8px_20px_rgb(var(--glow)/0.3)]"
+              >
+                {c.cta.button}
+                <span aria-hidden>↗</span>
+              </a>
+            ) : (
+              <Downloads />
+            )}
           </div>
         </section>
       </main>

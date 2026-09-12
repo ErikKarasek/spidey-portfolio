@@ -26,6 +26,9 @@ const api: Plugin = {
   },
 }
 
+// One built page per case study, on top of the portfolio itself.
+const STUDIES = ['nexus-grind', 'lol-stats', 'monster-watch']
+
 // Everything the page is allowed to talk to. Adding a new outside service (an embed, an API, a CDN)
 // means adding its origin here, or the browser will quietly block it.
 const CSP = {
@@ -53,7 +56,7 @@ const securityHeaders: Plugin = {
   apply: 'build',
   closeBundle() {
     const hashes = new Set<string>()
-    for (const page of ['dist/index.html', 'dist/404.html', 'dist/nexus-grind/index.html']) {
+    for (const page of ['dist/index.html', 'dist/404.html', ...STUDIES.map((slug) => `dist/${slug}/index.html`)]) {
       const html = readFileSync(page, 'utf8')
       for (const [, body] of html.matchAll(/<script(?![^>]*\bsrc=)(?![^>]*ld\+json)[^>]*>([\s\S]*?)<\/script>/g)) {
         hashes.add(`'sha256-${createHash('sha256').update(body).digest('base64')}'`)
@@ -85,6 +88,6 @@ const securityHeaders: Plugin = {
 export default defineConfig({
   plugins: [react(), tailwindcss(), api, securityHeaders],
   server: { port: 5190 },
-  // Two pages: the portfolio and the Nexus Grind case study at /nexus-grind/.
-  build: { rollupOptions: { input: { main: 'index.html', caseStudy: 'nexus-grind/index.html' } } },
+  // The portfolio plus one page per case study (/nexus-grind/, /lol-stats/, /monster-watch/).
+  build: { rollupOptions: { input: { main: 'index.html', ...Object.fromEntries(STUDIES.map((slug) => [slug, `${slug}/index.html`])) } } },
 })
