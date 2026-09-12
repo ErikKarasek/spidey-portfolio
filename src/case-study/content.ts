@@ -576,7 +576,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/jobtracker-stats.webp',
         title: 'Statistiky',
-        text: 'Nahoře poměry mezi fázemi, pod tím kolik přihlášek kterou fází prošlo, denní timeline a seznam těch, co potřebují připomenout.',
+        text: 'Nahoře poměry mezi fázemi, pod tím kolik přihlášek kterou fází prošlo, denní timeline a seznam těch, kde je potřeba se připomenout.',
       },
     ],
     build: {
@@ -605,7 +605,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Funnel se počítá z historie, ne ze současnosti',
-          text: 'Kdyby se počítalo z aktuálního sloupce, přihláška zamítnutá po pohovoru by v statistice vypadala, jako by k pohovoru nikdy nedošlo — a úspěšnost pohovorů by vycházela směšně nízko. Proto se každý přechod loguje do status_events a funnel počítá, kolik přihlášek danou fází někdy prošlo.',
+          text: 'Kdyby se počítalo z aktuálního sloupce, přihláška zamítnutá po pohovoru by ve statistice vypadala, jako by k pohovoru nikdy nedošlo — a úspěšnost pohovorů by vycházela směšně nízko. Proto se každý přechod loguje do status_events a funnel počítá, kolik přihlášek danou fází někdy prošlo.',
         },
         {
           title: 'Ticho je taky informace',
@@ -719,13 +719,13 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
 const subscriptions: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
-      title: 'Subscription Tracker | o projektu | Erik Karásek',
+      title: 'Subscription Tracker | případová studie | Erik Karásek',
       description: 'Přehled předplatných na Cloudflare Workers: denní cron posouvá obnovení a posílá e-maily, Workers AI vytáhne údaje ze screenshotu platby.',
     },
     back: 'Zpět na portfolio',
     label: 'O projektu',
     title: 'Subscription Tracker.',
-    lead: 'Přehled všeho, co ti měsíčně odchází z účtu. Kolik utrácíš a za co, co se brzy obnoví a co dlouho nepoužíváš. Jednou denně se sám probudí, posune obnovení a pošle e-mail — nemusíš appku vůbec otevřít.',
+    lead: 'Přehled všeho, co ti měsíčně odchází z účtu. Kolik utrácíš a za co, co se brzy strhne a co dlouho nepoužíváš. Jednou denně se to samo probudí, posune data dalšího stržení a pošle e-mail — appku přitom nemusíš vůbec otevřít.',
     stats: [
       { value: '07:00', label: 'Denní cron (UTC)' },
       { value: '5', label: 'Kategorií útraty' },
@@ -735,9 +735,9 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
     problem: {
       heading: 'Co to řeší',
       body: [
-        'Předplatná jsou zákeřná tím, že si o sebe neřeknou. Strhne se to samo, je to malá částka a člověk si po roce ani nevzpomene, že Disney+ vůbec platí. Součet ale malý není.',
-        'Tenhle nástroj drží každé předplatné jako kartu s částkou, cyklem a datem dalšího obnovení a nad tím počítá tři věci: kolik měsíčně a ročně opravdu odchází a v jakých kategoriích, co se obnoví v nejbližších dnech, a co jsi dlouho neoznačil jako použité — tedy kandidáty na zrušení.',
-        'Když si něco jen zamrazíš, třeba posilovnu přes léto, dá se to pozastavit místo smazání. Zmizí to ze součtů, ale historie zůstane a jde to kdykoli obnovit.',
+        'Předplatné je zákeřné tím, že si o sebe nikdy neřekne. Strhne se samo, je to pár stovek a po roce si člověk ani nevzpomene, že za Disney+ pořád platí. Součet už ale pár stovek není.',
+        'Každé předplatné je tady karta s částkou, cyklem a datem dalšího stržení. Nad tím se počítají tři věci: kolik měsíčně a ročně doopravdy odchází a za co, co se strhne v nejbližších dnech, a co jsi dlouho neoznačil jako použité — tedy to, co asi nepotřebuješ.',
+        'Když si něco jen na čas zmrazíš, třeba posilovnu přes léto, nemusíš to mazat — jde to pozastavit. Ze součtů to zmizí, historie plateb zůstane a jedním kliknutím se to vrátí zpátky.',
       ],
     },
     shotsHeading: 'Jak to vypadá',
@@ -745,17 +745,17 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/subscriptions-subs.webp',
         title: 'Předplatná',
-        text: 'Karty s filtrem podle kategorie. Co se obnoví do tří dnů, svítí oranžově. Pozastavené předplatné zešedne a řekne rovnou, že se do součtů nepočítá. (Na snímku jsou ukázková data.)',
+        text: 'Karty s filtrem podle kategorie. Co se strhne do tří dnů, svítí oranžově. Pozastavené předplatné zešedne a rovnou o sobě řekne, že se do součtů nepočítá. (Na snímku jsou ukázková data.)',
       },
       {
         src: '/img/case/subscriptions-overview.webp',
         title: 'Přehled',
-        text: 'Nahoře měsíční a roční součet, pod tím útrata po kategoriích a skutečně zaplacené částky po měsících — ta se nepočítá z dnešního nastavení, ale z logu obnovení. Dole to, co se blíží, a to, co leží ladem.',
+        text: 'Nahoře měsíční a roční součet, pod tím útrata po kategoriích a skutečně zaplacené částky po měsících — ty se nepočítají z dnešního nastavení, ale ze záznamů o stržených platbách. Dole to, co se blíží, a to, co leží ladem.',
       },
       {
         src: '/img/case/subscriptions-editor.webp',
         title: 'Detail a import ze screenshotu',
-        text: 'Ruční zadání má všechna pole pohromadě. Vedle toho jde nahrát screenshot platby a nechat model předvyplnit název, částku, měnu i cyklus — s tím, že výsledek se pak kontroluje očima.',
+        text: 'Při ručním zadávání máš všechna pole pohromadě. Druhá možnost je nahrát screenshot platby a nechat model předvyplnit název, částku, měnu i cyklus — než se to uloží, projdeš si to po něm.',
       },
     ],
     build: {
@@ -763,19 +763,19 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Jeden Worker na všechno',
-          text: 'React 19 s Vite se sestaví do statických souborů, které servíruje ten samý Cloudflare Worker, ve kterém běží Hono API. Worker se static assets to umí i s cron triggery, což klasické Pages Functions neumí — a právě cron je tady půlka nápadu.',
+          text: 'React 19 s Vite se sestaví do statických souborů a vydává je ten samý Cloudflare Worker, ve kterém běží Hono API. Tenhle typ workeru navíc umí spouštět úlohy podle času, což Pages Functions neumí — a plánovaná úloha je tady půlka nápadu.',
         },
         {
           title: 'Denní cron v 7:00 UTC',
-          text: 'Jednou za den worker projde, co mezitím vypršelo, posune datum na další období a zapíše obnovení do historie. Pak se podívá tři dny dopředu a na předplatná bez použití přes měsíc, a jestli je co hlásit, pošle jeden e-mail přes Resend.',
+          text: 'Jednou za den worker projde, čemu mezitím vypršelo období, posune datum na další a zapíše platbu do historie. Pak se podívá tři dny dopředu a na předplatná, která jsi přes měsíc nepoužil, a jestli je co hlásit, pošle jeden e-mail přes Resend.',
         },
         {
           title: 'Cloudflare D1 a dvě tabulky',
-          text: 'subscriptions drží samotná předplatná včetně příznaku pro pauzu, renewal_events je log každého obnovení. Graf skutečné útraty se kreslí z toho logu, takže i když dnes cenu změníš, minulé měsíce zůstanou takové, jaké byly.',
+          text: 'V tabulce subscriptions jsou samotná předplatná včetně příznaku pro pauzu, v renewal_events záznam o každé stržené platbě. Graf skutečné útraty se kreslí z něj, takže když dneska změníš cenu, minulé měsíce zůstanou takové, jaké opravdu byly.',
         },
         {
           title: 'Import obrázku přes Workers AI',
-          text: 'Nahraný screenshot platby projde vision modelem LLaVA 1.5 běžícím na Cloudflare Workers AI. Vejde se to do bezplatného denního limitu, takže za tuhle funkci neplatí žádný API klíč.',
+          text: 'Nahraný screenshot platby projde obrazovým modelem LLaVA 1.5 na Cloudflare Workers AI. Vejde se to do denního limitu zdarma, takže na tuhle funkci není potřeba žádný placený klíč.',
         },
       ],
     },
@@ -784,7 +784,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Model formulář vyplní, ale neodešle',
-          text: 'Malý vision model zdarma čte částky a data znatelně hůř než placený frontier model. Místo abych předstíral přesnost, kterou nemá, jeho výstup jen předvyplní formulář a uložení zůstává na člověku. Chyba modelu tak stojí jednu opravu, ne špatné číslo v ročním součtu.',
+          text: 'Malý model zdarma čte částky a termíny znatelně hůř než ten placený. Místo abych dělal, že je přesnější, než je, jeho výstup jen předvyplní formulář a odeslat ho musí člověk. Když se model splete, stojí to jednu opravu — ne špatné číslo v ročním součtu.',
         },
         {
           title: 'Pauza místo mazání',
@@ -792,11 +792,15 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Barvy kategorií nejsou jediné vodítko',
-          text: 'Paleta je vybraná tak, aby se odstíny nepletly ani při poruchách barvocitu, a hlavně: u každé kategorie je vždycky i textový popisek. Kdo barvy rozliší, má to rychlejší; kdo ne, nepřijde o nic.',
+          text: 'Barvy jsou vybrané tak, aby se odstíny nepletly ani lidem, kteří je rozeznávají jinak. A hlavně: u každé kategorie je vždycky i její název. Kdo barvy rozliší, zorientuje se rychleji — kdo ne, nepřijde o nic.',
+        },
+        {
+          title: 'Sečíst dvě měny dohromady nejde',
+          text: 'Dvacet dolarů a dvě stě korun není dvě stě dvacet čehokoli. Součty proto před sečtením převádějí všechno na koruny přes Frankfurter, což je veřejné API nad kurzy ECB a nechce účet ani klíč. Když je nedostupné, spadne to zpět na původní částku — radši číslo o kousek vedle než rozbitá stránka s přehledem.',
         },
         {
           title: 'Zámek místo vlastního přihlašování',
-          text: 'Jsou to data o tom, kolik utrácím, takže nemůžou být veřejná. Místo psaní vlastní autentizace stojí před celou appkou Cloudflare Access — bez přihlášení se k ní nedostane nikdo, včetně API.',
+          text: 'Je tam napsané, kolik za co utrácím, takže to nemůže být veřejné. Místo psaní vlastního přihlašování stojí před celou appkou Cloudflare Access — bez přihlášení se dovnitř nedostane nikdo, ani na API.',
         },
       ],
     },
@@ -805,14 +809,13 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       body: [
         'Běží to jako Worker na Cloudflare a je hotové od databáze přes cron a e-maily až po grafy. Snímky výše jsou z ukázkových dat.',
         'Živá appka je schválně za Cloudflare Access, takže si ji nemůžeš otevřít — jsou v ní údaje o mých vlastních platbách. Kód je ale celý veřejný na GitHubu.',
-        'Co vím, že je špatně: součty zatím sčítají částky bez ohledu na měnu, takže dvacet dolarů a dvě stě korun se sečte na dvě stě dvacet. Dokud tam nebude převod kurzem, dává smysl vést všechno v jedné měně.',
       ],
     },
     cta: { text: 'Chceš se podívat na kód?', button: 'Otevřít na GitHubu', href: 'https://github.com/ErikKarasek/subscription-tracker' },
   },
   en: {
     meta: {
-      title: 'Subscription Tracker | about the project | Erik Karásek',
+      title: 'Subscription Tracker | case study | Erik Karásek',
       description: 'A subscription overview on Cloudflare Workers: a daily cron rolls renewals forward and sends email, Workers AI reads a payment screenshot.',
     },
     back: 'Back to portfolio',
@@ -888,6 +891,10 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
           text: 'The palette is picked so the hues stay apart for colour vision deficiencies, and more importantly every category always carries a text label as well. If you can tell the colours apart it is quicker; if you cannot, you lose nothing.',
         },
         {
+          title: 'Two currencies do not add up',
+          text: 'Twenty dollars and two hundred crowns is not two hundred and twenty of anything. The totals convert everything to crowns before summing, through Frankfurter — a public API over ECB rates that wants neither an account nor a key. When it is unreachable the amount falls back to its raw value: a number slightly off beats an overview page that will not load.',
+        },
+        {
           title: 'A lock instead of my own login',
           text: 'This is data about what I spend, so it cannot be public. Instead of writing authentication, Cloudflare Access sits in front of the whole app — nobody gets in without signing in, the API included.',
         },
@@ -898,7 +905,6 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       body: [
         'It runs as a Worker on Cloudflare and is finished from the database through the cron and the emails to the charts. The screenshots above use sample data.',
         'The live app is deliberately behind Cloudflare Access, so you cannot open it — it holds my own payment details. The code, though, is entirely public on GitHub.',
-        'What I know is wrong: the totals still add amounts up regardless of currency, so twenty dollars and two hundred crowns come to two hundred and twenty. Until there is a rate conversion, it makes sense to keep everything in one currency.',
       ],
     },
     cta: { text: 'Want to look at the code?', button: 'Open on GitHub', href: 'https://github.com/ErikKarasek/subscription-tracker' },

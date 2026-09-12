@@ -30,7 +30,7 @@ const FONT = 'Arial'
 // Half-points. Arial sets wider than the PDF's Outfit, so the Word copy runs at a
 // notch smaller to keep the same one-page shape.
 const BASE = 18
-const LEADING = 196  // 240ths of a line — Word's own "single" leaves the page airier than the PDF
+const LEADING = 205  // 240ths of a line — Word's own "single" leaves the page airier than the PDF
 
 const ACCENT = 'A31515'
 const INK = '111827'
@@ -70,7 +70,7 @@ const titleRow = (left, right, width) =>
 const where = (children) => new Paragraph({ spacing: { after: 14 }, children })
 const bullets = (items) =>
   items.map((item) =>
-    new Paragraph({ bullet: { level: 0 }, indent: { left: 200, hanging: 150 }, spacing: { after: 8 }, children: [text(item)] }),
+    new Paragraph({ bullet: { level: 0 }, indent: { left: 200, hanging: 150 }, spacing: { after: 12 }, children: [text(item)] }),
   )
 
 /** Sidebar entry: bold term, muted description under it. */

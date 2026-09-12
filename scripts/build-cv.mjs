@@ -24,7 +24,7 @@ function html(d) {
 <style>
   @page { size: A4; margin: 12mm 13mm 11mm }
   * { box-sizing: border-box; margin: 0; padding: 0 }
-  body { font: 500 9.4pt/1.45 Outfit, sans-serif; color: #1f2937; -webkit-print-color-adjust: exact; print-color-adjust: exact }
+  body { font: 500 9.4pt/1.38 Outfit, sans-serif; color: #1f2937; -webkit-print-color-adjust: exact; print-color-adjust: exact }
   .page { padding: 1mm 1mm 0 }
   header { display: flex; align-items: center; gap: 9mm; padding-bottom: 6mm; border-bottom: 2px solid #a31515; }
   .photo { width: 34mm; height: 34mm; border-radius: 50%; border: 1.6mm solid #a31515; padding: 1mm; background: #fff; flex: none; box-shadow: 0 0 6mm rgba(163,21,21,.25) }
@@ -36,11 +36,11 @@ function html(d) {
   .contact { margin-top: 2.5mm; font-size: 8.6pt; color: #4b5563; font-weight: 600 }
   .contact i { font-style: normal; color: #a31515; margin: 0 1.6mm }
   .cols { display: grid; grid-template-columns: 1fr 62mm; gap: 8mm; margin-top: 6mm }
-  h2 { display: flex; align-items: center; gap: 2mm; font-size: 8.6pt; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: #a31515; margin: 5mm 0 2.5mm }
+  h2 { display: flex; align-items: center; gap: 2mm; font-size: 8.6pt; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: #a31515; margin: 4.2mm 0 2.2mm }
   h2 span { width: 3mm; height: 2.2mm; background: #a31515; border-radius: .4mm }
   section:first-child h2 { margin-top: 0 }
   .profile { color: #374151 }
-  .item { margin-bottom: 3.4mm; break-inside: avoid }
+  .item { margin-bottom: 3.0mm; break-inside: avoid }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm }
   .role { font-weight: 900; font-size: 10.2pt; text-transform: uppercase; letter-spacing: -.01em; color: #111827 }
   .when { font-size: 8pt; font-weight: 700; color: #a31515; white-space: nowrap }
