@@ -4,8 +4,9 @@ import { profile } from '../content'
 import { useLang } from '../i18n'
 import { useSuit } from '../theme'
 
-// Your photo (public/img/me.webp; me.jpg is the master the CV uses). Falls back to the Spider-Man portrait.
-const PHOTO = '/img/me.webp'
+// Your portrait in the suit, cropped from the hero shot so it has a Symbiote twin too
+// (public/img/me.webp is the plain photo the CV uses). Falls back to the Spider-Man portrait.
+const PHOTO = '/img/me-suit.webp'
 const PHOTO_FALLBACK = '/img/spidey-band.webp'
 
 export function About() {
@@ -120,7 +121,7 @@ export function About() {
             <div className="h-[200px] w-[2px] bg-linear-to-b from-transparent via-accent/60 to-accent md:h-[350px]" />
             <div className="glow-frame relative h-64 w-64 rounded-full border-[6px] border-accent bg-surface p-2 transition-transform duration-500 group-hover:scale-105 md:h-[340px] md:w-[340px]">
               <img
-                src={photo === PHOTO_FALLBACK ? suit(photo) : photo}
+                src={suit(photo)}
                 onError={() => setPhoto(PHOTO_FALLBACK)}
                 alt={`${profile.first} ${profile.last}`}
                 className="h-full w-full rounded-full object-cover grayscale transition-all duration-700 hover:grayscale-0"

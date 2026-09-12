@@ -174,6 +174,7 @@ export const content: Record<Lang, Content> = {
           tags: ['JavaScript', 'Riot API', 'Chart.js', 'Cloudflare Workers'],
           image: `${IMG}/lolstats.webp`,
           link: 'https://lolstats.erikkarasek2005.workers.dev',
+          study: '/lol-stats/',
         },
         {
           title: 'Monster Watch',
@@ -182,6 +183,7 @@ export const content: Record<Lang, Content> = {
           tags: ['React Native', 'Expo', 'Python', 'Flask'],
           image: `${IMG}/monsterwatch.webp`,
           link: 'https://monster-watch.onrender.com',
+          study: '/monster-watch/',
         },
         {
           title: 'Nexus Grind Mobile',
@@ -303,6 +305,7 @@ export const content: Record<Lang, Content> = {
           tags: ['JavaScript', 'Riot API', 'Chart.js', 'Cloudflare Workers'],
           image: `${IMG}/lolstats.webp`,
           link: 'https://lolstats.erikkarasek2005.workers.dev',
+          study: '/lol-stats/',
         },
         {
           title: 'Monster Watch',
@@ -311,6 +314,7 @@ export const content: Record<Lang, Content> = {
           tags: ['React Native', 'Expo', 'Python', 'Flask'],
           image: `${IMG}/monsterwatch.webp`,
           link: 'https://monster-watch.onrender.com',
+          study: '/monster-watch/',
         },
         {
           title: 'Nexus Grind Mobile',
