@@ -2,3 +2,6 @@ node_modules
 dist
 .wrangler
 .DS_Store
+
+# Private CV build (carries the phone number) — never deployed.
+cv-private

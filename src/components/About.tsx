@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { gsap, useGSAP } from '../gsap'
-import { profile } from '../content'
+import { profile, REPO } from '../content'
 import { useLang } from '../i18n'
 import { useSuit } from '../theme'
 
@@ -94,6 +94,19 @@ export function About() {
                 </div>
               ))}
             </div>
+          </div>
+          <div className="mt-6">
+            <a
+              href={REPO}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-mute transition-colors hover:text-accent"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden>
+                <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.8 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.7.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.8-5.8 7.8-10.9C23.5 5.7 18.3.5 12 .5z" />
+              </svg>
+              {t.about.source}
+            </a>
           </div>
           <div className="mt-8">
             <h3 className="mb-4 inline-block border-b border-line pb-2 text-xs font-bold uppercase tracking-widest text-mute">{t.about.certs.heading}</h3>
