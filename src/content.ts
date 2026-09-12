@@ -300,7 +300,7 @@ export const content: Record<Lang, Content> = {
     projects: {
       label: 'What I work on',
       title: 'Projects.',
-      study: 'Case study',
+      study: 'More about it',
       items: [
         {
           title: 'Nexus Grind',

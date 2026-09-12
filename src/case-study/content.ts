@@ -133,7 +133,7 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
       description: 'How Nexus Grind was built: a tracker for tasks, habits, sleep and ranked games on Mac, Windows, iPhone and Android. One shared core, your data stays on your device.',
     },
     back: 'Back to portfolio',
-    label: 'Case study',
+    label: 'About the project',
     title: 'Nexus Grind.',
     lead: 'A productivity tracker for Mac, Windows, iPhone and Android. Tasks, habits, sleep and ranked games in one place, with a sakura tree that grows as you get things done. I build all of it, from the logic to the way it looks.',
     stats: [
@@ -323,7 +323,7 @@ const lolStats: Record<Lang, CaseStudyContent> = {
       description: 'My own League of Legends stats through the Riot API. A champion tier list from my own win rate, a breakdown by lane and match detail. The API key stays in the browser.',
     },
     back: 'Back to portfolio',
-    label: 'Case study',
+    label: 'About the project',
     title: 'LoL Stats.',
     lead: 'A site that pulls my ranked matches from the Riot API and works out what I actually care about: which champions do well with me, how each lane is going and what happened in a given game. The API key never leaves the browser.',
     stats: [
@@ -475,7 +475,7 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
       description: 'An app that tracks where Monster is on sale. A Python backend collects prices from shop leaflets and the app shows them as a grid of flavours.',
     },
     back: 'Back to portfolio',
-    label: 'Case study',
+    label: 'About the project',
     title: 'Monster Watch.',
     lead: 'An app that shows every Monster flavour on one screen, along with the price it is currently discounted to. A backend of my own collects the deals from shop leaflets, and a 3D can animation opens the app.',
     stats: [
@@ -632,7 +632,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       description: 'A kanban board for job applications, built on Cloudflare D1 and Hono. The funnel counts from the history of stage changes, not the current column.',
     },
     back: 'Back to portfolio',
-    label: 'Case study',
+    label: 'About the project',
     title: 'Job Tracker.',
     lead: 'A kanban board for a job hunt. Every role is a card you move through the stages, from "worth a look" to an offer or a rejection. On top of it sit stats that count from the history of stage changes, not from where a card happens to sit today.',
     stats: [
@@ -689,7 +689,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       ],
     },
     decisions: {
-      heading: 'The decisions that took the most thought',
+      heading: 'The decisions that took the most thinking',
       items: [
         {
           title: 'The funnel counts history, not the present',
@@ -706,7 +706,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       ],
     },
     status: {
-      heading: 'Where it stands',
+      heading: 'Where it is now',
       body: [
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
         "What is missing: the API has no authentication, so the public instance is open to anyone who knows the address. Until that is added it is a demonstration of the architecture, not somewhere real data belongs.",
