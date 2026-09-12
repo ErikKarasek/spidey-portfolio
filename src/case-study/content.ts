@@ -27,7 +27,7 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
       description: 'Jak vznikl Nexus Grind: tracker úkolů, návyků, spánku a ranked her pro Mac, Windows, iPhone i Android. Jedna sdílená logika, data u tebe v počítači.',
     },
     back: 'Zpět na portfolio',
-    label: 'Případová studie',
+    label: 'O projektu',
     title: 'Nexus Grind.',
     lead: 'Tracker produktivity pro Mac, Windows, iPhone i Android. Úkoly, návyky, spánek a ranked hry na jednom místě, a za splněnou práci ti roste sakura. Dělám ho sám od logiky až po to, jak vypadá.',
     stats: [
@@ -242,7 +242,7 @@ const lolStats: Record<Lang, CaseStudyContent> = {
       description: 'Vlastní statistiky z League of Legends přes Riot API. Tierlist šampionů podle mé winrate, rozbor podle lajny a detail zápasu. API klíč zůstává v prohlížeči.',
     },
     back: 'Zpět na portfolio',
-    label: 'Případová studie',
+    label: 'O projektu',
     title: 'LoL Stats.',
     lead: 'Web, který si z Riot API stáhne moje ranked zápasy a spočítá z nich to, co mě zajímá: kterým šampionům se mnou opravdu daří, jak mi jde která lajna a co se dělo v konkrétní hře. API klíč přitom nikdy neopustí prohlížeč.',
     stats: [
@@ -407,7 +407,7 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
       description: 'Appka, která hlídá, kde je Monster ve slevě. Ceny z letáků stahuje backend v Pythonu, mobilní appka je ukazuje jako mřížku příchutí.',
     },
     back: 'Zpět na portfolio',
-    label: 'Případová studie',
+    label: 'O projektu',
     title: 'Monster Watch.',
     lead: 'Appka, která na jedné obrazovce ukáže všechny příchutě Monsteru a cenu, za kterou je zrovna někde v akci. Data si tahá vlastní backend z letáků a appku otevírá 3D animace plechovky.',
     stats: [
@@ -544,7 +544,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       description: 'Kanban na sledování přihlášek do práce, postavený na Cloudflare D1 a Hono. Funnel počítá z historie přechodů, ne z aktuálního stavu.',
     },
     back: 'Zpět na portfolio',
-    label: 'Případová studie',
+    label: 'O projektu',
     title: 'Job Tracker.',
     lead: 'Kanban na hledání práce. Každá pozice je karta, kterou posouváš přes fáze od „zajímavé“ až po nabídku nebo zamítnutí. Nad tím jsou statistiky, které počítají z historie přechodů, ne z toho, kde karta leží dneska.',
     stats: [
