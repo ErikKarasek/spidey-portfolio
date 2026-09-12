@@ -246,7 +246,7 @@ const lolStats: Record<Lang, CaseStudyContent> = {
     title: 'LoL Stats.',
     lead: 'Web, který si z Riot API stáhne moje ranked zápasy a spočítá z nich to, co mě zajímá: kterým šampionům se mnou opravdu daří, jak mi jde která lajna a co se dělo v konkrétní hře. API klíč přitom nikdy neopustí prohlížeč.',
     stats: [
-      { value: '100', label: 'Her na jedno načtení' },
+      { value: '200', label: 'Her na jedno načtení' },
       { value: '5', label: 'Herních front' },
       { value: '0', label: 'Serverů, kde leží tvůj klíč' },
       { value: 'EUNE', label: 'Region' },
@@ -263,7 +263,22 @@ const lolStats: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/lolstats-start.webp',
         title: 'Načtení dat',
-        text: 'Zadáš Riot ID, vlastní API klíč, frontu a kolik her chceš. Web rovnou říká, kde klíč vzít, že platí 24 hodin a že se nikam neodesílá. Sto her se stahuje minutu až dvě, protože Riot API má limity a nemá smysl je obcházet.',
+        text: 'Zadáš Riot ID, vlastní API klíč, frontu a kolik her chceš. Web rovnou říká, kde klíč vzít, že platí 24 hodin a že se nikam neodesílá. Dvě stě her se stahuje minutu až dvě, protože Riot API má limity a nemá smysl je obcházet.',
+      },
+      {
+        src: '/img/case/lolstats-overview.webp',
+        title: 'Přehled a tierlist',
+        text: 'Moje skutečná data: winrate, průměrné KDA, nejhranější šampion, rozdíl mezi modrou a červenou stranou. Pod tím tierlist seřazený podle toho, jak se šampionům daří se mnou, ne podle obecných průměrů.',
+      },
+      {
+        src: '/img/case/lolstats-history.webp',
+        title: 'Historie zápasů',
+        text: 'Každý zápas s výsledkem, KDA, lajnou, buildem a poškozením. Filtry nahoře přepínají lajnu a řazení, takže jde rychle najít třeba jen jungle hry.',
+      },
+      {
+        src: '/img/case/lolstats-detail.webp',
+        title: 'Detail zápasu',
+        text: 'Rozpad celé hry po obou týmech: KDA, poškození, CS, gold, wardy a itemy. Přezdívky ostatních hráčů jsem na obrázku rozmazal, v appce jsou samozřejmě vidět.',
       },
     ],
     build: {
@@ -312,7 +327,7 @@ const lolStats: Record<Lang, CaseStudyContent> = {
     title: 'LoL Stats.',
     lead: 'A site that pulls my ranked matches from the Riot API and works out what I actually care about: which champions do well with me, how each lane is going and what happened in a given game. The API key never leaves the browser.',
     stats: [
-      { value: '100', label: 'Matches per load' },
+      { value: '200', label: 'Matches per load' },
       { value: '5', label: 'Queue types' },
       { value: '0', label: 'Servers holding your key' },
       { value: 'EUNE', label: 'Region' },
@@ -329,7 +344,22 @@ const lolStats: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/lolstats-start.webp',
         title: 'Loading your data',
-        text: 'You enter your Riot ID, your own API key, a queue and how many games to fetch. The page says up front where to get the key, that it lasts 24 hours and that it is never sent anywhere. A hundred games take a minute or two, because the Riot API has rate limits and there is no point fighting them.',
+        text: 'You enter your Riot ID, your own API key, a queue and how many games to fetch. The page says up front where to get the key, that it lasts 24 hours and that it is never sent anywhere. Two hundred games take a minute or two, because the Riot API has rate limits and there is no point fighting them.',
+      },
+      {
+        src: '/img/case/lolstats-overview.webp',
+        title: 'Overview and tier list',
+        text: 'My real data: win rate, average KDA, most played champion, the gap between blue and red side. Below it, a tier list sorted by how champions do with me rather than by everyone else\u2019s averages.',
+      },
+      {
+        src: '/img/case/lolstats-history.webp',
+        title: 'Match history',
+        text: 'Every game with its result, KDA, lane, build and damage. The filters on top switch lane and ordering, so finding just the jungle games takes a second.',
+      },
+      {
+        src: '/img/case/lolstats-detail.webp',
+        title: 'Match detail',
+        text: 'The whole game broken down across both teams: KDA, damage, CS, gold, wards and items. Other players\u2019 names are blurred in this screenshot; in the app they are of course visible.',
       },
     ],
     build: {
