@@ -10,7 +10,7 @@ const shared = {
   email: 'erikkarasek@centrum.cz',
   github: 'github.com/ErikKarasek',
   web: 'erik-karasek.pages.dev',
-  photo: 'public/img/me.jpg',
+  photo: 'public/img/me-cv.jpg',  // head-only crop of the hero shot; the suit is out of frame
   tech: ['React', 'Node.js', 'JavaScript', 'Python', 'Java', 'REST/JSON API', 'Cloudflare Workers', 'Supabase', 'Jira', 'Git', 'AI nástroje'],
 }
 
