@@ -1,9 +1,9 @@
 // Résumé content, from zivotopis-erik-karasek.docx (CS) plus an English translation.
 // Edit here and run `npm run cv` to rebuild public/cv/*.pdf.
 
-// Left out of the public PDF on purpose: a phone number on a website gets scraped for spam.
-// Set to the number to include it.
-export const PHONE = null
+// On the résumé PDFs by the user's choice; deliberately nowhere in the page's own HTML, where it
+// would be the easiest thing in the world for a spam crawler to pick up.
+export const PHONE = '+420 731 322 180'
 
 const shared = {
   name: 'Erik Karásek',
