@@ -3,3 +3,6 @@ dist
 .wrangler
 .DS_Store
 
+
+# Word versions of the résumé (built with npm run cv:docx, not published).
+cv-docx
