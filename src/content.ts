@@ -189,6 +189,15 @@ export const content: Record<Lang, Content> = {
           study: '/monster-watch/',
         },
         {
+          title: 'Job Tracker',
+          description:
+            'Kanban na hledání práce. Přihlášky posouváš přes fáze od „zajímavé“ po nabídku a nad tím počítá funnel, denní timeline a hlídání přihlášek, kde se dlouho nic nestalo. Hono API a databáze běží na Cloudflare edge.',
+          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1'],
+          image: `${IMG}/jobtracker.webp`,
+          link: 'https://job-tracker-10s.pages.dev',
+          study: '/job-tracker/',
+        },
+        {
           title: 'Nexus Grind Mobile',
           description:
             'Nexus Grind pro iPhone a Android. Propojí se s Apple Health a Health Connect, úkoly propíše do kalendáře a připomínky tě hodí rovnou na správnou obrazovku.',
@@ -319,6 +328,15 @@ export const content: Record<Lang, Content> = {
           image: `${IMG}/monsterwatch.webp`,
           link: 'https://monster-watch.onrender.com',
           study: '/monster-watch/',
+        },
+        {
+          title: 'Job Tracker',
+          description:
+            'A kanban board for a job hunt. Applications move through the stages from "worth a look" to an offer, and above them sit a funnel, a per-day timeline and a watch on the ones that have gone quiet. The Hono API and the database run on the Cloudflare edge.',
+          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1'],
+          image: `${IMG}/jobtracker.webp`,
+          link: 'https://job-tracker-10s.pages.dev',
+          study: '/job-tracker/',
         },
         {
           title: 'Nexus Grind Mobile',
