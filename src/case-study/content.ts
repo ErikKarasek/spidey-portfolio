@@ -612,6 +612,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'Seznam „needs follow-up“ bere přihlášky, u kterých je poslední aktivita starší než zvolený počet dní, a schválně z nich vynechává nabídky a zamítnutí — tam už není co urgovat. Prahová hodnota je parametr dotazu, ne zadrátované číslo.',
         },
         {
+          title: 'Čtení veřejné, zápis za klíčem — a při pochybnosti zamčeno',
+          text: 'Case study na tenhle board odkazuje, takže adresa není tajná a spoléhat na to, že ji nikdo nenajde, není ochrana. Prohlížení je proto otevřené a mění data jen ten, kdo má klíč. Zamyká se to navíc „do bezpečné strany“: instance, které nikdo klíč nenastavil, čtení obslouží a každý zápis odmítne — dokud se na heslo nezapomene, je zavřeno, ne otevřeno.',
+        },
+        {
           title: 'Mzda jako rozpětí, ne jako text',
           text: 'salary_min a salary_max jsou čísla. Uložit „55–70k dle zkušeností“ jako řetězec je pohodlné při psaní a k ničemu při jakémkoli pozdějším třídění nebo porovnání.',
         },
@@ -621,7 +625,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       heading: 'Kde to je teď',
       body: [
         'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
-        'Co zatím chybí: API nemá autentizaci, takže veřejná instance je otevřená komukoli, kdo zná adresu. Než se to doplní, je to ukázka architektury, ne nástroj, do kterého patří ostrá data.',
+        'Board je veřejně čitelný schválně — když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
       ],
     },
     cta: { text: 'Chceš to zkusit?', button: 'Otevřít Job Tracker', href: 'https://job-tracker-10s.pages.dev' },
@@ -700,6 +704,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'The "needs follow-up" list takes applications whose last activity is older than a chosen number of days, and deliberately leaves out offers and rejections — there is nothing left to chase there. The threshold is a query parameter, not a hard-coded number.',
         },
         {
+          title: 'Public to read, keyed to write — and locked when in doubt',
+          text: 'The case study links to this board, so the address is not a secret and hoping nobody finds it is not protection. Looking is therefore open and only a key changes anything. It also locks the safe way: an instance nobody has given a key serves reads and refuses every write — forgetting the secret leaves it shut rather than open.',
+        },
+        {
           title: 'Salary as a range, not as text',
           text: 'salary_min and salary_max are numbers. Storing "55–70k depending on experience" as a string is convenient while typing and useless for any sorting or comparison afterwards.',
         },
@@ -709,7 +717,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       heading: 'Where it is now',
       body: [
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
-        "What is missing: the API has no authentication, so the public instance is open to anyone who knows the address. Until that is added it is a demonstration of the architecture, not somewhere real data belongs.",
+        'The board is deliberately public to read — someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
       ],
     },
     cta: { text: 'Want to try it?', button: 'Open Job Tracker', href: 'https://job-tracker-10s.pages.dev' },
