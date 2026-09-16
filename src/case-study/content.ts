@@ -626,9 +626,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       body: [
         'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
         'Board je veřejně čitelný schválně — když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
+        'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba — svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
       ],
     },
-    cta: { text: 'Chceš to zkusit?', button: 'Otevřít Job Tracker', href: 'https://job-tracker-10s.pages.dev' },
+    cta: { text: 'Chceš se podívat?', button: 'Otevřít board', href: 'https://job-tracker-10s.pages.dev' },
   },
   en: {
     meta: {
@@ -718,9 +719,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       body: [
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
         'The board is deliberately public to read — someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
+        'Open it and you will find empty columns. That is not a fault — my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
       ],
     },
-    cta: { text: 'Want to try it?', button: 'Open Job Tracker', href: 'https://job-tracker-10s.pages.dev' },
+    cta: { text: 'Want a look?', button: 'Open the board', href: 'https://job-tracker-10s.pages.dev' },
   },
 }
 
