@@ -9,7 +9,6 @@ import {
   ImageRun,
   Packer,
   Paragraph,
-  ShadingType,
   Table,
   TableCell,
   TableRow,
@@ -30,7 +29,8 @@ const FONT = 'Arial'
 // Half-points. Arial sets wider than the PDF's Outfit, so the Word copy runs at a
 // notch smaller to keep the same one-page shape.
 const BASE = 18
-const LEADING = 205  // 240ths of a line — Word's own "single" leaves the page airier than the PDF
+const LEADING = 240  // 240ths of a line, i.e. Word's single spacing. Tighter looked fine in LibreOffice
+//                      and made the lines touch in real Word.
 
 const ACCENT = 'A31515'
 const INK = '111827'
@@ -56,7 +56,7 @@ const heading = (label, first = false) =>
   new Paragraph({
     spacing: { before: first ? 0 : 75, after: 35 },
     border: { bottom: { style: BorderStyle.SINGLE, size: 6, color: ACCENT, space: 3 } },
-    children: [text(label.toUpperCase(), { bold: true, size: BASE - 2, color: ACCENT, characterSpacing: 60 })],
+    children: [text(label.toUpperCase(), { bold: true, size: BASE - 2, color: ACCENT, characterSpacing: 16 })],
   })
 
 /** "Role" on the left, "when" pushed to the right edge of its column. */
@@ -97,7 +97,7 @@ function header(d) {
   const online = [link(d.github, url(d.github), small), dot(), link(d.web, url(d.web), small)]
   const about = [
     new Paragraph({ children: [text(`${d.name}.`, { bold: true, italics: true, allCaps: true, size: 40, color: INK })] }),
-    new Paragraph({ spacing: { before: 60, after: 60 }, children: [text(d.title.toUpperCase(), { bold: true, size: BASE - 2, color: ACCENT, characterSpacing: 30 })] }),
+    new Paragraph({ spacing: { before: 60, after: 60 }, children: [text(d.title.toUpperCase(), { bold: true, size: BASE - 2, color: ACCENT, characterSpacing: 10 })] }),
     new Paragraph({ children: reach }),
     new Paragraph({ spacing: { before: 20 }, children: online }),
   ]
@@ -159,8 +159,7 @@ const body = (d) =>
             children: sidebar(d),
             width: { size: SIDE, type: WidthType.DXA },
             margins: { top: 130, bottom: 130, left: 200, right: 200 },
-            shading: { type: ShadingType.CLEAR, fill: 'F9FAFB' },
-            borders: { top: { style: BorderStyle.SINGLE, size: 4, color: 'E5E7EB' }, bottom: { style: BorderStyle.SINGLE, size: 4, color: 'E5E7EB' }, left: { style: BorderStyle.SINGLE, size: 4, color: 'E5E7EB' }, right: { style: BorderStyle.SINGLE, size: 4, color: 'E5E7EB' } },
+
           }),
         ],
       }),

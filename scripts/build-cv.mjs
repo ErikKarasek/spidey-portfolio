@@ -14,7 +14,17 @@ const QR = await QRCode.toString('https://erik-karasek.pages.dev', { type: 'svg'
 
 function html(d) {
   const photo = `data:image/jpeg;base64,${readFileSync(d.photo).toString('base64')}`
-  const contact = [PHONE, d.email, d.city, d.github, d.web].filter(Boolean).map(esc).join('<i>·</i>')
+  // Real <a href>s, so Chrome writes link annotations into the PDF. Without them every
+  // address in the CV was dead text — which is the only reason a Word copy was ever needed.
+  const url = (v) => (/^https?:\/\//.test(v) ? v : `https://${v}`)
+  const a = (label, href) => `<a href="${esc(href)}">${esc(label)}</a>`
+  const contact = [
+    PHONE && esc(PHONE),
+    a(d.email, `mailto:${d.email}`),
+    esc(d.city),
+    a(d.github, url(d.github)),
+    a(d.web, url(d.web)),
+  ].filter(Boolean).join('<i>·</i>')
   const head = (label) => `<h2><span></span>${esc(label)}</h2>`
   const pair = ([k, v]) => `<div class="pair"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`
   const list = (points) => `<ul>${points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`
@@ -34,6 +44,7 @@ function html(d) {
   h1 { font-size: 30pt; line-height: .95; font-weight: 900; font-style: italic; text-transform: uppercase; letter-spacing: -.03em; color: #111827; text-shadow: 1.2pt 1.2pt 0 #ef4444, 2.2pt 2.2pt 0 #a31515 }
   .title { margin-top: 2.5mm; font-size: 10pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #a31515 }
   .contact { margin-top: 2.5mm; font-size: 8.6pt; color: #4b5563; font-weight: 600 }
+  a { color: inherit; text-decoration: none }
   .contact i { font-style: normal; color: #a31515; margin: 0 1.6mm }
   .cols { display: grid; grid-template-columns: 1fr 62mm; gap: 8mm; margin-top: 6mm }
   h2 { display: flex; align-items: center; gap: 2mm; font-size: 8.6pt; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: #a31515; margin: 4.2mm 0 2.2mm }
@@ -72,9 +83,9 @@ function html(d) {
       <section>${head(d.labels.projects)}${d.projects
         .map(
           (p) =>
-            `<div class="item"><div class="row"><span class="role">${esc(p.name)}</span><span class="when">${esc(p.when)}</span></div><p class="where">${esc(p.link)}${
+            `<div class="item"><div class="row"><span class="role">${esc(p.name)}</span><span class="when">${esc(p.when)}</span></div><p class="where">${a(p.link, url(p.link))}${
               // a project with a case study carries the link to it, so a reader can go one click deeper
-              p.study ? ` <b>·</b> ${esc(d.studyLabel)}: ${esc(p.study)}` : ''
+              p.study ? ` <b>·</b> ${esc(d.studyLabel)}: ${a(p.study, url(p.study))}` : ''
             }</p>${list(p.points)}</div>`,
         )
         .join('')}</section>
