@@ -10,7 +10,7 @@ const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/M
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 // Scans straight to the portfolio from a printed copy.
-const QR = await QRCode.toString('https://erik-karasek.pages.dev', { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#111827', light: '#0000' } })
+const QR = await QRCode.toString('https://erikkarasek.cz', { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#111827', light: '#0000' } })
 
 function html(d) {
   const photo = `data:image/jpeg;base64,${readFileSync(d.photo).toString('base64')}`

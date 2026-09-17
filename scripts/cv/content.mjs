@@ -9,7 +9,7 @@ const shared = {
   name: 'Erik Karásek',
   email: 'erikkarasek@centrum.cz',
   github: 'github.com/ErikKarasek',
-  web: 'erik-karasek.pages.dev',
+  web: 'erikkarasek.cz',
   photo: 'public/img/me-cv.jpg',  // head-only crop of the hero shot; the suit is out of frame
   tech: ['React', 'Node.js', 'JavaScript', 'Python', 'Java', 'REST/JSON API', 'Cloudflare Workers', 'Supabase', 'Jira', 'Git', 'AI nástroje'],
 }
@@ -95,7 +95,7 @@ export const cv = {
         name: 'Nexus Grind',
         when: '2026',
         link: 'github.com/ErikKarasek/nexus-grind-releases',
-        study: 'erik-karasek.pages.dev/nexus-grind',
+        study: 'erikkarasek.cz/nexus-grind',
         points: [
           'Cross-platform produktivní tracker (úkoly, návyky, projekty, spánek/wellness) s gamifikovaným companion stromem a AI Coachem.',
           'Desktop (React + Vite + Tauri) i mobil (React Native / Expo), sdílená doménová logika s unit testy, vícejazyčnost CS/EN.',
@@ -106,7 +106,7 @@ export const cv = {
         name: 'LolStats',
         when: '2026',
         link: 'lolstats.erikkarasek2005.workers.dev',
-        study: 'erik-karasek.pages.dev/lol-stats',
+        study: 'erikkarasek.cz/lol-stats',
         points: [
           'Osobní webová aplikace pro statistiky League of Legends: historie zápasů, výkonnost šampionů, win rate, KDA, tier list.',
           'Nasazeno na Cloudflare Workers, zpracování dat na straně klienta (client-side).',
@@ -117,7 +117,7 @@ export const cv = {
         name: 'Monster-Watch',
         when: '2026',
         link: 'monster-watch.onrender.com',
-        study: 'erik-karasek.pages.dev/monster-watch',
+        study: 'erikkarasek.cz/monster-watch',
         points: [
           'Web aplikace pro monitoring dostupnosti energetických nápojů v obchodech po ČR.',
           'Automatizované sledování cen a srovnání nejlevnějších variant.',
@@ -129,7 +129,7 @@ export const cv = {
         name: 'Job Tracker',
         when: '2026',
         link: 'job-tracker-10s.pages.dev',
-        study: 'erik-karasek.pages.dev/job-tracker',
+        study: 'erikkarasek.cz/job-tracker',
         points: [
           'Kanban nástroj na sledování přihlášek do práce: karta na pozici, fáze wishlist → applied → interview → offer/rejected.',
           'Statistiky nad historií přechodů: funnel podle fází, denní timeline a hlídání přihlášek bez aktivity.',
@@ -140,7 +140,7 @@ export const cv = {
         name: 'Subscription Tracker',
         when: '2026',
         link: 'github.com/ErikKarasek/subscription-tracker',
-        study: 'erik-karasek.pages.dev/subscriptions',
+        study: 'erikkarasek.cz/subscriptions',
         points: [
           'Přehled předplatných: útrata po kategoriích, skutečně zaplacené částky v čase, hlídání blížících se plateb a nevyužívaných služeb.',
           'Cloudflare Worker se statickými assety hostí web i Hono API a denní cron trigger posouvá platby a rozesílá e-maily přes Resend.',
@@ -247,7 +247,7 @@ export const cv = {
         name: 'Nexus Grind',
         when: '2026',
         link: 'github.com/ErikKarasek/nexus-grind-releases',
-        study: 'erik-karasek.pages.dev/nexus-grind',
+        study: 'erikkarasek.cz/nexus-grind',
         points: [
           'Cross-platform productivity tracker (tasks, habits, projects, sleep/wellness) with a gamified companion tree and an AI Coach.',
           'Desktop (React + Vite + Tauri) and mobile (React Native / Expo), shared domain logic with unit tests, CS/EN localisation.',
@@ -258,7 +258,7 @@ export const cv = {
         name: 'LolStats',
         when: '2026',
         link: 'lolstats.erikkarasek2005.workers.dev',
-        study: 'erik-karasek.pages.dev/lol-stats',
+        study: 'erikkarasek.cz/lol-stats',
         points: [
           'Personal web app for League of Legends stats: match history, champion performance, win rate, KDA, tier list.',
           'Deployed on Cloudflare Workers, all data processed client-side.',
@@ -269,7 +269,7 @@ export const cv = {
         name: 'Monster-Watch',
         when: '2026',
         link: 'monster-watch.onrender.com',
-        study: 'erik-karasek.pages.dev/monster-watch',
+        study: 'erikkarasek.cz/monster-watch',
         points: [
           'Web app that tracks energy drink availability in stores across the Czech Republic.',
           'Automated price tracking and comparison of the cheapest options.',
@@ -281,7 +281,7 @@ export const cv = {
         name: 'Job Tracker',
         when: '2026',
         link: 'job-tracker-10s.pages.dev',
-        study: 'erik-karasek.pages.dev/job-tracker',
+        study: 'erikkarasek.cz/job-tracker',
         points: [
           'Kanban tool for tracking job applications: a card per role, moving wishlist → applied → interview → offer/rejected.',
           'Stats built on the history of stage changes: a funnel by stage, a per-day timeline and a watch on applications with no activity.',
@@ -292,7 +292,7 @@ export const cv = {
         name: 'Subscription Tracker',
         when: '2026',
         link: 'github.com/ErikKarasek/subscription-tracker',
-        study: 'erik-karasek.pages.dev/subscriptions',
+        study: 'erikkarasek.cz/subscriptions',
         points: [
           'Subscription overview: spend by category, what was actually paid over time, and a watch on upcoming payments and unused services.',
           'A Cloudflare Worker with static assets serves the site and a Hono API, and a daily cron trigger rolls payments forward and sends email through Resend.',

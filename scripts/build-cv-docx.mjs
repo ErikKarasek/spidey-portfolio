@@ -44,7 +44,7 @@ const CONTENT = 11906 - 2 * MARGIN
 const MAIN = Math.round(CONTENT * 0.63)
 const SIDE = CONTENT - MAIN
 
-const qr = await QRCode.toBuffer('https://erik-karasek.pages.dev', { margin: 0, width: 110, color: { dark: '#111827', light: '#ffffff' } })
+const qr = await QRCode.toBuffer('https://erikkarasek.cz', { margin: 0, width: 110, color: { dark: '#111827', light: '#ffffff' } })
 
 const text = (value, opts = {}) => new TextRun({ text: value, font: FONT, size: BASE, color: BODY, ...opts })
 const link = (label, url, opts = {}) => new ExternalHyperlink({ link: url, children: [text(label, { color: ACCENT, underline: {}, ...opts })] })
@@ -102,7 +102,7 @@ function header(d) {
     new Paragraph({ spacing: { before: 20 }, children: online }),
   ]
   const code = [
-    new Paragraph({ children: [new ImageRun({ type: 'png', data: qr, transformation: { width: 62, height: 62 }, altText: { name: 'qr', title: d.labels.qr, description: 'erik-karasek.pages.dev', id: '2' } })] }),
+    new Paragraph({ children: [new ImageRun({ type: 'png', data: qr, transformation: { width: 62, height: 62 }, altText: { name: 'qr', title: d.labels.qr, description: 'erikkarasek.cz', id: '2' } })] }),
     new Paragraph({ spacing: { before: 20 }, children: [text(d.labels.qr.toUpperCase(), { bold: true, size: BASE - 5, color: ACCENT, characterSpacing: 15 })] }),
   ]
   const cell = (children, size) => new TableCell({ children, width: { size, type: WidthType.DXA }, margins: { right: 200 }, verticalAlign: 'center' })
