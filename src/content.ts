@@ -96,7 +96,7 @@ const skills = (l: Lang): Skill[] => [
 export const content: Record<Lang, Content> = {
   cs: {
     meta: {
-      title: 'Erik Karásek | tvůj přátelský sousedský vývojář',
+      title: 'Erik Karásek — full-stack vývojář',
       description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web — pět vlastních projektů v Reactu, TypeScriptu a na Cloudflare, u každého případovka.',
     },
     nav: { about: 'O mně', experience: 'Zkušenosti', skills: 'Dovednosti', projects: 'Projekty', contact: 'Kontakt', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Vypnout zvuk', soundOff: 'Zapnout zvuk' },
@@ -246,7 +246,7 @@ export const content: Record<Lang, Content> = {
   },
   en: {
     meta: {
-      title: 'Erik Karásek | your friendly neighborhood developer',
+      title: 'Erik Karásek — full-stack developer',
       description: "Erik Karásek's portfolio. Desktop, mobile and web apps — five projects of my own in React, TypeScript and on Cloudflare, each with a case study.",
     },
     nav: { about: 'About', experience: 'Experience', skills: 'Skills', projects: 'Projects', contact: 'Contact', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Mute sound', soundOff: 'Turn sound on' },
