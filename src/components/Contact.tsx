@@ -85,7 +85,6 @@ export function Contact({ live }: { live: LiveStatus }) {
       const data = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string }
       if (res.ok && String(data.success) === 'true') {
         formEl.reset()
-        window.turnstile?.reset(widget.current ?? undefined)
         setStatus({ state: 'sent' })
       } else if (data.message && /activat/i.test(data.message)) {
         setStatus({ state: 'error', note: c.activate })
@@ -94,6 +93,11 @@ export function Contact({ live }: { live: LiveStatus }) {
       }
     } catch {
       setStatus({ state: 'error', note: c.offline })
+    } finally {
+      // A Turnstile token is single-use and the server has spent it whatever FormSubmit said
+      // back. Resetting only after a success meant a retry after any error — the activation
+      // notice included — re-sent the spent token and failed the spam check.
+      window.turnstile?.reset(widget.current ?? undefined)
     }
   }
 
