@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "deploy": "npm run build && npx --yes wrangler@4 pages deploy --branch main --commit-dirty=true",
     "cv": "node scripts/build-cv.mjs",
-    "cv:docx": "node scripts/build-cv-docx.mjs"
+    "cv:docx": "node scripts/build-cv-docx.mjs",
+    "banner": "node scripts/build-banner.mjs"
   },
   "dependencies": {
     "@fontsource-variable/outfit": "^5.3.0",

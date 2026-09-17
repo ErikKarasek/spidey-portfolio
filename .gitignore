@@ -6,3 +6,4 @@ dist
 
 # Word versions of the résumé (built with npm run cv:docx, not published).
 cv-docx
+banner/
