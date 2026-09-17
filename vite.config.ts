@@ -38,12 +38,12 @@ const CSP = {
   'style-src': ["'self'", "'unsafe-inline'"],
   'img-src': ["'self'", 'data:', 'https://i.ytimg.com'],
   'font-src': ["'self'"],
-  'connect-src': ["'self'", 'https://formsubmit.co', 'https://api.github.com', 'https://cloudflareinsights.com', 'https://challenges.cloudflare.com'],
+  'connect-src': ["'self'", 'https://api.github.com', 'https://cloudflareinsights.com', 'https://challenges.cloudflare.com'],
   // Turnstile's challenge runs in an iframe on a per-region subdomain (hagen.challenges…), not just the apex.
   'frame-src': ['https://player.twitch.tv', 'https://player.kick.com', 'https://challenges.cloudflare.com', 'https://*.challenges.cloudflare.com'],
   'object-src': ["'none'"],
   'base-uri': ["'self'"],
-  'form-action': ["'self'", 'https://formsubmit.co'],
+  'form-action': ["'self'"],
   'frame-ancestors': ["'none'"],
 }
 

@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { gsap, useGSAP } from '../gsap'
-import { profile, socials, TURNSTILE_SITE_KEY } from '../content'
+import { socials, TURNSTILE_SITE_KEY } from '../content'
 import { useLang } from '../i18n'
 import type { LiveStatus } from '../live'
 import { Hanging } from './Hanging'
 import { SectionHeader } from './SectionHeader'
 import { SocialIcon } from './SocialIcon'
 
-// FormSubmit relays the form to your inbox — no account or backend. The very first message sends
-// you an "Activate Form" e-mail instead; click it once and every later message arrives normally.
-// With Turnstile on, the message goes through our own function, which checks the token first.
-const ENDPOINT = TURNSTILE_SITE_KEY ? '/api/contact' : `https://formsubmit.co/ajax/${profile.email}`
+// Messages go through our own function (functions/api/contact.ts), which checks the Turnstile
+// token and sends the mail with Resend. There is no longer a path that talks to a third party
+// straight from the browser.
+const ENDPOINT = '/api/contact'
 
 const field =
   'w-full rounded-xl border border-line bg-surface px-4 py-3 text-sm font-medium text-ink placeholder:text-mute-2 transition-all focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent'
@@ -64,39 +64,27 @@ export function Contact({ live }: { live: LiveStatus }) {
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(
-          TURNSTILE_SITE_KEY
-            ? {
-                name,
-                email: String(form.get('email') ?? '').trim(),
-                message: String(form.get('message') ?? '').trim(),
-                subject: c.subject(name),
-                token: String(form.get('cf-turnstile-response') ?? ''),
-              }
-            : {
-                name,
-                email: String(form.get('email') ?? '').trim(),
-                message: String(form.get('message') ?? '').trim(),
-                _subject: c.subject(name),
-                _template: 'table',
-              },
-        ),
+        body: JSON.stringify({
+          name,
+          email: String(form.get('email') ?? '').trim(),
+          message: String(form.get('message') ?? '').trim(),
+          subject: c.subject(name),
+          token: String(form.get('cf-turnstile-response') ?? ''),
+        }),
       })
       const data = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string }
       if (res.ok && String(data.success) === 'true') {
         formEl.reset()
         setStatus({ state: 'sent' })
-      } else if (data.message && /activat/i.test(data.message)) {
-        setStatus({ state: 'error', note: c.activate })
       } else {
         setStatus({ state: 'error', note: data.message || c.failed })
       }
     } catch {
       setStatus({ state: 'error', note: c.offline })
     } finally {
-      // A Turnstile token is single-use and the server has spent it whatever FormSubmit said
-      // back. Resetting only after a success meant a retry after any error — the activation
-      // notice included — re-sent the spent token and failed the spam check.
+      // A Turnstile token is single-use and the server has spent it whatever the mail send said
+      // back. Resetting only after a success meant a retry after any error re-sent the spent token
+      // and failed the spam check.
       window.turnstile?.reset(widget.current ?? undefined)
     }
   }

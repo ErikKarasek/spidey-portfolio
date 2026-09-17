@@ -3,10 +3,9 @@
 export type Lang = 'cs' | 'en'
 export type SocialId = 'twitch' | 'kick' | 'youtube' | 'tiktok' | 'instagram' | 'donate'
 
-// Cloudflare Turnstile (spam protection for the contact form). Paste the *site* key from the
-// Cloudflare dashboard here to switch it on; the matching secret belongs in the Pages project
-// (`npx wrangler pages secret put TURNSTILE_SECRET --project-name erik-karasek`). Empty = off, and
-// the form posts straight to FormSubmit as before.
+// Cloudflare Turnstile (spam protection for the contact form): the *site* key. The matching secret
+// belongs in the Pages project (`npx wrangler pages secret put TURNSTILE_SECRET --project-name
+// erik-karasek`), next to RESEND_API_KEY, which functions/api/contact.ts sends the mail with.
 export const TURNSTILE_SITE_KEY = '0x4AAAAAAEww7ttbS74hu2_T'
 
 export const REPO = 'https://github.com/ErikKarasek/spidey-portfolio'
@@ -65,7 +64,6 @@ export type Content = {
     sending: string
     sent: string
     sentNote: string
-    activate: string
     failed: string
     offline: string
     subject: (name: string) => string
@@ -236,7 +234,6 @@ export const content: Record<Lang, Content> = {
       sending: 'Střílím pavučinu…',
       sent: 'Thwip! Odesláno ✓',
       sentNote: 'Díky! Zpráva dorazila, ozvu se co nejdřív.',
-      activate: 'Formulář ještě čeká na jedno potvrzení z mojí strany. Zkus to prosím za chvíli, nebo mi napiš rovnou na e-mail.',
       failed: 'Zprávu se nepodařilo odeslat. Zkus to prosím znovu.',
       offline: 'Nepodařilo se spojit se serverem. Jsi online?',
       subject: (name) => `Zpráva z portfolia${name ? ` od ${name}` : ''}`,
@@ -386,7 +383,6 @@ export const content: Record<Lang, Content> = {
       sending: 'Shooting a web…',
       sent: 'Thwip! Sent ✓',
       sentNote: "Thanks! Got your message, I'll get back to you soon.",
-      activate: 'The form is still waiting on a one-time confirmation from me. Try again in a bit, or email me directly.',
       failed: "The message couldn't be sent. Please try again.",
       offline: "Couldn't reach the server. Are you online?",
       subject: (name) => `Portfolio message${name ? ` from ${name}` : ''}`,
