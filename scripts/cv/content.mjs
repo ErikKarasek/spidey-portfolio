@@ -133,9 +133,8 @@ export const cv = {
         points: [
           'Kanban nástroj na sledování přihlášek do práce: karta na pozici, fáze wishlist → applied → interview → offer/rejected.',
           'Statistiky nad historií přechodů: funnel podle fází, denní timeline a hlídání přihlášek bez aktivity.',
-          'AI agent (Workers AI, tool calling): z odkazu na inzerát si stáhne stránku, zkontroluje duplicity a vrátí návrh karty se skóre shody a průvodním dopisem.',
-          'Scout na cron triggeru: každé ráno sám prochází IT obory na Jobs.cz, filtruje a nechává agenta ohodnotit nález; karty čekají na schválení ve schránce, večer chodí souhrnný e-mail.',
-          'Životopis na míru inzerátu: model přeskládá projekty, dovednosti a technologie podle role, výstup se kontroluje proti skutečnému životopisu, aby nic nepřidal ani nevynechal.',
+          'Tři AI agenti na Cloudflare Workers AI (tool calling): z odkazu na inzerát vznikne karta se skóre shody a průvodním dopisem, životopis přeskládaný na míru roli (kontrolovaný proti skutečnému, aby nic nepřidal) a před pohovorem brief o firmě s pravděpodobnými otázkami.',
+          'Scout na cron triggeru: ráno sám projde IT obory na Jobs.cz, levné filtry uberou seniorní a neIT nabídky ještě před voláním modelu, karty čekají na schválení ve schránce a večer chodí souhrn e-mailem.',
           'React 19 + Vite + Tailwind v4, REST API v Hono jako Cloudflare Pages Function, data v Cloudflare D1; TypeScript se sdílenými typy, jeden deploy pro web i API.',
         ],
       },
@@ -288,9 +287,8 @@ export const cv = {
         points: [
           'Kanban tool for tracking job applications: a card per role, moving wishlist → applied → interview → offer/rejected.',
           'Stats built on the history of stage changes: a funnel by stage, a per-day timeline and a watch on applications with no activity.',
-          'AI agent (Workers AI, tool calling): from a posting link it fetches the page, checks for duplicates and returns a draft card with a fit score and a cover letter.',
-          'A scout on a cron trigger: every morning it reads the IT fields on Jobs.cz, filters them and has the agent score what is left; cards wait in an inbox for approval and a digest e-mail goes out in the evening.',
-          'A résumé fitted to each posting: the model reorders projects, skills and technologies for the role, and the output is checked against the real résumé so nothing is invented or dropped.',
+          'Three AI agents on Cloudflare Workers AI (tool calling): a posting link becomes a card with a fit score and a cover letter, a résumé reordered for that role (checked against the real one so nothing is invented), and a pre-interview brief on the company with likely questions.',
+          'A scout on a cron trigger: every morning it reads the IT fields on Jobs.cz, cheap filters drop senior and non-IT postings before any model call, cards wait in an inbox for approval, and a digest e-mail goes out in the evening.',
           'React 19 + Vite + Tailwind v4, REST API in Hono as a Cloudflare Pages Function, data in Cloudflare D1; TypeScript with shared types, one deploy for the site and the API.',
         ],
       },

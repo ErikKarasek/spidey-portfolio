@@ -550,7 +550,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     stats: [
       { value: '5', label: 'Fází náboru' },
       { value: '15', label: 'Inzerátů denně od agenta' },
-      { value: '1', label: 'Deploy pro web i API' },
+      { value: '3', label: 'AI agenti v provozu' },
       { value: 'D1', label: 'SQLite na edge' },
     ],
     problem: {
@@ -604,6 +604,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'Cron budí worker každých pět minut přes ráno a každé probuzení udělá první věc, která ještě dneska chybí: další stránku výsledků, další ohodnocený inzerát, nebo shrnující e-mail. Co je hotové, si píše do tabulky v D1, takže se nic neudělá dvakrát.',
         },
         {
+          title: 'Příprava na pohovor',
+          text: 'Když karta dojde do fáze pohovoru, vyrazí druhý agent: začne u inzerátu, najde web firmy a projde pár jeho stránek, než napíše brief — co firma dělá, osm až deset pravděpodobných otázek i s odpovědí opřenou o moje skutečné zkušenosti, co si zopakovat a na co se jich zeptat. Ráno v den pohovoru mi ho scout pošle e-mailem.',
+        },
+        {
           title: 'Životopis na míru inzerátu',
           text: 'Tlačítko na kartě přečte inzerát a jedním voláním modelu přeskládá můj životopis: projekty, dovednosti a technologie v pořadí, které danou roli zajímá, plus přepsaný nadpis a profil. Vykreslí se ve stejném vzhledu jako PDF na webu a uloží se přes tisk do PDF.',
         },
@@ -637,6 +641,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'Agent kartu jen navrhne. Přistane ve schránce, kde ji přijmu nebo zahodím, a teprve přijetí ji zapíše na board. Bál jsem se, že si automat nahází dvacet nabídek denně a board přestane být můj — takhle zůstává rozhodnutí na člověku a robot dělá to otravné hledání.',
         },
         {
+          title: 'Agentovi, který si vybírá, kam klikne, se musí ohradit prostor',
+          text: 'Příprava na pohovor je jediný agent, který si sám volí cestu — dostane nástroj „přečti stránku“ a rozhoduje, kterým odkazem půjde dál. To se nedá ošetřit prosbou v promptu, takže hranice hlídá kód: smí otevřít jen inzerát, stránky, na které vedl odkaz z už přečtené stránky, a doménu, která nese jméno firmy, nejvýš čtyři stránky a sedm kol. Model rozhoduje, kód drží mantinely.',
+        },
+        {
           title: 'Model smí přeskládat, ne vymýšlet',
           text: 'U životopisu na míru je svoboda modelu schválně malá: může měnit pořadí a přepsat nadpis s profilem, ale každý název projektu, dovednosti a technologie, který vrátí, se porovná s mým skutečným životopisem a co chybí, se vrátí zpátky. Životopis, do kterého by model přidal zkušenost, kterou nemám, je horší než žádný.',
         },
@@ -651,6 +659,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       body: [
         'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
         'Board je veřejně čitelný schválně — když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
+        'Tři modely dělají tři různé práce: agent z inzerátu (nástroje, pevná cesta), jedno volání na životopis na míru a navigující agent na přípravu k pohovoru. Všechny běží na Workers AI, takže se nikde neválí API klíč a všechny sdílejí jeden denní příděl.',
         'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, večer pošle e-mailem shrnutí dne. Z inzerátů, které projdou filtry, jich patnáct denně dostane skóre od agenta.',
         'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba — svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
       ],
@@ -669,7 +678,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     stats: [
       { value: '5', label: 'Hiring stages' },
       { value: '15', label: 'Postings scored a day' },
-      { value: '1', label: 'Deploy for site and API' },
+      { value: '3', label: 'AI agents running' },
       { value: 'D1', label: 'SQLite on the edge' },
     ],
     problem: {
@@ -723,6 +732,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'A cron wakes the worker every five minutes through the morning, and each wake-up does the first thing still missing today: the next page of results, the next posting to score, or the digest e-mail. What is done is written to a table in D1, so nothing happens twice.',
         },
         {
+          title: 'Interview prep',
+          text: 'When a card reaches the interview stage, a second agent sets off: it starts at the posting, finds the company\'s site and reads a few of its pages before writing a brief — what the company does, eight to ten likely questions with answers grounded in my real experience, what to revise, and what to ask them. On the morning of the interview the scout mails it to me.',
+        },
+        {
           title: 'A résumé fitted to the posting',
           text: 'A button on the card reads the posting and, in a single model call, reorders my résumé: projects, skills and technologies in the order that role cares about, with a rewritten headline and profile. It renders in the same look as the PDFs on the site and saves through the browser\'s print dialog.',
         },
@@ -756,6 +769,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'The agent only proposes a card. It lands in an inbox where I accept or dismiss it, and only accepting writes it to the board. I was wary of a robot throwing twenty listings a day at me until the board stopped being mine — this way the judgement stays human and the machine does the tedious looking.',
         },
         {
+          title: 'An agent that picks its own path needs fences',
+          text: 'Interview prep is the one agent that navigates — it gets a "read this page" tool and decides which link to follow next. Asking nicely in the prompt does not bound that, so the code does: it may open only the posting, pages linked from a page it has already read, and a domain carrying the company\'s name, at most four pages and seven turns. The model decides; the code holds the edges.',
+        },
+        {
           title: 'The model may reorder, not invent',
           text: 'The fitted résumé gives the model deliberately little room: it can change the order and rewrite the headline and profile, but every project, skill and technology name it returns is checked against my real résumé and anything missing is put back. A résumé with an experience I do not have is worse than no résumé at all.',
         },
@@ -770,6 +787,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       body: [
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
         'The board is deliberately public to read — someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
+        'Three models do three different jobs: the posting agent (tools, a fixed path), a single call for the fitted résumé, and the navigating agent for interview prep. All of them run on Workers AI, so there is no API key lying around and they share one daily allowance.',
         'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest e-mail in the evening. Of the postings that pass the filters, fifteen a day are scored by the agent.',
         'Open it and you will find empty columns. That is not a fault — my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
       ],

@@ -80,6 +80,12 @@ export type Content = {
     send: string
     thinking: string
     failed: string
+    /** Shown instead of an error when the model is unavailable and the widget answers by itself. */
+    offline: string
+    offlineNone: string
+    linkProjects: string
+    linkCv: string
+    linkContact: string
     note: string
   }
 }
@@ -203,7 +209,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Job Tracker',
           description:
-            'Kanban na hledání práce. Přihlášky posouváš přes fáze od „zajímavé“ po nabídku a nad tím počítá funnel, denní timeline a hlídání přihlášek, kde se dlouho nic nestalo. Každé ráno navíc scout sám projde IT nabídky na Jobs.cz, agent z nich udělá ohodnocené karty ke schválení a ke každé složí životopis na míru inzerátu. Hono API a databáze běží na Cloudflare edge.',
+            'Kanban na hledání práce s vlastními AI agenty. Scout každé ráno projde IT nabídky na Jobs.cz a nechá z nich udělat ohodnocené karty ke schválení, ke každé umí složit životopis na míru inzerátu a před pohovorem druhý agent projde web firmy a napíše přípravu. Statistiky přitom počítají z historie přechodů, ne z aktuálního sloupce. Hono API a databáze běží na Cloudflare edge.',
           tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
@@ -264,6 +270,11 @@ export const content: Record<Lang, Content> = {
       send: 'Odeslat',
       thinking: 'Přemýšlím…',
       failed: 'Teď neodpovím. Zkus to později, nebo Erikovi napiš přes kontaktní formulář.',
+      offline: 'AI teď mlčí (nejspíš došel denní limit), tak ti odpovím rovnou z webu:',
+      offlineNone: 'AI teď mlčí, nejspíš došel denní limit — zkus to zítra. Mezitím tě nasměruju:',
+      linkProjects: 'Projekty',
+      linkCv: 'Životopis (PDF)',
+      linkContact: 'Napsat Erikovi',
       note: 'Odpovídá AI podle obsahu webu, může se splést.',
     },
   },
@@ -364,7 +375,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Job Tracker',
           description:
-            'A kanban board for a job hunt. Applications move through the stages from "worth a look" to an offer, and above them sit a funnel, a per-day timeline and a watch on the ones that have gone quiet. Every morning a scout reads the IT listings on Jobs.cz on its own, an agent turns them into scored cards waiting for approval, and for each one it fits the résumé to that posting. The Hono API and the database run on the Cloudflare edge.',
+            'A kanban board for a job hunt, with AI agents of its own. Every morning a scout reads the IT listings on Jobs.cz and has them turned into scored cards waiting for approval, it can fit the résumé to any posting, and before an interview a second agent reads the company\'s site and writes a prep brief. The stats count from the history of stage changes, not the current column. The Hono API and the database run on the Cloudflare edge.',
           tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
@@ -425,6 +436,11 @@ export const content: Record<Lang, Content> = {
       send: 'Send',
       thinking: 'Thinking…',
       failed: "I can't answer right now. Try again later, or message Erik through the contact form.",
+      offline: 'The AI is quiet right now (most likely the daily limit), so here it is straight from the site:',
+      offlineNone: 'The AI is quiet right now, most likely the daily limit — try tomorrow. In the meantime:',
+      linkProjects: 'Projects',
+      linkCv: 'Resume (PDF)',
+      linkContact: 'Message Erik',
       note: 'Answers come from AI, based on this site. It can be wrong.',
     },
   },
