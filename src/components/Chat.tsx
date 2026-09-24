@@ -1,11 +1,55 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react'
+import type { Content } from '../content'
 import { useLang } from '../i18n'
 
 // Talks to functions/api/chat.ts, which answers from the site's own text on Workers AI.
 const ENDPOINT = '/api/chat'
 
+type Link = { label: string; href: string }
 // `failed` replies are shown but never sent back as context.
-type Message = { role: 'user' | 'assistant'; content: string; failed?: boolean }
+type Message = { role: 'user' | 'assistant'; content: string; failed?: boolean; links?: Link[] }
+
+// What the widget says when the model cannot answer — the free Workers AI allocation is a day's
+// worth, and once it is spent every call fails until it resets. An apology is a dead end, so the
+// question is matched against the site's own project texts first: those answers are on this page
+// already and need no model at all. Only a question nothing matches falls back to signposts.
+const plain = (v: string) =>
+  v
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+
+// Words that appear in more than one project name carry no signal on their own.
+const GENERIC = new Set(['tracker', 'stats', 'watch'])
+
+function offlineReply(question: string, t: Content): Message {
+  const c = t.chat
+  const q = plain(question)
+  const best = t.projects.items
+    .map((p) => {
+      const words = plain(p.title).split(' ').filter((w) => w.length > 2 && !GENERIC.has(w))
+      return { p, hits: words.filter((w) => q.includes(w)).length }
+    })
+    .sort((a, b) => b.hits - a.hits)[0]
+
+  if (best && best.hits > 0) {
+    const links: Link[] = []
+    if (best.p.study) links.push({ label: t.projects.study, href: best.p.study })
+    if (best.p.link) links.push({ label: best.p.title, href: best.p.link })
+    return { role: 'assistant', content: `${c.offline}\n\n${best.p.description}`, failed: true, links }
+  }
+
+  return {
+    role: 'assistant',
+    content: c.offlineNone,
+    failed: true,
+    links: [
+      { label: c.linkProjects, href: '#projects' },
+      { label: c.linkCv, href: t.hero.cvHref },
+      { label: c.linkContact, href: '#contact' },
+    ],
+  }
+}
 
 function ChatIcon({ className }: { className?: string }) {
   return (
@@ -51,9 +95,10 @@ export function Chat() {
         body: JSON.stringify({ messages: next.filter((m) => !m.failed).map(({ role, content }) => ({ role, content })) }),
       })
       const data = (await res.json().catch(() => ({}))) as { answer?: string }
-      setMessages([...next, res.ok && data.answer ? { role: 'assistant', content: data.answer } : { role: 'assistant', content: c.failed, failed: true }])
+      setMessages([...next, res.ok && data.answer ? { role: 'assistant', content: data.answer } : offlineReply(q, t)])
     } catch {
-      setMessages([...next, { role: 'assistant', content: c.failed, failed: true }])
+      // No network at all: the site itself is open, so the signposts still help.
+      setMessages([...next, offlineReply(q, t)])
     } finally {
       setBusy(false)
     }
@@ -103,7 +148,24 @@ export function Chat() {
               m.role === 'user' ? (
                 <p key={i} className={`${bubble} self-end bg-accent text-accent-ink`}>{m.content}</p>
               ) : (
-                <p key={i} className={`${bubble} self-start bg-surface-2 text-ink`}>{m.content}</p>
+                <div key={i} className="flex max-w-[85%] flex-col items-start gap-2 self-start">
+                  <p className={`${bubble} max-w-full bg-surface-2 text-ink`}>{m.content}</p>
+                  {m.links && (
+                    <div className="flex flex-wrap gap-2">
+                      {m.links.map((l) => (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          onClick={() => l.href.startsWith('#') && setOpen(false)}
+                          {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
+                          className="rounded-full border border-line px-3 py-1.5 text-xs font-semibold text-ink-2 transition-colors hover:border-accent hover:text-accent"
+                        >
+                          {l.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ),
             )}
             {busy && <p className={`${bubble} self-start animate-pulse bg-surface-2 text-mute`}>{c.thinking}</p>}
