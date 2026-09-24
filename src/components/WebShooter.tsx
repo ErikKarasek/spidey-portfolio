@@ -10,7 +10,7 @@ export function WebShooter() {
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      if ((e.target as HTMLElement).closest('a, button, input, textarea, select, label')) return
+      if ((e.target as HTMLElement).closest('a, button, input, textarea, select, label, [data-no-web]')) return
       const splat = { id: performance.now() + Math.random(), x: e.clientX, y: e.clientY, angle: Math.random() * 360 }
       setSplats((list) => [...list.slice(-6), splat])
       playThwip()

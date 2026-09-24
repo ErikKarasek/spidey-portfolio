@@ -7,6 +7,7 @@ import { About } from './components/About'
 import { Skills } from './components/Skills'
 import { Projects } from './components/Projects'
 import { Contact } from './components/Contact'
+import { Chat } from './components/Chat'
 import { LiveStream } from './components/LiveStream'
 import { Clips } from './components/Clips'
 import { Experience } from './components/Experience'
@@ -42,6 +43,7 @@ export default function App() {
       <Projects />
       <Clips />
       <Contact live={live} />
+      <Chat />
       <WebShooter />
       <EasterEggs />
     </>

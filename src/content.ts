@@ -70,6 +70,18 @@ export type Content = {
     socials: string
     liveNow: string
   }
+  chat: {
+    open: string
+    close: string
+    title: string
+    intro: string
+    suggestions: string[]
+    placeholder: string
+    send: string
+    thinking: string
+    failed: string
+    note: string
+  }
 }
 
 const IMG = '/img/projects'
@@ -240,6 +252,18 @@ export const content: Record<Lang, Content> = {
       socials: 'Najdeš mě i tady',
       liveNow: 'Právě streamuju',
     },
+    chat: {
+      open: 'Zeptej se na Erika',
+      close: 'Zavřít chat',
+      title: 'Zeptej se na Erika',
+      intro: 'Ahoj! Jsem AI asistent. Zeptej se mě na Erikovy projekty, zkušenosti nebo dovednosti.',
+      suggestions: ['Na čem teď pracuje?', 'Jaký je jeho největší projekt?', 'Jaké technologie používá?'],
+      placeholder: 'Napiš otázku…',
+      send: 'Odeslat',
+      thinking: 'Přemýšlím…',
+      failed: 'Teď neodpovím. Zkus to později, nebo Erikovi napiš přes kontaktní formulář.',
+      note: 'Odpovídá AI podle obsahu webu, může se splést.',
+    },
   },
   en: {
     meta: {
@@ -388,6 +412,18 @@ export const content: Record<Lang, Content> = {
       subject: (name) => `Portfolio message${name ? ` from ${name}` : ''}`,
       socials: 'Find me here too',
       liveNow: 'Live now',
+    },
+    chat: {
+      open: 'Ask about Erik',
+      close: 'Close chat',
+      title: 'Ask about Erik',
+      intro: "Hi! I'm an AI assistant. Ask me about Erik's projects, experience or skills.",
+      suggestions: ['What is he working on?', "What's his biggest project?", 'Which technologies does he use?'],
+      placeholder: 'Type a question…',
+      send: 'Send',
+      thinking: 'Thinking…',
+      failed: "I can't answer right now. Try again later, or message Erik through the contact form.",
+      note: 'Answers come from AI, based on this site. It can be wrong.',
     },
   },
 }
