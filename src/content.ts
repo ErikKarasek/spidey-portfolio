@@ -95,6 +95,8 @@ const skills = (l: Lang): Skill[] => [
   { name: 'React Native & Expo', category: l === 'cs' ? 'Mobil' : 'Mobile', level: ADV[l] },
   { name: 'Supabase & PostgreSQL', category: 'Backend', level: PRO[l] },
   { name: 'Python & Flask', category: 'Backend', level: PRO[l] },
+  { name: l === 'cs' ? 'AI agenti (tool calling)' : 'AI agents (tool calling)', category: 'AI', level: PRO[l] },
+  { name: l === 'cs' ? 'Workers AI & LLM API' : 'Workers AI & LLM APIs', category: 'AI', level: PRO[l] },
   { name: 'Web scraping', category: 'Data', level: PRO[l] },
   { name: 'Node.js & pnpm', category: l === 'cs' ? 'Nástroje' : 'Tooling', level: ADV[l] },
   { name: l === 'cs' ? 'Unit testy' : 'Unit testing', category: l === 'cs' ? 'Kvalita' : 'Quality', level: PRO[l] },
@@ -112,12 +114,12 @@ export const content: Record<Lang, Content> = {
     nav: { about: 'O mně', experience: 'Zkušenosti', skills: 'Dovednosti', projects: 'Projekty', contact: 'Kontakt', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Vypnout zvuk', soundOff: 'Zapnout zvuk' },
     loader: 'Nasazuju masku',
     hero: { tagline: 'Tvůj přátelský sousedský vývojář', cta: 'Prozkoumat projekty', cv: 'Životopis.pdf', cvHref: '/cv/erik-karasek-zivotopis.pdf' },
-    marquee: ['Frontend vývoj', 'UI/UX design', 'GSAP animace', 'React Native', 'Desktop appky', 'Riot API', 'Full stack'],
+    marquee: ['Frontend vývoj', 'UI/UX design', 'GSAP animace', 'React Native', 'Desktop appky', 'AI agenti', 'Full stack'],
     about: {
       label: 'Za maskou',
       paragraphs: [
         'Ahoj, jsem Erik. Dělám appky pro počítač, mobil i web a nejvíc mě baví, když si můžu udělat všechno sám, od logiky až po to, jak to vypadá. Můj největší projekt je Nexus Grind, tracker produktivity, ve kterém ti za splněné úkoly roste sakura.',
-        'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
+        'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Poslední dobou mě nejvíc baví dávat do svých appek AI tam, kde ušetří rutinu — na tomhle webu ti vpravo dole odpoví asistent, který zná moje projekty. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
       ],
       stack: 'Co používám nejvíc',
       source: 'Kód tohoto webu na GitHubu',
@@ -201,8 +203,8 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Job Tracker',
           description:
-            'Kanban na hledání práce. Přihlášky posouváš přes fáze od „zajímavé“ po nabídku a nad tím počítá funnel, denní timeline a hlídání přihlášek, kde se dlouho nic nestalo. Hono API a databáze běží na Cloudflare edge.',
-          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1'],
+            'Kanban na hledání práce. Přihlášky posouváš přes fáze od „zajímavé“ po nabídku a nad tím počítá funnel, denní timeline a hlídání přihlášek, kde se dlouho nic nestalo. Každé ráno navíc scout sám projde IT nabídky na Jobs.cz, agent z nich udělá ohodnocené karty ke schválení a ke každé složí životopis na míru inzerátu. Hono API a databáze běží na Cloudflare edge.',
+          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
           study: '/job-tracker/',
@@ -273,12 +275,12 @@ export const content: Record<Lang, Content> = {
     nav: { about: 'About', experience: 'Experience', skills: 'Skills', projects: 'Projects', contact: 'Contact', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Mute sound', soundOff: 'Turn sound on' },
     loader: 'Suiting up',
     hero: { tagline: 'Your friendly neighborhood developer', cta: 'Explore projects', cv: 'Resume.pdf', cvHref: '/cv/erik-karasek-resume.pdf' },
-    marquee: ['Frontend development', 'UI/UX design', 'GSAP animations', 'React Native', 'Desktop apps', 'Riot API', 'Full stack'],
+    marquee: ['Frontend development', 'UI/UX design', 'GSAP animations', 'React Native', 'Desktop apps', 'AI agents', 'Full stack'],
     about: {
       label: 'Behind the mask',
       paragraphs: [
         "Hey, I'm Erik. I build apps for desktop, mobile and the web, and I like doing the whole thing myself, from the logic to how it looks. My biggest project is Nexus Grind, a productivity tracker where a sakura tree grows as you finish your tasks.",
-        'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
+        'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. Lately what I enjoy most is putting AI into my apps where it takes routine work off my hands — the assistant in the bottom right of this site knows my projects and will answer your questions. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
       ],
       stack: 'What I use most',
       source: "This site's code on GitHub",
@@ -362,8 +364,8 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Job Tracker',
           description:
-            'A kanban board for a job hunt. Applications move through the stages from "worth a look" to an offer, and above them sit a funnel, a per-day timeline and a watch on the ones that have gone quiet. The Hono API and the database run on the Cloudflare edge.',
-          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1'],
+            'A kanban board for a job hunt. Applications move through the stages from "worth a look" to an offer, and above them sit a funnel, a per-day timeline and a watch on the ones that have gone quiet. Every morning a scout reads the IT listings on Jobs.cz on its own, an agent turns them into scored cards waiting for approval, and for each one it fits the résumé to that posting. The Hono API and the database run on the Cloudflare edge.',
+          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
           study: '/job-tracker/',

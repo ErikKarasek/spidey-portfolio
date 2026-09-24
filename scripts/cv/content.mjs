@@ -133,6 +133,9 @@ export const cv = {
         points: [
           'Kanban nástroj na sledování přihlášek do práce: karta na pozici, fáze wishlist → applied → interview → offer/rejected.',
           'Statistiky nad historií přechodů: funnel podle fází, denní timeline a hlídání přihlášek bez aktivity.',
+          'AI agent (Workers AI, tool calling): z odkazu na inzerát si stáhne stránku, zkontroluje duplicity a vrátí návrh karty se skóre shody a průvodním dopisem.',
+          'Scout na cron triggeru: každé ráno sám prochází IT obory na Jobs.cz, filtruje a nechává agenta ohodnotit nález; karty čekají na schválení ve schránce, večer chodí souhrnný e-mail.',
+          'Životopis na míru inzerátu: model přeskládá projekty, dovednosti a technologie podle role, výstup se kontroluje proti skutečnému životopisu, aby nic nepřidal ani nevynechal.',
           'React 19 + Vite + Tailwind v4, REST API v Hono jako Cloudflare Pages Function, data v Cloudflare D1; TypeScript se sdílenými typy, jeden deploy pro web i API.',
         ],
       },
@@ -149,7 +152,7 @@ export const cv = {
       },
     ],
     skills: [
-      ['Umělá inteligence', 'Claude, Gemini CLI a další; kódování, debugging, analýza dat, učení.'],
+      ['Umělá inteligence', 'Vlastní AI agenti a asistenti na Cloudflare Workers AI (tool calling, prompt engineering); Claude a Gemini CLI při vývoji.'],
       ['Programování', 'Node.js, Python, Java, React; web scraping, JSON/REST API, datové struktury.'],
       ['Cloud & web', 'Cloudflare Workers, REST API integrace, client-side aplikace.'],
       ['Testování SW', 'Test cases, testovací scénáře, DEV prostředí, Jira.'],
@@ -285,6 +288,9 @@ export const cv = {
         points: [
           'Kanban tool for tracking job applications: a card per role, moving wishlist → applied → interview → offer/rejected.',
           'Stats built on the history of stage changes: a funnel by stage, a per-day timeline and a watch on applications with no activity.',
+          'AI agent (Workers AI, tool calling): from a posting link it fetches the page, checks for duplicates and returns a draft card with a fit score and a cover letter.',
+          'A scout on a cron trigger: every morning it reads the IT fields on Jobs.cz, filters them and has the agent score what is left; cards wait in an inbox for approval and a digest e-mail goes out in the evening.',
+          'A résumé fitted to each posting: the model reorders projects, skills and technologies for the role, and the output is checked against the real résumé so nothing is invented or dropped.',
           'React 19 + Vite + Tailwind v4, REST API in Hono as a Cloudflare Pages Function, data in Cloudflare D1; TypeScript with shared types, one deploy for the site and the API.',
         ],
       },
@@ -301,7 +307,7 @@ export const cv = {
       },
     ],
     skills: [
-      ['AI', 'Claude, Gemini CLI and more; coding, debugging, data analysis, learning.'],
+      ['AI', 'My own AI agents and assistants on Cloudflare Workers AI (tool calling, prompt engineering); Claude and Gemini CLI while developing.'],
       ['Programming', 'Node.js, Python, Java, React; web scraping, JSON/REST APIs, data structures.'],
       ['Cloud & web', 'Cloudflare Workers, REST API integrations, client-side apps.'],
       ['Software testing', 'Test cases, test scenarios, DEV environments, Jira.'],

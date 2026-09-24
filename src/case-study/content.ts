@@ -541,15 +541,15 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
       title: 'Job Tracker | případová studie | Erik Karásek',
-      description: 'Kanban na sledování přihlášek do práce, postavený na Cloudflare D1 a Hono. Funnel počítá z historie přechodů, ne z aktuálního stavu.',
+      description: 'Kanban na sledování přihlášek do práce, postavený na Cloudflare D1 a Hono. Scout každé ráno projde inzeráty na Jobs.cz a agent z nich udělá ohodnocené karty ke schválení.',
     },
     back: 'Zpět na portfolio',
     label: 'O projektu',
     title: 'Job Tracker.',
-    lead: 'Kanban na hledání práce. Každá pozice je karta, kterou posouváš přes fáze od „zajímavé“ až po nabídku nebo zamítnutí. Nad tím jsou statistiky, které počítají z historie přechodů, ne z toho, kde karta leží dneska.',
+    lead: 'Kanban na hledání práce. Každá pozice je karta, kterou posouváš přes fáze od „zajímavé“ až po nabídku nebo zamítnutí. Nad tím jsou statistiky, které počítají z historie přechodů, ne z toho, kde karta leží dneska. A od září hledá inzeráty scout, který každé ráno projde Jobs.cz sám.',
     stats: [
       { value: '5', label: 'Fází náboru' },
-      { value: '2', label: 'Tabulky v databázi' },
+      { value: '15', label: 'Inzerátů denně od agenta' },
       { value: '1', label: 'Deploy pro web i API' },
       { value: 'D1', label: 'SQLite na edge' },
     ],
@@ -559,6 +559,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'Hledání práce se obvykle odehrává v tabulce, která má sloupce „firma“, „kdy jsem psal“ a „odpověděli?“. Funguje to do chvíle, než je přihlášek dvacet — pak přestaneš vědět, u kterých se dlouho nic nestalo, a hlavně ti nikdy neřekne, jestli je problém v tom, že se málo hlásíš, nebo v tom, že tě po pohovoru nikdo nechce.',
         'Job Tracker je na to postavený jako board: karta nese firmu, roli, odkaz na inzerát, lokaci, mzdové rozpětí, zdroj a poznámky, a posouvá se přes fáze wishlist → applied → interview → offer nebo rejected.',
         'Druhá polovina je statistika. Funnel ukazuje, kolik přihlášek se kterou fází vůbec prošlo, timeline kolik jich denně přibylo, a samostatný seznam hlídá ty, u kterých už dlouho nebyla žádná aktivita, aby nezapadly.',
+        'Zůstávala poslední rutina: každý den ručně projít inzertní weby. Tu teď dělá scout — každé ráno sám prochází IT obory na Jobs.cz, nabídky přečte, ohodnotí a připraví jako karty do schránky. Já jen řeknu ano, nebo ne.',
       ],
     },
     shotsHeading: 'Jak to vypadá',
@@ -595,6 +596,18 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'Data drží vlastní hook useBoardData nad fetch API. Na aplikaci, která má jeden zdroj pravdy a pár akcí, je Redux nebo podobná knihovna víc kódu než užitku.',
         },
         {
+          title: 'Agent, ne jedna otázka do modelu',
+          text: 'Z inzerátu dělá kartu model s nástroji: umí si stáhnout stránku inzerátu, prohledat board na duplicitní přihlášku u stejné firmy a nakonec odevzdat hotový návrh karty. Běhá v cyklu, dokud návrh neodevzdá, nejvýš šest kol. Vedle údajů z inzerátu připíše i skóre, jak sedí na můj profil, a krátký průvodní dopis v jazyce inzerátu.',
+        },
+        {
+          title: 'Scout jako plán práce na den',
+          text: 'Cron budí worker každých pět minut přes ráno a každé probuzení udělá první věc, která ještě dneska chybí: další stránku výsledků, další ohodnocený inzerát, nebo shrnující e-mail. Co je hotové, si píše do tabulky v D1, takže se nic neudělá dvakrát.',
+        },
+        {
+          title: 'Životopis na míru inzerátu',
+          text: 'Tlačítko na kartě přečte inzerát a jedním voláním modelu přeskládá můj životopis: projekty, dovednosti a technologie v pořadí, které danou roli zajímá, plus přepsaný nadpis a profil. Vykreslí se ve stejném vzhledu jako PDF na webu a uloží se přes tisk do PDF.',
+        },
+        {
           title: 'TypeScript na obou stranách',
           text: 'Typy Application a Stage jsou sdílené mezi frontendem a API, takže přejmenování fáze neprojde buildem, dokud ho nedotáhnu do obou půlek.',
         },
@@ -616,6 +629,18 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'Case study na tenhle board odkazuje, takže adresa není tajná a spoléhat na to, že ji nikdo nenajde, není ochrana. Prohlížení je proto otevřené a mění data jen ten, kdo má klíč. Zamyká se to navíc „do bezpečné strany“: instance, které nikdo klíč nenastavil, čtení obslouží a každý zápis odmítne — dokud se na heslo nezapomene, je zavřeno, ne otevřeno.',
         },
         {
+          title: 'Model až jako poslední krok',
+          text: 'Levné filtry běží první: inzeráty se seniorem v názvu nebo mimo IT vypadnou dřív, než na ně padne jediné volání modelu, a stránka se přečte ještě předtím, než se model vůbec zavolá. Denní příděl Workers AI je zdarma, ale konečný — patnáct ohodnocených inzerátů denně je zhruba polovina, zbytek zůstane asistentovi na portfoliu. Když příděl dojde, scout se zastaví a pokračuje zítra, místo aby se zasekl v chybách.',
+        },
+        {
+          title: 'Nic se na board nedostane beze mě',
+          text: 'Agent kartu jen navrhne. Přistane ve schránce, kde ji přijmu nebo zahodím, a teprve přijetí ji zapíše na board. Bál jsem se, že si automat nahází dvacet nabídek denně a board přestane být můj — takhle zůstává rozhodnutí na člověku a robot dělá to otravné hledání.',
+        },
+        {
+          title: 'Model smí přeskládat, ne vymýšlet',
+          text: 'U životopisu na míru je svoboda modelu schválně malá: může měnit pořadí a přepsat nadpis s profilem, ale každý název projektu, dovednosti a technologie, který vrátí, se porovná s mým skutečným životopisem a co chybí, se vrátí zpátky. Životopis, do kterého by model přidal zkušenost, kterou nemám, je horší než žádný.',
+        },
+        {
           title: 'Mzda jako rozpětí, ne jako text',
           text: 'salary_min a salary_max jsou čísla. Uložit „55–70k dle zkušeností“ jako řetězec je pohodlné při psaní a k ničemu při jakémkoli pozdějším třídění nebo porovnání.',
         },
@@ -626,6 +651,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       body: [
         'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
         'Board je veřejně čitelný schválně — když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
+        'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, večer pošle e-mailem shrnutí dne. Z inzerátů, které projdou filtry, jich patnáct denně dostane skóre od agenta.',
         'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba — svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
       ],
     },
@@ -634,7 +660,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
   en: {
     meta: {
       title: 'Job Tracker | case study | Erik Karásek',
-      description: 'A kanban board for job applications, built on Cloudflare D1 and Hono. The funnel counts from the history of stage changes, not the current column.',
+      description: 'A kanban board for job applications, built on Cloudflare D1 and Hono. A scout reads the Jobs.cz listings every morning and an agent turns them into scored cards waiting for approval.',
     },
     back: 'Back to portfolio',
     label: 'About the project',
@@ -642,7 +668,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     lead: 'A kanban board for a job hunt. Every role is a card you move through the stages, from "worth a look" to an offer or a rejection. On top of it sit stats that count from the history of stage changes, not from where a card happens to sit today.',
     stats: [
       { value: '5', label: 'Hiring stages' },
-      { value: '2', label: 'Database tables' },
+      { value: '15', label: 'Postings scored a day' },
       { value: '1', label: 'Deploy for site and API' },
       { value: 'D1', label: 'SQLite on the edge' },
     ],
@@ -652,6 +678,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'A job hunt usually lives in a spreadsheet with columns for company, date sent and "did they reply?". That works until you are twenty applications in — then you stop knowing which ones have gone quiet, and it never tells you whether the problem is that you are not applying enough or that nobody wants you after the interview.',
         'Job Tracker is a board instead. A card carries the company, the role, a link to the posting, location, salary range, where you found it and your notes, and moves through wishlist → applied → interview → offer or rejected.',
         'The other half is the stats. A funnel shows how many applications ever got through each stage, a timeline shows how many you started per day, and a separate list watches the ones with no activity for a while so they do not quietly disappear.',
+        'One piece of routine was left: going through the job sites by hand every day. A scout does that now — each morning it reads the IT fields on Jobs.cz on its own, scores what it finds and leaves the postings as cards in an inbox. All I do is say yes or no.',
       ],
     },
     shotsHeading: 'What it looks like',
@@ -688,6 +715,18 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'A hook of its own, useBoardData, holds the data over the fetch API. For an app with one source of truth and a handful of actions, Redux or anything like it is more code than it is worth.',
         },
         {
+          title: 'An agent, not a single prompt',
+          text: 'A posting becomes a card through a model with tools: it can fetch the posting page, search the board for an existing application at the same company, and finally submit a finished draft card. It loops until it submits, six turns at most. Alongside the facts from the posting it adds a score for how well the role fits my profile and a short cover letter in the language of the ad.',
+        },
+        {
+          title: 'The scout as a plan for the day',
+          text: 'A cron wakes the worker every five minutes through the morning, and each wake-up does the first thing still missing today: the next page of results, the next posting to score, or the digest e-mail. What is done is written to a table in D1, so nothing happens twice.',
+        },
+        {
+          title: 'A résumé fitted to the posting',
+          text: 'A button on the card reads the posting and, in a single model call, reorders my résumé: projects, skills and technologies in the order that role cares about, with a rewritten headline and profile. It renders in the same look as the PDFs on the site and saves through the browser\'s print dialog.',
+        },
+        {
           title: 'TypeScript on both sides',
           text: 'The Application and Stage types are shared between the front end and the API, so renaming a stage fails the build until it is carried through both halves.',
         },
@@ -709,6 +748,18 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'The case study links to this board, so the address is not a secret and hoping nobody finds it is not protection. Looking is therefore open and only a key changes anything. It also locks the safe way: an instance nobody has given a key serves reads and refuses every write — forgetting the secret leaves it shut rather than open.',
         },
         {
+          title: 'The model comes last',
+          text: 'The cheap filters run first: a posting with "senior" in the title, or one outside IT, is dropped before a single model call lands on it, and the page is read before the model is called at all. The daily Workers AI allowance is free but finite — fifteen scored postings a day is about half of it, and the rest stays for the assistant on the portfolio. When the allowance runs out the scout stops and carries on tomorrow instead of grinding through errors.',
+        },
+        {
+          title: 'Nothing reaches the board without me',
+          text: 'The agent only proposes a card. It lands in an inbox where I accept or dismiss it, and only accepting writes it to the board. I was wary of a robot throwing twenty listings a day at me until the board stopped being mine — this way the judgement stays human and the machine does the tedious looking.',
+        },
+        {
+          title: 'The model may reorder, not invent',
+          text: 'The fitted résumé gives the model deliberately little room: it can change the order and rewrite the headline and profile, but every project, skill and technology name it returns is checked against my real résumé and anything missing is put back. A résumé with an experience I do not have is worse than no résumé at all.',
+        },
+        {
           title: 'Salary as a range, not as text',
           text: 'salary_min and salary_max are numbers. Storing "55–70k depending on experience" as a string is convenient while typing and useless for any sorting or comparison afterwards.',
         },
@@ -719,6 +770,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       body: [
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
         'The board is deliberately public to read — someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
+        'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest e-mail in the evening. Of the postings that pass the filters, fifteen a day are scored by the agent.',
         'Open it and you will find empty columns. That is not a fault — my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
       ],
     },
