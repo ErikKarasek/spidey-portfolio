@@ -549,7 +549,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     lead: 'Kanban na hledání práce. Každá pozice je karta, kterou posouváš přes fáze od „zajímavé“ až po nabídku nebo zamítnutí. Nad tím jsou statistiky, které počítají z historie přechodů, ne z toho, kde karta leží dneska. A od září hledá inzeráty scout, který každé ráno projde Jobs.cz sám.',
     stats: [
       { value: '5', label: 'Fází náboru' },
-      { value: '15', label: 'Inzerátů denně od agenta' },
+      { value: '30', label: 'Ohodnocených inzerátů denně' },
       { value: '3', label: 'AI agenti v provozu' },
       { value: 'D1', label: 'SQLite na edge' },
     ],
@@ -605,7 +605,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Příprava na pohovor',
-          text: 'Když karta dojde do fáze pohovoru, vyrazí druhý agent: začne u inzerátu, najde web firmy a projde pár jeho stránek, než napíše brief — co firma dělá, osm až deset pravděpodobných otázek i s odpovědí opřenou o moje skutečné zkušenosti, co si zopakovat a na co se jich zeptat. Ráno v den pohovoru mi ho scout pošle e-mailem.',
+          text: 'Když karta dojde do fáze pohovoru, vyrazí druhý agent: začne u inzerátu, najde web firmy a projde pár jeho stránek, než napíše brief — co firma dělá, osm až deset pravděpodobných otázek i s odpovědí opřenou o moje skutečné zkušenosti, co si zopakovat a na co se jich zeptat. Ráno den před pohovorem mi ho scout pošle e-mailem.',
         },
         {
           title: 'Životopis na míru inzerátu',
@@ -634,7 +634,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Model až jako poslední krok',
-          text: 'Levné filtry běží první: inzeráty se seniorem v názvu nebo mimo IT vypadnou dřív, než na ně padne jediné volání modelu, a stránka se přečte ještě předtím, než se model vůbec zavolá. Denní příděl Workers AI je zdarma, ale konečný — patnáct ohodnocených inzerátů denně je zhruba polovina, zbytek zůstane asistentovi na portfoliu. Když příděl dojde, scout se zastaví a pokračuje zítra, místo aby se zasekl v chybách.',
+          text: 'Levné filtry běží první: inzeráty se seniorem v názvu nebo mimo IT vypadnou dřív, než na ně padne jediné volání modelu, a stránka se přečte ještě předtím, než se model vůbec zavolá. A model se volí podle úkolu: skóre shody dává malý model (Llama 3.1 8B) za zhruba dvacetinu ceny a řadí nabídky stejně jako ten velký, jenže si u tří ze čtyř inzerátů bez mzdy mzdu vymyslel — tu proto čte kód přímo z řádku „Plat“ na Jobs.cz. Průvodní dopis píše větší model, a jen když o něj u nabídky požádám. Každá AI funkce má navíc v D1 vlastní denní rozpočet, takže žádná nevyčerpá den za ostatní.',
         },
         {
           title: 'Nic se na board nedostane beze mě',
@@ -660,7 +660,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
         'Board je veřejně čitelný schválně — když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
         'Tři modely dělají tři různé práce: agent z inzerátu (nástroje, pevná cesta), jedno volání na životopis na míru a navigující agent na přípravu k pohovoru. Všechny běží na Workers AI, takže se nikde neválí API klíč a všechny sdílejí jeden denní příděl.',
-        'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, večer pošle e-mailem shrnutí dne. Z inzerátů, které projdou filtry, jich patnáct denně dostane skóre od agenta.',
+        'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, kolem půl desáté ráno pošle e-mailem shrnutí. Z inzerátů, které projdou filtry, jich třicet denně dostane skóre.',
         'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba — svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
       ],
     },
@@ -677,7 +677,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     lead: 'A kanban board for a job hunt. Every role is a card you move through the stages, from "worth a look" to an offer or a rejection. On top of it sit stats that count from the history of stage changes, not from where a card happens to sit today.',
     stats: [
       { value: '5', label: 'Hiring stages' },
-      { value: '15', label: 'Postings scored a day' },
+      { value: '30', label: 'Postings scored a day' },
       { value: '3', label: 'AI agents running' },
       { value: 'D1', label: 'SQLite on the edge' },
     ],
@@ -733,7 +733,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Interview prep',
-          text: 'When a card reaches the interview stage, a second agent sets off: it starts at the posting, finds the company\'s site and reads a few of its pages before writing a brief — what the company does, eight to ten likely questions with answers grounded in my real experience, what to revise, and what to ask them. On the morning of the interview the scout mails it to me.',
+          text: 'When a card reaches the interview stage, a second agent sets off: it starts at the posting, finds the company\'s site and reads a few of its pages before writing a brief — what the company does, eight to ten likely questions with answers grounded in my real experience, what to revise, and what to ask them. The morning before the interview the scout mails it to me.',
         },
         {
           title: 'A résumé fitted to the posting',
@@ -762,7 +762,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'The model comes last',
-          text: 'The cheap filters run first: a posting with "senior" in the title, or one outside IT, is dropped before a single model call lands on it, and the page is read before the model is called at all. The daily Workers AI allowance is free but finite — fifteen scored postings a day is about half of it, and the rest stays for the assistant on the portfolio. When the allowance runs out the scout stops and carries on tomorrow instead of grinding through errors.',
+          text: 'The cheap filters run first: a posting with "senior" in the title, or one outside IT, is dropped before a single model call lands on it, and the page is read before the model is called at all. And the model fits the task: a small model (Llama 3.1 8B) gives the fit score at about a twentieth of the cost and ranks postings the same way the big one does, but it invented a salary for three of four postings that state none — so the salary is read by code from Jobs.cz\'s own "Plat" line. The cover letter comes from the larger model, and only when I ask for it on a posting. Every AI feature also has its own daily budget in D1, so none can spend the day for the others.',
         },
         {
           title: 'Nothing reaches the board without me',
@@ -788,7 +788,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
         'The board is deliberately public to read — someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
         'Three models do three different jobs: the posting agent (tools, a fixed path), a single call for the fitted résumé, and the navigating agent for interview prep. All of them run on Workers AI, so there is no API key lying around and they share one daily allowance.',
-        'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest e-mail in the evening. Of the postings that pass the filters, fifteen a day are scored by the agent.',
+        'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest e-mail at about half past nine in the morning. Of the postings that pass the filters, thirty a day are scored.',
         'Open it and you will find empty columns. That is not a fault — my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
       ],
     },
