@@ -20,7 +20,7 @@ export const cv = {
     file: 'erik-karasek-zivotopis.pdf',
     title: 'Analytik / Tester · Vývoj & AI · IT podpora',
     city: 'Hradec Králové',
-    studyLabel: 'Případová studie',
+    studyLabel: 'Víc o projektu',
     labels: {
       profile: 'Profil',
       experience: 'Pracovní zkušenosti',
@@ -177,7 +177,7 @@ export const cv = {
     file: 'erik-karasek-resume.pdf',
     title: 'Analyst / Tester · Development & AI · IT Support',
     city: 'Hradec Králové, CZ',
-    studyLabel: 'Case study',
+    studyLabel: 'More about it',
     labels: {
       profile: 'Profile',
       experience: 'Experience',

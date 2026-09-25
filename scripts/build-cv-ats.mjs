@@ -11,7 +11,7 @@
 // letter-spacing (wide tracking makes "SILNÉ STRÁNKY" extract as "S I L N É S T RÁ N KY").
 // Same facts, same file names plus `-ats`. Send the pretty one to a human, upload this one to a
 // portal that asks for a file and never shows it to anyone until a keyword matches.
-import { mkdirSync } from 'node:fs'
+import { mkdirSync, readFileSync } from 'node:fs'
 import puppeteer from 'puppeteer-core'
 import { cv, PHONE } from './cv/content.mjs'
 
@@ -19,6 +19,8 @@ const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/M
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 function html(d) {
+  // A parser skips images, so the photo costs nothing and the page stops looking like a form.
+  const photo = `data:image/jpeg;base64,${readFileSync(d.photo).toString('base64')}`
   const contact = [PHONE, d.email, d.city, d.github, d.web].filter(Boolean).map(esc).join(' | ')
   const list = (points) => `<ul>${points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`
   const head = (label) => `<h2>${esc(label)}</h2>`
@@ -42,6 +44,8 @@ function html(d) {
   @page { size: A4; margin: 14mm 15mm }
   * { box-sizing: border-box; margin: 0; padding: 0 }
   body { font: 10.5pt/1.42 Arial, Helvetica, sans-serif; color: #000 }
+  .top { display: flex; align-items: flex-start; gap: 7mm }
+  .top img { width: 28mm; height: 28mm; border-radius: 50%; object-fit: cover; flex: none }
   h1 { font-size: 20pt; margin-bottom: 1.5mm }
   .title { font-size: 11pt; font-weight: bold; margin-bottom: 1.5mm }
   .contact { font-size: 10pt; margin-bottom: 5mm }
@@ -52,9 +56,14 @@ function html(d) {
   ul { margin: 1mm 0 0 5mm } li { margin: .4mm 0 }
   a { color: #000; text-decoration: none }
 </style></head><body>
-  <h1>${esc(d.name)}</h1>
-  <p class="title">${esc(d.title)}</p>
-  <p class="contact">${contact}</p>
+  <div class="top">
+    <div>
+      <h1>${esc(d.name)}</h1>
+      <p class="title">${esc(d.title)}</p>
+      <p class="contact">${contact}</p>
+    </div>
+    <img src="${photo}" alt="${esc(d.name)}">
+  </div>
 
   <section>${head(d.labels.profile)}<p>${esc(d.profile)}</p></section>
   <section>${head(d.labels.experience)}${d.jobs.map(job).join('')}</section>
