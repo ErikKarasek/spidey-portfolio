@@ -83,8 +83,11 @@ export const onRequestPost = async ({ request, env }: { request: Request; env: E
     if (!answer) return fail('No answer came back.', 502)
     return Response.json({ answer })
   } catch (err) {
-    // Over the daily free allocation lands here too.
+    // Over the daily free allocation lands here too. `?debug=1` returns what the binding said,
+    // the way /api/live does: the message names the model and the reason, and there is no way
+    // to read a Pages Function's logs after the fact.
     console.error('[chat] Workers AI failed', err)
-    return fail('The assistant is resting right now.', 503)
+    const detail = new URL(request.url).searchParams.get('debug') === '1' ? String(err) : undefined
+    return Response.json({ error: 'The assistant is resting right now.', detail }, { status: 503 })
   }
 }
