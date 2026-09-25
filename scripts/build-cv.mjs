@@ -10,6 +10,27 @@ const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/M
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 // Scans straight to the portfolio from a printed copy.
+// The name's red offset shadow used to be a CSS text-shadow, which Chrome writes into the PDF as
+// two more copies of the text: a résumé parser read "ERIKKARÁSEK. ERIKKARÁSEK. ERIKKARÁSEK.".
+// Now the shadow is drawn once as an image, laid under the name, which is text exactly once.
+// The same image is published for the fitted CV in the Job Tracker, which draws this header too.
+const NAME_CSS = 'display: inline-block; padding: 0 3pt 3pt 0; font-size: 30pt; line-height: .95; font-weight: 900; font-style: italic; text-transform: uppercase; letter-spacing: -.03em'
+const FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=block" rel="stylesheet">'
+
+async function renderNameShadow(browser, name) {
+  const page = await browser.newPage()
+  await page.setViewport({ width: 1200, height: 300, deviceScaleFactor: 4 })
+  await page.setContent(
+    `<!doctype html><html><head><meta charset="utf-8">${FONT_LINK}</head><body style="margin:0">` +
+      `<h1 style="${NAME_CSS}; margin: 0; font-family: Outfit, sans-serif; color: transparent; text-shadow: 1.2pt 1.2pt 0 #ef4444, 2.2pt 2.2pt 0 #a31515">${esc(name)}.</h1></body></html>`,
+    { waitUntil: 'networkidle0' },
+  )
+  await page.evaluate(() => document.fonts.ready)
+  const png = await (await page.$('h1')).screenshot({ omitBackground: true })
+  await page.close()
+  return png
+}
+
 const QR = await QRCode.toString('https://erikkarasek.cz', { type: 'svg', margin: 0, errorCorrectionLevel: 'M', color: { dark: '#111827', light: '#0000' } })
 
 function html(d) {
@@ -41,7 +62,7 @@ function html(d) {
   .photo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block }
   .qr { margin-left: auto; flex: none; text-align: center } .qr svg { width: 22mm; height: 22mm; display: block }
   .qr span { display: block; margin-top: 1.4mm; font-size: 7pt; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; color: #a31515 }
-  h1 { font-size: 30pt; line-height: .95; font-weight: 900; font-style: italic; text-transform: uppercase; letter-spacing: -.03em; color: #111827; text-shadow: 1.2pt 1.2pt 0 #ef4444, 2.2pt 2.2pt 0 #a31515 }
+  h1 { ${NAME_CSS}; margin-bottom: -3pt; color: #111827; background: url(${d.nameShadow}) no-repeat 0 0 / 100% 100% }
   .title { margin-top: 2.5mm; font-size: 10pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #a31515 }
   .contact { margin-top: 2.5mm; font-size: 8.6pt; color: #4b5563; font-weight: 600 }
   a { color: inherit; text-decoration: none }
@@ -103,13 +124,17 @@ function html(d) {
 
 mkdirSync('public/cv', { recursive: true })
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new' })
+const shadowPng = await renderNameShadow(browser, cv.cs.name)
+mkdirSync('public/img', { recursive: true })
+writeFileSync('public/img/cv-name-shadow.png', shadowPng)
+const nameShadow = `data:image/png;base64,${Buffer.from(shadowPng).toString('base64')}`
 for (const [lang, d] of Object.entries(cv)) {
   const page = await browser.newPage()
-  await page.setContent(html(d), { waitUntil: 'networkidle0' })
+  await page.setContent(html({ ...d, nameShadow }), { waitUntil: 'networkidle0' })
   await page.evaluate(() => document.fonts.ready)
   const pdf = await page.pdf({ format: 'A4', printBackground: true, preferCSSPageSize: true })
   writeFileSync(`public/cv/${d.file}`, pdf)
-  if (process.env.CV_PREVIEW) writeFileSync(`${process.env.CV_PREVIEW}/cv-${lang}.html`, html(d))
+  if (process.env.CV_PREVIEW) writeFileSync(`${process.env.CV_PREVIEW}/cv-${lang}.html`, html({ ...d, nameShadow }))
   console.log(`public/cv/${d.file}  (${Math.round(pdf.length / 1024)} kB)`)
 }
 await browser.close()
