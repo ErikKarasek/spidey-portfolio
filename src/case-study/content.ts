@@ -556,10 +556,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     problem: {
       heading: 'Co to řeší',
       body: [
-        'Hledání práce se obvykle odehrává v tabulce, která má sloupce „firma“, „kdy jsem psal“ a „odpověděli?“. Funguje to do chvíle, než je přihlášek dvacet — pak přestaneš vědět, u kterých se dlouho nic nestalo, a hlavně ti nikdy neřekne, jestli je problém v tom, že se málo hlásíš, nebo v tom, že tě po pohovoru nikdo nechce.',
+        'Hledání práce se obvykle odehrává v tabulce, která má sloupce „firma“, „kdy jsem psal“ a „odpověděli?“. Funguje to do chvíle, než je přihlášek dvacet. Pak přestaneš vědět, u kterých se dlouho nic nestalo, a hlavně ti nikdy neřekne, jestli je problém v tom, že se málo hlásíš, nebo v tom, že tě po pohovoru nikdo nechce.',
         'Job Tracker je na to postavený jako board: karta nese firmu, roli, odkaz na inzerát, lokaci, mzdové rozpětí, zdroj a poznámky, a posouvá se přes fáze wishlist → applied → interview → offer nebo rejected.',
         'Druhá polovina je statistika. Funnel ukazuje, kolik přihlášek se kterou fází vůbec prošlo, timeline kolik jich denně přibylo, a samostatný seznam hlídá ty, u kterých už dlouho nebyla žádná aktivita, aby nezapadly.',
-        'Zůstávala poslední rutina: každý den ručně projít inzertní weby. Tu teď dělá scout — každé ráno sám prochází IT obory na Jobs.cz, nabídky přečte, ohodnotí a připraví jako karty do schránky. Já jen řeknu ano, nebo ne.',
+        'Zůstávala poslední rutina: každý den ručně projít inzertní weby. Tu teď dělá scout: každé ráno sám prochází IT obory na Jobs.cz, nabídky přečte, ohodnotí a připraví jako karty do schránky. Já jen řeknu ano, nebo ne.',
       ],
     },
     shotsHeading: 'Jak to vypadá',
@@ -567,7 +567,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/jobtracker-board.webp',
         title: 'Board',
-        text: 'Pět sloupců podle fáze, karta se posouvá výběrem cílové fáze. Když se u přihlášky dlouho nic nestalo, dostane štítek s počtem dní ticha — přímo na kartě, ne schovaný ve statistikách. (Na snímku jsou ukázková data.)',
+        text: 'Pět sloupců podle fáze, karta se posouvá výběrem cílové fáze. Když se u přihlášky dlouho nic nestalo, dostane štítek s počtem dní ticha, a to přímo na kartě, ne schovaný ve statistikách. (Na snímku jsou ukázková data.)',
       },
       {
         src: '/img/case/jobtracker-editor.webp',
@@ -605,7 +605,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Příprava na pohovor',
-          text: 'Když karta dojde do fáze pohovoru, vyrazí druhý agent: začne u inzerátu, najde web firmy a projde pár jeho stránek, než napíše brief — co firma dělá, osm až deset pravděpodobných otázek i s odpovědí opřenou o moje skutečné zkušenosti, co si zopakovat a na co se jich zeptat. Ráno den před pohovorem mi ho scout pošle e-mailem.',
+          text: 'Když karta dojde do fáze pohovoru, vyrazí druhý agent: začne u inzerátu, najde web firmy a projde pár jeho stránek, než napíše brief: co firma dělá, osm až deset pravděpodobných otázek i s odpovědí opřenou o moje skutečné zkušenosti, co si zopakovat a na co se jich zeptat. Ráno den před pohovorem mi ho scout pošle e-mailem.',
         },
         {
           title: 'Životopis na míru inzerátu',
@@ -622,27 +622,27 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Funnel se počítá z historie, ne ze současnosti',
-          text: 'Kdyby se počítalo z aktuálního sloupce, přihláška zamítnutá po pohovoru by ve statistice vypadala, jako by k pohovoru nikdy nedošlo — a úspěšnost pohovorů by vycházela směšně nízko. Proto se každý přechod loguje do status_events a funnel počítá, kolik přihlášek danou fází někdy prošlo.',
+          text: 'Kdyby se počítalo z aktuálního sloupce, přihláška zamítnutá po pohovoru by ve statistice vypadala, jako by k pohovoru nikdy nedošlo a úspěšnost pohovorů by vycházela směšně nízko. Proto se každý přechod loguje do status_events a funnel počítá, kolik přihlášek danou fází někdy prošlo.',
         },
         {
           title: 'Ticho je taky informace',
-          text: 'Seznam „needs follow-up“ bere přihlášky, u kterých je poslední aktivita starší než zvolený počet dní, a schválně z nich vynechává nabídky a zamítnutí — tam už není co urgovat. Prahová hodnota je parametr dotazu, ne zadrátované číslo.',
+          text: 'Seznam „needs follow-up“ bere přihlášky, u kterých je poslední aktivita starší než zvolený počet dní, a schválně z nich vynechává nabídky a zamítnutí, tam už není co urgovat. Prahová hodnota je parametr dotazu, ne zadrátované číslo.',
         },
         {
-          title: 'Čtení veřejné, zápis za klíčem — a při pochybnosti zamčeno',
-          text: 'Case study na tenhle board odkazuje, takže adresa není tajná a spoléhat na to, že ji nikdo nenajde, není ochrana. Prohlížení je proto otevřené a mění data jen ten, kdo má klíč. Zamyká se to navíc „do bezpečné strany“: instance, které nikdo klíč nenastavil, čtení obslouží a každý zápis odmítne — dokud se na heslo nezapomene, je zavřeno, ne otevřeno.',
+          title: 'Čtení veřejné, zápis za klíčem, při pochybnosti zamčeno',
+          text: 'Case study na tenhle board odkazuje, takže adresa není tajná a spoléhat na to, že ji nikdo nenajde, není ochrana. Prohlížení je proto otevřené a mění data jen ten, kdo má klíč. Zamyká se to navíc „do bezpečné strany“: instance, které nikdo klíč nenastavil, čtení obslouží a každý zápis odmítne. Dokud se na heslo nezapomene, je zavřeno, ne otevřeno.',
         },
         {
           title: 'Model až jako poslední krok',
-          text: 'Levné filtry běží první: inzeráty se seniorem v názvu nebo mimo IT vypadnou dřív, než na ně padne jediné volání modelu, a stránka se přečte ještě předtím, než se model vůbec zavolá. A model se volí podle úkolu: skóre shody dává malý model (Llama 3.1 8B) za zhruba dvacetinu ceny a řadí nabídky stejně jako ten velký, jenže si u tří ze čtyř inzerátů bez mzdy mzdu vymyslel — tu proto čte kód přímo z řádku „Plat“ na Jobs.cz. Průvodní dopis píše větší model, a jen když o něj u nabídky požádám. Každá AI funkce má navíc v D1 vlastní denní rozpočet, takže žádná nevyčerpá den za ostatní.',
+          text: 'Levné filtry běží první: inzeráty se seniorem v názvu nebo mimo IT vypadnou dřív, než na ně padne jediné volání modelu, a stránka se přečte ještě předtím, než se model vůbec zavolá. A model se volí podle úkolu: skóre shody dává malý model (Llama 3.1 8B) za zhruba dvacetinu ceny a řadí nabídky stejně jako ten velký, jenže si u tří ze čtyř inzerátů bez mzdy mzdu vymyslel. Mzdu proto čte kód přímo z řádku „Plat“ na Jobs.cz. Průvodní dopis píše větší model, a jen když o něj u nabídky požádám. Každá AI funkce má navíc v D1 vlastní denní rozpočet, takže žádná nevyčerpá den za ostatní.',
         },
         {
           title: 'Nic se na board nedostane beze mě',
-          text: 'Agent kartu jen navrhne. Přistane ve schránce, kde ji přijmu nebo zahodím, a teprve přijetí ji zapíše na board. Bál jsem se, že si automat nahází dvacet nabídek denně a board přestane být můj — takhle zůstává rozhodnutí na člověku a robot dělá to otravné hledání.',
+          text: 'Agent kartu jen navrhne. Přistane ve schránce, kde ji přijmu nebo zahodím, a teprve přijetí ji zapíše na board. Bál jsem se, že si automat nahází dvacet nabídek denně a board přestane být můj. Takhle zůstává rozhodnutí na člověku a robot dělá to otravné hledání.',
         },
         {
           title: 'Agentovi, který si vybírá, kam klikne, se musí ohradit prostor',
-          text: 'Příprava na pohovor je jediný agent, který si sám volí cestu — dostane nástroj „přečti stránku“ a rozhoduje, kterým odkazem půjde dál. To se nedá ošetřit prosbou v promptu, takže hranice hlídá kód: smí otevřít jen inzerát, stránky, na které vedl odkaz z už přečtené stránky, a doménu, která nese jméno firmy, nejvýš čtyři stránky a sedm kol. Model rozhoduje, kód drží mantinely.',
+          text: 'Příprava na pohovor je jediný agent, který si sám volí cestu: dostane nástroj „přečti stránku“ a rozhoduje, kterým odkazem půjde dál. To se nedá ošetřit prosbou v promptu, takže hranice hlídá kód: smí otevřít jen inzerát, stránky, na které vedl odkaz z už přečtené stránky, a doménu, která nese jméno firmy, nejvýš čtyři stránky a sedm kol. Model rozhoduje, kód drží mantinely.',
         },
         {
           title: 'Model smí přeskládat, ne vymýšlet',
@@ -658,10 +658,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       heading: 'Kde to je teď',
       body: [
         'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
-        'Board je veřejně čitelný schválně — když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
+        'Board je schválně veřejně čitelný: když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
         'Tři modely dělají tři různé práce: agent z inzerátu (nástroje, pevná cesta), jedno volání na životopis na míru a navigující agent na přípravu k pohovoru. Všechny běží na Workers AI, takže se nikde neválí API klíč a všechny sdílejí jeden denní příděl.',
         'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, kolem půl desáté ráno pošle e-mailem shrnutí. Z inzerátů, které projdou filtry, jich třicet denně dostane skóre.',
-        'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba — svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
+        'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba: svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
       ],
     },
     cta: { text: 'Chceš se podívat?', button: 'Otevřít board', href: 'https://job-tracker-10s.pages.dev' },
@@ -684,10 +684,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     problem: {
       heading: 'What it solves',
       body: [
-        'A job hunt usually lives in a spreadsheet with columns for company, date sent and "did they reply?". That works until you are twenty applications in — then you stop knowing which ones have gone quiet, and it never tells you whether the problem is that you are not applying enough or that nobody wants you after the interview.',
+        'A job hunt usually lives in a spreadsheet with columns for company, date sent and "did they reply?". That works until you are twenty applications in. Then you stop knowing which ones have gone quiet, and it never tells you whether the problem is that you are not applying enough or that nobody wants you after the interview.',
         'Job Tracker is a board instead. A card carries the company, the role, a link to the posting, location, salary range, where you found it and your notes, and moves through wishlist → applied → interview → offer or rejected.',
         'The other half is the stats. A funnel shows how many applications ever got through each stage, a timeline shows how many you started per day, and a separate list watches the ones with no activity for a while so they do not quietly disappear.',
-        'One piece of routine was left: going through the job sites by hand every day. A scout does that now — each morning it reads the IT fields on Jobs.cz on its own, scores what it finds and leaves the postings as cards in an inbox. All I do is say yes or no.',
+        'One piece of routine was left: going through the job sites by hand every day. A scout does that now: each morning it reads the IT fields on Jobs.cz on its own, scores what it finds and leaves the postings as cards in an inbox. All I do is say yes or no.',
       ],
     },
     shotsHeading: 'What it looks like',
@@ -733,7 +733,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Interview prep',
-          text: 'When a card reaches the interview stage, a second agent sets off: it starts at the posting, finds the company\'s site and reads a few of its pages before writing a brief — what the company does, eight to ten likely questions with answers grounded in my real experience, what to revise, and what to ask them. The morning before the interview the scout mails it to me.',
+          text: 'When a card reaches the interview stage, a second agent sets off: it starts at the posting, finds the company\'s site and reads a few of its pages before writing a brief: what the company does, eight to ten likely questions with answers grounded in my real experience, what to revise, and what to ask them. The morning before the interview the scout mails it to me.',
         },
         {
           title: 'A résumé fitted to the posting',
@@ -754,23 +754,23 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Silence is information too',
-          text: 'The "needs follow-up" list takes applications whose last activity is older than a chosen number of days, and deliberately leaves out offers and rejections — there is nothing left to chase there. The threshold is a query parameter, not a hard-coded number.',
+          text: 'The "needs follow-up" list takes applications whose last activity is older than a chosen number of days, and deliberately leaves out offers and rejections, since there is nothing left to chase there. The threshold is a query parameter, not a hard-coded number.',
         },
         {
-          title: 'Public to read, keyed to write — and locked when in doubt',
-          text: 'The case study links to this board, so the address is not a secret and hoping nobody finds it is not protection. Looking is therefore open and only a key changes anything. It also locks the safe way: an instance nobody has given a key serves reads and refuses every write — forgetting the secret leaves it shut rather than open.',
+          title: 'Public to read, keyed to write, locked when in doubt',
+          text: 'The case study links to this board, so the address is not a secret and hoping nobody finds it is not protection. Looking is therefore open and only a key changes anything. It also locks the safe way: an instance nobody has given a key serves reads and refuses every write, so forgetting the secret leaves it shut rather than open.',
         },
         {
           title: 'The model comes last',
-          text: 'The cheap filters run first: a posting with "senior" in the title, or one outside IT, is dropped before a single model call lands on it, and the page is read before the model is called at all. And the model fits the task: a small model (Llama 3.1 8B) gives the fit score at about a twentieth of the cost and ranks postings the same way the big one does, but it invented a salary for three of four postings that state none — so the salary is read by code from Jobs.cz\'s own "Plat" line. The cover letter comes from the larger model, and only when I ask for it on a posting. Every AI feature also has its own daily budget in D1, so none can spend the day for the others.',
+          text: 'The cheap filters run first: a posting with "senior" in the title, or one outside IT, is dropped before a single model call lands on it, and the page is read before the model is called at all. And the model fits the task: a small model (Llama 3.1 8B) gives the fit score at about a twentieth of the cost and ranks postings the same way the big one does, but it invented a salary for three of four postings that state none, so the salary is read by code from Jobs.cz\'s own "Plat" line. The cover letter comes from the larger model, and only when I ask for it on a posting. Every AI feature also has its own daily budget in D1, so none can spend the day for the others.',
         },
         {
           title: 'Nothing reaches the board without me',
-          text: 'The agent only proposes a card. It lands in an inbox where I accept or dismiss it, and only accepting writes it to the board. I was wary of a robot throwing twenty listings a day at me until the board stopped being mine — this way the judgement stays human and the machine does the tedious looking.',
+          text: 'The agent only proposes a card. It lands in an inbox where I accept or dismiss it, and only accepting writes it to the board. I was wary of a robot throwing twenty listings a day at me until the board stopped being mine. This way the judgement stays human and the machine does the tedious looking.',
         },
         {
           title: 'An agent that picks its own path needs fences',
-          text: 'Interview prep is the one agent that navigates — it gets a "read this page" tool and decides which link to follow next. Asking nicely in the prompt does not bound that, so the code does: it may open only the posting, pages linked from a page it has already read, and a domain carrying the company\'s name, at most four pages and seven turns. The model decides; the code holds the edges.',
+          text: 'Interview prep is the one agent that navigates: it gets a "read this page" tool and decides which link to follow next. Asking nicely in the prompt does not bound that, so the code does: it may open only the posting, pages linked from a page it has already read, and a domain carrying the company\'s name, at most four pages and seven turns. The model decides; the code holds the edges.',
         },
         {
           title: 'The model may reorder, not invent',
@@ -786,10 +786,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       heading: 'Where it is now',
       body: [
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
-        'The board is deliberately public to read — someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
+        'The board is deliberately public to read: someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
         'Three models do three different jobs: the posting agent (tools, a fixed path), a single call for the fitted résumé, and the navigating agent for interview prep. All of them run on Workers AI, so there is no API key lying around and they share one daily allowance.',
         'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest e-mail at about half past nine in the morning. Of the postings that pass the filters, thirty a day are scored.',
-        'Open it and you will find empty columns. That is not a fault — my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
+        'Open it and you will find empty columns. That is not a fault: my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
       ],
     },
     cta: { text: 'Want a look?', button: 'Open the board', href: 'https://job-tracker-10s.pages.dev' },
@@ -805,7 +805,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
     back: 'Zpět na portfolio',
     label: 'O projektu',
     title: 'Subscription Tracker.',
-    lead: 'Přehled všeho, co ti měsíčně odchází z účtu. Kolik utrácíš a za co, co se brzy strhne a co dlouho nepoužíváš. Jednou denně se to samo probudí, posune data dalšího stržení a pošle e-mail — appku přitom nemusíš vůbec otevřít.',
+    lead: 'Přehled všeho, co ti měsíčně odchází z účtu. Kolik utrácíš a za co, co se brzy strhne a co dlouho nepoužíváš. Jednou denně se to samo probudí, posune data dalšího stržení a pošle e-mail. Appku přitom nemusíš vůbec otevřít.',
     stats: [
       { value: '07:00', label: 'Denní cron (UTC)' },
       { value: '5', label: 'Kategorií útraty' },
@@ -816,8 +816,8 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       heading: 'Co to řeší',
       body: [
         'Předplatné je zákeřné tím, že si o sebe nikdy neřekne. Strhne se samo, je to pár stovek a po roce si člověk ani nevzpomene, že za Disney+ pořád platí. Součet už ale pár stovek není.',
-        'Každé předplatné je tady karta s částkou, cyklem a datem dalšího stržení. Nad tím se počítají tři věci: kolik měsíčně a ročně doopravdy odchází a za co, co se strhne v nejbližších dnech, a co jsi dlouho neoznačil jako použité — tedy to, co asi nepotřebuješ.',
-        'Když si něco jen na čas zmrazíš, třeba posilovnu přes léto, nemusíš to mazat — jde to pozastavit. Ze součtů to zmizí, historie plateb zůstane a jedním kliknutím se to vrátí zpátky.',
+        'Každé předplatné je tady karta s částkou, cyklem a datem dalšího stržení. Nad tím se počítají tři věci: kolik měsíčně a ročně doopravdy odchází a za co, co se strhne v nejbližších dnech, a co jsi dlouho neoznačil jako použité, tedy to, co asi nepotřebuješ.',
+        'Když si něco jen na čas zmrazíš, třeba posilovnu přes léto, nemusíš to mazat, jde to pozastavit. Ze součtů to zmizí, historie plateb zůstane a jedním kliknutím se to vrátí zpátky.',
       ],
     },
     shotsHeading: 'Jak to vypadá',
@@ -830,12 +830,12 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/subscriptions-overview.webp',
         title: 'Přehled',
-        text: 'Nahoře měsíční a roční součet, pod tím útrata po kategoriích a skutečně zaplacené částky po měsících — ty se nepočítají z dnešního nastavení, ale ze záznamů o stržených platbách. Dole to, co se blíží, a to, co leží ladem.',
+        text: 'Nahoře měsíční a roční součet, pod tím útrata po kategoriích a skutečně zaplacené částky po měsících. Ty se nepočítají z dnešního nastavení, ale ze záznamů o stržených platbách. Dole to, co se blíží, a to, co leží ladem.',
       },
       {
         src: '/img/case/subscriptions-editor.webp',
         title: 'Detail a import ze screenshotu',
-        text: 'Při ručním zadávání máš všechna pole pohromadě. Druhá možnost je nahrát screenshot platby a nechat model předvyplnit název, částku, měnu i cyklus — než se to uloží, projdeš si to po něm.',
+        text: 'Při ručním zadávání máš všechna pole pohromadě. Druhá možnost je nahrát screenshot platby a nechat model předvyplnit název, částku, měnu i cyklus. Než se to uloží, projdeš si to po něm.',
       },
     ],
     build: {
@@ -843,7 +843,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Jeden Worker na všechno',
-          text: 'React 19 s Vite se sestaví do statických souborů a vydává je ten samý Cloudflare Worker, ve kterém běží Hono API. Tenhle typ workeru navíc umí spouštět úlohy podle času, což Pages Functions neumí — a plánovaná úloha je tady půlka nápadu.',
+          text: 'React 19 s Vite se sestaví do statických souborů a vydává je ten samý Cloudflare Worker, ve kterém běží Hono API. Tenhle typ workeru navíc umí spouštět úlohy podle času, což Pages Functions neumí, a plánovaná úloha je tady půlka nápadu.',
         },
         {
           title: 'Denní cron v 7:00 UTC',
@@ -864,7 +864,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Model formulář vyplní, ale neodešle',
-          text: 'Malý model zdarma čte částky a termíny znatelně hůř než ten placený. Místo abych dělal, že je přesnější, než je, jeho výstup jen předvyplní formulář a odeslat ho musí člověk. Když se model splete, stojí to jednu opravu — ne špatné číslo v ročním součtu.',
+          text: 'Malý model zdarma čte částky a termíny znatelně hůř než ten placený. Místo abych dělal, že je přesnější, než je, jeho výstup jen předvyplní formulář a odeslat ho musí člověk. Když se model splete, stojí to jednu opravu, ne špatné číslo v ročním součtu.',
         },
         {
           title: 'Pauza místo mazání',
@@ -872,15 +872,15 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Barvy kategorií nejsou jediné vodítko',
-          text: 'Barvy jsou vybrané tak, aby se odstíny nepletly ani lidem, kteří je rozeznávají jinak. A hlavně: u každé kategorie je vždycky i její název. Kdo barvy rozliší, zorientuje se rychleji — kdo ne, nepřijde o nic.',
+          text: 'Barvy jsou vybrané tak, aby se odstíny nepletly ani lidem, kteří je rozeznávají jinak. A hlavně: u každé kategorie je vždycky i její název. Kdo barvy rozliší, zorientuje se rychleji, a kdo ne, nepřijde o nic.',
         },
         {
           title: 'Sečíst dvě měny dohromady nejde',
-          text: 'Dvacet dolarů a dvě stě korun není dvě stě dvacet čehokoli. Součty proto před sečtením převádějí všechno na koruny přes Frankfurter, což je veřejné API nad kurzy ECB a nechce účet ani klíč. Když je nedostupné, spadne to zpět na původní částku — radši číslo o kousek vedle než rozbitá stránka s přehledem.',
+          text: 'Dvacet dolarů a dvě stě korun není dvě stě dvacet čehokoli. Součty proto před sečtením převádějí všechno na koruny přes Frankfurter, což je veřejné API nad kurzy ECB a nechce účet ani klíč. Když je nedostupné, spadne to zpět na původní částku, radši číslo o kousek vedle než rozbitá stránka s přehledem.',
         },
         {
           title: 'Zámek místo vlastního přihlašování',
-          text: 'Je tam napsané, kolik za co utrácím, takže to nemůže být veřejné. Místo psaní vlastního přihlašování stojí před celou appkou Cloudflare Access — bez přihlášení se dovnitř nedostane nikdo, ani na API.',
+          text: 'Je tam napsané, kolik za co utrácím, takže to nemůže být veřejné. Místo psaní vlastního přihlašování stojí před celou appkou Cloudflare Access: bez přihlášení se dovnitř nedostane nikdo, ani na API.',
         },
       ],
     },
@@ -888,7 +888,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       heading: 'Kde to je teď',
       body: [
         'Běží to jako Worker na Cloudflare a je hotové od databáze přes cron a e-maily až po grafy. Snímky výše jsou z ukázkových dat.',
-        'Živá appka je schválně za Cloudflare Access, takže si ji nemůžeš otevřít — jsou v ní údaje o mých vlastních platbách. Kód je ale celý veřejný na GitHubu.',
+        'Živá appka je schválně za Cloudflare Access, takže si ji nemůžeš otevřít, jsou v ní údaje o mých vlastních platbách o mých vlastních platbách. Kód je ale celý veřejný na GitHubu.',
       ],
     },
     cta: { text: 'Chceš se podívat na kód?', button: 'Otevřít na GitHubu', href: 'https://github.com/ErikKarasek/subscription-tracker' },
@@ -901,7 +901,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
     back: 'Back to portfolio',
     label: 'About the project',
     title: 'Subscription Tracker.',
-    lead: 'An overview of everything leaving your account each month. What you spend and on what, what renews soon, and what you have not touched in a while. Once a day it wakes up on its own, rolls the renewals forward and sends an email — you never have to open it.',
+    lead: 'An overview of everything leaving your account each month. What you spend and on what, what renews soon, and what you have not touched in a while. Once a day it wakes up on its own, rolls the renewals forward and sends an email, and you never have to open it.',
     stats: [
       { value: '07:00', label: 'Daily cron (UTC)' },
       { value: '5', label: 'Spending categories' },
@@ -912,7 +912,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       heading: 'What it solves',
       body: [
         'Subscriptions are sneaky because they never ask. The money goes on its own, each one is small, and a year later you cannot remember you are still paying for Disney+. The total is not small, though.',
-        'This keeps every subscription as a card with its amount, cycle and next renewal date, and works out three things on top: how much really leaves each month and year and in which categories, what renews in the next few days, and what you have not marked as used in a long time — the candidates for cancelling.',
+        'This keeps every subscription as a card with its amount, cycle and next renewal date, and works out three things on top: how much really leaves each month and year and in which categories, what renews in the next few days, and what you have not marked as used in a long time, the candidates for cancelling.',
         'When something is only frozen, a gym over the summer say, it can be paused instead of deleted. It drops out of the totals but keeps its history, and comes back with one click.',
       ],
     },
@@ -926,12 +926,12 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/subscriptions-overview.webp',
         title: 'Overview',
-        text: 'Monthly and yearly totals on top, then spend by category and what was actually paid per month — drawn from the renewal log rather than from today\'s settings, so changing a price does not rewrite the past. Below that, what is coming and what is lying idle.',
+        text: 'Monthly and yearly totals on top, then spend by category and what was actually paid per month, drawn from the renewal log rather than from today\'s settings, so changing a price does not rewrite the past. Below that, what is coming and what is lying idle.',
       },
       {
         src: '/img/case/subscriptions-editor.webp',
         title: 'Detail and screenshot import',
-        text: 'Entering by hand keeps every field in one place. Next to it, a payment screenshot can be uploaded and a model asked to pre-fill the name, amount, currency and cycle — on the understanding that a human then checks it.',
+        text: 'Entering by hand keeps every field in one place. Next to it, a payment screenshot can be uploaded and a model asked to pre-fill the name, amount, currency and cycle, on the understanding that a human then checks it.',
       },
     ],
     build: {
@@ -939,7 +939,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'One Worker for everything',
-          text: 'React 19 with Vite builds to static files, served by the same Cloudflare Worker that runs the Hono API. A Worker with static assets can also carry cron triggers, which plain Pages Functions cannot — and the cron is half the idea here.',
+          text: 'React 19 with Vite builds to static files, served by the same Cloudflare Worker that runs the Hono API. A Worker with static assets can also carry cron triggers, which plain Pages Functions cannot, and the cron is half the idea here.',
         },
         {
           title: 'A daily cron at 07:00 UTC',
@@ -972,11 +972,11 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Two currencies do not add up',
-          text: 'Twenty dollars and two hundred crowns is not two hundred and twenty of anything. The totals convert everything to crowns before summing, through Frankfurter — a public API over ECB rates that wants neither an account nor a key. When it is unreachable the amount falls back to its raw value: a number slightly off beats an overview page that will not load.',
+          text: 'Twenty dollars and two hundred crowns is not two hundred and twenty of anything. The totals convert everything to crowns before summing, through Frankfurter, a public API over ECB rates that wants neither an account nor a key. When it is unreachable the amount falls back to its raw value: a number slightly off beats an overview page that will not load.',
         },
         {
           title: 'A lock instead of my own login',
-          text: 'This is data about what I spend, so it cannot be public. Instead of writing authentication, Cloudflare Access sits in front of the whole app — nobody gets in without signing in, the API included.',
+          text: 'This is data about what I spend, so it cannot be public. Instead of writing authentication, Cloudflare Access sits in front of the whole app: nobody gets in without signing in, the API included.',
         },
       ],
     },
@@ -984,7 +984,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       heading: 'Where it is now',
       body: [
         'It runs as a Worker on Cloudflare and is finished from the database through the cron and the emails to the charts. The screenshots above use sample data.',
-        'The live app is deliberately behind Cloudflare Access, so you cannot open it — it holds my own payment details. The code, though, is entirely public on GitHub.',
+        'The live app is deliberately behind Cloudflare Access, so you cannot open it: it holds my own payment details. The code, though, is entirely public on GitHub.',
       ],
     },
     cta: { text: 'Want to look at the code?', button: 'Open on GitHub', href: 'https://github.com/ErikKarasek/subscription-tracker' },

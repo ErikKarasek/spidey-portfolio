@@ -114,8 +114,8 @@ const skills = (l: Lang): Skill[] => [
 export const content: Record<Lang, Content> = {
   cs: {
     meta: {
-      title: 'Erik Karásek — full-stack vývojář',
-      description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web — pět vlastních projektů v Reactu, TypeScriptu a na Cloudflare, u každého případovka.',
+      title: 'Erik Karásek | full-stack vývojář',
+      description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web. Šest vlastních projektů v Reactu, TypeScriptu a na Cloudflare, u každého i popis, jak vznikl.',
     },
     nav: { about: 'O mně', experience: 'Zkušenosti', skills: 'Dovednosti', projects: 'Projekty', contact: 'Kontakt', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Vypnout zvuk', soundOff: 'Zapnout zvuk' },
     loader: 'Nasazuju masku',
@@ -125,7 +125,7 @@ export const content: Record<Lang, Content> = {
       label: 'Za maskou',
       paragraphs: [
         'Ahoj, jsem Erik. Dělám appky pro počítač, mobil i web a nejvíc mě baví, když si můžu udělat všechno sám, od logiky až po to, jak to vypadá. Můj největší projekt je Nexus Grind, tracker produktivity, ve kterém ti za splněné úkoly roste sakura.',
-        'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Poslední dobou mě nejvíc baví dávat do svých appek AI tam, kde ušetří rutinu — na tomhle webu ti vpravo dole odpoví asistent, který zná moje projekty. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
+        'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Poslední dobou mě nejvíc baví dávat do svých appek AI tam, kde ušetří rutinu. Na tomhle webu ti vpravo dole odpoví asistent, který zná moje projekty. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
       ],
       stack: 'Co používám nejvíc',
       source: 'Kód tohoto webu na GitHubu',
@@ -271,7 +271,7 @@ export const content: Record<Lang, Content> = {
       thinking: 'Přemýšlím…',
       failed: 'Teď neodpovím. Zkus to později, nebo Erikovi napiš přes kontaktní formulář.',
       offline: 'AI teď mlčí (nejspíš došel denní limit), tak ti odpovím rovnou z webu:',
-      offlineNone: 'AI teď mlčí, nejspíš došel denní limit — zkus to zítra. Mezitím tě nasměruju:',
+      offlineNone: 'AI teď mlčí, nejspíš došel denní limit, zkus to zítra. Mezitím tě nasměruju:',
       linkProjects: 'Projekty',
       linkCv: 'Životopis (PDF)',
       linkContact: 'Napsat Erikovi',
@@ -280,8 +280,8 @@ export const content: Record<Lang, Content> = {
   },
   en: {
     meta: {
-      title: 'Erik Karásek — full-stack developer',
-      description: "Erik Karásek's portfolio. Desktop, mobile and web apps — five projects of my own in React, TypeScript and on Cloudflare, each with a case study.",
+      title: 'Erik Karásek | full-stack developer',
+      description: "Erik Karásek's portfolio. Desktop, mobile and web apps. Six projects of my own in React, TypeScript and on Cloudflare, each with a write-up of how it was built.",
     },
     nav: { about: 'About', experience: 'Experience', skills: 'Skills', projects: 'Projects', contact: 'Contact', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Mute sound', soundOff: 'Turn sound on' },
     loader: 'Suiting up',
@@ -291,7 +291,7 @@ export const content: Record<Lang, Content> = {
       label: 'Behind the mask',
       paragraphs: [
         "Hey, I'm Erik. I build apps for desktop, mobile and the web, and I like doing the whole thing myself, from the logic to how it looks. My biggest project is Nexus Grind, a productivity tracker where a sakura tree grows as you finish your tasks.",
-        'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. Lately what I enjoy most is putting AI into my apps where it takes routine work off my hands — the assistant in the bottom right of this site knows my projects and will answer your questions. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
+        'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. Lately what I enjoy most is putting AI into my apps where it takes routine work off my hands. The assistant in the bottom right of this site knows my projects and will answer your questions. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
       ],
       stack: 'What I use most',
       source: "This site's code on GitHub",
@@ -437,7 +437,7 @@ export const content: Record<Lang, Content> = {
       thinking: 'Thinking…',
       failed: "I can't answer right now. Try again later, or message Erik through the contact form.",
       offline: 'The AI is quiet right now (most likely the daily limit), so here it is straight from the site:',
-      offlineNone: 'The AI is quiet right now, most likely the daily limit — try tomorrow. In the meantime:',
+      offlineNone: 'The AI is quiet right now, most likely the daily limit, try tomorrow. In the meantime:',
       linkProjects: 'Projects',
       linkCv: 'Resume (PDF)',
       linkContact: 'Message Erik',
