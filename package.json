@@ -10,7 +10,6 @@
     "deploy": "npm run build && npx --yes wrangler@4 pages deploy --branch main --commit-dirty=true",
     "cv": "node scripts/build-cv.mjs",
     "cv:docx": "node scripts/build-cv-docx.mjs",
-    "cv:ats": "node scripts/build-cv-ats.mjs",
     "banner": "node scripts/build-banner.mjs"
   },
   "dependencies": {
