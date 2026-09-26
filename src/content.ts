@@ -108,6 +108,7 @@ const skills = (l: Lang): Skill[] => [
   { name: l === 'cs' ? 'Unit testy' : 'Unit testing', category: l === 'cs' ? 'Kvalita' : 'Quality', level: PRO[l] },
   { name: l === 'cs' ? 'GSAP animace' : 'GSAP animations', category: 'Frontend', level: PRO[l] },
   { name: 'Git & GitHub', category: l === 'cs' ? 'Nástroje' : 'Tooling', level: ADV[l] },
+  { name: l === 'cs' ? 'Testy v CI (Playwright, Newman)' : 'Tests in CI (Playwright, Newman)', category: l === 'cs' ? 'Kvalita' : 'Quality', level: PRO[l] },
   { name: 'UI/UX design', category: 'Design', level: PRO[l] },
 ]
 
@@ -209,7 +210,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Job Tracker',
           description:
-            'Kanban na hledání práce s vlastními AI agenty. Scout každé ráno projde IT nabídky na Jobs.cz a nechá z nich udělat ohodnocené karty ke schválení, ke každé umí složit životopis na míru inzerátu a před pohovorem druhý agent projde web firmy a napíše přípravu. Statistiky přitom počítají z historie přechodů, ne z aktuálního sloupce. Hono API a databáze běží na Cloudflare edge.',
+            'Kanban na hledání práce s vlastními AI agenty. Scout každé ráno projde nabídky na Jobs.cz i otevřená data Úřadu práce, levný model je předtřídí a přísnější přeměří ty nadějné podle toho, co mi v požadavcích chybí. Ke každé kartě umí složit životopis na míru inzerátu a před pohovorem projde web firmy a napíše přípravu. Hono API a databáze běží na Cloudflare edge, API i board hlídají testy v CI.',
           tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
@@ -375,7 +376,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Job Tracker',
           description:
-            'A kanban board for a job hunt, with AI agents of its own. Every morning a scout reads the IT listings on Jobs.cz and has them turned into scored cards waiting for approval, it can fit the résumé to any posting, and before an interview a second agent reads the company\'s site and writes a prep brief. The stats count from the history of stage changes, not the current column. The Hono API and the database run on the Cloudflare edge.',
+            'A kanban board for a job hunt, with AI agents of its own. Every morning a scout reads Jobs.cz and the Labour Office\'s open data, a cheap model sorts what it finds and a stricter one re-measures the promising ones against the requirements I do not meet. It can fit the résumé to any posting, and before an interview it reads the company\'s site and writes a prep brief. The Hono API and the database run on the Cloudflare edge, with tests in CI over both the API and the board.',
           tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',

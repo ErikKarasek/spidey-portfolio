@@ -550,7 +550,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     stats: [
       { value: '5', label: 'Fází náboru' },
       { value: '30', label: 'Ohodnocených inzerátů denně' },
-      { value: '3', label: 'AI agenti v provozu' },
+      { value: '4', label: 'AI agenti v provozu' },
       { value: 'D1', label: 'SQLite na edge' },
     ],
     problem: {
@@ -598,6 +598,18 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         {
           title: 'Agent, ne jedna otázka do modelu',
           text: 'Z inzerátu dělá kartu model s nástroji: umí si stáhnout stránku inzerátu, prohledat board na duplicitní přihlášku u stejné firmy a nakonec odevzdat hotový návrh karty. Běhá v cyklu, dokud návrh neodevzdá, nejvýš šest kol. Vedle údajů z inzerátu připíše i skóre, jak sedí na můj profil, a krátký průvodní dopis v jazyce inzerátu.',
+        },
+        {
+          title: 'Dvě kola hodnocení, levné a přísné',
+          text: 'Všechno projde nejdřív malý model zdarma, který nabídky jen seřadí. Ten dal 92 bodů juniorní QA pozici, která chtěla rok praxe a testování API v Postmanu, což nemám. Ptát se ho, co mi chybí, nepomohlo: jmenoval věci, které umím, bral „výhodou“ jako požadavek a při každém běhu si vymyslel jiný počet let. Nadějné nabídky proto přeměří větší model a strhává body jen za konkrétní chybějící požadavky.',
+        },
+        {
+          title: 'Nejen Jobs.cz',
+          text: 'Druhý zdroj jsou otevřená data Úřadu práce: denní přírůstek zhruba 2 400 volných míst, z nich asi 75 IT podle oborové klasifikace, filtrované na Královéhradecký a Pardubický kraj nebo na práci z domova. Jsou to strukturovaná data, ne stránka ke scrapování, a sedí v nich zaměstnavatelé, kteří na Jobs.cz nikdy nic nedají.',
+        },
+        {
+          title: 'Testy, které to drží pohromadě',
+          text: 'Na každý push běží v CI dvě sady proti čerstvě sestavené kopii s vlastní databází: Postman kolekce přes API (veřejné čtení, přístup za klíčem, celý život přihlášky, neplatné vstupy, funnel) a Playwright přes board (odemčení klíčem, přesun mezi fázemi i po reloadu, editace, mazání, statistiky). Ani jedna nesáhne na model, takže testování nestojí nic z denního přídělu.',
         },
         {
           title: 'Scout jako plán práce na den',
@@ -660,6 +672,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
         'Board je schválně veřejně čitelný: když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
         'Tři modely dělají tři různé práce: agent z inzerátu (nástroje, pevná cesta), jedno volání na životopis na míru a navigující agent na přípravu k pohovoru. Všechny běží na Workers AI, takže se nikde neválí API klíč a všechny sdílejí jeden denní příděl.',
+        'Na odpovědi z mailu navazuje druhý nástroj: každou hodinu čte schránku, pozná pozvánku na pohovor nebo zamítnutí a pošle mi ji na Telegram s návrhem, kam kartu posunout. Tlačítko pod zprávou to provede, sám o sobě nic nemění.',
         'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, kolem půl desáté ráno pošle e-mailem shrnutí. Z inzerátů, které projdou filtry, jich třicet denně dostane skóre.',
         'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba: svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
       ],
@@ -678,7 +691,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     stats: [
       { value: '5', label: 'Hiring stages' },
       { value: '30', label: 'Postings scored a day' },
-      { value: '3', label: 'AI agents running' },
+      { value: '4', label: 'AI agents running' },
       { value: 'D1', label: 'SQLite on the edge' },
     ],
     problem: {
@@ -726,6 +739,18 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         {
           title: 'An agent, not a single prompt',
           text: 'A posting becomes a card through a model with tools: it can fetch the posting page, search the board for an existing application at the same company, and finally submit a finished draft card. It loops until it submits, six turns at most. Alongside the facts from the posting it adds a score for how well the role fits my profile and a short cover letter in the language of the ad.',
+        },
+        {
+          title: 'Two rounds of scoring, cheap and strict',
+          text: 'Everything is ranked first by a small free model. That one gave 92 to a junior QA role asking for a year of experience and API testing in Postman, neither of which I have. Asking it what was missing did not help: it named things I can do, counted "an advantage" as a requirement, and invented a different number of years each run. Promising postings are therefore re-measured by a larger model that only deducts for concrete missing requirements.',
+        },
+        {
+          title: 'Not only Jobs.cz',
+          text: 'The second source is the Labour Office\'s open data: a daily increment of some 2 400 vacancies, about 75 of them IT by occupational classification, filtered to two regions or to work from home. It is structured data rather than a page to scrape, and it reaches employers who never post on a job board.',
+        },
+        {
+          title: 'The tests that hold it together',
+          text: 'Every push runs two suites in CI against a freshly built copy with a database of its own: a Postman collection over the API (public reads, keyed access, an application\'s whole lifecycle, invalid input, the funnel) and Playwright over the board (unlocking with the key, moving a card and surviving a reload, editing, deleting, the stats). Neither touches a model, so testing costs nothing from the daily allowance.',
         },
         {
           title: 'The scout as a plan for the day',
@@ -788,6 +813,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
         'The board is deliberately public to read: someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
         'Three models do three different jobs: the posting agent (tools, a fixed path), a single call for the fitted résumé, and the navigating agent for interview prep. All of them run on Workers AI, so there is no API key lying around and they share one daily allowance.',
+        'Replies by e-mail are picked up by a companion tool: every hour it reads the inbox, recognises an interview invitation or a rejection, and sends it to Telegram with a suggestion for where the card should move. A button under the message carries it out; on its own it changes nothing.',
         'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest e-mail at about half past nine in the morning. Of the postings that pass the filters, thirty a day are scored.',
         'Open it and you will find empty columns. That is not a fault: my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
       ],
