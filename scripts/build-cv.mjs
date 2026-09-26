@@ -86,19 +86,19 @@ function html(d) {
   .contact { margin-top: 2.2mm; font-size: 8.6pt; color: #4b5563; font-weight: 600 }
   a { color: inherit; text-decoration: none }
   .contact i { font-style: normal; color: #a31515; margin: 0 1.6mm }
-  h2 { display: flex; align-items: center; gap: 2mm; font-size: 8.8pt; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #a31515; margin: 3.4mm 0 1.6mm }
+  h2 { display: flex; align-items: center; gap: 2mm; font-size: 8.8pt; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #a31515; margin: 3.0mm 0 1.4mm }
   h2 span { width: 3mm; height: 2.2mm; background: #a31515; border-radius: .4mm }
   main > section:first-child h2 { margin-top: 3.4mm }
   .profile { color: #374151 }
-  .item { margin-bottom: 2.3mm; break-inside: avoid }
+  .item { margin-bottom: 2.0mm; break-inside: avoid }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm }
   .role { font-weight: 900; font-size: 10pt; text-transform: uppercase; letter-spacing: -.01em; color: #111827 }
   .when { font-size: 8pt; font-weight: 700; color: #a31515; white-space: nowrap }
   .where { font-size: 8.4pt; color: #6b7280; font-weight: 600; margin: .3mm 0 1.2mm }
-  ul { padding-left: 3.4mm } li { margin: .35mm 0 } li::marker { color: #a31515 }
+  ul { padding-left: 3.4mm } li { margin: .25mm 0 } li::marker { color: #a31515 }
   .chips { display: flex; flex-wrap: wrap; gap: 1.4mm }
   .chips b { font-size: 7.8pt; font-weight: 700; color: #a31515; background: #fff; border: 1px solid rgba(163,21,21,.3); border-radius: 1.6mm; padding: .7mm 2mm }
-  .pair { margin-bottom: .9mm; break-inside: avoid; color: #4b5563; font-size: 8.8pt }
+  .pair { margin-bottom: .75mm; break-inside: avoid; color: #4b5563; font-size: 8.8pt }
   .pair b { color: #111827; font-weight: 800 }
   .edu { margin-bottom: 1.2mm; break-inside: avoid } .edu b { font-size: 9pt; color: #111827 } .edu span { color: #6b7280; font-size: 8.4pt }
 </style></head><body><div class="page">
