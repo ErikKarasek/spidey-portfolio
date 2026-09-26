@@ -21,15 +21,21 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 // two more copies of the text: a résumé parser read "ERIKKARÁSEK. ERIKKARÁSEK. ERIKKARÁSEK.".
 // Now the shadow is drawn once as an image, laid under the name, which is text exactly once.
 // The same image is published for the fitted CV in the Job Tracker, which draws this header too.
-const NAME_CSS = 'display: inline-block; padding: 0 3pt 3pt 0; font-size: 27pt; line-height: .95; font-weight: 900; font-style: italic; text-transform: uppercase; letter-spacing: -.03em'
+// No letter-spacing on the name: with the tight -.03em tracking it used to have, Chrome leaves the
+// space out of the PDF (even with the tracking on each word only, since it trails the last letter),
+// and a parser read "ERIKKARÁSEK.". The shadow image is rendered from this same CSS, so the two
+// still line up.
+const NAME_CSS = "display: inline-block; padding: 0 3pt 3pt 0; font-family: SpaceFromArial, Outfit, sans-serif; font-size: 27pt; line-height: .95; font-weight: 900; font-style: italic; text-transform: uppercase"
+const nameHtml = (name) => `${esc(name)}.`
+const SPACE_FONT = "@font-face { font-family: SpaceFromArial; src: local('Arial'), local('Helvetica'); unicode-range: U+0020 }"
 const FONT_LINK = '<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=block" rel="stylesheet">'
 
 async function renderNameShadow(browser, name) {
   const page = await browser.newPage()
   await page.setViewport({ width: 1200, height: 300, deviceScaleFactor: 4 })
   await page.setContent(
-    `<!doctype html><html><head><meta charset="utf-8">${FONT_LINK}</head><body style="margin:0">` +
-      `<h1 style="${NAME_CSS}; margin: 0; font-family: Outfit, sans-serif; color: transparent; text-shadow: 1.2pt 1.2pt 0 #ef4444, 2.2pt 2.2pt 0 #a31515">${esc(name)}.</h1></body></html>`,
+    `<!doctype html><html><head><meta charset="utf-8">${FONT_LINK}<style>${SPACE_FONT}</style></head><body style="margin:0">` +
+      `<h1 style="${NAME_CSS}; margin: 0; color: transparent; text-shadow: 1.2pt 1.2pt 0 #ef4444, 2.2pt 2.2pt 0 #a31515">${nameHtml(name)}</h1></body></html>`,
     { waitUntil: 'networkidle0' },
   )
   await page.evaluate(() => document.fonts.ready)
@@ -62,7 +68,13 @@ function html(d) {
 <style>
   @page { size: A4; margin: 12mm 13mm 11mm }
   * { box-sizing: border-box; margin: 0; padding: 0 }
-  body { font: 500 9.1pt/1.32 Outfit, sans-serif; color: #1f2937; -webkit-print-color-adjust: exact; print-color-adjust: exact }
+  /* Chrome writes Outfit's text to the PDF glyph by glyph with no space glyph between words, so a
+     parser has to guess the spaces from the gaps, and Outfit's gap (0.20em) is narrow enough that
+     word-by-word extraction (pdftotext -raw) read "Juniorvývojář,kterýstaví…". Arial's space is
+     written as a real space, so the space alone comes from Arial. It is 0.078em wider; narrowing it
+     back with word-spacing or size-adjust makes Chrome drop the glyph again, so it stays. */
+  ${SPACE_FONT}
+  body { font: 500 9.1pt/1.32 SpaceFromArial, Outfit, sans-serif; color: #1f2937; -webkit-print-color-adjust: exact; print-color-adjust: exact }
   .page { padding: 1mm 1mm 0 }
   header { display: flex; align-items: center; gap: 8mm; padding-bottom: 4mm; border-bottom: 2px solid #a31515; }
   .photo { width: 30mm; height: 30mm; border-radius: 50%; border: 1.6mm solid #a31515; padding: 1mm; background: #fff; flex: none; box-shadow: 0 0 6mm rgba(163,21,21,.25) }
@@ -93,7 +105,7 @@ function html(d) {
   <header>
     <div class="photo"><img src="${photo}"></div>
     <div>
-      <h1>${esc(d.name)}.</h1>
+      <h1>${nameHtml(d.name)}</h1>
       <p class="title">${esc(d.title)}</p>
       <p class="contact">${contact}</p>
     </div>
