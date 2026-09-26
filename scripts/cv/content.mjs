@@ -133,9 +133,9 @@ export const cv = {
         points: [
           'Kanban nástroj na sledování přihlášek do práce: karta na pozici, fáze wishlist → applied → interview → offer/rejected.',
           'Statistiky nad historií přechodů: funnel podle fází, denní timeline a hlídání přihlášek bez aktivity.',
-          'Tři AI agenti na Cloudflare Workers AI (tool calling): z odkazu na inzerát vznikne karta se skóre shody a průvodním dopisem, životopis přeskládaný na míru roli (kontrolovaný proti skutečnému, aby nic nepřidal) a před pohovorem brief o firmě s pravděpodobnými otázkami.',
-          'Scout na cron triggeru: ráno sám projde IT obory na Jobs.cz, levné filtry uberou seniorní a neIT nabídky ještě před voláním modelu, skóre dává malý model a mzdu čte kód (malý model si ji vymýšlel), karty čekají na schválení ve schránce a ráno chodí souhrn e-mailem.',
-          'React 19 + Vite + Tailwind v4, REST API v Hono jako Cloudflare Pages Function, data v Cloudflare D1; TypeScript se sdílenými typy, jeden deploy pro web i API.',
+          'Tři AI agenti na Cloudflare Workers AI (tool calling): z odkazu na inzerát vznikne karta se skóre shody a průvodním dopisem, životopis přeskládaný na míru roli (kontrolovaný proti skutečnému) a před pohovorem brief o firmě s pravděpodobnými otázkami.',
+          'Scout na cron triggeru: ráno sám projde IT obory na Jobs.cz i otevřená data Úřadu práce, levné filtry uberou seniorní a neIT nabídky před voláním modelu, hodnotí se ve dvou kolech (malý model seřadí, větší přeměří nadějné podle chybějících požadavků) a karty čekají na schválení ve schránce.',
+          'React 19 + Vite + Tailwind v4, REST API v Hono jako Cloudflare Pages Function, data v Cloudflare D1, TypeScript se sdílenými typy; na každý push běží v CI testy API (Postman/Newman) i boardu (Playwright) proti čerstvě sestavené kopii s vlastní databází.',
         ],
       },
       {
@@ -287,9 +287,9 @@ export const cv = {
         points: [
           'Kanban tool for tracking job applications: a card per role, moving wishlist → applied → interview → offer/rejected.',
           'Stats built on the history of stage changes: a funnel by stage, a per-day timeline and a watch on applications with no activity.',
-          'Three AI agents on Cloudflare Workers AI (tool calling): a posting link becomes a card with a fit score and a cover letter, a résumé reordered for that role (checked against the real one so nothing is invented), and a pre-interview brief on the company with likely questions.',
-          'A scout on a cron trigger: every morning it reads the IT fields on Jobs.cz, cheap filters drop senior and non-IT postings before any model call, a small model scores the fit while code reads the salary (the model invented it), cards wait in an inbox for approval, and a digest e-mail goes out in the morning.',
-          'React 19 + Vite + Tailwind v4, REST API in Hono as a Cloudflare Pages Function, data in Cloudflare D1; TypeScript with shared types, one deploy for the site and the API.',
+          'Three AI agents on Cloudflare Workers AI (tool calling): a posting link becomes a card with a fit score and a cover letter, a résumé reordered for that role (checked against the real one), and a pre-interview brief on the company with likely questions.',
+          'A scout on a cron trigger: every morning it reads the IT fields on Jobs.cz and the Labour Office\'s open data, cheap filters drop senior and non-IT postings, scoring runs in two rounds (a small model ranks, a larger one re-measures the promising ones against missing requirements), and cards wait in an inbox for approval.',
+          'React 19 + Vite + Tailwind v4, REST API in Hono as a Cloudflare Pages Function, data in Cloudflare D1, TypeScript with shared types; every push runs API tests (Postman/Newman) and board tests (Playwright) in CI against a freshly built copy with its own database.',
         ],
       },
       {
