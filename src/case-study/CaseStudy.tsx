@@ -44,7 +44,7 @@ export function CaseStudy({ slug }: { slug: StudySlug }) {
       <main className="mx-auto max-w-5xl px-6 pb-24">
         <section className="border-b border-line py-14 md:py-20">
           <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent md:text-xs">{c.label}</span>
-          <h1 className="mt-2 text-4xl font-black italic uppercase tracking-tighter text-ink [text-shadow:3px_3px_0_var(--color-accent-soft)] md:text-6xl">{c.title}</h1>
+          <h1 className="mt-2 text-[clamp(1.75rem,10vw,2.25rem)] font-black italic uppercase tracking-tighter text-ink [text-shadow:3px_3px_0_var(--color-accent-soft)] md:text-6xl">{c.title}</h1>
           <p className="mt-5 max-w-2xl text-sm font-medium leading-relaxed text-ink-3 md:text-base">{c.lead}</p>
           <dl className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {c.stats.map((s) => (
