@@ -10,6 +10,8 @@ export type CaseStudyContent = {
   lead: string
   stats: { value: string; label: string }[]
   problem: { heading: string; body: string[] }
+  /** Optional numbered flow under the problem, for a project without screens of its own. */
+  flow?: { heading: string; steps: { title: string; text: string }[] }
   shotsHeading: string
   shots: { src: string; title: string; text: string }[]
   build: { heading: string; items: { title: string; text: string }[] }
@@ -673,7 +675,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'Board je schválně veřejně čitelný: když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
         'Tři modely dělají tři různé práce: agent z inzerátu (nástroje, pevná cesta), jedno volání na životopis na míru a navigující agent na přípravu k pohovoru. Všechny běží na Workers AI, takže se nikde neválí API klíč a všechny sdílejí jeden denní příděl.',
         'Na odpovědi z mailu navazuje druhý nástroj: každou hodinu čte schránku, pozná pozvánku na pohovor nebo zamítnutí a pošle mi ji na Telegram s návrhem, kam kartu posunout. Tlačítko pod zprávou to provede, sám o sobě nic nemění.',
-        'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, kolem půl desáté ráno pošle e-mailem shrnutí. Z inzerátů, které projdou filtry, jich třicet denně dostane skóre.',
+        'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, shrnutí mi v deset ráno přijde do Telegramu. Z inzerátů, které projdou filtry, jich třicet denně dostane skóre.',
         'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba: svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
       ],
     },
@@ -814,7 +816,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'The board is deliberately public to read: someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
         'Three models do three different jobs: the posting agent (tools, a fixed path), a single call for the fitted résumé, and the navigating agent for interview prep. All of them run on Workers AI, so there is no API key lying around and they share one daily allowance.',
         'Replies by e-mail are picked up by a companion tool: every hour it reads the inbox, recognises an interview invitation or a rejection, and sends it to Telegram with a suggestion for where the card should move. A button under the message carries it out; on its own it changes nothing.',
-        'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest e-mail at about half past nine in the morning. Of the postings that pass the filters, thirty a day are scored.',
+        'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest in Telegram at ten in the morning. Of the postings that pass the filters, thirty a day are scored.',
         'Open it and you will find empty columns. That is not a fault: my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
       ],
     },
@@ -1018,12 +1020,242 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
 }
 
 /** Every case study, keyed by the folder it is published under (/nexus-grind/, /lol-stats/, …). */
+const automation: Record<Lang, CaseStudyContent> = {
+  cs: {
+    meta: {
+      title: 'Automatizace | Erik Karásek',
+      description: 'Sada malých agentů kolem hledání práce a vlastních projektů: deník z commitů, noční code review, třídění pošty od firem, ranní přehled a hlídání webů. Claude, Telegram, Cloudflare a člověk, který schvaluje každou změnu.',
+    },
+    back: 'Zpět na portfolio',
+    label: 'O projektu',
+    title: 'Automatizace.',
+    lead: 'Za jeden víkend jsem kolem svého hledání práce a svých projektů postavil sadu malých agentů. V noci napíšou deník z toho, co jsem udělal, a projdou nový kód. Přes den čtou poštu od firem a ráno pošlou přehled. Všechno končí v Telegramu jako zpráva s tlačítky a nic se nezmění, dokud tlačítko nezmáčknu.',
+    stats: [
+      { value: '7', label: 'Úloh na plánu' },
+      { value: '2', label: 'Telegram boti' },
+      { value: '0 Kč', label: 'Provoz navíc' },
+      { value: '1×', label: 'Probuzení Macu za noc' },
+    ],
+    problem: {
+      heading: 'Co to řeší',
+      body: [
+        'Kolem hledání práce a vlastních projektů se nasbírá spousta drobné rutiny: projít poštu, jestli neodepsala firma, přepsat to na board, podívat se, co našel scout, vzpomenout si, co jsem včera vlastně udělal, a ověřit, že mi mezitím nespadl web. Nic z toho není těžké, jen to každý den ukousne čas a pozornost.',
+        'Chtěl jsem, aby to dělaly programy a mně chodil jen výsledek, na jedno místo a do telefonu. Zároveň jsem nechtěl automat, který mi sám přehazuje karty, maže maily nebo commituje opravy. Každá úloha proto čte, shrne a navrhne, a rozhodnutí zůstává na mně.',
+        'Po cestě jsem se naučil ještě jednu věc: nejhorší chyba automatizace je ta, o které nevíš. Skript, který „úspěšně“ doběhne a nic neudělá, vypadá stejně jako den, kdy se nic nestalo. Celá sada má proto i hlídače, který se ozve, když se některá úloha neozve.',
+      ],
+    },
+    flow: {
+      heading: 'Jak to teče',
+      steps: [
+        { title: 'Zdroje', text: 'Commity ze všech repozitářů, chaty s Claude Code, schránka přes IMAP, Jobs.cz a Úřad práce přes scouta, moje weby.' },
+        { title: 'Zpracování', text: 'Node skripty na Macu spouštěné přes launchd a Claude v režimu bez okna s omezenými nástroji. Na Cloudflare běží scout a hlídač.' },
+        { title: 'Telegram', text: 'Každý výsledek je zpráva: denní zápis, nálezy z review, odpověď od firmy, ranní přehled, výpadek webu.' },
+        { title: 'Rozhodnutí', text: 'Pod zprávou jsou tlačítka: založit kartu, posunout ji, přijmout nabídku, zahodit. Bez zmáčknutí se nic nestane.' },
+        { title: 'Zápis', text: 'Teprve po tlačítku zapíše bot změnu do job trackeru. Deníky a reporty se ukládají do soukromého repozitáře.' },
+      ],
+    },
+    shotsHeading: 'Jak to vypadá',
+    shots: [
+      {
+        src: '/img/case/automation-telegram.webp',
+        title: 'Telegram',
+        text: 'Ranní přehled s nabídkami od scouta, odpověď od firmy s návrhem posunu karty a výsledek nočního code review. Zmáčknuté tlačítko se změní na potvrzení, aby nešlo zmáčknout dvakrát. (Ukázková data a smyšlené firmy. Ve skutečnosti chodí review od druhého bota.)',
+      },
+    ],
+    build: {
+      heading: 'Co tam běží',
+      items: [
+        {
+          title: 'Deník z commitů a chatů',
+          text: 'Každou noc projde commity ze všech mých repozitářů a konverzace s Claude Code za uplynulý den. Claude z nich napíše krátký anglický zápis: shrnutí dne, hlavní body použitelné do CV, rozpis po projektech a práci, ze které žádný commit nevznikl. V neděli k tomu přidá týdenní souhrn s konceptem příspěvku na LinkedIn. Tokeny a klíče vložené do chatu se před odesláním vymažou.',
+        },
+        {
+          title: 'Noční code review',
+          text: 'Hned po deníku projde Claude nové commity v každém repozitáři a hledá skutečné problémy: chyby v logice, bezpečnostní díry, zapomenutý ladicí kód. Rady ke stylu a „zvaž refaktoring“ má zakázané. Už v prvním běhu našel v jiném projektu databázovou tabulku, kterou mohl číst kdokoli, a za pár minut byla pryč.',
+        },
+        {
+          title: 'Odpovědi od firem',
+          text: 'Každou hodinu čte poštu přes IMAP, jen pro čtení, takže maily zůstanou nepřečtené. Claude pozná pozvánku, zamítnutí, nabídku nebo dotaz a přiřadí je ke kartě na boardu. Newslettery a upozornění z pracovních portálů zahodí.',
+        },
+        {
+          title: 'Ranní přehled a týdenní čísla',
+          text: 'V deset ráno, až scout doběhne: dnešní pohovory, tři nejlepší nové nabídky s tlačítky, koho je čas urgovat i s připraveným textem a stav boardu. V pondělí navíc kolik přihlášek odešlo, kolik firem odpovědělo a jak si týden stojí proti předchozímu.',
+        },
+        {
+          title: 'Bot s příkazy',
+          text: '/board vypíše, na co čekám. /pridej s odkazem pošle inzerát agentovi z job trackeru a vrátí koncept karty i s motivačním dopisem. /prehled pošle ranní přehled hned.',
+        },
+        {
+          title: 'Hlídač webů a úloh',
+          text: 'Cloudflare Worker každých patnáct minut zkusí portfolio, job tracker a reels a napíše jen při změně: spadlo, zase běží. Úlohy na Macu mu po úspěšném doběhnutí pošlou signál, a když do určité hodiny nepřijde, ozve se sám.',
+        },
+        {
+          title: 'Kontrola balíčků',
+          text: 'V noci na pondělí spustí npm a pnpm audit ve všech repozitářích, na kterých dělám, a pošle, kde jsou známé zranitelnosti a co je zastaralé. Je to jen report, nic sám neaktualizuje.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'Rozhodnutí, která stála nejvíc přemýšlení',
+      items: [
+        {
+          title: 'Tlačítko místo automatu',
+          text: 'Bot by klidně mohl posunout kartu sám, když přijde pozvánka. Jenže model se občas splete a board je moje evidence, ne jeho. Proto jen navrhne a změnu provede až tlačítko. Kartu navíc nejde posunout zpátky: i kdyby to model navrhl, bot se před provedením podívá na aktuální stav a posun zpět odmítne.',
+        },
+        {
+          title: 'Review, které smí jen číst',
+          text: 'Claude při review běží přímo v repozitáři, aby viděl okolní kód, ale z nástrojů má jen čtení souborů a git show, diff a log. Všechno ostatní se zamítne bez ptaní. Agent, který v noci bez dozoru opravuje kód, je přesně ten druh automatizace, který nechci.',
+        },
+        {
+          title: 'Tichá chyba je horší než hlasitá',
+          text: 'První večer deník „úspěšně“ doběhl a napsal, že jsem nic necommitnul. Přepínač pro rozšířené regulární výrazy v gitu platil i pro hledání podle autora a plus v mé GitHub adrese se z něj stal speciální znak. Od té doby posílá každá úloha signál hlídači, a když se neozve, dozvím se to.',
+        },
+        {
+          title: 'Mac spí, práce ne',
+          text: 'Notebook je většinu noci zavřený a macOS umí jen jedno opakované probuzení denně. Deník, review i kontrola balíčků proto běží ve tři ráno za sebou a pak se Mac sám uspí, ale jen když na něj nikdo nesahá. A kdyby se neprobudil, deník si pamatuje poslední zapsaný den a vynechané dny doplní.',
+        },
+        {
+          title: 'Ozvat se jen při změně',
+          text: 'Hlídač webů nepíše každých patnáct minut „všechno běží“, ozve se jen při změně stavu. Neúspěšný pokus zopakuje po pěti vteřinách, aby jedno zaváhání sítě nevyvolalo poplach. Zprávu, která chodí pořád, přestaneš číst.',
+        },
+        {
+          title: 'Bez nových předplatných',
+          text: 'Claude běží přes předplatné, které stejně mám, a nesahá na denní příděl Workers AI, o který se dělí scout s asistentem na tomhle webu. Worker i úložiště stavů se vejdou do bezplatného plánu Cloudflare. Provoz nestojí ani korunu navíc.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Kde to je teď',
+      body: [
+        'Všechno běží od 26. září 2026. Deník a review chodí ráno, pošta se kontroluje každou hodinu, kdy je Mac vzhůru, a hlídač běží nepřetržitě na Cloudflare.',
+        'Kód je v soukromých repozitářích, protože pracuje s mou poštou a přihláškami. Snímek výše je proto z ukázkových dat.',
+        'Nejvíc mě baví, že se to hlídá navzájem: review našlo čtyři chyby v kódu pro čtení pošty, který vznikl ten samý den, a hlídač úloh vznikl kvůli chybě v deníku.',
+      ],
+    },
+    cta: { text: 'Chceš něco podobného?', button: 'Napiš mi', href: '/#contact' },
+  },
+  en: {
+    meta: {
+      title: 'Automation | Erik Karásek',
+      description: 'A set of small agents around a job hunt and side projects: a work log from commits, a nightly code review, sorting replies from companies, a morning digest and site monitoring. Claude, Telegram, Cloudflare, and a human who approves every change.',
+    },
+    back: 'Back to portfolio',
+    label: 'About the project',
+    title: 'Automation.',
+    lead: 'Over one weekend I built a set of small agents around my job hunt and my projects. At night they write a log of what I did and go through the new code. During the day they read replies from companies, and in the morning they send a digest. Everything ends up in Telegram as a message with buttons, and nothing changes until I press one.',
+    stats: [
+      { value: '7', label: 'Scheduled jobs' },
+      { value: '2', label: 'Telegram bots' },
+      { value: '€0', label: 'Extra running cost' },
+      { value: '1×', label: 'Mac wake-up a night' },
+    ],
+    problem: {
+      heading: 'What it solves',
+      body: [
+        'A job hunt and a few side projects pile up small routine: check the inbox in case a company replied, copy it onto the board, look at what the scout found, remember what I actually did yesterday, and make sure none of my sites went down. None of it is hard; it just takes a bite of time and attention every day.',
+        'I wanted programs to do it and send me only the result, in one place, on my phone. I did not want an automaton that moves my cards, deletes mail or commits fixes on its own. So every job reads, summarises and proposes, and the decision stays with me.',
+        'One more thing I learned on the way: the worst failure in automation is the one you do not hear about. A script that finishes "successfully" and does nothing looks exactly like a day when nothing happened. So the set also has a watchman that speaks up when a job does not.',
+      ],
+    },
+    flow: {
+      heading: 'How it flows',
+      steps: [
+        { title: 'Sources', text: 'Commits from every repo, Claude Code chats, the inbox over IMAP, Jobs.cz and the Labour Office through the scout, my sites.' },
+        { title: 'Processing', text: 'Node scripts on the Mac run by launchd, and Claude in headless mode with a restricted set of tools. The scout and the watchman run on Cloudflare.' },
+        { title: 'Telegram', text: 'Every result is a message: the daily log, review findings, a reply from a company, the morning digest, a site going down.' },
+        { title: 'Decision', text: 'Under the message are buttons: create a card, move it, accept a posting, dismiss it. Nothing happens without a press.' },
+        { title: 'Write', text: 'Only after the button does the bot change the job tracker. Logs and reports go into a private repository.' },
+      ],
+    },
+    shotsHeading: 'What it looks like',
+    shots: [
+      {
+        src: '/img/case/automation-telegram.webp',
+        title: 'Telegram',
+        text: 'The morning digest with the scout\'s picks, a reply from a company with a suggested card move, and the nightly code review. A pressed button turns into a confirmation, so it cannot be pressed twice. (Sample data and made-up companies. In reality the review comes from a second bot.)',
+      },
+    ],
+    build: {
+      heading: 'What runs',
+      items: [
+        {
+          title: 'A log from commits and chats',
+          text: 'Every night it goes through the day\'s commits in all my repositories and my Claude Code conversations, and Claude writes a short English entry: the day in one line, highlights fit for a CV, a breakdown per project, and work that never became a commit. On Sundays it adds a weekly review with a LinkedIn draft. Tokens and keys pasted into a chat are redacted before anything is sent.',
+        },
+        {
+          title: 'Nightly code review',
+          text: 'Right after the log, Claude goes through each repository\'s new commits looking for real problems: logic bugs, security holes, leftover debug code. Style advice and "consider refactoring" are off limits. On its very first run it found a database table in another project that anyone could read, and a few minutes later it was gone.',
+        },
+        {
+          title: 'Replies from companies',
+          text: 'Every hour it reads the inbox over IMAP, read-only, so mail stays unread. Claude recognises an interview invitation, a rejection, an offer or a question and matches it to a card on the board. Newsletters and job-portal alerts are dropped.',
+        },
+        {
+          title: 'Morning digest and weekly numbers',
+          text: 'At ten, once the scout is done: today\'s interviews, the three best new postings with buttons, who is due a follow-up with the text ready, and the board\'s counts. On Mondays also how many applications went out, how many companies replied, and how the week compares with the one before.',
+        },
+        {
+          title: 'A bot with commands',
+          text: '/board lists what I am waiting on. /pridej with a link hands the posting to the job tracker\'s agent and returns a draft card with a cover letter. /prehled sends the morning digest right away.',
+        },
+        {
+          title: 'A watchman for sites and jobs',
+          text: 'A Cloudflare Worker tries the portfolio, the job tracker and the reels app every fifteen minutes and writes only on a change: down, back up. The jobs on the Mac report to it after a successful run, and if one has not reported by a set hour, it speaks up.',
+        },
+        {
+          title: 'Package check',
+          text: 'On Monday nights it runs npm and pnpm audit in every repository I work on and reports known vulnerabilities and what is outdated. Report only; it never updates anything itself.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'The decisions that took the most thought',
+      items: [
+        {
+          title: 'A button, not an automaton',
+          text: 'The bot could easily move a card by itself when an invitation arrives. But the model is sometimes wrong, and the board is my record, not its. So it proposes and the button makes the change. A card cannot be moved backwards either: even if the model suggests it, the bot checks the current state before acting and refuses a step back.',
+        },
+        {
+          title: 'A review that may only read',
+          text: 'For the review Claude runs inside the repository so it can see the surrounding code, but its tools are reading files plus git show, diff and log. Everything else is denied without asking. An agent that fixes code unattended at night is exactly the kind of automation I do not want.',
+        },
+        {
+          title: 'A silent failure is worse than a loud one',
+          text: 'On the first evening the log finished "successfully" and said I had committed nothing. Git\'s extended-regex switch applied to the author filter too, and the plus in my GitHub address turned into a special character. Since then every job reports to the watchman, and when one goes quiet, I hear about it.',
+        },
+        {
+          title: 'The Mac sleeps, the work does not',
+          text: 'The laptop spends most nights closed, and macOS allows one repeating wake-up a day. So the log, the review and the package check run back to back at three in the morning, and then the Mac goes back to sleep, but only if nobody is using it. And if it did not wake, the log remembers the last day it wrote and fills in the ones it missed.',
+        },
+        {
+          title: 'Speak up only on a change',
+          text: 'The site watchman does not write "all good" every fifteen minutes; it only writes when a state changes. A failed check is retried after five seconds so one network hiccup is not an alarm. A message that always arrives is a message nobody reads.',
+        },
+        {
+          title: 'No new subscriptions',
+          text: 'Claude runs on the subscription I already have and stays off the daily Workers AI allowance that the scout shares with the assistant on this site. The Worker and its state store fit in Cloudflare\'s free plan. Running it costs nothing extra.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Where it is now',
+      body: [
+        'Everything has been running since 26 September 2026. The log and the review arrive in the morning, the inbox is checked every hour the Mac is awake, and the watchman runs around the clock on Cloudflare.',
+        'The code lives in private repositories because it handles my mail and my applications, which is why the screenshot above uses sample data.',
+        'What I like most is that the parts keep an eye on each other: the review found four bugs in the mail code written that same day, and the job watchman exists because of a bug in the log.',
+      ],
+    },
+    cta: { text: 'Want something like this?', button: 'Get in touch', href: '/#contact' },
+  },
+}
+
 export const studies = {
   'nexus-grind': nexusGrind,
   'lol-stats': lolStats,
   'monster-watch': monsterWatch,
   'job-tracker': jobTracker,
   'subscriptions': subscriptions,
+  'automation': automation,
 } satisfies Record<string, Record<Lang, CaseStudyContent>>
 
 export type StudySlug = keyof typeof studies
