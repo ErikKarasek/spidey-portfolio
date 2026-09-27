@@ -606,6 +606,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
           text: 'Všechno projde nejdřív malý model zdarma, který nabídky jen seřadí. Ten dal 92 bodů juniorní QA pozici, která chtěla rok praxe a testování API v Postmanu, což nemám. Ptát se ho, co mi chybí, nepomohlo: jmenoval věci, které umím, bral „výhodou“ jako požadavek a při každém běhu si vymyslel jiný počet let. Nadějné nabídky proto přeměří větší model a strhává body jen za konkrétní chybějící požadavky.',
         },
         {
+          title: 'Kontrolní vzorek na to, co malý model podstřelí',
+          text: 'Druhé kolo dostanou jen nabídky, které malý model ohodnotil vysoko, takže podstřelená nabídka by druhou šanci nikdy nedostala. Proto jde k přísnějšímu modelu i náhodná desetina těch nízko hodnocených, zhruba tři denně navíc. Nikam se nezapisují, jen se loguje rozdíl obou známek: kdyby se ukázalo, že malý model soustavně sráží něco, co má cenu, pozná se to na číslech, ne až podle promarněné nabídky.',
+        },
+        {
           title: 'Nejen Jobs.cz',
           text: 'Druhý zdroj jsou otevřená data Úřadu práce: denní přírůstek zhruba 2 400 volných míst, z nich asi 75 IT podle oborové klasifikace, filtrované na Královéhradecký a Pardubický kraj nebo na práci z domova. Jsou to strukturovaná data, ne stránka ke scrapování, a sedí v nich zaměstnavatelé, kteří na Jobs.cz nikdy nic nedají.',
         },
@@ -745,6 +749,10 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         {
           title: 'Two rounds of scoring, cheap and strict',
           text: 'Everything is ranked first by a small free model. That one gave 92 to a junior QA role asking for a year of experience and API testing in Postman, neither of which I have. Asking it what was missing did not help: it named things I can do, counted "an advantage" as a requirement, and invented a different number of years each run. Promising postings are therefore re-measured by a larger model that only deducts for concrete missing requirements.',
+        },
+        {
+          title: 'A control sample for what the small model underrates',
+          text: 'Only postings the small model rates highly reach the second round, so one it underrates would never get a second chance. A random tenth of the low-rated ones therefore goes to the stricter model as well, about three a day. They go nowhere; only the gap between the two scores is logged. If the cheap model turns out to be pushing down something worth having, the numbers will say so before a missed posting does.',
         },
         {
           title: 'Not only Jobs.cz',
