@@ -217,6 +217,14 @@ export const content: Record<Lang, Content> = {
           study: '/job-tracker/',
         },
         {
+          title: 'Automatizace',
+          description:
+            'Sada malých agentů kolem mého hledání práce a projektů. V noci napíšou deník z commitů a projdou nový kód, přes den čtou poštu od firem a ráno pošlou přehled s nabídkami. Všechno přijde do Telegramu jako zpráva s tlačítky a nic se nezmění, dokud nezmáčknu. Hlídač na Cloudflare se ozve, když spadne web nebo se některá úloha neozve.',
+          tags: ['Node.js', 'Claude', 'Telegram Bot API', 'Cloudflare Workers', 'IMAP'],
+          image: `${IMG}/automation.webp`,
+          study: '/automation/',
+        },
+        {
           title: 'Subscription Tracker',
           description:
             'Přehled všeho, co ti měsíčně odchází z účtu. Jednou denně se worker sám probudí, posune obnovení a pošle e-mail na to, co se blíží nebo dlouho leží ladem. Screenshot platby za tebe přečte model na Workers AI.',
@@ -381,6 +389,14 @@ export const content: Record<Lang, Content> = {
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
           study: '/job-tracker/',
+        },
+        {
+          title: 'Automation',
+          description:
+            'A set of small agents around my job hunt and projects. At night they write a log from my commits and review the new code, during the day they read replies from companies, and in the morning they send a digest of new postings. Everything arrives in Telegram as a message with buttons, and nothing changes until I press one. A watchman on Cloudflare speaks up when a site goes down or a job goes quiet.',
+          tags: ['Node.js', 'Claude', 'Telegram Bot API', 'Cloudflare Workers', 'IMAP'],
+          image: `${IMG}/automation.webp`,
+          study: '/automation/',
         },
         {
           title: 'Subscription Tracker',

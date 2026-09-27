@@ -26,7 +26,13 @@
   </url>
   <url>
     <loc>https://erikkarasek.cz/job-tracker/</loc>
-    <lastmod>2026-09-12</lastmod>
+    <lastmod>2026-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://erikkarasek.cz/automation/</loc>
+    <lastmod>2026-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

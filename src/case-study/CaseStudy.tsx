@@ -64,6 +64,26 @@ export function CaseStudy({ slug }: { slug: StudySlug }) {
           ))}
         </Section>
 
+        {c.flow && (
+          <Section heading={c.flow.heading}>
+            <ol className="grid grid-cols-1 gap-3 lg:grid-cols-5">
+              {c.flow.steps.map((step, i) => (
+                <li key={step.title} className="relative rounded-2xl border border-line bg-surface-2/90 p-5">
+                  <span className="text-2xl font-black italic text-accent">{i + 1}</span>
+                  <h3 className="mt-1 text-sm font-black uppercase tracking-tight text-ink">{step.title}</h3>
+                  <p className="mt-2 text-sm font-medium leading-relaxed text-ink-3">{step.text}</p>
+                  {i < c.flow!.steps.length - 1 && (
+                    <span aria-hidden className="absolute -bottom-3 left-1/2 z-10 -translate-x-1/2 text-accent lg:-right-3 lg:bottom-auto lg:left-auto lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0">
+                      <span className="lg:hidden">↓</span>
+                      <span className="hidden lg:inline">→</span>
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </Section>
+        )}
+
         <Section heading={c.shotsHeading}>
           <div className="flex flex-col gap-12">
             {c.shots.map((s) => (
@@ -102,12 +122,11 @@ export function CaseStudy({ slug }: { slug: StudySlug }) {
             {c.cta.href ? (
               <a
                 href={c.cta.href}
-                target="_blank"
-                rel="noreferrer"
+                {...(c.cta.href.startsWith('/') ? {} : { target: '_blank', rel: 'noreferrer' })}
                 className="flex items-center justify-center gap-2 rounded-xl border border-accent bg-accent px-4 py-3 text-xs font-bold uppercase tracking-wider text-accent-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-dark hover:shadow-[0_8px_20px_rgb(var(--glow)/0.3)]"
               >
                 {c.cta.button}
-                <span aria-hidden>↗</span>
+                {!c.cta.href.startsWith('/') && <span aria-hidden>↗</span>}
               </a>
             ) : (
               <Downloads />
