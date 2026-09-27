@@ -25,7 +25,7 @@ const shot = (name: string) => `/img/case/nexus/${name}.webp`
 const nexusGrind: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
-      title: 'Nexus Grind | případová studie | Erik Karásek',
+      title: 'Nexus Grind | o projektu | Erik Karásek',
       description: 'Jak vznikl Nexus Grind: tracker úkolů, návyků, spánku a ranked her pro Mac, Windows, iPhone i Android. Jedna sdílená logika, data u tebe v počítači.',
     },
     back: 'Zpět na portfolio',
@@ -131,7 +131,7 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
   },
   en: {
     meta: {
-      title: 'Nexus Grind | case study | Erik Karásek',
+      title: 'Nexus Grind | about the project | Erik Karásek',
       description: 'How Nexus Grind was built: a tracker for tasks, habits, sleep and ranked games on Mac, Windows, iPhone and Android. One shared core, your data stays on your device.',
     },
     back: 'Back to portfolio',
@@ -240,7 +240,7 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
 const lolStats: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
-      title: 'LoL Stats | případová studie | Erik Karásek',
+      title: 'LoL Stats | o projektu | Erik Karásek',
       description: 'Vlastní statistiky z League of Legends přes Riot API. Tierlist šampionů podle mé winrate, rozbor podle lajny a detail zápasu. API klíč zůstává v prohlížeči.',
     },
     back: 'Zpět na portfolio',
@@ -321,7 +321,7 @@ const lolStats: Record<Lang, CaseStudyContent> = {
   },
   en: {
     meta: {
-      title: 'LoL Stats | case study | Erik Karásek',
+      title: 'LoL Stats | about the project | Erik Karásek',
       description: 'My own League of Legends stats through the Riot API. A champion tier list from my own win rate, a breakdown by lane and match detail. The API key stays in the browser.',
     },
     back: 'Back to portfolio',
@@ -405,7 +405,7 @@ const lolStats: Record<Lang, CaseStudyContent> = {
 const monsterWatch: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
-      title: 'Monster Watch | případová studie | Erik Karásek',
+      title: 'Monster Watch | o projektu | Erik Karásek',
       description: 'Appka, která hlídá, kde je Monster ve slevě. Ceny z letáků stahuje backend v Pythonu, mobilní appka je ukazuje jako mřížku příchutí.',
     },
     back: 'Zpět na portfolio',
@@ -473,7 +473,7 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
   },
   en: {
     meta: {
-      title: 'Monster Watch | case study | Erik Karásek',
+      title: 'Monster Watch | about the project | Erik Karásek',
       description: 'An app that tracks where Monster is on sale. A Python backend collects prices from shop leaflets and the app shows them as a grid of flavours.',
     },
     back: 'Back to portfolio',
@@ -542,26 +542,26 @@ const monsterWatch: Record<Lang, CaseStudyContent> = {
 const jobTracker: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
-      title: 'Job Tracker | případová studie | Erik Karásek',
+      title: 'Job Tracker | o projektu | Erik Karásek',
       description: 'Kanban na sledování přihlášek do práce, postavený na Cloudflare D1 a Hono. Scout každé ráno projde inzeráty na Jobs.cz a agent z nich udělá ohodnocené karty ke schválení.',
     },
     back: 'Zpět na portfolio',
     label: 'O projektu',
     title: 'Job Tracker.',
-    lead: 'Kanban na hledání práce. Každá pozice je karta, kterou posouváš přes fáze od „zajímavé“ až po nabídku nebo zamítnutí. Nad tím jsou statistiky, které počítají z historie přechodů, ne z toho, kde karta leží dneska. A od září hledá inzeráty scout, který každé ráno projde Jobs.cz sám.',
+    lead: 'Kanban na hledání práce. Každá pozice je karta, kterou posouváš přes fáze od „zajímavé“ až po nabídku nebo zamítnutí. Nad tím jsou statistiky, které počítají z historie přechodů, ne z toho, kde karta leží dneska. A od září hledá inzeráty sám: scout, jak tomu programu říkám, projde každé ráno Jobs.cz za mě.',
     stats: [
       { value: '5', label: 'Fází náboru' },
       { value: '30', label: 'Ohodnocených inzerátů denně' },
       { value: '4', label: 'AI agenti v provozu' },
-      { value: 'D1', label: 'SQLite na edge' },
+      { value: 'D1', label: 'Databáze u Cloudflare' },
     ],
     problem: {
       heading: 'Co to řeší',
       body: [
         'Hledání práce se obvykle odehrává v tabulce, která má sloupce „firma“, „kdy jsem psal“ a „odpověděli?“. Funguje to do chvíle, než je přihlášek dvacet. Pak přestaneš vědět, u kterých se dlouho nic nestalo, a hlavně ti nikdy neřekne, jestli je problém v tom, že se málo hlásíš, nebo v tom, že tě po pohovoru nikdo nechce.',
-        'Job Tracker je na to postavený jako board: karta nese firmu, roli, odkaz na inzerát, lokaci, mzdové rozpětí, zdroj a poznámky, a posouvá se přes fáze wishlist → applied → interview → offer nebo rejected.',
-        'Druhá polovina je statistika. Funnel ukazuje, kolik přihlášek se kterou fází vůbec prošlo, timeline kolik jich denně přibylo, a samostatný seznam hlídá ty, u kterých už dlouho nebyla žádná aktivita, aby nezapadly.',
-        'Zůstávala poslední rutina: každý den ručně projít inzertní weby. Tu teď dělá scout: každé ráno sám prochází IT obory na Jobs.cz, nabídky přečte, ohodnotí a připraví jako karty do schránky. Já jen řeknu ano, nebo ne.',
+        'Job Tracker je postavený jako nástěnka: karta nese firmu, roli, odkaz na inzerát, lokaci, mzdové rozpětí, zdroj a poznámky, a posouvá se přes fáze wishlist (chci to zkusit), applied (posláno), interview (pohovor) a nakonec offer (nabídka), nebo rejected (zamítnuto).',
+        'Druhá polovina je statistika. Trychtýř ukazuje, kolik přihlášek se kterou fází vůbec prošlo, denní graf kolik jich přibylo, a samostatný seznam hlídá ty, u kterých už dlouho nebyla žádná aktivita, aby nezapadly.',
+        'Zůstávala poslední rutina: každý den ručně projít inzertní weby. Tu teď dělá scout, tedy hledač nabídek: každé ráno sám prochází IT obory na Jobs.cz, nabídky přečte, ohodnotí a připraví jako karty do schránky. Já jen řeknu ano, nebo ne.',
       ],
     },
     shotsHeading: 'Jak to vypadá',
@@ -574,12 +574,12 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/jobtracker-editor.webp',
         title: 'Detail karty',
-        text: 'Editace v panelu vedle boardu: odkaz na inzerát, lokalita, zdroj, mzdové rozpětí a poznámky. Mzda je uložená jako dvě čísla, ne jako text, aby se s ní dalo později počítat.',
+        text: 'Editace v panelu vedle nástěnky: odkaz na inzerát, lokalita, zdroj, mzdové rozpětí a poznámky. Mzda je uložená jako dvě čísla, ne jako text, aby se s ní dalo později počítat.',
       },
       {
         src: '/img/case/jobtracker-stats.webp',
         title: 'Statistiky',
-        text: 'Nahoře poměry mezi fázemi, pod tím kolik přihlášek kterou fází prošlo, denní timeline a seznam těch, kde je potřeba se připomenout.',
+        text: 'Nahoře poměry mezi fázemi, pod tím kolik přihlášek kterou fází prošlo, denní graf a seznam těch, kde je potřeba se připomenout.',
       },
     ],
     build: {
@@ -591,7 +591,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Cloudflare D1 jako databáze',
-          text: 'SQLite běžící na edge. Schéma má tabulku applications se samotnými přihláškami a status_events, kam se zapisuje každý přechod mezi fázemi. Vývoj běží přes wrangler pages dev, který nastartuje Pages Functions i D1 lokálně.',
+          text: 'SQLite, které běží přímo v síti Cloudflare, blízko návštěvníkovi. Schéma má tabulku applications se samotnými přihláškami a status_events, kam se zapisuje každý přechod mezi fázemi. Vývoj běží přes nástroj wrangler, který spustí serverovou část i databázi na mém počítači.',
         },
         {
           title: 'Žádná knihovna na state',
@@ -599,7 +599,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Agent, ne jedna otázka do modelu',
-          text: 'Z inzerátu dělá kartu model s nástroji: umí si stáhnout stránku inzerátu, prohledat board na duplicitní přihlášku u stejné firmy a nakonec odevzdat hotový návrh karty. Běhá v cyklu, dokud návrh neodevzdá, nejvýš šest kol. Vedle údajů z inzerátu připíše i skóre, jak sedí na můj profil, a krátký průvodní dopis v jazyce inzerátu.',
+          text: 'Z inzerátu dělá kartu model s nástroji: umí si stáhnout stránku inzerátu, prohledat nástěnku na duplicitní přihlášku u stejné firmy a nakonec odevzdat hotový návrh karty. Běhá v cyklu, dokud návrh neodevzdá, nejvýš šest kol. Vedle údajů z inzerátu připíše i skóre, jak sedí na můj profil, a krátký průvodní dopis v jazyce inzerátu.',
         },
         {
           title: 'Dvě kola hodnocení, levné a přísné',
@@ -611,15 +611,15 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Testy, které to drží pohromadě',
-          text: 'Na každý push běží v CI dvě sady proti čerstvě sestavené kopii s vlastní databází: Postman kolekce přes API (veřejné čtení, přístup za klíčem, celý život přihlášky, neplatné vstupy, funnel) a Playwright přes board (odemčení klíčem, přesun mezi fázemi i po reloadu, editace, mazání, statistiky). Ani jedna nesáhne na model, takže testování nestojí nic z denního přídělu.',
+          text: 'Na každý push běží v CI dvě sady proti čerstvě sestavené kopii s vlastní databází: Postman kolekce přes API (veřejné čtení, přístup za klíčem, celý život přihlášky, neplatné vstupy, trychtýř) a Playwright přes nástěnku (odemčení klíčem, přesun mezi fázemi i po reloadu, editace, mazání, statistiky). Ani jedna nesáhne na model, takže testování nestojí nic z denního přídělu.',
         },
         {
           title: 'Scout jako plán práce na den',
-          text: 'Cron budí worker každých pět minut přes ráno a každé probuzení udělá první věc, která ještě dneska chybí: další stránku výsledků, další ohodnocený inzerát, nebo shrnující e-mail. Co je hotové, si píše do tabulky v D1, takže se nic neudělá dvakrát.',
+          text: 'Naplánovaná úloha budí program každých pět minut přes ráno a každé probuzení udělá první věc, která ještě dneska chybí: další stránku výsledků, další ohodnocený inzerát, nebo shrnující e-mail. Co je hotové, si píše do tabulky v D1, takže se nic neudělá dvakrát.',
         },
         {
           title: 'Příprava na pohovor',
-          text: 'Když karta dojde do fáze pohovoru, vyrazí druhý agent: začne u inzerátu, najde web firmy a projde pár jeho stránek, než napíše brief: co firma dělá, osm až deset pravděpodobných otázek i s odpovědí opřenou o moje skutečné zkušenosti, co si zopakovat a na co se jich zeptat. Ráno den před pohovorem mi ho scout pošle e-mailem.',
+          text: 'Když karta dojde do fáze pohovoru, vyrazí druhý agent: začne u inzerátu, najde web firmy a projde pár jeho stránek, než napíše přípravu: co firma dělá, osm až deset pravděpodobných otázek i s odpovědí opřenou o moje skutečné zkušenosti, co si zopakovat a na co se jich zeptat. Ráno v den pohovoru mi ji scout pošle e-mailem.',
         },
         {
           title: 'Životopis na míru inzerátu',
@@ -635,8 +635,8 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       heading: 'Rozhodnutí, která stála nejvíc přemýšlení',
       items: [
         {
-          title: 'Funnel se počítá z historie, ne ze současnosti',
-          text: 'Kdyby se počítalo z aktuálního sloupce, přihláška zamítnutá po pohovoru by ve statistice vypadala, jako by k pohovoru nikdy nedošlo a úspěšnost pohovorů by vycházela směšně nízko. Proto se každý přechod loguje do status_events a funnel počítá, kolik přihlášek danou fází někdy prošlo.',
+          title: 'Trychtýř se počítá z historie, ne ze současnosti',
+          text: 'Kdyby se počítalo z aktuálního sloupce, přihláška zamítnutá po pohovoru by ve statistice vypadala, jako by k pohovoru nikdy nedošlo a úspěšnost pohovorů by vycházela směšně nízko. Proto se každý přechod ukládá do tabulky status_events a trychtýř počítá, kolik přihlášek danou fází někdy prošlo.',
         },
         {
           title: 'Ticho je taky informace',
@@ -644,19 +644,19 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Čtení veřejné, zápis za klíčem, při pochybnosti zamčeno',
-          text: 'Case study na tenhle board odkazuje, takže adresa není tajná a spoléhat na to, že ji nikdo nenajde, není ochrana. Prohlížení je proto otevřené a mění data jen ten, kdo má klíč. Zamyká se to navíc „do bezpečné strany“: instance, které nikdo klíč nenastavil, čtení obslouží a každý zápis odmítne. Dokud se na heslo nezapomene, je zavřeno, ne otevřeno.',
+          text: 'Tahle stránka na nástěnku odkazuje, takže adresa není tajná a spoléhat na to, že ji nikdo nenajde, není ochrana. Prohlížení je proto otevřené a mění data jen ten, kdo má klíč. Zamyká se to navíc „do bezpečné strany“: instance, které nikdo klíč nenastavil, čtení obslouží a každý zápis odmítne. Dokud se na heslo nezapomene, je zavřeno, ne otevřeno.',
         },
         {
           title: 'Model až jako poslední krok',
           text: 'Levné filtry běží první: inzeráty se seniorem v názvu nebo mimo IT vypadnou dřív, než na ně padne jediné volání modelu, a stránka se přečte ještě předtím, než se model vůbec zavolá. A model se volí podle úkolu: skóre shody dává malý model (Llama 3.1 8B) za zhruba dvacetinu ceny a řadí nabídky stejně jako ten velký, jenže si u tří ze čtyř inzerátů bez mzdy mzdu vymyslel. Mzdu proto čte kód přímo z řádku „Plat“ na Jobs.cz. Průvodní dopis píše větší model, a jen když o něj u nabídky požádám. Každá AI funkce má navíc v D1 vlastní denní rozpočet, takže žádná nevyčerpá den za ostatní.',
         },
         {
-          title: 'Nic se na board nedostane beze mě',
-          text: 'Agent kartu jen navrhne. Přistane ve schránce, kde ji přijmu nebo zahodím, a teprve přijetí ji zapíše na board. Bál jsem se, že si automat nahází dvacet nabídek denně a board přestane být můj. Takhle zůstává rozhodnutí na člověku a robot dělá to otravné hledání.',
+          title: 'Nic se na nástěnku nedostane beze mě',
+          text: 'Agent kartu jen navrhne. Přistane ve schránce, kde ji přijmu nebo zahodím, a teprve přijetí ji zapíše na nástěnku. Bál jsem se, že si automat nahází dvacet nabídek denně a nástěnka přestane být moje. Takhle zůstává rozhodnutí na člověku a robot dělá to otravné hledání.',
         },
         {
           title: 'Agentovi, který si vybírá, kam klikne, se musí ohradit prostor',
-          text: 'Příprava na pohovor je jediný agent, který si sám volí cestu: dostane nástroj „přečti stránku“ a rozhoduje, kterým odkazem půjde dál. To se nedá ošetřit prosbou v promptu, takže hranice hlídá kód: smí otevřít jen inzerát, stránky, na které vedl odkaz z už přečtené stránky, a doménu, která nese jméno firmy, nejvýš čtyři stránky a sedm kol. Model rozhoduje, kód drží mantinely.',
+          text: 'Příprava na pohovor je jediný agent, který si sám volí cestu: dostane nástroj „přečti stránku“ a rozhoduje, kterým odkazem půjde dál. To se nedá ošetřit prosbou v zadání pro model, takže hranice hlídá kód: smí otevřít jen inzerát, stránky, na které vedl odkaz z už přečtené stránky, a doménu, která nese jméno firmy, nejvýš čtyři stránky a sedm kol. Model rozhoduje, kód drží mantinely.',
         },
         {
           title: 'Model smí přeskládat, ne vymýšlet',
@@ -679,11 +679,11 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba: svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
       ],
     },
-    cta: { text: 'Chceš se podívat?', button: 'Otevřít board', href: 'https://job-tracker-10s.pages.dev' },
+    cta: { text: 'Chceš se podívat?', button: 'Otevřít nástěnku', href: 'https://job-tracker-10s.pages.dev' },
   },
   en: {
     meta: {
-      title: 'Job Tracker | case study | Erik Karásek',
+      title: 'Job Tracker | about the project | Erik Karásek',
       description: 'A kanban board for job applications, built on Cloudflare D1 and Hono. A scout reads the Jobs.cz listings every morning and an agent turns them into scored cards waiting for approval.',
     },
     back: 'Back to portfolio',
@@ -827,15 +827,15 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
 const subscriptions: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
-      title: 'Subscription Tracker | případová studie | Erik Karásek',
-      description: 'Přehled předplatných na Cloudflare Workers: denní cron posouvá obnovení a posílá e-maily, Workers AI vytáhne údaje ze screenshotu platby.',
+      title: 'Subscription Tracker | o projektu | Erik Karásek',
+      description: 'Přehled předplatných na Cloudflare Workers: naplánovaná úloha každý den posouvá platby a posílá e-maily, Workers AI vytáhne údaje ze screenshotu platby.',
     },
     back: 'Zpět na portfolio',
     label: 'O projektu',
     title: 'Subscription Tracker.',
     lead: 'Přehled všeho, co ti měsíčně odchází z účtu. Kolik utrácíš a za co, co se brzy strhne a co dlouho nepoužíváš. Jednou denně se to samo probudí, posune data dalšího stržení a pošle e-mail. Appku přitom nemusíš vůbec otevřít.',
     stats: [
-      { value: '07:00', label: 'Denní cron (UTC)' },
+      { value: '07:00', label: 'Denní úloha (UTC)' },
       { value: '5', label: 'Kategorií útraty' },
       { value: '2', label: 'Tabulky v databázi' },
       { value: '1', label: 'Worker na web, API i cron' },
@@ -874,7 +874,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
           text: 'React 19 s Vite se sestaví do statických souborů a vydává je ten samý Cloudflare Worker, ve kterém běží Hono API. Tenhle typ workeru navíc umí spouštět úlohy podle času, což Pages Functions neumí, a plánovaná úloha je tady půlka nápadu.',
         },
         {
-          title: 'Denní cron v 7:00 UTC',
+          title: 'Naplánovaná úloha každý den v 7:00 UTC',
           text: 'Jednou za den worker projde, čemu mezitím vypršelo období, posune datum na další a zapíše platbu do historie. Pak se podívá tři dny dopředu a na předplatná, která jsi přes měsíc nepoužil, a jestli je co hlásit, pošle jeden e-mail přes Resend.',
         },
         {
@@ -915,7 +915,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
     status: {
       heading: 'Kde to je teď',
       body: [
-        'Běží to jako Worker na Cloudflare a je hotové od databáze přes cron a e-maily až po grafy. Snímky výše jsou z ukázkových dat.',
+        'Běží to jako Worker na Cloudflare a je hotové od databáze přes naplánovanou úlohu a e-maily až po grafy. Snímky výše jsou z ukázkových dat.',
         'Živá appka je schválně za Cloudflare Access, takže si ji nemůžeš otevřít, jsou v ní údaje o mých vlastních platbách o mých vlastních platbách. Kód je ale celý veřejný na GitHubu.',
       ],
     },
@@ -923,7 +923,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
   },
   en: {
     meta: {
-      title: 'Subscription Tracker | case study | Erik Karásek',
+      title: 'Subscription Tracker | about the project | Erik Karásek',
       description: 'A subscription overview on Cloudflare Workers: a daily cron rolls renewals forward and sends email, Workers AI reads a payment screenshot.',
     },
     back: 'Back to portfolio',
@@ -1039,7 +1039,7 @@ const automation: Record<Lang, CaseStudyContent> = {
     problem: {
       heading: 'Co to řeší',
       body: [
-        'Když hledáš práci a k tomu děláš na vlastních projektech, nasbírá se spousta drobností: kouknout do pošty, jestli neodepsala nějaká firma, přepsat to na board, projít, co našel scout, vzpomenout si, co jsem včera vlastně dělal, a zkontrolovat, že mi nespadl web. Nic z toho není složité, ale každý den to zabere čas.',
+        'Když hledáš práci a k tomu děláš na vlastních projektech, nasbírá se spousta drobností: kouknout do pošty, jestli neodepsala nějaká firma, přepsat to na nástěnku, projít, co ráno našel hledač nabídek, vzpomenout si, co jsem včera vlastně dělal, a zkontrolovat, že mi nespadl web. Nic z toho není složité, ale každý den to zabere čas.',
         'Chtěl jsem, aby to dělal počítač a mně chodil jen výsledek, na jedno místo v mobilu. Zároveň jsem nechtěl, aby mi sám přesouval karty, mazal maily nebo opravoval kód. Každý agent proto jen čte, shrne a navrhne, co udělat. Rozhodnutí je na mně.',
         'Cestou jsem zjistil ještě jednu věc: nejhorší je chyba, o které nevíš. Skript, který „úspěšně“ doběhne a nic neudělá, vypadá úplně stejně jako den, kdy se nic nestalo. Proto to celé hlídá ještě jeden agent, který se ozve, když některá úloha neproběhne.',
       ],
@@ -1050,7 +1050,7 @@ const automation: Record<Lang, CaseStudyContent> = {
         { title: 'Odkud bere data', text: 'Commity ze všech mých repozitářů, chaty s Claude Code, pošta, nabídky od scouta a moje weby.' },
         { title: 'Co s nimi dělá', text: 'Na Macu běží Node skripty, které spouští plánovač. Texty čte a píše Claude. Scout a hlídání webů běží na Cloudflare.' },
         { title: 'Kam to posílá', text: 'Všechno přijde jako zpráva do Telegramu: denní zápis, výsledek kontroly kódu, odpověď od firmy, ranní přehled nebo upozornění, že spadl web.' },
-        { title: 'Co rozhoduju já', text: 'Pod zprávou jsou tlačítka: založit kartu, posunout ji, přidat nabídku na board, zahodit. Dokud nezmáčknu, nic se nestane.' },
+        { title: 'Co rozhoduju já', text: 'Pod zprávou jsou tlačítka: založit kartu, posunout ji, přidat nabídku na nástěnku, zahodit. Dokud nezmáčknu, nic se nestane.' },
         { title: 'Co se pak uloží', text: 'Až po zmáčknutí zapíše bot změnu do job trackeru. Deníky a reporty se ukládají do soukromého repozitáře.' },
       ],
     },
@@ -1075,7 +1075,7 @@ const automation: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Odpovědi od firem',
-          text: 'Každou hodinu projde poštu. Maily jen čte, takže zůstanou nepřečtené. Claude pozná pozvánku na pohovor, zamítnutí, nabídku nebo dotaz a najde k nim kartu na boardu. Newslettery a upozornění z pracovních portálů přeskočí.',
+          text: 'Každou hodinu projde poštu. Maily jen čte, takže zůstanou nepřečtené. Claude pozná pozvánku na pohovor, zamítnutí, nabídku nebo dotaz a najde k nim kartu na nástěnce. Newslettery a upozornění z pracovních portálů přeskočí.',
         },
         {
           title: 'Ranní přehled',
@@ -1100,7 +1100,7 @@ const automation: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Tlačítko, ne automat',
-          text: 'Bot by klidně mohl posunout kartu sám, když přijde pozvánka. Jenže model se občas splete a board je moje evidence, ne jeho. Proto jen navrhne a změní se to až po zmáčknutí. Kartu navíc nejde posunout zpátky: i kdyby to model navrhl, bot se předtím podívá, kde karta zrovna je, a posun zpět neudělá.',
+          text: 'Bot by klidně mohl posunout kartu sám, když přijde pozvánka. Jenže model se občas splete a nástěnka je moje evidence, ne jeho. Proto jen navrhne a změní se to až po zmáčknutí. Kartu navíc nejde posunout zpátky: i kdyby to model navrhl, bot se předtím podívá, kde karta zrovna je, a posun zpět neudělá.',
         },
         {
           title: 'Kontrola kódu smí jen číst',
