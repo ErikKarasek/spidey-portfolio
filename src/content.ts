@@ -101,14 +101,14 @@ const skills = (l: Lang): Skill[] => [
   { name: 'React Native & Expo', category: l === 'cs' ? 'Mobil' : 'Mobile', level: ADV[l] },
   { name: 'Supabase & PostgreSQL', category: 'Backend', level: PRO[l] },
   { name: 'Python & Flask', category: 'Backend', level: PRO[l] },
-  { name: l === 'cs' ? 'AI agenti (tool calling)' : 'AI agents (tool calling)', category: 'AI', level: PRO[l] },
+  { name: l === 'cs' ? 'AI agenti (volání nástrojů)' : 'AI agents (tool calling)', category: 'AI', level: PRO[l] },
   { name: l === 'cs' ? 'Workers AI & LLM API' : 'Workers AI & LLM APIs', category: 'AI', level: PRO[l] },
   { name: 'Web scraping', category: 'Data', level: PRO[l] },
   { name: 'Node.js & pnpm', category: l === 'cs' ? 'Nástroje' : 'Tooling', level: ADV[l] },
   { name: l === 'cs' ? 'Unit testy' : 'Unit testing', category: l === 'cs' ? 'Kvalita' : 'Quality', level: PRO[l] },
   { name: l === 'cs' ? 'GSAP animace' : 'GSAP animations', category: 'Frontend', level: PRO[l] },
   { name: 'Git & GitHub', category: l === 'cs' ? 'Nástroje' : 'Tooling', level: ADV[l] },
-  { name: l === 'cs' ? 'Testy v CI (Playwright, Newman)' : 'Tests in CI (Playwright, Newman)', category: l === 'cs' ? 'Kvalita' : 'Quality', level: PRO[l] },
+  { name: l === 'cs' ? 'Automatické testy (Playwright, Newman)' : 'Automated tests (Playwright, Newman)', category: l === 'cs' ? 'Kvalita' : 'Quality', level: PRO[l] },
   { name: 'UI/UX design', category: 'Design', level: PRO[l] },
 ]
 
@@ -116,7 +116,7 @@ export const content: Record<Lang, Content> = {
   cs: {
     meta: {
       title: 'Erik Karásek | full-stack vývojář',
-      description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web. Šest vlastních projektů v Reactu, TypeScriptu a na Cloudflare, u každého i popis, jak vznikl.',
+      description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web. Sedm vlastních projektů v Reactu, TypeScriptu a na Cloudflare, u každého i popis, jak vznikl.',
     },
     nav: { about: 'O mně', experience: 'Zkušenosti', skills: 'Dovednosti', projects: 'Projekty', contact: 'Kontakt', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Vypnout zvuk', soundOff: 'Zapnout zvuk' },
     loader: 'Nasazuju masku',
@@ -183,7 +183,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Nexus Grind',
           description:
-            'Tracker produktivity pro Mac a Windows. Hlídá úkoly, návyky, spánek i ranked hry v LoLku a za každou splněnou věc ti roste sakura. Data se synchronizují přes cloud.',
+            'Aplikace pro Mac a Windows, která hlídá úkoly, návyky, spánek i ranked hry v LoLku. Za každou splněnou věc ti roste sakura. Data se synchronizují přes cloud.',
           tags: ['React', 'Tauri', 'Rust', 'Supabase'],
           image: `${IMG}/nexusgrind.webp`,
           downloads: true,
@@ -192,7 +192,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'LoL Stats',
           description:
-            'Moje statistiky z ranked her přes Riot API. Tierlist šampionů podle winrate a KDA, statistiky podle lajny, historie her a detail zápasu jako na op.gg. Klíč k API zůstává jen v prohlížeči.',
+            'Moje statistiky z ranked her přes Riot API. Tierlist šampionů podle winrate a KDA, statistiky podle pozice, historie her a detail zápasu jako na op.gg. Klíč k API zůstává jen v prohlížeči.',
           tags: ['JavaScript', 'Riot API', 'Chart.js', 'Cloudflare Workers'],
           image: `${IMG}/lolstats.webp`,
           link: 'https://lolstats.erikkarasek2005.workers.dev',
@@ -201,7 +201,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Monster Watch',
           description:
-            'Hlídá, kde je Monster zrovna v akci. Ukazuje všech 20 příchutí s cenami z aktuálních letáků. Slevy stahuje z kupi.cz backend v Pythonu a appka je zobrazuje jako mřížku příchutí.',
+            'Hlídá, kde je Monster zrovna v akci. Ukazuje všech 20 příchutí s cenami z aktuálních letáků. Slevy z kupi.cz stahuje backend v Pythonu a appka je ukazuje jako mřížku příchutí.',
           tags: ['React Native', 'Expo', 'Python', 'Flask'],
           image: `${IMG}/monsterwatch.webp`,
           link: 'https://monster-watch.onrender.com',
@@ -210,7 +210,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Job Tracker',
           description:
-            'Kanban na hledání práce s vlastními AI agenty. Scout každé ráno projde nabídky na Jobs.cz i otevřená data Úřadu práce, levný model je předtřídí a přísnější přeměří ty nadějné podle toho, co mi v požadavcích chybí. Ke každé kartě umí složit životopis na míru inzerátu a před pohovorem projde web firmy a napíše přípravu. Hono API a databáze běží na Cloudflare edge, API i board hlídají testy v CI.',
+            'Nástěnka na hledání práce, která si nabídky hledá sama. Každé ráno projde inzeráty na Jobs.cz i otevřená data Úřadu práce, levnější AI model je předtřídí a přísnější přeměří ty nadějné podle toho, co mi v požadavcích chybí. Ke každé nabídce umí složit životopis na míru a před pohovorem projde web firmy a napíše přípravu. Běží to celé na Cloudflare a po každé změně kódu se samo otestuje.',
           tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
@@ -227,7 +227,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Subscription Tracker',
           description:
-            'Přehled všeho, co ti měsíčně odchází z účtu. Jednou denně se worker sám probudí, posune obnovení a pošle e-mail na to, co se blíží nebo dlouho leží ladem. Screenshot platby za tebe přečte model na Workers AI.',
+            'Přehled všeho, co ti měsíčně odchází z účtu. Jednou denně se program sám probudí, posune datum další platby a pošle e-mail na to, co se blíží nebo co dlouho nepoužíváš. Screenshot platby za tebe přečte AI model na Cloudflare.',
           tags: ['React', 'Hono', 'Cloudflare Workers', 'D1', 'Workers AI'],
           image: `${IMG}/subscriptions.webp`,
           link: 'https://github.com/ErikKarasek/subscription-tracker',
@@ -290,7 +290,7 @@ export const content: Record<Lang, Content> = {
   en: {
     meta: {
       title: 'Erik Karásek | full-stack developer',
-      description: "Erik Karásek's portfolio. Desktop, mobile and web apps. Six projects of my own in React, TypeScript and on Cloudflare, each with a write-up of how it was built.",
+      description: "Erik Karásek's portfolio. Desktop, mobile and web apps. Seven projects of my own in React, TypeScript and on Cloudflare, each with a write-up of how it was built.",
     },
     nav: { about: 'About', experience: 'Experience', skills: 'Skills', projects: 'Projects', contact: 'Contact', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Mute sound', soundOff: 'Turn sound on' },
     loader: 'Suiting up',
@@ -384,7 +384,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Job Tracker',
           description:
-            'A kanban board for a job hunt, with AI agents of its own. Every morning a scout reads Jobs.cz and the Labour Office\'s open data, a cheap model sorts what it finds and a stricter one re-measures the promising ones against the requirements I do not meet. It can fit the résumé to any posting, and before an interview it reads the company\'s site and writes a prep brief. The Hono API and the database run on the Cloudflare edge, with tests in CI over both the API and the board.',
+            'A board for a job hunt that finds the postings itself. Every morning it reads Jobs.cz and the Labour Office\'s open data, a cheaper AI model sorts what it finds and a stricter one re-measures the promising ones against the requirements I do not meet. It can fit the résumé to any posting, and before an interview it reads the company\'s site and writes a prep brief. All of it runs on Cloudflare and tests itself after every change to the code.',
           tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
@@ -401,7 +401,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Subscription Tracker',
           description:
-            'An overview of everything leaving your account each month. Once a day a worker wakes up on its own, rolls renewals forward and emails what is due or lying idle. A model on Workers AI reads a payment screenshot for you.',
+            'An overview of everything leaving your account each month. Once a day the program wakes up on its own, moves the next payment date forward and emails what is due or what you never use. An AI model on Cloudflare reads a payment screenshot for you.',
           tags: ['React', 'Hono', 'Cloudflare Workers', 'D1', 'Workers AI'],
           image: `${IMG}/subscriptions.webp`,
           link: 'https://github.com/ErikKarasek/subscription-tracker',
