@@ -5,6 +5,8 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { getLiveStatus } from './server/live'
 import { getClips } from './server/youtube'
+import { content, profile, REPO } from './src/content'
+import { knowledge } from './src/chat/knowledge'
 
 // Serves the /api/* endpoints locally; in production the same logic runs as functions/api/*.ts.
 const json =
@@ -85,8 +87,55 @@ const securityHeaders: Plugin = {
   },
 }
 
+
+/**
+ * Writes dist/llms.txt and dist/llms-full.txt after each build.
+ *
+ * An assistant asked about Erik lands on a React page it has to execute to read anything. These two
+ * files hand it the same facts as plain Markdown: llms.txt is the short index (who, what, links),
+ * llms-full.txt is everything, and it is the very text the site's own assistant answers from
+ * (src/chat/knowledge.ts), so neither file can drift from the site.
+ *
+ * llms.txt is a convention (llmstxt.org), not a standard anyone is obliged to read. It costs two
+ * generated files, which is why it is here; do not expect traffic from it.
+ */
+const llmsTxt: Plugin = {
+  name: 'llms-txt',
+  apply: 'build',
+  closeBundle() {
+    const cs = content.cs
+    const link = (href: string) => `https://erikkarasek.cz${href}`
+    const index = [
+      `# ${profile.first} ${profile.last}`,
+      '',
+      `> ${cs.meta.description}`,
+      `> ${content.en.meta.description}`,
+      '',
+      'Web je česky i anglicky, tenhle soubor je česky. Kontakt: ' +
+        `${profile.email}, ${profile.github}, formulář na ${link('/#contact')}.`,
+      '',
+      '## Projekty',
+      ...cs.projects.items.map((p) => {
+        const href = p.study ? link(p.study) : (p.link ?? link('/#projects'))
+        return `- [${p.title}](${href}): ${p.description}`
+      }),
+      '',
+      '## Dokumenty',
+      `- [Životopis (PDF, česky)](${link(cs.hero.cvHref)})`,
+      `- [Resume (PDF, English)](${link(content.en.hero.cvHref)})`,
+      `- [Zdrojový kód webu](${REPO})`,
+      '',
+      '## Optional',
+      `- [llms-full.txt](${link('/llms-full.txt')}): všechno v jednom souboru, včetně případových studií`,
+      '',
+    ].join('\n')
+    writeFileSync('dist/llms.txt', index)
+    writeFileSync('dist/llms-full.txt', `${knowledge}\n`)
+  },
+}
+
 export default defineConfig({
-  plugins: [react(), tailwindcss(), api, securityHeaders],
+  plugins: [react(), tailwindcss(), api, securityHeaders, llmsTxt],
   server: { port: 5190 },
   // The portfolio plus one page per case study (/nexus-grind/, /lol-stats/, /monster-watch/).
   build: { rollupOptions: { input: { main: 'index.html', ...Object.fromEntries(STUDIES.map((slug) => [slug, `${slug}/index.html`])) } } },

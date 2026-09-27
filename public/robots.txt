@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://erikkarasek.cz/sitemap.xml
+
+# Plain-text summary for assistants: https://erikkarasek.cz/llms.txt (full text: /llms-full.txt)
