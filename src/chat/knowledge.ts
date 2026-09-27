@@ -22,7 +22,7 @@ const projects = cs.projects.items
   .map((p) => {
     const slug = p.study?.replaceAll('/', '') as StudySlug | undefined
     const study = slug ? studies[slug]?.cs : undefined
-    const where = [p.link && `Odkaz: ${p.link}`, p.study && `Případová studie: https://erikkarasek.cz${p.study}`]
+    const where = [p.link && `Odkaz: ${p.link}`, p.study && `Víc o projektu: https://erikkarasek.cz${p.study}`]
       .filter(Boolean)
       .join('\n')
     const detail = study

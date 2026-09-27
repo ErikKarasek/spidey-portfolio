@@ -126,7 +126,7 @@ const llmsTxt: Plugin = {
       `- [Zdrojový kód webu](${REPO})`,
       '',
       '## Optional',
-      `- [llms-full.txt](${link('/llms-full.txt')}): všechno v jednom souboru, včetně případových studií`,
+      `- [llms-full.txt](${link('/llms-full.txt')}): všechno v jednom souboru, včetně stránek o jednotlivých projektech`,
       '',
     ].join('\n')
     writeFileSync('dist/llms.txt', index)
