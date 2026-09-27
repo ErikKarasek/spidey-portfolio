@@ -1024,12 +1024,12 @@ const automation: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
       title: 'Automatizace | Erik Karásek',
-      description: 'Pár malých programů, které za mě dělají rutinu kolem hledání práce a mých projektů: deník z commitů, noční kontrola kódu, odpovědi od firem, ranní přehled a hlídání webů. Všechno chodí do Telegramu a nic se nezmění, dokud to neschválím.',
+      description: 'Pár AI agentů, kteří za mě dělají rutinu kolem hledání práce a mých projektů: deník z commitů, noční kontrola kódu, odpovědi od firem, ranní přehled a hlídání webů. Všechno chodí do Telegramu a nic se nezmění, dokud to neschválím.',
     },
     back: 'Zpět na portfolio',
     label: 'O projektu',
     title: 'Automatizace.',
-    lead: 'Za jeden víkend jsem si napsal pár malých programů, které za mě dělají otravnou rutinu kolem hledání práce a mých projektů. V noci sepíšou, co jsem ten den udělal, a zkontrolují nový kód. Přes den hlídají poštu od firem a ráno mi pošlou přehled. Všechno mi chodí do Telegramu a nic se nezmění, dokud to tlačítkem neschválím.',
+    lead: 'Za jeden víkend jsem si postavil pár AI agentů, kteří za mě dělají otravnou rutinu kolem hledání práce a mých projektů. V noci sepíšou, co jsem ten den udělal, a zkontrolují nový kód. Přes den hlídají poštu od firem a ráno mi pošlou přehled. Všechno mi chodí do Telegramu a nic se nezmění, dokud to tlačítkem neschválím.',
     stats: [
       { value: '7', label: 'Automatických úloh' },
       { value: '2', label: 'Telegram boti' },
@@ -1040,8 +1040,8 @@ const automation: Record<Lang, CaseStudyContent> = {
       heading: 'Co to řeší',
       body: [
         'Když hledáš práci a k tomu děláš na vlastních projektech, nasbírá se spousta drobností: kouknout do pošty, jestli neodepsala nějaká firma, přepsat to na board, projít, co našel scout, vzpomenout si, co jsem včera vlastně dělal, a zkontrolovat, že mi nespadl web. Nic z toho není složité, ale každý den to zabere čas.',
-        'Chtěl jsem, aby to dělal počítač a mně chodil jen výsledek, na jedno místo v mobilu. Zároveň jsem nechtěl, aby mi sám přesouval karty, mazal maily nebo opravoval kód. Každý program proto jen čte, shrne a navrhne, co udělat. Rozhodnutí je na mně.',
-        'Cestou jsem zjistil ještě jednu věc: nejhorší je chyba, o které nevíš. Skript, který „úspěšně“ doběhne a nic neudělá, vypadá úplně stejně jako den, kdy se nic nestalo. Proto to celé hlídá ještě jeden program, který se ozve, když některá úloha neproběhne.',
+        'Chtěl jsem, aby to dělal počítač a mně chodil jen výsledek, na jedno místo v mobilu. Zároveň jsem nechtěl, aby mi sám přesouval karty, mazal maily nebo opravoval kód. Každý agent proto jen čte, shrne a navrhne, co udělat. Rozhodnutí je na mně.',
+        'Cestou jsem zjistil ještě jednu věc: nejhorší je chyba, o které nevíš. Skript, který „úspěšně“ doběhne a nic neudělá, vypadá úplně stejně jako den, kdy se nic nestalo. Proto to celé hlídá ještě jeden agent, který se ozve, když některá úloha neproběhne.',
       ],
     },
     flow: {
@@ -1129,7 +1129,7 @@ const automation: Record<Lang, CaseStudyContent> = {
       body: [
         'Běží to od 26. září 2026. Deník a kontrola kódu mi chodí ráno, pošta se kontroluje každou hodinu, kdy je Mac zapnutý, a hlídání webů běží pořád na Cloudflare.',
         'Kód mám v soukromých repozitářích, protože pracuje s mou poštou a přihláškami. Proto je obrázek výše z ukázkových dat.',
-        'Nejvíc mě baví, že se to kontroluje navzájem: kontrola kódu našla čtyři chyby v programu na čtení pošty, který vznikl ten samý den, a hlídání úloh vzniklo kvůli chybě v deníku.',
+        'Nejvíc mě baví, že se to kontroluje navzájem: kontrola kódu našla čtyři chyby v agentovi na čtení pošty, který vznikl ten samý den, a hlídání úloh vzniklo kvůli chybě v deníku.',
       ],
     },
     cta: { text: 'Chceš něco podobného?', button: 'Napiš mi', href: '/#contact' },
@@ -1137,12 +1137,12 @@ const automation: Record<Lang, CaseStudyContent> = {
   en: {
     meta: {
       title: 'Automation | Erik Karásek',
-      description: 'A few small programs around a job hunt and side projects: a work log from commits, a nightly code review, sorting replies from companies, a morning digest and site monitoring. Claude, Telegram, Cloudflare, and a human who approves every change.',
+      description: 'A few AI agents around a job hunt and side projects: a work log from commits, a nightly code review, sorting replies from companies, a morning digest and site monitoring. Claude, Telegram, Cloudflare, and a human who approves every change.',
     },
     back: 'Back to portfolio',
     label: 'About the project',
     title: 'Automation.',
-    lead: 'Over one weekend I wrote a few small programs that handle the tedious routine around my job hunt and my projects. At night they write a log of what I did and go through the new code. During the day they read replies from companies, and in the morning they send a digest. Everything ends up in Telegram as a message with buttons, and nothing changes until I press one.',
+    lead: 'Over one weekend I built a few AI agents that handle the tedious routine around my job hunt and my projects. At night they write a log of what I did and go through the new code. During the day they read replies from companies, and in the morning they send a digest. Everything ends up in Telegram as a message with buttons, and nothing changes until I press one.',
     stats: [
       { value: '7', label: 'Scheduled jobs' },
       { value: '2', label: 'Telegram bots' },
@@ -1153,8 +1153,8 @@ const automation: Record<Lang, CaseStudyContent> = {
       heading: 'What it solves',
       body: [
         'A job hunt and a few side projects pile up small routine: check the inbox in case a company replied, copy it onto the board, look at what the scout found, remember what I actually did yesterday, and make sure none of my sites went down. None of it is hard; it just takes a bite of time and attention every day.',
-        'I wanted programs to do it and send me only the result, in one place, on my phone. I did not want an automaton that moves my cards, deletes mail or commits fixes on its own. So every job reads, summarises and proposes, and the decision stays with me.',
-        'One more thing I learned on the way: the worst failure in automation is the one you do not hear about. A script that finishes "successfully" and does nothing looks exactly like a day when nothing happened. So one more program watches the rest and tells me when a job did not run.',
+        'I wanted agents to do it and send me only the result, in one place, on my phone. I did not want an automaton that moves my cards, deletes mail or commits fixes on its own. So every job reads, summarises and proposes, and the decision stays with me.',
+        'One more thing I learned on the way: the worst failure in automation is the one you do not hear about. A script that finishes "successfully" and does nothing looks exactly like a day when nothing happened. So one more agent watches the rest and tells me when a job did not run.',
       ],
     },
     flow: {
