@@ -219,7 +219,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Automatizace',
           description:
-            'Sada malých agentů kolem mého hledání práce a projektů. V noci napíšou deník z commitů a projdou nový kód, přes den čtou poštu od firem a ráno pošlou přehled s nabídkami. Všechno přijde do Telegramu jako zpráva s tlačítky a nic se nezmění, dokud nezmáčknu. Hlídač na Cloudflare se ozve, když spadne web nebo se některá úloha neozve.',
+            'Pár malých programů, které za mě dělají rutinu kolem hledání práce a mých projektů. V noci sepíšou, co jsem udělal, a zkontrolují nový kód, přes den hlídají poštu od firem a ráno pošlou přehled nových nabídek. Všechno chodí do Telegramu s tlačítky a nic se nezmění, dokud to neschválím. Když spadne web nebo se některá úloha neozve, dá mi vědět.',
           tags: ['Node.js', 'Claude', 'Telegram Bot API', 'Cloudflare Workers', 'IMAP'],
           image: `${IMG}/automation.webp`,
           study: '/automation/',
@@ -393,7 +393,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Automation',
           description:
-            'A set of small agents around my job hunt and projects. At night they write a log from my commits and review the new code, during the day they read replies from companies, and in the morning they send a digest of new postings. Everything arrives in Telegram as a message with buttons, and nothing changes until I press one. A watchman on Cloudflare speaks up when a site goes down or a job goes quiet.',
+            'A few small programs that handle the routine around my job hunt and projects. At night they write up what I did and check the new code, during the day they watch for replies from companies, and in the morning they send a digest of new postings. Everything arrives in Telegram with buttons, and nothing changes until I approve it. If a site goes down or a job does not run, I get told.',
           tags: ['Node.js', 'Claude', 'Telegram Bot API', 'Cloudflare Workers', 'IMAP'],
           image: `${IMG}/automation.webp`,
           study: '/automation/',
