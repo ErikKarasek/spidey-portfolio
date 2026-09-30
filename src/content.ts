@@ -116,7 +116,7 @@ export const content: Record<Lang, Content> = {
   cs: {
     meta: {
       title: 'Erik Karásek | full-stack vývojář',
-      description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web. Sedm vlastních projektů v Reactu, TypeScriptu a na Cloudflare, u každého i popis, jak vznikl.',
+      description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web. Osm vlastních projektů v Reactu, TypeScriptu a na Cloudflare, u každého i popis, jak vznikl.',
     },
     nav: { about: 'O mně', experience: 'Zkušenosti', skills: 'Dovednosti', projects: 'Projekty', contact: 'Kontakt', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Vypnout zvuk', soundOff: 'Zapnout zvuk' },
     loader: 'Nasazuju masku',
@@ -222,7 +222,16 @@ export const content: Record<Lang, Content> = {
             'Pár AI agentů, kteří za mě dělají rutinu kolem hledání práce a mých projektů. V noci sepíšou, co jsem udělal, a zkontrolují nový kód, přes den hlídají poštu od firem a ráno pošlou přehled nových nabídek. Všechno chodí do Telegramu s tlačítky a nic se nezmění, dokud to neschválím. Když spadne web nebo se některá úloha neozve, dá mi vědět.',
           tags: ['Node.js', 'Claude', 'Telegram Bot API', 'Cloudflare Workers', 'IMAP'],
           image: `${IMG}/automation.webp`,
+          link: 'https://github.com/ErikKarasek/devlog',
           study: '/automation/',
+        },
+        {
+          title: 'GitHub Reels',
+          description:
+            'Každé ráno projde GitHub Trending a AI novinky, seřadí je podle toho, co má šanci zaujmout, a nechá model napsat scénáře na krátká videa v češtině. Hotové scénáře i zdroje si otevřu v mobilu na webu, který se nasadí spolu s nimi.',
+          tags: ['Node.js', 'Claude', 'Web scraping', 'Cloudflare Workers', 'PWA'],
+          image: `${IMG}/reels.webp`,
+          link: 'https://github.com/ErikKarasek/github-reels',
         },
         {
           title: 'Subscription Tracker',
@@ -290,7 +299,7 @@ export const content: Record<Lang, Content> = {
   en: {
     meta: {
       title: 'Erik Karásek | full-stack developer',
-      description: "Erik Karásek's portfolio. Desktop, mobile and web apps. Seven projects of my own in React, TypeScript and on Cloudflare, each with a write-up of how it was built.",
+      description: "Erik Karásek's portfolio. Desktop, mobile and web apps. Eight projects of my own in React, TypeScript and on Cloudflare, each with a write-up of how it was built.",
     },
     nav: { about: 'About', experience: 'Experience', skills: 'Skills', projects: 'Projects', contact: 'Contact', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Mute sound', soundOff: 'Turn sound on' },
     loader: 'Suiting up',
@@ -396,7 +405,16 @@ export const content: Record<Lang, Content> = {
             'A few AI agents that handle the routine around my job hunt and projects. At night they write up what I did and check the new code, during the day they watch for replies from companies, and in the morning they send a digest of new postings. Everything arrives in Telegram with buttons, and nothing changes until I approve it. If a site goes down or a job does not run, I get told.',
           tags: ['Node.js', 'Claude', 'Telegram Bot API', 'Cloudflare Workers', 'IMAP'],
           image: `${IMG}/automation.webp`,
+          link: 'https://github.com/ErikKarasek/devlog',
           study: '/automation/',
+        },
+        {
+          title: 'GitHub Reels',
+          description:
+            'Every morning it goes through GitHub Trending and the AI news, ranks them by what stands a chance of landing, and has a model write short-video scripts in Czech. The scripts and their sources open on my phone, on a site deployed alongside them.',
+          tags: ['Node.js', 'Claude', 'Web scraping', 'Cloudflare Workers', 'PWA'],
+          image: `${IMG}/reels.webp`,
+          link: 'https://github.com/ErikKarasek/github-reels',
         },
         {
           title: 'Subscription Tracker',
