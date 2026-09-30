@@ -1,0 +1,8 @@
+# Short addresses for the apps that live on a Worker of their own. LinkedIn refuses *.workers.dev
+# and *.pages.dev in a profile, so anything linked from there needs an address on this domain.
+# Handled here rather than in functions/_middleware.ts because Pages answers a path with no
+# trailing slash from its asset router, before a function ever runs.
+/reels   https://github-reels.erikkarasek2005.workers.dev  302
+/reels/  https://github-reels.erikkarasek2005.workers.dev  302
+/board   https://job-tracker-10s.pages.dev  302
+/board/  https://job-tracker-10s.pages.dev  302
