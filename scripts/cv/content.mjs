@@ -104,7 +104,8 @@ export const cv = {
       {
         name: 'Automatizace',
         when: '2026',
-        link: 'erikkarasek.cz/automation',
+        link: 'github.com/ErikKarasek/devlog',
+        study: 'erikkarasek.cz/automation',
         points: [
           'Sada vlastních AI agentů, která dělá rutinu kolem hledání práce a projektů: v noci sepíše, co jsem ten den udělal, a zkontroluje nový kód, přes den čte odpovědi firem z e-mailu a ráno posílá přehled nových nabídek.',
           'Agent vždy jen navrhne, potvrzuje člověk: všechno chodí do Telegramu s tlačítky a bez stisknutí se v evidenci přihlášek nic nezmění.',
@@ -263,7 +264,8 @@ export const cv = {
       {
         name: 'Automation',
         when: '2026',
-        link: 'erikkarasek.cz/automation',
+        link: 'github.com/ErikKarasek/devlog',
+        study: 'erikkarasek.cz/automation',
         points: [
           'AI agents that handle the routine around my job hunt and projects: at night they write up what I did and review the new code, by day they read companies\' replies, and in the morning they send a digest of new postings.',
           'An agent only ever proposes and a human confirms: everything arrives in Telegram with buttons, and nothing changes in the application board until one is pressed.',
