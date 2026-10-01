@@ -13,8 +13,9 @@ export type CaseStudyContent = {
   /** Optional numbered flow under the problem, for a project without screens of its own. */
   flow?: { heading: string; steps: { title: string; text: string }[] }
   shotsHeading: string
-  /** `src` ending in .mp4 is played as a video; `poster` is its still frame. */
-  shots: { src: string; title: string; text: string; poster?: string }[]
+  /** `src` ending in .mp4 is played as a video; `poster` is its still frame.
+   *  `portrait` marks a phone shot, which gets a narrow column instead of the full width. */
+  shots: { src: string; title: string; text: string; poster?: string; portrait?: true }[]
   build: { heading: string; items: { title: string; text: string }[] }
   decisions: { heading: string; items: { title: string; text: string }[] }
   status: { heading: string; body: string[] }
@@ -1297,6 +1298,12 @@ const wisp: Record<Lang, CaseStudyContent> = {
     shotsHeading: 'Jak to vypadá',
     shots: [
       {
+        src: '/video/wisp.mp4',
+        poster: '/video/wisp-poster.jpg',
+        title: 'Krátké video',
+        text: 'Patnáct vteřin toho, jak to chodí: notch s kroky agenta, povolení pro Clauda jedním klikem, appka na iPhonu a widgety s Dynamic Islandem.',
+      },
+      {
         src: '/img/case/wisp-mac.webp',
         title: 'Mac',
         text: 'Celá parta na jedné obrazovce: vlevo filtry podle stavu a podle toho, kde co běží, a pod nimi zbývající limity Clauda, ChatGPT a Gemini. Karty ukazují, co která úloha dělá a kdy běžela naposledy, ať je to launchd na Macu, agent na Paperclipu nebo worker na Cloudflare.',
@@ -1308,19 +1315,15 @@ const wisp: Record<Lang, CaseStudyContent> = {
       },
       {
         src: '/img/case/wisp-phone.webp',
+        portrait: true,
         title: 'iPhone',
         text: 'Nativní appka ve SwiftUI, nasazená přes SideStore. Nahoře agent, který zrovna pracuje, i s posledními kroky, pod ním limity s časem obnovení a filtry podle stavu. Stav i příkazy tečou přes relay, telefon se nikdy nepřipojuje k Macu napřímo.',
       },
       {
         src: '/img/case/wisp-agents.webp',
+        portrait: true,
         title: 'Agenti',
         text: 'Karta na agenta: na čem běží (Claude, ChatGPT), jestli pracuje, spí nebo je vypnutý, a čím se zrovna zabývá. Odsud se taky zadává nový úkol, takže práci rozjedu z mobilu a nemusím k počítači.',
-      },
-      {
-        src: '/video/wisp.mp4',
-        poster: '/video/wisp-poster.jpg',
-        title: 'Krátké video',
-        text: 'Patnáct vteřin toho, jak to chodí: notch s kroky agenta, povolení pro Clauda jedním klikem, appka na iPhonu a widgety s Dynamic Islandem.',
       },
     ],
     build: {
@@ -1401,6 +1404,12 @@ const wisp: Record<Lang, CaseStudyContent> = {
     shotsHeading: 'What it looks like',
     shots: [
       {
+        src: '/video/wisp.mp4',
+        poster: '/video/wisp-poster.jpg',
+        title: 'A short video',
+        text: 'Fifteen seconds of how it goes: the notch with an agent\'s steps, a Claude permission answered in one click, the iPhone app, and the widgets with the Dynamic Island.',
+      },
+      {
         src: '/img/case/wisp-mac.webp',
         title: 'Mac',
         text: 'The whole crew on one screen: filters by state and by where each job runs on the left, with what is left of the Claude, ChatGPT and Gemini subscriptions under them. Each card says what that job is doing and when it last ran, whether it is launchd on the Mac, an agent on Paperclip or a worker on Cloudflare.',
@@ -1412,19 +1421,15 @@ const wisp: Record<Lang, CaseStudyContent> = {
       },
       {
         src: '/img/case/wisp-phone.webp',
+        portrait: true,
         title: 'iPhone',
         text: 'A native SwiftUI app, sideloaded with SideStore. The working agent and its latest steps on top, then the limits with their reset times and filters by state. State and commands travel through the relay; the phone never talks to the Mac directly.',
       },
       {
         src: '/img/case/wisp-agents.webp',
+        portrait: true,
         title: 'Agents',
         text: 'A card per agent: which engine it runs on (Claude, ChatGPT), whether it is working, asleep or switched off, and what it is busy with. A new task starts here too, so work can begin from the phone without going back to the desk.',
-      },
-      {
-        src: '/video/wisp.mp4',
-        poster: '/video/wisp-poster.jpg',
-        title: 'A short video',
-        text: 'Fifteen seconds of how it goes: the notch with an agent\'s steps, a Claude permission answered in one click, the iPhone app, and the widgets with the Dynamic Island.',
       },
     ],
     build: {
