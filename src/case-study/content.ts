@@ -1311,7 +1311,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/wisp-notch.webp',
         title: 'Notch',
-        text: 'Overlay přes výřez kamery. Vlevo agent, který pracuje, a jeho kroky, vpravo zbytek party se stavem. Tady se Claude ptá, jestli smí spustit příkaz, a odpovídá se jedním klikem. Vpravo nahoře jsou kolečka se zbývajícími limity tří předplatných.',
+        text: 'Overlay přes výřez kamery, rozbalený najetím myši. Vlevo agent, který pracuje, a jeho kroky, vedle něj parta se stavem: Fixer čeká na mě, site-watch hotovo, Job mail spí. Napravo karty, co si tam dám sám, třeba přehrávač a kalendář. Zbývající limity tří předplatných sedí v horní liště.',
       },
       {
         src: '/img/case/wisp-phone.webp',
@@ -1417,7 +1417,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/wisp-notch.webp',
         title: 'The notch',
-        text: 'An overlay across the camera housing. On the left the agent that is working and its steps, on the right the rest of the crew with their state. Here Claude is asking whether it may run a command, answered in one click. Top right are the rings with what is left of three subscriptions.',
+        text: 'An overlay across the camera housing, opened by moving the mouse up to it. On the left the agent that is working and its steps, beside it the crew with their state: Fixer waiting on me, site-watch done, Job mail asleep. On the right the cards I choose to keep there, a player and a calendar. The rings with what is left of three subscriptions sit in the menu bar.',
       },
       {
         src: '/img/case/wisp-phone.webp',
