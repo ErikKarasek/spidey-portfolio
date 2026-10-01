@@ -92,7 +92,7 @@ export function CaseStudy({ slug }: { slug: StudySlug }) {
                     instead of stretching across the page. Muted and loopable, controls for the rest. */}
                 <div
                   className={`overflow-hidden rounded-2xl border border-line bg-black shadow-[0_10px_30px_rgb(var(--glow)/0.12)] ${
-                    s.src.endsWith('.mp4') ? 'mx-auto w-full max-w-xs' : ''
+                    s.src.endsWith('.mp4') || s.portrait ? 'mx-auto w-full max-w-xs' : ''
                   }`}
                 >
                   {s.src.endsWith('.mp4') ? (
