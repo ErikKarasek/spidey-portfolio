@@ -88,8 +88,18 @@ export function CaseStudy({ slug }: { slug: StudySlug }) {
           <div className="flex flex-col gap-12">
             {c.shots.map((s) => (
               <figure key={s.src}>
-                <div className="overflow-hidden rounded-2xl border border-line bg-black shadow-[0_10px_30px_rgb(var(--glow)/0.12)]">
-                  <img src={s.src} alt={s.title} loading="lazy" width={1600} height={1029} className="h-auto w-full" />
+                {/* A .mp4 shot is a phone recording: portrait, so it gets a column of its own width
+                    instead of stretching across the page. Muted and loopable, controls for the rest. */}
+                <div
+                  className={`overflow-hidden rounded-2xl border border-line bg-black shadow-[0_10px_30px_rgb(var(--glow)/0.12)] ${
+                    s.src.endsWith('.mp4') ? 'mx-auto w-full max-w-xs' : ''
+                  }`}
+                >
+                  {s.src.endsWith('.mp4') ? (
+                    <video src={s.src} poster={s.poster} controls loop muted playsInline preload="none" className="h-auto w-full" aria-label={s.title} />
+                  ) : (
+                    <img src={s.src} alt={s.title} loading="lazy" width={1600} height={1029} className="h-auto w-full" />
+                  )}
                 </div>
                 <figcaption className="mt-3">
                   <strong className="text-sm font-black uppercase tracking-tight text-ink md:text-base">{s.title}</strong>

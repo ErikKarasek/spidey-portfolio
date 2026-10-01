@@ -13,7 +13,8 @@ export type CaseStudyContent = {
   /** Optional numbered flow under the problem, for a project without screens of its own. */
   flow?: { heading: string; steps: { title: string; text: string }[] }
   shotsHeading: string
-  shots: { src: string; title: string; text: string }[]
+  /** `src` ending in .mp4 is played as a video; `poster` is its still frame. */
+  shots: { src: string; title: string; text: string; poster?: string }[]
   build: { heading: string; items: { title: string; text: string }[] }
   decisions: { heading: string; items: { title: string; text: string }[] }
   status: { heading: string; body: string[] }
@@ -48,6 +49,12 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
     },
     shotsHeading: 'Jak to vypadá',
     shots: [
+      {
+        src: '/video/nexus-grind.mp4',
+        poster: '/video/nexus-grind-poster.jpg',
+        title: 'Krátké video',
+        text: 'Dvacet vteřin z appky: ranní obrazovka, soustředění, návyky a sakura, které za splněnou práci roste.',
+      },
       {
         src: shot('today'),
         title: 'Dnes',
@@ -154,6 +161,12 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
     },
     shotsHeading: 'What it looks like',
     shots: [
+      {
+        src: '/video/nexus-grind.mp4',
+        poster: '/video/nexus-grind-poster.jpg',
+        title: 'A short video',
+        text: 'Twenty seconds of the app: the morning screen, a focus block, habits, and the sakura tree that grows with the work you finish.',
+      },
       {
         src: shot('today'),
         title: 'Today',
@@ -1304,9 +1317,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
         text: 'Karta na agenta: na čem běží (Claude, ChatGPT), jestli pracuje, spí nebo je vypnutý, a čím se zrovna zabývá. Odsud se taky zadává nový úkol, takže práci rozjedu z mobilu a nemusím k počítači.',
       },
       {
-        src: '/img/case/wisp-widgets.webp',
-        title: 'Widgety a Dynamic Island',
-        text: 'Widget na ploše ukazuje agenta, který pracuje, a jeho aktuální krok. Nahoře v Dynamic Islandu sedí parta pořád, takže stačí mrknout na horní část displeje. Dotek otevře příslušnou záložku přes deep link.',
+        src: '/video/wisp.mp4',
+        poster: '/video/wisp-poster.jpg',
+        title: 'Krátké video',
+        text: 'Patnáct vteřin toho, jak to chodí: notch s kroky agenta, povolení pro Clauda jedním klikem, appka na iPhonu a widgety s Dynamic Islandem.',
       },
     ],
     build: {
@@ -1407,9 +1421,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
         text: 'A card per agent: which engine it runs on (Claude, ChatGPT), whether it is working, asleep or switched off, and what it is busy with. A new task starts here too, so work can begin from the phone without going back to the desk.',
       },
       {
-        src: '/img/case/wisp-widgets.webp',
-        title: 'Widgets and Dynamic Island',
-        text: 'The home-screen widget shows the working agent and its current step. The crew sits in the Dynamic Island all the time, so a glance at the top of the screen is enough. A tap opens the matching tab through a deep link.',
+        src: '/video/wisp.mp4',
+        poster: '/video/wisp-poster.jpg',
+        title: 'A short video',
+        text: 'Fifteen seconds of how it goes: the notch with an agent\'s steps, a Claude permission answered in one click, the iPhone app, and the widgets with the Dynamic Island.',
       },
     ],
     build: {
