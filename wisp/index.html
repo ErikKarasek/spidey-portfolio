@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wisp | Erik Karásek</title>
+    <meta
+      name="description"
+      content="Wisp: řídicí panel nad mými AI agenty. Mac appka v notchi, iPhone klient v SwiftUI s widgety a Cloudflare relay mezi nimi. Claude, ChatGPT i Gemini vedle sebe."
+    />
+    <meta name="theme-color" content="#a31515" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Wisp | Erik Karásek" />
+    <meta property="og:description" content="Agenti v notchi, na zamykací obrazovce i ve widgetech. Jak se stav dostane z Macu do iPhonu a proč povolení pro Clauda odklikneš odkudkoli." />
+    <meta property="og:image" content="https://erikkarasek.cz/img/og/wisp.jpg" />
+    <meta property="og:url" content="https://erikkarasek.cz/wisp/" />
+    <meta property="og:site_name" content="Erik Karásek" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://erikkarasek.cz/wisp/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>" />
+    <script>
+      // Put the suit on before first paint so Symbiote mode doesn't flash white. With no saved choice,
+      // follow the system's dark mode.
+      try {
+        var saved = localStorage.getItem('symbiote')
+        var on = saved === null ? matchMedia('(prefers-color-scheme: dark)').matches : saved === '1'
+        if (on) document.documentElement.classList.add('symbiote')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <h1>Wisp</h1>
+      <p>Řídicí panel nad mými AI agenty. Mac appka žije v notchi a ukazuje, co který agent zrovna dělá, iPhone appka v SwiftUI přidává widgety a Dynamic Island, mezi nimi je Cloudflare relay. Claude, ChatGPT i Gemini vedle sebe, včetně zbývajících limitů.</p>
+      <p><a href="/">Zpět na portfolio</a></p>
+    </noscript>
+    <script type="module" src="/src/case-study/wisp.tsx"></script>
+  </body>
+</html>

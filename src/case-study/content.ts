@@ -1257,6 +1257,195 @@ const automation: Record<Lang, CaseStudyContent> = {
   },
 }
 
+const wisp: Record<Lang, CaseStudyContent> = {
+  cs: {
+    meta: {
+      title: 'Wisp | o projektu | Erik Karásek',
+      description: 'Řídicí panel nad AI agenty: Mac appka v notchi, iPhone klient v SwiftUI s widgety a Cloudflare relay mezi nimi. Claude, ChatGPT i Gemini vedle sebe.',
+    },
+    back: 'Zpět na portfolio',
+    label: 'O projektu',
+    title: 'Wisp.',
+    lead: 'Řídicí panel nad agenty, které mi běží na pozadí. Každý z nich je postavička a její obličej ukazuje, co zrovna dělá: pracuje, spí do dalšího běhu, spadla, nebo na mě čeká. Žije v notchi Macu a ten samý stav mám i v iPhonu, včetně widgetů a Dynamic Islandu.',
+    stats: [
+      { value: '3', label: 'AI předplatná vedle sebe' },
+      { value: '2', label: 'Appky: Mac a iPhone' },
+      { value: '1', label: 'Relay mezi nimi' },
+      { value: '40', label: 'Postaviček na výběr' },
+    ],
+    problem: {
+      heading: 'Co to řeší',
+      body: [
+        'Agentů a naplánovaných úloh mi přibylo tolik, že jsem přestal mít přehled. Něco běží přes launchd, něco na Paperclipu, něco jako Cloudflare Worker a něco jako GitHub Action. Každé má jiné místo, kam se jde podívat, takže jsem se nedíval nikam a chyby jsem objevil, až když něco nepřišlo.',
+        'Wisp to dá na jednu obrazovku a hlavně do notche, kde to mám na očích bez toho, abych si otevíral okno. Když některý agent pracuje, vidím jeho kroky, jak přibývají. Když spadne, zčervená. Když čeká na moje svolení, zeptá se rovnou tam.',
+        'Druhá půlka je telefon. Claude se často zeptá, jestli smí spustit příkaz, a to se stane i ve chvíli, kdy nejsem u Macu. Teď mi to přijde na iPhone, odpovím ze zamykací obrazovky nebo z Telegramu a práce pokračuje.',
+      ],
+    },
+    shotsHeading: 'Jak to vypadá',
+    shots: [
+      {
+        src: '/img/case/wisp-notch.webp',
+        title: 'Notch',
+        text: 'Overlay přes výřez kamery. Vlevo agent, který zrovna pracuje, a jeho kroky, vpravo zbytek party se stavem. Tady se Claude ptá, jestli smí spustit příkaz, a odpovídá se jedním klikem. Vpravo nahoře jsou kolečka se zbývajícími limity tří předplatných.',
+      },
+      {
+        src: '/img/case/wisp-phone.webp',
+        title: 'iPhone',
+        text: 'Nativní appka ve SwiftUI, nasazená přes SideStore. Karty agentů s tím, na čem pracují a kdo je vypnutý, zadání úkolu, historie a pull requesty ke schválení. Stav i příkazy tečou přes relay, telefon se nikdy nepřipojuje k Macu napřímo.',
+      },
+      {
+        src: '/img/case/wisp-widgets.webp',
+        title: 'Widgety a Dynamic Island',
+        text: 'Čtyři varianty widgetu: parta, agenti s tlačítkem probudit, limity jako pruhy a limity jako měřáky na zamykací obrazovku. Dotek otevře příslušnou záložku přes deep link. Agent, který pracuje, se ukáže v Dynamic Islandu a po chvíli ticha se vrátí k vlastní postavičce.',
+      },
+    ],
+    build: {
+      heading: 'Jak je to postavené',
+      items: [
+        {
+          title: 'Mac v Tauri, telefon ve SwiftUI',
+          text: 'Appka na Macu je Tauri: rozhraní v TypeScriptu, systémové věci v Rustu, protože launchd, Keychain a overlay přes notch se z webového okna dělat nedají. iPhone je nativní SwiftUI s App Intents pro tlačítka ve widgetech a s Live Activity pro Dynamic Island.',
+        },
+        {
+          title: 'Relay místo přímého spojení',
+          text: 'Mezi Macem a telefonem je Cloudflare Worker s databází D1. Mac do něj posílá stav a vybírá si příkazy, telefon stav čte a příkazy nechává. Nikdo nikomu neotevírá port a telefon funguje i když je Mac zrovna uspaný: příkaz počká, až se probudí.',
+        },
+        {
+          title: 'Tři předplatná v jednom pohledu',
+          text: 'Claude běží přes svoje CLI, ChatGPT přes Codex CLI a Gemini přes agy. Každý agent si nese, na čem běží, a Wisp u každého předplatného ukazuje spotřebu i čas resetu. Když tempo vychází na to, že limit dojde dřív než okno skončí, kolečko zežloutne.',
+        },
+        {
+          title: 'Kroky z Claude Code přes hooky',
+          text: 'Co agent právě dělá, se nevytahuje z logu po skončení. Claude Code posílá kroky hookem rovnou do notche, takže je vidět průběh, ne až výsledek. Soubor přetažený na postavičku se promění v dotaz na ten soubor.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'Rozhodnutí, která stála nejvíc přemýšlení',
+      items: [
+        {
+          title: 'Endpointy, které umí spustit práci, musí být nedůvěřivé',
+          text: 'Hooky na Macu přijímají data zvenčí a dokážou rozjet agenta, takže chtějí vlastní tajemství pro každou instalaci, odmítají požadavky z prohlížeče a kontrolují, že se na ně někdo nepřesměroval z cizí adresy. Relay hlídá jeden bearer token a porovnává ho v konstantním čase, aby se nedal uhádnout po znacích. Klíč na disku má práva 0600.',
+        },
+        {
+          title: 'Codex CLI místo zabezpečeného enginu',
+          text: 'ChatGPT agenti původně běželi přes standardní ACP engine, jenže ten je zavřený v pískovišti bez sítě a bez práva psát mimo svou složku, takže většina úkolů skončila na tom, že si agent nemohl nic stáhnout. Přepnul jsem je na Codex CLI, kde to jde. Je to vědomý ústupek: víc práv výměnou za použitelnost, a proto se u každého spuštění pořád ptám.',
+        },
+        {
+          title: 'Jména uvnitř zůstala stará',
+          text: 'Projekt se jmenoval Dispečink a přejmenoval se na Wisp. Venku se změnilo všechno, uvnitř schválně nic: identifikátor appky, cesta ke konfiguraci i adresy relaye pořád říkají dispecink. Přejmenovat je by znamenalo, že každá instalace ztratí přístup ke svým vlastním položkám v Keychainu, a to kvůli jménu nestojí za to.',
+        },
+        {
+          title: 'Postavičky nejsou ozdoba',
+          text: 'Každá úloha má obličej a ten nese stav. Je to rychlejší než číst tabulku: červenou postavičku v notchi si všimnu koutkem oka, řádek v seznamu ne. Tvarů je šest a galerie má čtyřicet hotových postav, takže si agenty pamatuju podle obličeje, ne podle názvu služby.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Kde to je teď',
+      body: [
+        'Běží mi to denně od konce září 2026. Na Macu jako appka v menu baru a v notchi, na iPhonu jako sideloadnutá appka přes SideStore, mezi nimi relay na Cloudflare.',
+        'Noční kontrola kódu zakládá z vážných nálezů úkoly opravnému agentovi, nejvýš šest za noc a bez duplicit, a do Telegramu napíše, co předala. To uzavřelo kruh: nástroj, který hlídá moje projekty, opravuje i sám sebe.',
+        'Kód je veřejný, ale je to nástroj pro jeden konkrétní Mac, ne produkt. Bez mých agentů, tokenů a předplatných se po spuštění nepřipojí k ničemu.',
+      ],
+    },
+    cta: { text: 'Chceš se podívat do kódu?', button: 'Otevřít na GitHubu', href: 'https://github.com/ErikKarasek/wisp' },
+  },
+  en: {
+    meta: {
+      title: 'Wisp | about the project | Erik Karásek',
+      description: 'A dashboard for AI agents: a Mac app in the notch, a SwiftUI iPhone client with widgets, and a Cloudflare relay between them. Claude, ChatGPT and Gemini side by side.',
+    },
+    back: 'Back to portfolio',
+    label: 'About the project',
+    title: 'Wisp.',
+    lead: 'A dashboard for the agents running in the background. Each one is a little character whose face shows what it is doing: working, asleep until its next run, failed, or waiting for me. It lives in the Mac\'s notch, and the same state travels to my iPhone, widgets and Dynamic Island included.',
+    stats: [
+      { value: '3', label: 'AI subscriptions in one view' },
+      { value: '2', label: 'Apps: Mac and iPhone' },
+      { value: '1', label: 'Relay between them' },
+      { value: '40', label: 'Characters to pick from' },
+    ],
+    problem: {
+      heading: 'What it solves',
+      body: [
+        'I ended up with more agents and scheduled jobs than I could keep track of. Some run through launchd, some on Paperclip, some as a Cloudflare Worker, some as a GitHub Action. Each has its own place to look, so I looked nowhere and found out about failures when something simply did not arrive.',
+        'Wisp puts them on one screen, and above all in the notch, where they are in view without opening a window. While an agent works I can watch its steps arrive. When it fails it turns red. When it needs permission it asks right there.',
+        'The other half is the phone. Claude often asks whether it may run a command, and that happens when I am not at the Mac. Now it reaches my iPhone, I answer from the lock screen or from Telegram, and the work carries on.',
+      ],
+    },
+    shotsHeading: 'What it looks like',
+    shots: [
+      {
+        src: '/img/case/wisp-notch.webp',
+        title: 'The notch',
+        text: 'An overlay across the camera housing. On the left the agent that is working and its steps, on the right the rest of the crew with their state. Here Claude is asking whether it may run a command, answered in one click. Top right are the rings with what is left of three subscriptions.',
+      },
+      {
+        src: '/img/case/wisp-phone.webp',
+        title: 'iPhone',
+        text: 'A native SwiftUI app, sideloaded with SideStore. Agent cards with what they are working on and which are switched off, a new task, history and pull requests to approve. State and commands travel through the relay; the phone never talks to the Mac directly.',
+      },
+      {
+        src: '/img/case/wisp-widgets.webp',
+        title: 'Widgets and Dynamic Island',
+        text: 'Four widget variants: the crew, agents with a wake button, limits as bars, and limits as lock-screen gauges. A tap opens the matching tab through a deep link. The working agent appears in the Dynamic Island and settles back to its own character after a while of silence.',
+      },
+    ],
+    build: {
+      heading: 'How it is built',
+      items: [
+        {
+          title: 'Tauri on the Mac, SwiftUI on the phone',
+          text: 'The Mac app is Tauri: the interface in TypeScript, the system half in Rust, because launchd, the Keychain and an overlay across the notch cannot be done from a web window. The iPhone is native SwiftUI, with App Intents behind the widget buttons and a Live Activity for the Dynamic Island.',
+        },
+        {
+          title: 'A relay instead of a direct connection',
+          text: 'Between the Mac and the phone sits a Cloudflare Worker with a D1 database. The Mac pushes its state and picks up commands; the phone reads the state and leaves commands. Nobody opens a port to anybody, and the phone still works while the Mac is asleep: the command waits for it to wake.',
+        },
+        {
+          title: 'Three subscriptions in one view',
+          text: 'Claude runs through its own CLI, ChatGPT through the Codex CLI and Gemini through agy. Every agent carries the engine it runs on, and Wisp shows each subscription\'s usage and reset time. When the pace would run the limit out before the window ends, the ring turns amber.',
+        },
+        {
+          title: 'Steps from Claude Code through hooks',
+          text: 'What an agent is doing is not scraped from a log afterwards. Claude Code streams the steps into the notch through a hook, so the progress is visible rather than only the result. A file dropped on the character becomes a question about that file.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'The decisions that took the most thinking',
+      items: [
+        {
+          title: 'An endpoint that can start work has to be suspicious',
+          text: 'The hooks on the Mac take data from outside and can set an agent going, so they want a secret of their own per install, refuse requests from a browser, and check that nobody rebound a host onto them. The relay guards one bearer token and compares it in constant time so it cannot be guessed character by character. The key file on disk is 0600.',
+        },
+        {
+          title: 'The Codex CLI instead of the sandboxed engine',
+          text: 'ChatGPT agents first ran on the standard ACP engine, which is sealed in a sandbox with no network and no right to write outside its workspace, so most tasks died on not being able to fetch anything. I moved them to the Codex CLI, where it works. It is a deliberate trade: more rights for usability, which is exactly why every run still asks first.',
+        },
+        {
+          title: 'The names inside stayed old',
+          text: 'The project was called Dispečink and became Wisp. Everything on the outside changed and nothing inside did on purpose: the bundle id, the config path and the relay routes still say dispecink. Renaming them would lock every install out of its own Keychain items, which a name is not worth.',
+        },
+        {
+          title: 'The characters are not decoration',
+          text: 'Every job has a face and the face carries the state. It is faster than reading a table: a red character in the notch catches the corner of my eye, a row in a list does not. There are six body shapes and a gallery of forty ready-made characters, so I remember agents by face rather than by service name.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Where it is now',
+      body: [
+        'It has been running daily since the end of September 2026: on the Mac in the menu bar and the notch, on the iPhone as an app sideloaded with SideStore, with the relay on Cloudflare between them.',
+        'The nightly code review turns serious findings into tasks for a fixer agent, at most six a night and no duplicates, and reports in Telegram what it handed over. That closed the loop: the tool that watches my projects also repairs itself.',
+        'The code is public, but it is a tool for one particular Mac rather than a product. Without my agents, tokens and subscriptions it connects to nothing.',
+      ],
+    },
+    cta: { text: 'Want to read the code?', button: 'Open on GitHub', href: 'https://github.com/ErikKarasek/wisp' },
+  },
+}
+
 export const studies = {
   'nexus-grind': nexusGrind,
   'lol-stats': lolStats,
@@ -1264,6 +1453,7 @@ export const studies = {
   'job-tracker': jobTracker,
   'subscriptions': subscriptions,
   'automation': automation,
+  wisp,
 } satisfies Record<string, Record<Lang, CaseStudyContent>>
 
 export type StudySlug = keyof typeof studies
