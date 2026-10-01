@@ -1284,19 +1284,29 @@ const wisp: Record<Lang, CaseStudyContent> = {
     shotsHeading: 'Jak to vypadá',
     shots: [
       {
+        src: '/img/case/wisp-mac.webp',
+        title: 'Mac',
+        text: 'Celá parta na jedné obrazovce: vlevo filtry podle stavu a podle toho, kde co běží, a pod nimi zbývající limity Clauda, ChatGPT a Gemini. Karty ukazují, co která úloha dělá a kdy běžela naposledy, ať je to launchd na Macu, agent na Paperclipu nebo worker na Cloudflare.',
+      },
+      {
         src: '/img/case/wisp-notch.webp',
         title: 'Notch',
-        text: 'Overlay přes výřez kamery. Vlevo agent, který zrovna pracuje, a jeho kroky, vpravo zbytek party se stavem. Tady se Claude ptá, jestli smí spustit příkaz, a odpovídá se jedním klikem. Vpravo nahoře jsou kolečka se zbývajícími limity tří předplatných.',
+        text: 'Overlay přes výřez kamery. Vlevo agent, který pracuje, a jeho kroky, vpravo zbytek party se stavem. Tady se Claude ptá, jestli smí spustit příkaz, a odpovídá se jedním klikem. Vpravo nahoře jsou kolečka se zbývajícími limity tří předplatných.',
       },
       {
         src: '/img/case/wisp-phone.webp',
         title: 'iPhone',
-        text: 'Nativní appka ve SwiftUI, nasazená přes SideStore. Karty agentů s tím, na čem pracují a kdo je vypnutý, zadání úkolu, historie a pull requesty ke schválení. Stav i příkazy tečou přes relay, telefon se nikdy nepřipojuje k Macu napřímo.',
+        text: 'Nativní appka ve SwiftUI, nasazená přes SideStore. Nahoře agent, který zrovna pracuje, i s posledními kroky, pod ním limity s časem obnovení a filtry podle stavu. Stav i příkazy tečou přes relay, telefon se nikdy nepřipojuje k Macu napřímo.',
+      },
+      {
+        src: '/img/case/wisp-agents.webp',
+        title: 'Agenti',
+        text: 'Karta na agenta: na čem běží (Claude, ChatGPT), jestli pracuje, spí nebo je vypnutý, a čím se zrovna zabývá. Odsud se taky zadává nový úkol, takže práci rozjedu z mobilu a nemusím k počítači.',
       },
       {
         src: '/img/case/wisp-widgets.webp',
         title: 'Widgety a Dynamic Island',
-        text: 'Čtyři varianty widgetu: parta, agenti s tlačítkem probudit, limity jako pruhy a limity jako měřáky na zamykací obrazovku. Dotek otevře příslušnou záložku přes deep link. Agent, který pracuje, se ukáže v Dynamic Islandu a po chvíli ticha se vrátí k vlastní postavičce.',
+        text: 'Widget na ploše ukazuje agenta, který pracuje, a jeho aktuální krok. Nahoře v Dynamic Islandu sedí parta pořád, takže stačí mrknout na horní část displeje. Dotek otevře příslušnou záložku přes deep link.',
       },
     ],
     build: {
@@ -1377,6 +1387,11 @@ const wisp: Record<Lang, CaseStudyContent> = {
     shotsHeading: 'What it looks like',
     shots: [
       {
+        src: '/img/case/wisp-mac.webp',
+        title: 'Mac',
+        text: 'The whole crew on one screen: filters by state and by where each job runs on the left, with what is left of the Claude, ChatGPT and Gemini subscriptions under them. Each card says what that job is doing and when it last ran, whether it is launchd on the Mac, an agent on Paperclip or a worker on Cloudflare.',
+      },
+      {
         src: '/img/case/wisp-notch.webp',
         title: 'The notch',
         text: 'An overlay across the camera housing. On the left the agent that is working and its steps, on the right the rest of the crew with their state. Here Claude is asking whether it may run a command, answered in one click. Top right are the rings with what is left of three subscriptions.',
@@ -1384,12 +1399,17 @@ const wisp: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/wisp-phone.webp',
         title: 'iPhone',
-        text: 'A native SwiftUI app, sideloaded with SideStore. Agent cards with what they are working on and which are switched off, a new task, history and pull requests to approve. State and commands travel through the relay; the phone never talks to the Mac directly.',
+        text: 'A native SwiftUI app, sideloaded with SideStore. The working agent and its latest steps on top, then the limits with their reset times and filters by state. State and commands travel through the relay; the phone never talks to the Mac directly.',
+      },
+      {
+        src: '/img/case/wisp-agents.webp',
+        title: 'Agents',
+        text: 'A card per agent: which engine it runs on (Claude, ChatGPT), whether it is working, asleep or switched off, and what it is busy with. A new task starts here too, so work can begin from the phone without going back to the desk.',
       },
       {
         src: '/img/case/wisp-widgets.webp',
         title: 'Widgets and Dynamic Island',
-        text: 'Four widget variants: the crew, agents with a wake button, limits as bars, and limits as lock-screen gauges. A tap opens the matching tab through a deep link. The working agent appears in the Dynamic Island and settles back to its own character after a while of silence.',
+        text: 'The home-screen widget shows the working agent and its current step. The crew sits in the Dynamic Island all the time, so a glance at the top of the screen is enough. A tap opens the matching tab through a deep link.',
       },
     ],
     build: {
