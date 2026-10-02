@@ -96,6 +96,7 @@ export const cv = {
           'Řídicí panel nad vlastními AI agenty: Mac appka v Tauri (TypeScript + Rust) s overlayem v notchi a nativní iPhone klient ve SwiftUI s widgety a Live Activity v Dynamic Islandu.',
           'Claude, ChatGPT (Codex CLI) i Gemini vedle sebe se spotřebou a časem resetu; kroky agentů streamované živě přes hooky a povolení pro Clauda odkliknuté z notche, zamykací obrazovky i Telegramu.',
           'Cloudflare Worker s D1 jako relay mezi Macem a telefonem (žádné přímé spojení); bearer token porovnávaný v konstantním čase, hooky s tajemstvím pro každou instalaci, tokeny v Keychainu.',
+          'Drží Mac vzhůru, dokud agenti pracují, i se zavřeným víkem (pravidlo pro sudo jen na spánek), s pojistkami na baterii a teplotu procesoru.',
         ],
       },
       {
@@ -242,6 +243,7 @@ export const cv = {
           'A dashboard for my own AI agents: a Tauri Mac app (TypeScript + Rust) with an overlay in the notch, and a native SwiftUI iPhone client with widgets and a Live Activity in the Dynamic Island.',
           'Claude, ChatGPT (Codex CLI) and Gemini side by side with usage and reset times; agent steps streamed live through hooks, and a Claude permission answered from the notch, lock screen or Telegram.',
           'A Cloudflare Worker with D1 as the relay between Mac and phone (no direct connection); a bearer token compared in constant time, hooks with a per-install secret, tokens in the Keychain.',
+          'Keeps the Mac awake while agents work, lid closed too (a sudoers rule for sleep only), with battery and CPU temperature safeties.',
         ],
       },
       {

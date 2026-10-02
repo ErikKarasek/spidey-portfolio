@@ -1345,6 +1345,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
           title: 'Kroky z Claude Code přes hooky',
           text: 'Co agent právě dělá, se nevytahuje z logu po skončení. Claude Code posílá kroky hookem rovnou do notche, takže je vidět průběh, ne až výsledek. Soubor přetažený na postavičku se promění v dotaz na ten soubor.',
         },
+        {
+          title: 'Mac nespí, dokud agenti pracují',
+          text: 'Když agent běží v noci, Mac nesmí usnout uprostřed práce. Wisp ví, kdo zrovna pracuje, takže drží Mac vzhůru přesně tak dlouho a pak ho nechá usnout. Jde to i se zavřeným víkem: stačí jedno pravidlo pro sudo, které povolí jen vypnout a zapnout spánek, a nastaví se jedním heslem. Wisp přitom hlídá baterii a teplotu procesoru, a kdyby sám spadl, malý hlídač spánek vrátí.',
+        },
       ],
     },
     decisions: {
@@ -1450,6 +1454,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
         {
           title: 'Steps from Claude Code through hooks',
           text: 'What an agent is doing is not scraped from a log afterwards. Claude Code streams the steps into the notch through a hook, so the progress is visible rather than only the result. A file dropped on the character becomes a question about that file.',
+        },
+        {
+          title: 'The Mac stays awake while agents work',
+          text: 'An agent running at night must not have the Mac fall asleep under it. Wisp knows who is working, so it holds the Mac awake exactly that long and then lets it sleep. That works with the lid closed too: one sudoers rule that only allows switching sleep off and on, set up with a single password. Meanwhile it watches the battery and the CPU temperature, and if Wisp itself crashes, a small guard turns sleep back on.',
         },
       ],
     },
