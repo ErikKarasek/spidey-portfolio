@@ -1540,7 +1540,7 @@ const wispBuddy: Record<Lang, CaseStudyContent> = {
         poster: '/video/wisp-buddy-poster.jpg',
         portrait: true,
         title: 'Krátké video',
-        text: 'Skutečný záznam obrazovky: Buddy spadne dolů vedle okna, vyskočí na jeho horní hranu a pak se ozve připomínkou. Chvilku čekání na skok jsem vystřihl.',
+        text: 'Skutečný záznam obrazovky, Buddyho jsem ovládal myší: veze se s oknem, spadne, když okno zavřu, odrazí se po hodu, jde za kurzorem a v bublině si nechá od Gemini nastavit připomínku, která pak opravdu přijde. Hluchá místa mezi scénami jsem vystřihl.',
       },
       {
         src: '/img/case/wispbuddy-bubble.webp',
@@ -1639,7 +1639,7 @@ const wispBuddy: Record<Lang, CaseStudyContent> = {
         poster: '/video/wisp-buddy-poster.jpg',
         portrait: true,
         title: 'A short video',
-        text: 'A real screen recording: Buddy drops to the floor beside a window, jumps up onto its top edge, then speaks up with a reminder. I cut a little of the wait for the jump.',
+        text: 'A real screen recording with Buddy driven by the mouse: it rides along with a window, falls when the window closes, bounces after a throw, walks over to the cursor, and in the bubble has Gemini set a reminder that then really arrives. I cut the gaps between the scenes.',
       },
       {
         src: '/img/case/wispbuddy-bubble.webp',
