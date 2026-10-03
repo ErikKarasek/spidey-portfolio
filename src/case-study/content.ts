@@ -1536,6 +1536,13 @@ const wispBuddy: Record<Lang, CaseStudyContent> = {
     shotsHeading: 'Jak to vypadá',
     shots: [
       {
+        src: '/video/wisp-buddy.mp4',
+        poster: '/video/wisp-buddy-poster.jpg',
+        portrait: true,
+        title: 'Krátké video',
+        text: 'Skutečný záznam obrazovky: Buddy spadne dolů vedle okna, vyskočí na jeho horní hranu a pak se ozve připomínkou. Chvilku čekání na skok jsem vystřihl.',
+      },
+      {
         src: '/img/case/wispbuddy-bubble.webp',
         portrait: true,
         title: 'Bublina',
@@ -1627,6 +1634,13 @@ const wispBuddy: Record<Lang, CaseStudyContent> = {
     },
     shotsHeading: 'What it looks like',
     shots: [
+      {
+        src: '/video/wisp-buddy.mp4',
+        poster: '/video/wisp-buddy-poster.jpg',
+        portrait: true,
+        title: 'A short video',
+        text: 'A real screen recording: Buddy drops to the floor beside a window, jumps up onto its top edge, then speaks up with a reminder. I cut a little of the wait for the jump.',
+      },
       {
         src: '/img/case/wispbuddy-bubble.webp',
         portrait: true,
