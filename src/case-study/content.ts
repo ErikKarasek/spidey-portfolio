@@ -1285,7 +1285,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
       { value: '3', label: 'AI předplatná vedle sebe' },
       { value: '2', label: 'Appky: Mac a iPhone' },
       { value: '1', label: 'Relay mezi nimi' },
-      { value: '40', label: 'Postaviček na výběr' },
+      { value: '20', label: 'Tvarů postaviček' },
     ],
     problem: {
       heading: 'Co to řeší',
@@ -1349,6 +1349,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
           title: 'Mac nespí, dokud agenti pracují',
           text: 'Když agent běží v noci, Mac nesmí usnout uprostřed práce. Wisp ví, kdo zrovna pracuje, takže drží Mac vzhůru přesně tak dlouho a pak ho nechá usnout. Jde to i se zavřeným víkem: stačí jedno pravidlo pro sudo, které povolí jen vypnout a zapnout spánek, a nastaví se jedním heslem. Wisp přitom hlídá baterii a teplotu procesoru, a kdyby sám spadl, malý hlídač spánek vrátí.',
         },
+        {
+          title: 'Postavičky, které žijí',
+          text: 'Tvarů je dvacet a každý se hýbe po svém: sluníčku obíhají kolečka, planetce měsíčky, kočka cuká ušima, chobotnička vlní chapadly. Když agent dodělá úkol, udělá kotrmelec. V noci zívají, a když pracuju pozdě s Claude, dají si kafe a naskočí. Upravit je jde na Macu i z telefonu, změna doletí přes relay. Kdo chce klid, pohyb vypne, na každém zařízení zvlášť.',
+        },
       ],
     },
     decisions: {
@@ -1368,7 +1372,11 @@ const wisp: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Postavičky nejsou ozdoba',
-          text: 'Každá úloha má obličej a ten nese stav. Je to rychlejší než číst tabulku: červenou postavičku v notchi si všimnu koutkem oka, řádek v seznamu ne. Tvarů je šest a galerie má čtyřicet hotových postav, takže si agenty pamatuju podle obličeje, ne podle názvu služby.',
+          text: 'Každá úloha má obličej a ten nese stav. Je to rychlejší než číst tabulku: červenou postavičku v notchi si všimnu koutkem oka, řádek v seznamu ne. Tvarů je dvacet a postavy si skládám sám, takže si agenty pamatuju podle obličeje, ne podle názvu služby.'
+        },
+        {
+          title: 'Kdo pracuje, se ptám napřímo',
+          text: 'První verze poznávala běžící agenty přes stránku uvnitř appky. Jenže se zhasnutým displejem ji macOS přiškrtí, a tak Wisp jednu noc uspal Mac pár vteřin poté, co se agenti rozběhli. Všechny jejich běhy spadly a zkoušely se znovu do každého krátkého probuzení. Teď se jádro v Rustu ptá Paperclipu samo každých pět vteřin a stránka do toho nemluví.',
         },
       ],
     },
@@ -1395,7 +1403,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
       { value: '3', label: 'AI subscriptions in one view' },
       { value: '2', label: 'Apps: Mac and iPhone' },
       { value: '1', label: 'Relay between them' },
-      { value: '40', label: 'Characters to pick from' },
+      { value: '20', label: 'Character shapes' },
     ],
     problem: {
       heading: 'What it solves',
@@ -1459,6 +1467,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
           title: 'The Mac stays awake while agents work',
           text: 'An agent running at night must not have the Mac fall asleep under it. Wisp knows who is working, so it holds the Mac awake exactly that long and then lets it sleep. That works with the lid closed too: one sudoers rule that only allows switching sleep off and on, set up with a single password. Meanwhile it watches the battery and the CPU temperature, and if Wisp itself crashes, a small guard turns sleep back on.',
         },
+        {
+          title: 'Characters that are alive',
+          text: 'There are twenty shapes and each moves its own way: dots circle a sun, moons orbit a planet, a cat twitches its ears, an octopus waves its legs. When an agent finishes a task it does a somersault. At night they yawn, and when I work late with Claude they have a coffee and perk up. I can edit them on the Mac or from the phone, the change travels through the relay. Anyone who wants calm can switch the motion off, separately on each device.',
+        },
       ],
     },
     decisions: {
@@ -1478,7 +1490,11 @@ const wisp: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'The characters are not decoration',
-          text: 'Every job has a face and the face carries the state. It is faster than reading a table: a red character in the notch catches the corner of my eye, a row in a list does not. There are six body shapes and a gallery of forty ready-made characters, so I remember agents by face rather than by service name.',
+          text: 'Every job has a face and the face carries the state. It is faster than reading a table: a red character in the notch catches the corner of my eye, a row in a list does not. There are twenty shapes and I put the characters together myself, so I remember agents by face rather than by service name.'
+        },
+        {
+          title: 'Asking who is working, directly',
+          text: 'The first version learned which agents were running from a page inside the app. With the display off macOS throttles that page, so one night Wisp put the Mac to sleep seconds after the agents had started. Every run died and was retried into each brief wake-up. Now the Rust core asks Paperclip itself every five seconds, and the page has no say in it.',
         },
       ],
     },
