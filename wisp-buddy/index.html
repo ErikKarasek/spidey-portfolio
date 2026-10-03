@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wisp Buddy | Erik Karásek</title>
+    <meta
+      name="description"
+      content="Wisp Buddy: postavička z rodiny Wispu, která žije na ploše Macu. Chodí po oknech, povídá si přes Gemini, připomíná a hlásí, co dělají moji agenti."
+    />
+    <meta name="theme-color" content="#a31515" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Wisp Buddy | Erik Karásek" />
+    <meta property="og:description" content="Postavička na ploše, která leze po oknech, veze se s nimi a pamatuje si připomínky z povídání. Rust, CoreGraphics a Gemini." />
+    <meta property="og:image" content="https://erikkarasek.cz/img/og/wisp-buddy.jpg" />
+    <meta property="og:url" content="https://erikkarasek.cz/wisp-buddy/" />
+    <meta property="og:site_name" content="Erik Karásek" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://erikkarasek.cz/wisp-buddy/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕷️</text></svg>" />
+    <script>
+      // Put the suit on before first paint so Symbiote mode doesn't flash white. With no saved choice,
+      // follow the system's dark mode.
+      try {
+        var saved = localStorage.getItem('symbiote')
+        var on = saved === null ? matchMedia('(prefers-color-scheme: dark)').matches : saved === '1'
+        if (on) document.documentElement.classList.add('symbiote')
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <h1>Wisp Buddy</h1>
+      <p>Postavička z rodiny Wispu, která mi žije na ploše Macu: chodí po spodku obrazovky, vyskakuje na okna, povídá si přes Gemini, pamatuje si připomínky a hlásí, co dělají moji agenti.</p>
+      <p><a href="/">Zpět na portfolio</a></p>
+    </noscript>
+    <script type="module" src="/src/case-study/wisp-buddy.tsx"></script>
+  </body>
+</html>
