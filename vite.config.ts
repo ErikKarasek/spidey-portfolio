@@ -29,7 +29,7 @@ const api: Plugin = {
 }
 
 // One built page per case study, on top of the portfolio itself.
-const STUDIES = ['nexus-grind', 'lol-stats', 'monster-watch', 'job-tracker', 'subscriptions', 'automation', 'wisp']
+const STUDIES = ['nexus-grind', 'lol-stats', 'monster-watch', 'job-tracker', 'subscriptions', 'automation', 'wisp', 'wisp-buddy']
 
 // Everything the page is allowed to talk to. Adding a new outside service (an embed, an API, a CDN)
 // means adding its origin here, or the browser will quietly block it.

@@ -1510,6 +1510,193 @@ const wisp: Record<Lang, CaseStudyContent> = {
   },
 }
 
+const wispBuddy: Record<Lang, CaseStudyContent> = {
+  cs: {
+    meta: {
+      title: 'Wisp Buddy | o projektu | Erik Karásek',
+      description: 'Postavička z rodiny Wispu, která žije na ploše Macu: chodí po spodku obrazovky, leze po oknech, povídá si přes Gemini, připomíná a hlásí, co dělají moji agenti.',
+    },
+    back: 'Zpět na portfolio',
+    label: 'O projektu',
+    title: 'Wisp Buddy.',
+    lead: 'Malá postavička, která mi žije na ploše Macu. Chodí po spodku obrazovky, vyskakuje na okna a veze se s nimi, když je táhnu. Dá se chytit a hodit, dá se s ní povídat a připomene, na co bych zapomněl. Když mi běží Wisp, ví, co dělají moji agenti.',
+    stats: [
+      { value: '20', label: 'Tvarů postaviček' },
+      { value: '60', label: 'Kroků fyziky za vteřinu' },
+      { value: '0', label: 'Klíčů ve stránce' },
+      { value: '1', label: 'Mac, zatím' },
+    ],
+    problem: {
+      heading: 'Proč vznikla',
+      body: [
+        'Ve Wispu mají všechny moje automatizace postavičky a lidi se u nich vždycky zastavili víc než u čehokoli jiného. Tak jsem jednu pustil ven z okna, ať si žije na ploše.',
+        'Nechtěl jsem ale jen ozdobu. Buddy si se mnou povídá přes Gemini, pamatuje si připomínky, v noci mě pošle spát a když na mě čeká některý agent, řekne mi to dřív, než si toho všimnu ve Wispu.',
+      ],
+    },
+    shotsHeading: 'Jak to vypadá',
+    shots: [
+      {
+        src: '/img/case/wispbuddy-bubble.webp',
+        portrait: true,
+        title: 'Bublina',
+        text: 'Dvojklik na postavičku otevře bublinu nad její hlavou. Řekneš jí, co ti má připomenout, a ona to pozná sama, žádný formulář. Když přijde čas, ozve se s tlačítky Hotovo a Za 10 minut.',
+      },
+      {
+        src: '/img/case/wispbuddy-studio.webp',
+        title: 'Studio',
+        text: 'Vlastní postavička z dvaceti tvarů, s barvou, očima a postavou. Náhled ukazuje, jak vypadá, když jde, sedí, spí nebo letí. Vedle je galerie z Wispu, takže si sem vezmu postavy, které už mám.',
+      },
+      {
+        src: '/img/case/wispbuddy-shapes.webp',
+        title: 'Dvacet tvarů',
+        text: 'Každý se hýbe po svém: sluníčku obíhají kolečka, planetce měsíčky, kočka cuká ušima, chobotnička vlní chapadly. Je to stejný engine jako ve Wispu, jen vytažený na plochu.',
+      },
+    ],
+    build: {
+      heading: 'Jak je to postavené',
+      items: [
+        {
+          title: 'Tělo v Rustu, obličej ve webu',
+          text: 'Postavička je průhledné okno velké jako ona. Vlákno v Rustu ho šedesátkrát za vteřinu posune: chůze, gravitace, odraz, hod podle toho, jak rychle jsem táhl myší. Stránka v okně jen kreslí postavičku a mění výraz podle toho, co tělo zrovna dělá. Kliknutí mimo tělo propadne do oken pod ní, takže nepřekáží.',
+        },
+        {
+          title: 'Okna jako nábytek',
+          text: 'Z CoreGraphics čte pětkrát za vteřinu, kde jsou okna ostatních appek, a z jejich horních hran skládá římsy, po kterých se dá chodit. Kus hrany, který zakrývá okno vpředu, z nich odečte. Když okno táhnu, veze se s ním, když ho zavřu, spadne, a občas na nějaké sama vyskočí obloukem spočítaným tak, aby dopadla.',
+        },
+        {
+          title: 'Povídání a připomínky přes Gemini',
+          text: 'Odpovídá Gemini na bezplatný klíč z Google AI Studia. Připomínky si model ukládá sám přes nástroje (nastav, vypiš, zruš), takže stačí napsat „každý všední den v 9 mi připomeň poštu“. Hlídá je vlákno v Rustu, i přes noc a přechod na zimní čas.',
+        },
+        {
+          title: 'Propojení s Wispem',
+          text: 'Když na Macu běží Wisp, Buddy se ho každé tři vteřiny zeptá, kdo pracuje, co spadlo a co čeká. Když agent dodělá úkol, udělá kotrmelec, když něco selže, řekne to v bublině. A v povídání ví, kolik mi zbývá z limitu Clauda.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'Rozhodnutí, která stála nejvíc přemýšlení',
+      items: [
+        {
+          title: 'Klíč nikdy nevidí stránka',
+          text: 'Klíč ke Gemini leží v Klíčence macOS a volání dělá Rust. Bublina posílá jen rozhovor a dostává zpátky odpověď. Kdyby se do stránky někdy dostalo něco cizího, klíč tam prostě není.',
+        },
+        {
+          title: 'Připomínka nesmí ukrást klávesnici',
+          text: 'Bublina, která vyskočí kvůli připomínce, se ukáže bez fokusu. Když zrovna píšu jinde, moje psaní nespadne do ní. Fokus dostane, až když ji otevřu sám dvojklikem.',
+        },
+        {
+          title: 'Wisp pouští jen svoje',
+          text: 'Stav z Wispu je na jeho lokálním serveru za stejným klíčem pro každou instalaci, jaký už používaly hooky Claude Code, a vrací jen souhrn: žádné konverzace ani tokeny. Při startu si Buddy stav jen zapamatuje, takže mě nezasype tím, co bylo pravda už předtím.',
+        },
+        {
+          title: 'Šťouchnutí počká na druhé klepnutí',
+          text: 'Jedno klepnutí je šťouchnutí a postavička poskočí, dvě rychle po sobě otevřou bublinu. Aby se to nepletlo, poskočí až 280 ms po klepnutí, kdy je jasné, že druhé nepřijde. Ruka si toho zpoždění nevšimne.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Kde to je teď',
+      body: [
+        'Postavil jsem to za jeden den a od té doby mi běží na ploše. Zatím jen pro Mac: chůze po oknech stojí na CoreGraphics a připomínky na Klíčence a čase macOS.',
+        'Appka není podepsaná ani notarizovaná, na to je potřeba placený účet u Applu. Kód je veřejný, takže si ji kdo chce může sestavit sám.',
+      ],
+    },
+    cta: { text: 'Chceš se podívat do kódu?', button: 'Otevřít na GitHubu', href: 'https://github.com/ErikKarasek/wisp-buddy' },
+  },
+  en: {
+    meta: {
+      title: 'Wisp Buddy | about the project | Erik Karásek',
+      description: 'A character from Wisp\'s family that lives on the Mac desktop: walks the bottom of the screen, climbs windows, chats through Gemini, keeps reminders and tells me what my agents are doing.',
+    },
+    back: 'Back to portfolio',
+    label: 'About the project',
+    title: 'Wisp Buddy.',
+    lead: 'A little character that lives on my Mac\'s desktop. It walks along the bottom of the screen, jumps up onto windows and rides along when I drag them. It can be picked up and thrown, it chats, and it reminds me of what I would forget. When Wisp runs, it knows what my agents are doing.',
+    stats: [
+      { value: '20', label: 'Character shapes' },
+      { value: '60', label: 'Physics steps a second' },
+      { value: '0', label: 'Keys in the page' },
+      { value: '1', label: 'Mac, for now' },
+    ],
+    problem: {
+      heading: 'Why it exists',
+      body: [
+        'In Wisp every one of my automations has a character, and people always stopped at those longer than at anything else. So I let one out of the window to live on the desktop.',
+        'I did not want just decoration, though. Buddy chats with me through Gemini, keeps reminders, sends me to bed at night, and when one of my agents is waiting for me it says so before I notice in Wisp.',
+      ],
+    },
+    shotsHeading: 'What it looks like',
+    shots: [
+      {
+        src: '/img/case/wispbuddy-bubble.webp',
+        portrait: true,
+        title: 'The bubble',
+        text: 'A double-click opens a bubble above its head. Tell it what to remind you of and it works it out itself, no form. When the time comes it speaks up with Done and In 10 minutes buttons.',
+      },
+      {
+        src: '/img/case/wispbuddy-studio.webp',
+        title: 'The studio',
+        text: 'Your own character from twenty shapes, with colour, eyes and build. The preview shows it walking, sitting, asleep or flying. Beside it is Wisp\'s gallery, so the characters I already have come along.',
+      },
+      {
+        src: '/img/case/wispbuddy-shapes.webp',
+        title: 'Twenty shapes',
+        text: 'Each moves its own way: dots circle a sun, moons orbit a planet, a cat twitches its ears, an octopus waves its legs. The same engine as in Wisp, taken out onto the desktop.',
+      },
+    ],
+    build: {
+      heading: 'How it is built',
+      items: [
+        {
+          title: 'Body in Rust, face on the web',
+          text: 'The character is a transparent window as big as itself. A Rust thread moves it sixty times a second: walking, gravity, bouncing, a throw as fast as the mouse moved. The page inside only draws the character and changes its face with what the body is doing. Clicks off the body fall through to the windows below, so it never gets in the way.',
+        },
+        {
+          title: 'Windows as furniture',
+          text: 'Five times a second it reads from CoreGraphics where other apps\' windows are and turns their top edges into ledges to walk on, minus any part a window in front covers. Drag a window and it rides along, close it and it falls, and now and then it jumps up onto one in an arc worked out to land.',
+        },
+        {
+          title: 'Chat and reminders through Gemini',
+          text: 'Gemini answers, on a free key from Google AI Studio. The model saves reminders itself through tools (set, list, cancel), so "every weekday at 9 remind me of the mail" is enough. A Rust thread keeps them, through the night and the change to winter time.',
+        },
+        {
+          title: 'The link to Wisp',
+          text: 'When Wisp runs on the Mac, Buddy asks it every three seconds who is working, what failed and what waits. When an agent finishes a task it does a somersault, when something fails it says so in the bubble. And in a chat it knows how much of my Claude limit is left.',
+        },
+      ],
+    },
+    decisions: {
+      heading: 'Decisions that took the most thought',
+      items: [
+        {
+          title: 'The page never sees the key',
+          text: 'The Gemini key sits in the macOS Keychain and Rust makes the call. The bubble only sends the conversation and gets the answer back. If anything foreign ever got into the page, the key simply is not there.',
+        },
+        {
+          title: 'A reminder must not steal the keyboard',
+          text: 'A bubble that pops up for a reminder appears without focus. If I am typing somewhere else, my typing does not land in it. It takes the focus only when I open it myself with a double-click.',
+        },
+        {
+          title: 'Wisp only lets its own in',
+          text: 'Wisp\'s state sits on its local server behind the same per-install key its Claude Code hooks already used, and it returns only a summary: no conversations, no tokens. On start Buddy only learns the state, so it does not flood me with what was already true.',
+        },
+        {
+          title: 'A poke waits for a second click',
+          text: 'One click is a poke and the character hops, two quick ones open the bubble. So the two never mix, the hop comes 280 ms after the click, once it is clear no second one follows. A hand does not notice the delay.',
+        },
+      ],
+    },
+    status: {
+      heading: 'Where it is now',
+      body: [
+        'I built it in one day and it has been on my desktop since. Mac only for now: walking on windows stands on CoreGraphics, and reminders on the macOS Keychain and clock.',
+        'The app is not signed or notarized, which needs a paid Apple account. The code is public, so anyone who wants it can build it.',
+      ],
+    },
+    cta: { text: 'Want to look at the code?', button: 'Open on GitHub', href: 'https://github.com/ErikKarasek/wisp-buddy' },
+  },
+}
+
 export const studies = {
   'nexus-grind': nexusGrind,
   'lol-stats': lolStats,
@@ -1518,6 +1705,7 @@ export const studies = {
   'subscriptions': subscriptions,
   'automation': automation,
   wisp,
+  'wisp-buddy': wispBuddy,
 } satisfies Record<string, Record<Lang, CaseStudyContent>>
 
 export type StudySlug = keyof typeof studies

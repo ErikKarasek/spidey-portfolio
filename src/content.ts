@@ -191,6 +191,15 @@ export const content: Record<Lang, Content> = {
           study: '/wisp/',
         },
         {
+          title: 'Wisp Buddy',
+          description:
+            'Postavička z rodiny Wispu, která mi žije na ploše Macu. Chodí po spodku obrazovky, vyskakuje na okna a veze se s nimi, dá se chytit a hodit. Povídá si se mnou přes Gemini, pamatuje si připomínky a když mi běží Wisp, hlásí, co dělají agenti.',
+          tags: ['Tauri', 'Rust', 'TypeScript', 'Gemini API', 'CoreGraphics'],
+          image: `${IMG}/wispbuddy.webp`,
+          link: 'https://github.com/ErikKarasek/wisp-buddy',
+          study: '/wisp-buddy/',
+        },
+        {
           title: 'Nexus Grind',
           description:
             'Aplikace pro Mac a Windows, která hlídá úkoly, návyky, spánek i ranked hry v LoLku. Za každou splněnou věc ti roste sakura. Data se synchronizují přes cloud.',
@@ -381,6 +390,15 @@ export const content: Record<Lang, Content> = {
           image: `${IMG}/wisp.webp`,
           link: 'https://github.com/ErikKarasek/wisp',
           study: '/wisp/',
+        },
+        {
+          title: 'Wisp Buddy',
+          description:
+            'A character from Wisp\'s family that lives on my Mac\'s desktop. It walks along the bottom of the screen, jumps onto windows and rides along with them, and can be picked up and thrown. It chats through Gemini, keeps reminders, and when Wisp runs it tells me what the agents are doing.',
+          tags: ['Tauri', 'Rust', 'TypeScript', 'Gemini API', 'CoreGraphics'],
+          image: `${IMG}/wispbuddy.webp`,
+          link: 'https://github.com/ErikKarasek/wisp-buddy',
+          study: '/wisp-buddy/',
         },
         {
           title: 'Nexus Grind',
