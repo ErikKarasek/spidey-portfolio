@@ -184,7 +184,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Wisp',
           description:
-            'Řídicí panel nad mými AI agenty. Každý agent je postavička a její obličej ukazuje, jestli pracuje, spí, spadla, nebo na mě čeká. Na Macu žije v notchi a vidíš jeho kroky živě, včetně dotazu, jestli smí spustit příkaz. To samé mám v iPhonu ve widgetech a v Dynamic Islandu, mezi oběma je Cloudflare relay. Claude, ChatGPT i Gemini vedle sebe, i se zbývajícími limity. A drží Mac vzhůru, dokud agenti pracují, i se zavřeným víkem.',
+            'Řídicí panel nad mými AI agenty. Každý agent je postavička a její obličej ukazuje, jestli pracuje, spí, spadla, nebo na mě čeká. Na Macu žije v notchi a vidíš jeho kroky živě, včetně dotazu, jestli smí spustit příkaz. To samé mám v iPhonu ve widgetech a v Dynamic Islandu, mezi oběma je Cloudflare relay. Claude, ChatGPT i Gemini vedle sebe, i se zbývajícími limity. A drží Mac vzhůru, dokud agenti pracují, i se zavřeným víkem. Postavičky si upravuju na Macu i v telefonu a žijí: točí se, cukají ušima a když agent dodělá úkol, udělají kotrmelec.',
           tags: ['Tauri', 'Rust', 'SwiftUI', 'TypeScript', 'Cloudflare Workers', 'D1'],
           image: `${IMG}/wisp.webp`,
           link: 'https://github.com/ErikKarasek/wisp',
@@ -376,7 +376,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Wisp',
           description:
-            'A dashboard for my AI agents. Each agent is a character whose face shows whether it is working, asleep, failed or waiting for me. On the Mac it lives in the notch, where its steps arrive live and it asks before running a command. The same state is on my iPhone, in widgets and the Dynamic Island, with a Cloudflare relay in between. Claude, ChatGPT and Gemini side by side, with what is left of each. And it keeps the Mac awake while they work, lid closed or not.',
+            'A dashboard for my AI agents. Each agent is a character whose face shows whether it is working, asleep, failed or waiting for me. On the Mac it lives in the notch, where its steps arrive live and it asks before running a command. The same state is on my iPhone, in widgets and the Dynamic Island, with a Cloudflare relay in between. Claude, ChatGPT and Gemini side by side, with what is left of each. And it keeps the Mac awake while they work, lid closed or not. I edit the characters on the Mac or the phone, and they are alive: they spin, twitch their ears and do a somersault when an agent finishes a task.',
           tags: ['Tauri', 'Rust', 'SwiftUI', 'TypeScript', 'Cloudflare Workers', 'D1'],
           image: `${IMG}/wisp.webp`,
           link: 'https://github.com/ErikKarasek/wisp',
