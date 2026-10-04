@@ -97,6 +97,7 @@ export const cv = {
           'Claude, ChatGPT (Codex CLI) i Gemini vedle sebe se spotřebou a časem resetu; kroky agentů streamované živě přes hooky a povolení pro Clauda odkliknuté z notche, zamykací obrazovky i Telegramu.',
           'Cloudflare Worker s D1 jako relay mezi Macem a telefonem (žádné přímé spojení); bearer token porovnávaný v konstantním čase, hooky s tajemstvím pro každou instalaci, tokeny v Keychainu.',
           'Drží Mac vzhůru, dokud agenti pracují, i se zavřeným víkem (pravidlo pro sudo jen na spánek), s pojistkami na baterii a teplotu procesoru; 20 animovaných postaviček upravitelných i z telefonu.',
+          'Noční směna: úkol z Telegramu udělá Claude, až nejsem u Macu, ve vlastní pracovní kopii a větvi a pošle draft PR; mluvení do notche přes Gemini (otázka, připomínka, úkol pro agenta). K tomu Wisp Buddy, postavička na ploše (fyzika v Rustu, okna z CoreGraphics, připomínky přes Gemini).',
         ],
       },
       {
@@ -244,6 +245,7 @@ export const cv = {
           'Claude, ChatGPT (Codex CLI) and Gemini side by side with usage and reset times; agent steps streamed live through hooks, and a Claude permission answered from the notch, lock screen or Telegram.',
           'A Cloudflare Worker with D1 as the relay between Mac and phone (no direct connection); a bearer token compared in constant time, hooks with a per-install secret, tokens in the Keychain.',
           'Keeps the Mac awake while agents work, lid closed too (a sudoers rule for sleep only), with battery and CPU temperature safeties; 20 animated characters, editable from the phone too.',
+          'A night shift: a task sent on Telegram is done by Claude while I am away from the Mac, in its own working copy and branch, ending in a draft PR; talking to the notch through Gemini (a question, a reminder, a task for an agent). Plus Wisp Buddy, a desktop character (physics in Rust, windows from CoreGraphics, reminders through Gemini).',
         ],
       },
       {

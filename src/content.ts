@@ -184,7 +184,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Wisp',
           description:
-            'Řídicí panel nad mými AI agenty. Každý agent je postavička a její obličej ukazuje, jestli pracuje, spí, spadla, nebo na mě čeká. Na Macu žije v notchi a vidíš jeho kroky živě, včetně dotazu, jestli smí spustit příkaz. To samé mám v iPhonu ve widgetech a v Dynamic Islandu, mezi oběma je Cloudflare relay. Claude, ChatGPT i Gemini vedle sebe, i se zbývajícími limity. A drží Mac vzhůru, dokud agenti pracují, i se zavřeným víkem. Postavičky si upravuju na Macu i v telefonu a žijí: točí se, cukají ušima a když agent dodělá úkol, udělají kotrmelec.',
+            'Řídicí panel nad mými AI agenty. Každý agent je postavička a její obličej ukazuje, jestli pracuje, spí, spadla, nebo na mě čeká. Na Macu žije v notchi a vidíš jeho kroky živě, včetně dotazu, jestli smí spustit příkaz. To samé mám v iPhonu ve widgetech a v Dynamic Islandu, mezi oběma je Cloudflare relay. Claude, ChatGPT i Gemini vedle sebe, i se zbývajícími limity. A drží Mac vzhůru, dokud agenti pracují, i se zavřeným víkem. Postavičky si upravuju na Macu i v telefonu a žijí: točí se, cukají ušima a když agent dodělá úkol, udělají kotrmelec. Úkol, který mu večer napíšu do Telegramu, udělá Claude přes noc a ráno čeká jako draft PR.',
           tags: ['Tauri', 'Rust', 'SwiftUI', 'TypeScript', 'Cloudflare Workers', 'D1'],
           image: `${IMG}/wisp.webp`,
           link: 'https://github.com/ErikKarasek/wisp',
@@ -193,7 +193,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Wisp Buddy',
           description:
-            'Postavička z rodiny Wispu, která mi žije na ploše Macu. Chodí po spodku obrazovky, vyskakuje na okna a veze se s nimi, dá se chytit a hodit. Povídá si se mnou přes Gemini, pamatuje si připomínky a když mi běží Wisp, hlásí, co dělají agenti.',
+            'Postavička z rodiny Wispu, která mi žije na ploše Macu. Chodí po spodku obrazovky, vyskakuje na okna a veze se s nimi, dá se chytit a hodit. Povídá si se mnou přes Gemini, pamatuje si připomínky, které mi přijdou i na telefon, a když mi běží Wisp, hlásí, co dělají agenti.',
           tags: ['Tauri', 'Rust', 'TypeScript', 'Gemini API', 'CoreGraphics'],
           image: `${IMG}/wispbuddy.webp`,
           link: 'https://github.com/ErikKarasek/wisp-buddy',
@@ -385,7 +385,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Wisp',
           description:
-            'A dashboard for my AI agents. Each agent is a character whose face shows whether it is working, asleep, failed or waiting for me. On the Mac it lives in the notch, where its steps arrive live and it asks before running a command. The same state is on my iPhone, in widgets and the Dynamic Island, with a Cloudflare relay in between. Claude, ChatGPT and Gemini side by side, with what is left of each. And it keeps the Mac awake while they work, lid closed or not. I edit the characters on the Mac or the phone, and they are alive: they spin, twitch their ears and do a somersault when an agent finishes a task.',
+            'A dashboard for my AI agents. Each agent is a character whose face shows whether it is working, asleep, failed or waiting for me. On the Mac it lives in the notch, where its steps arrive live and it asks before running a command. The same state is on my iPhone, in widgets and the Dynamic Island, with a Cloudflare relay in between. Claude, ChatGPT and Gemini side by side, with what is left of each. And it keeps the Mac awake while they work, lid closed or not. I edit the characters on the Mac or the phone, and they are alive: they spin, twitch their ears and do a somersault when an agent finishes a task. A task I send it on Telegram in the evening, Claude does overnight, and it waits as a draft PR in the morning.',
           tags: ['Tauri', 'Rust', 'SwiftUI', 'TypeScript', 'Cloudflare Workers', 'D1'],
           image: `${IMG}/wisp.webp`,
           link: 'https://github.com/ErikKarasek/wisp',
@@ -394,7 +394,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Wisp Buddy',
           description:
-            'A character from Wisp\'s family that lives on my Mac\'s desktop. It walks along the bottom of the screen, jumps onto windows and rides along with them, and can be picked up and thrown. It chats through Gemini, keeps reminders, and when Wisp runs it tells me what the agents are doing.',
+            'A character from Wisp\'s family that lives on my Mac\'s desktop. It walks along the bottom of the screen, jumps onto windows and rides along with them, and can be picked up and thrown. It chats through Gemini, keeps reminders that reach my phone too, and when Wisp runs it tells me what the agents are doing.',
           tags: ['Tauri', 'Rust', 'TypeScript', 'Gemini API', 'CoreGraphics'],
           image: `${IMG}/wispbuddy.webp`,
           link: 'https://github.com/ErikKarasek/wisp-buddy',
