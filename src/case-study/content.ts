@@ -1353,6 +1353,14 @@ const wisp: Record<Lang, CaseStudyContent> = {
           title: 'Postavičky, které žijí',
           text: 'Tvarů je dvacet a každý se hýbe po svém: sluníčku obíhají kolečka, planetce měsíčky, kočka cuká ušima, chobotnička vlní chapadly. Když agent dodělá úkol, udělá kotrmelec. V noci zívají, a když pracuju pozdě s Claude, dají si kafe a naskočí. Upravit je jde na Macu i z telefonu, změna doletí přes relay. Kdo chce klid, pohyb vypne, na každém zařízení zvlášť.',
         },
+        {
+          title: 'Noční směna a „kde jsem skončil“',
+          text: 'Do Telegramu napíšu „/noc projekt: úkol“ a Wisp počká, až budu pryč: v noci, nebo když dvacet minut nesáhnu na myš. Pak to Claude udělá ve vlastní větvi a ráno mám draft PR a krátkou zprávu. Když se po půl hodině vrátím k Macu, notch mi řekne, na čem jsem dělal (podle posledního rozhovoru s Claude Code a gitu), co by šlo dál a co mezitím noční směna dodělala.',
+        },
+        {
+          title: 'Mluvení a chyby z obrazovky',
+          text: 'Podržím ⌃⌥V a řeknu česky, co chci. Gemini to přepíše a pozná, jestli je to otázka, připomínka (ta jde do Připomínek a zazvoní i na iPhonu), úkol na noc, nebo práce pro agenta. A když na obrazovce vidím chybu, označím ji přes ⌃⌥E: Gemini ji přečte a najde, ze kterého je projektu, Claude ji na jedno tlačítko opraví a druhým se všechno vrátí.',
+        },
       ],
     },
     decisions: {
@@ -1377,6 +1385,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
         {
           title: 'Kdo pracuje, se ptám napřímo',
           text: 'První verze poznávala běžící agenty přes stránku uvnitř appky. Jenže se zhasnutým displejem ji macOS přiškrtí, a tak Wisp jednu noc uspal Mac pár vteřin poté, co se agenti rozběhli. Všechny jejich běhy spadly a zkoušely se znovu do každého krátkého probuzení. Teď se jádro v Rustu ptá Paperclipu samo každých pět vteřin a stránka do toho nemluví.',
+        },
+        {
+          title: 'Noční směna nesahá do rozdělané práce',
+          text: 'Claude v noci nepracuje v mojí složce, ale v samostatné pracovní kopii z commitu, který platil, když jsem úkol zadal. Do mainu nic nepushne, jen otevře draft PR, a rozjede se, jen když mi z limitu Clauda zbývá dost na ráno. Běží na pozadí a nemá se koho ptát na povolení, takže smí jen upravovat soubory a spustit pár předem povolených příkazů.',
         },
       ],
     },
@@ -1471,6 +1483,14 @@ const wisp: Record<Lang, CaseStudyContent> = {
           title: 'Characters that are alive',
           text: 'There are twenty shapes and each moves its own way: dots circle a sun, moons orbit a planet, a cat twitches its ears, an octopus waves its legs. When an agent finishes a task it does a somersault. At night they yawn, and when I work late with Claude they have a coffee and perk up. I can edit them on the Mac or from the phone, the change travels through the relay. Anyone who wants calm can switch the motion off, separately on each device.',
         },
+        {
+          title: 'A night shift and "where I left off"',
+          text: 'I send "/noc project: task" on Telegram and Wisp waits until I am away: at night, or after twenty minutes without touching the mouse. Then Claude does it on a branch of its own, and in the morning there is a draft PR and a short message. When I come back to the Mac after half an hour, the notch tells me what I was working on (from the last Claude Code conversation and git), what could come next, and what the night shift finished meanwhile.',
+        },
+        {
+          title: 'Talking, and errors off the screen',
+          text: 'I hold ⌃⌥V and say what I want in Czech. Gemini transcribes it and works out whether it is a question, a reminder (that goes into Reminders and rings on the iPhone too), a task for the night, or work for an agent. And when I see an error on screen, I mark it with ⌃⌥E: Gemini reads it and finds which project it belongs to, Claude fixes it with one button and another one puts everything back.',
+        },
       ],
     },
     decisions: {
@@ -1495,6 +1515,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
         {
           title: 'Asking who is working, directly',
           text: 'The first version learned which agents were running from a page inside the app. With the display off macOS throttles that page, so one night Wisp put the Mac to sleep seconds after the agents had started. Every run died and was retried into each brief wake-up. Now the Rust core asks Paperclip itself every five seconds, and the page has no say in it.',
+        },
+        {
+          title: 'The night shift keeps out of unfinished work',
+          text: 'At night Claude does not work in my folder but in a separate working copy made from the commit that was current when I gave the task. It pushes nothing to main, it only opens a draft PR, and it starts only when enough of my Claude limit is left for the morning. It runs in the background with nobody to ask for permission, so it may only edit files and run a few commands allowed in advance.',
         },
       ],
     },
@@ -1568,7 +1592,7 @@ const wispBuddy: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Okna jako nábytek',
-          text: 'Z CoreGraphics čte pětkrát za vteřinu, kde jsou okna ostatních appek, a z jejich horních hran skládá římsy, po kterých se dá chodit. Kus hrany, který zakrývá okno vpředu, z nich odečte. Když okno táhnu, veze se s ním, když ho zavřu, spadne, a občas na nějaké sama vyskočí obloukem spočítaným tak, aby dopadla.',
+          text: 'Z CoreGraphics čte pětkrát za vteřinu, kde jsou okna ostatních appek, a z jejich horních hran skládá římsy, po kterých se dá chodit. Kus hrany, který zakrývá okno vpředu, z nich odečte. Když okno táhnu, veze se s ním, když ho zavřu, spadne, a občas na nějaké sama vyskočí obloukem spočítaným tak, aby dopadla. Když myší ukážu na hranu okna, skočí rovnou tam.',
         },
         {
           title: 'Povídání a připomínky přes Gemini',
@@ -1576,7 +1600,7 @@ const wispBuddy: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Propojení s Wispem',
-          text: 'Když na Macu běží Wisp, Buddy se ho každé tři vteřiny zeptá, kdo pracuje, co spadlo a co čeká. Když agent dodělá úkol, udělá kotrmelec, když něco selže, řekne to v bublině. A v povídání ví, kolik mi zbývá z limitu Clauda.',
+          text: 'Když na Macu běží Wisp, Buddy se ho každé tři vteřiny zeptá, kdo pracuje, co spadlo a co čeká. Když agent dodělá úkol, udělá kotrmelec, když něco selže, řekne to v bublině. A v povídání ví, kolik mi zbývá z limitu Clauda. Připomínky pošle přes Wisp i na telefon do Telegramu a projdou i přes režim soustředění.',
         },
       ],
     },
@@ -1667,7 +1691,7 @@ const wispBuddy: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Windows as furniture',
-          text: 'Five times a second it reads from CoreGraphics where other apps\' windows are and turns their top edges into ledges to walk on, minus any part a window in front covers. Drag a window and it rides along, close it and it falls, and now and then it jumps up onto one in an arc worked out to land.',
+          text: 'Five times a second it reads from CoreGraphics where other apps\' windows are and turns their top edges into ledges to walk on, minus any part a window in front covers. Drag a window and it rides along, close it and it falls, and now and then it jumps up onto one in an arc worked out to land. Point the mouse at a window\'s edge and it jumps straight there.',
         },
         {
           title: 'Chat and reminders through Gemini',
@@ -1675,7 +1699,7 @@ const wispBuddy: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'The link to Wisp',
-          text: 'When Wisp runs on the Mac, Buddy asks it every three seconds who is working, what failed and what waits. When an agent finishes a task it does a somersault, when something fails it says so in the bubble. And in a chat it knows how much of my Claude limit is left.',
+          text: 'When Wisp runs on the Mac, Buddy asks it every three seconds who is working, what failed and what waits. When an agent finishes a task it does a somersault, when something fails it says so in the bubble. And in a chat it knows how much of my Claude limit is left. Reminders go through Wisp to my phone as well, on Telegram, and they get through a Focus mode.',
         },
       ],
     },
