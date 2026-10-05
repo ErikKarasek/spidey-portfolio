@@ -1361,6 +1361,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
           title: 'Mluvení a chyby z obrazovky',
           text: 'Podržím ⌃⌥V a řeknu česky, co chci. Gemini to přepíše a pozná, jestli je to otázka, připomínka (ta jde do Připomínek a zazvoní i na iPhonu), úkol na noc, nebo práce pro agenta. A když na obrazovce vidím chybu, označím ji přes ⌃⌥E: Gemini ji přečte a najde, ze kterého je projektu, Claude ji na jedno tlačítko opraví a druhým se všechno vrátí.',
         },
+        {
+          title: 'Hlídač agentů',
+          text: 'Agenti občas uvíznou: běh spadne, Mac usne nebo dojde limit a Paperclip úkol zablokuje. Wisp takový úkol po pěti minutách vrátí do fronty a agenta znovu spustí. Když to nevyjde ani na třetí pokus, nebo je problém v něčem, co musím vyřešit já, napíše mi. Dva neúspěšné běhy po sobě mi pošle i s nejpravděpodobnější příčinou. Každý nový PR mi přijde do Telegramu s tlačítky Mergnout a Zavřít. A protože tohle všechno běží ve Wispu, Wisp se po pádu sám znovu spustí.',
+        },
       ],
     },
     decisions: {
@@ -1490,6 +1494,10 @@ const wisp: Record<Lang, CaseStudyContent> = {
         {
           title: 'Talking, and errors off the screen',
           text: 'I hold ⌃⌥V and say what I want in Czech. Gemini transcribes it and works out whether it is a question, a reminder (that goes into Reminders and rings on the iPhone too), a task for the night, or work for an agent. And when I see an error on screen, I mark it with ⌃⌥E: Gemini reads it and finds which project it belongs to, Claude fixes it with one button and another one puts everything back.',
+        },
+        {
+          title: 'Watching over the agents',
+          text: 'Agents sometimes get stuck: a run crashes, the Mac sleeps or a limit runs out, and Paperclip blocks the task. Wisp puts such a task back in the queue after five minutes and starts the agent again. If the third try fails too, or the cause is something only I can fix, it messages me. Two failed runs in a row reach me with the most likely cause. Every new PR arrives on Telegram with Merge and Close buttons. And since all of this runs inside Wisp, Wisp restarts itself after a crash.',
         },
       ],
     },
