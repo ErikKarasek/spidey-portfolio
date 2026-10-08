@@ -1,7 +1,14 @@
 // Word versions of the résumé, laid out like the PDFs and built from the same content: `npm run cv:docx`.
 // Word is what a lot of recruiters ask for, and unlike the PDF its links stay clickable after the file
 // is re-saved or pasted elsewhere. Output lands in cv-docx/ (not published with the site).
+//
+// CV_CONTENT and CV_OUT work as they do in build-cv.mjs: another content module exporting
+// { cv, PHONE } (relative to this folder, or absolute) and another output folder. So one posting's
+// fitted copy comes out of both builds the same way:
+//   CV_CONTENT=/tmp/fit/content.mjs CV_OUT=/tmp/fit npm run cv:docx
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { isAbsolute, join, resolve } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import {
   BorderStyle,
   Document,
@@ -16,7 +23,14 @@ import {
   WidthType,
 } from 'docx'
 import QRCode from 'qrcode'
-import { cv, PHONE } from './cv/content.mjs'
+
+const OUT = process.env.CV_OUT ?? 'cv-docx'
+const CONTENT_MODULE = process.env.CV_CONTENT ?? './cv/content.mjs'
+// Loaded by hand rather than with a static import, so CV_CONTENT can point the build at another file.
+const contentPath = isAbsolute(CONTENT_MODULE)
+  ? CONTENT_MODULE
+  : resolve(fileURLToPath(new URL('.', import.meta.url)), CONTENT_MODULE)
+const { cv, PHONE } = await import(pathToFileURL(contentPath).href)
 
 // The PDF rounds the photo with CSS; Word has no such thing, so the round crop is baked
 // into its own file. Screen-sized on purpose — Word draws it an inch wide.
@@ -170,7 +184,7 @@ const body = (d) =>
     ],
   })
 
-mkdirSync('cv-docx', { recursive: true })
+mkdirSync(OUT, { recursive: true })
 for (const d of Object.values(cv)) {
   const doc = new Document({
     creator: d.name,
@@ -184,6 +198,6 @@ for (const d of Object.values(cv)) {
     ],
   })
   const file = d.file.replace('.pdf', '.docx')
-  writeFileSync(`cv-docx/${file}`, await Packer.toBuffer(doc))
-  console.log(`cv-docx/${file}`)
+  writeFileSync(join(OUT, file), await Packer.toBuffer(doc))
+  console.log(join(OUT, file))
 }
