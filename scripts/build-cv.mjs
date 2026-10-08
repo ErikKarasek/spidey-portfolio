@@ -15,8 +15,10 @@
 // which looked good and broke automated screening: in the PDF's text a role ended up next to
 // whatever sat beside it, so a parser paired "Analytik / Tester" with the *next* job's employer.
 // Everything now runs top to bottom, section by section, and the same file works for a person
-// reading it and for the parser behind a careers portal. Headings keep only slight letter
-// spacing for the same reason (wide tracking extracts as "S I L N É S T RÁ N KY").
+// reading it and for the parser behind a careers portal.
+//
+// letter-spacing decides whether the spaces survive into the PDF at all. The safe window is
+// measured, not guessed, and written out above the stylesheet below: keep every rule inside it.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { isAbsolute, join, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
@@ -92,7 +94,29 @@ function html(d) {
      parser has to guess the spaces from the gaps, and Outfit's gap (0.20em) is narrow enough that
      word-by-word extraction (pdftotext -raw) read "Juniorvývojář,kterýstaví…". Arial's space is
      written as a real space, so the space alone comes from Arial. It is 0.078em wider; narrowing it
-     back with word-spacing or size-adjust makes Chrome drop the glyph again, so it stays. */
+     back with word-spacing or size-adjust makes Chrome drop the glyph again, so it stays.
+
+     Borrowing Arial's space is necessary but not sufficient: letter-spacing can still throw it away.
+     Measured by printing one string at many sizes and tracking values and reading the PDF back with
+     pdftotext -raw. The cutoffs are the same at 7pt, 8.8pt, 9.6pt, 10pt and 27pt, so they are
+     em-relative, not a rounding artifact of the point size:
+
+         <= -.006em   Chrome omits the space from the PDF; words run together
+         -.005em .. .26em   the space is written correctly  <- stay in here
+         >= .28em     pdftotext splits the letters instead: "S I L N É  S T RÁ N KY"
+
+     So any negative tracking is out of the question, however small it looks on screen. Two rules
+     have already been bitten by this: the name (-.03em, extracted as "ERIKKARÁSEK.") and .role
+     (-.01em, which made every job title and project name come out as "ICTTECHNIKL1",
+     "SPECIALISTAZÁKAZNICKÉHOCENTRA", "NEXUSGRIND"). Both now carry no letter-spacing at all; the
+     widest role still ends 300pt short of the date column, so there is nothing to win back.
+     The positive values below (.06em, .08em, .1em) sit well inside the window and are fine.
+
+     Check after any change to the type, never by eye:
+       npm run cv && pdftotext -raw public/cv/erik-karasek-zivotopis.pdf - | grep -iE "ANALYTIK|TECHNIK|SPECIALISTA|NEXUS"
+     One false alarm to expect: with -raw, poppler joins the last line of a page to the first line of
+     the next without a newline, so a project name reads "…přes Gemini).JOB TRACKER". That is the
+     extractor, not the PDF; plain pdftotext and -layout both keep them apart. */
   ${SPACE_FONT}
   body { font: 500 9.1pt/1.32 SpaceFromArial, Outfit, sans-serif; color: #1f2937; -webkit-print-color-adjust: exact; print-color-adjust: exact }
   .page { padding: 1mm 1mm 0 }
@@ -112,7 +136,7 @@ function html(d) {
   .profile { color: #374151 }
   .item { margin-bottom: 2.0mm; break-inside: avoid }
   .row { display: flex; justify-content: space-between; align-items: baseline; gap: 3mm }
-  .role { font-weight: 900; font-size: 10pt; text-transform: uppercase; letter-spacing: -.01em; color: #111827 }
+  .role { font-weight: 900; font-size: 10pt; text-transform: uppercase; color: #111827 } /* no letter-spacing: see the window above */
   .when { font-size: 8pt; font-weight: 700; color: #a31515; white-space: nowrap }
   .where { font-size: 8.4pt; color: #6b7280; font-weight: 600; margin: .3mm 0 1.2mm }
   ul { padding-left: 3.4mm } li { margin: .25mm 0 } li::marker { color: #a31515 }
