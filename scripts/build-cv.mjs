@@ -1,6 +1,16 @@
 // Renders scripts/cv/content.mjs into A4 PDFs in public/cv/ (Czech + English) with the site's look.
 // Usage: npm run cv   (needs Google Chrome installed; set CHROME to override its path)
 //
+// Three env vars, all optional, so a one-off copy can be built without touching the canonical pair:
+//   CV_CONTENT  another content module exporting { cv, PHONE }. A relative path resolves against this
+//               script's folder, an absolute one is taken as it is. Default ./cv/content.mjs.
+//   CV_OUT      where the PDFs land. Default public/cv. Any other value also skips the write of
+//               public/img/cv-name-shadow.png, so a fitted copy never dirties the repo.
+//   CV_PREVIEW  a folder for the rendered HTML, to check the layout in a browser.
+// A résumé fitted to one posting is built like this, and writes nowhere else:
+//   CV_CONTENT=/tmp/fit/content.mjs CV_OUT=/tmp/fit npm run cv
+// Paths inside the content module (the photo) stay relative to the repo root, where npm run cv runs.
+//
 // One column, on purpose. The layout used to put skills, education and strengths in a sidebar,
 // which looked good and broke automated screening: in the PDF's text a role ended up next to
 // whatever sat beside it, so a parser paired "Analytik / Tester" with the *next* job's employer.
@@ -8,10 +18,20 @@
 // reading it and for the parser behind a careers portal. Headings keep only slight letter
 // spacing for the same reason (wide tracking extracts as "S I L N É S T RÁ N KY").
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+import { isAbsolute, join, resolve } from 'node:path'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 import puppeteer from 'puppeteer-core'
 import QRCode from 'qrcode'
-import { cv, PHONE } from './cv/content.mjs'
 
+const DEFAULT_CONTENT = './cv/content.mjs'
+const DEFAULT_OUT = 'public/cv'
+const OUT = process.env.CV_OUT ?? DEFAULT_OUT
+const CONTENT_MODULE = process.env.CV_CONTENT ?? DEFAULT_CONTENT
+// Loaded by hand rather than with a static import, so CV_CONTENT can point the build at another file.
+const contentPath = isAbsolute(CONTENT_MODULE)
+  ? CONTENT_MODULE
+  : resolve(fileURLToPath(new URL('.', import.meta.url)), CONTENT_MODULE)
+const { cv, PHONE } = await import(pathToFileURL(contentPath).href)
 
 const CHROME = process.env.CHROME ?? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -139,19 +159,23 @@ function html(d) {
 </div></body></html>`
 }
 
-mkdirSync('public/cv', { recursive: true })
+mkdirSync(OUT, { recursive: true })
 const browser = await puppeteer.launch({ executablePath: CHROME, headless: 'new' })
 const shadowPng = await renderNameShadow(browser, cv.cs.name)
-mkdirSync('public/img', { recursive: true })
-writeFileSync('public/img/cv-name-shadow.png', shadowPng)
+// Publishing the shadow is the canonical build's job only: the Job Tracker's fitted CV reads it off
+// the site, so a one-off build keeps its hands off the repo and just inlines its own copy below.
+if (OUT === DEFAULT_OUT) {
+  mkdirSync('public/img', { recursive: true })
+  writeFileSync('public/img/cv-name-shadow.png', shadowPng)
+}
 const nameShadow = `data:image/png;base64,${Buffer.from(shadowPng).toString('base64')}`
 for (const [lang, d] of Object.entries(cv)) {
   const page = await browser.newPage()
   await page.setContent(html({ ...d, nameShadow }), { waitUntil: 'networkidle0' })
   await page.evaluate(() => document.fonts.ready)
   const pdf = await page.pdf({ format: 'A4', printBackground: true, preferCSSPageSize: true })
-  writeFileSync(`public/cv/${d.file}`, pdf)
+  writeFileSync(join(OUT, d.file), pdf)
   if (process.env.CV_PREVIEW) writeFileSync(`${process.env.CV_PREVIEW}/cv-${lang}.html`, html({ ...d, nameShadow }))
-  console.log(`public/cv/${d.file}  (${Math.round(pdf.length / 1024)} kB)`)
+  console.log(`${join(OUT, d.file)}  (${Math.round(pdf.length / 1024)} kB)`)
 }
 await browser.close()
