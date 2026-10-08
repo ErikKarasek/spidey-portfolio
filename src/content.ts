@@ -241,7 +241,6 @@ export const content: Record<Lang, Content> = {
             'Pár AI agentů, kteří za mě dělají rutinu kolem hledání práce a mých projektů. V noci sepíšou, co jsem udělal, a zkontrolují nový kód, přes den hlídají poštu od firem a ráno pošlou přehled nových nabídek. Všechno chodí do Telegramu s tlačítky a nic se nezmění, dokud to neschválím. Když spadne web nebo se některá úloha neozve, dá mi vědět.',
           tags: ['Node.js', 'Claude', 'Telegram Bot API', 'Cloudflare Workers', 'IMAP'],
           image: `${IMG}/automation.webp`,
-          link: 'https://github.com/ErikKarasek/devlog',
           study: '/automation/',
         },
         {
@@ -442,7 +441,6 @@ export const content: Record<Lang, Content> = {
             'A few AI agents that handle the routine around my job hunt and projects. At night they write up what I did and check the new code, during the day they watch for replies from companies, and in the morning they send a digest of new postings. Everything arrives in Telegram with buttons, and nothing changes until I approve it. If a site goes down or a job does not run, I get told.',
           tags: ['Node.js', 'Claude', 'Telegram Bot API', 'Cloudflare Workers', 'IMAP'],
           image: `${IMG}/automation.webp`,
-          link: 'https://github.com/ErikKarasek/devlog',
           study: '/automation/',
         },
         {

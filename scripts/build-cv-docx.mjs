@@ -122,8 +122,12 @@ function main(d) {
   out.push(heading(d.labels.projects))
   for (const p of d.projects) {
     out.push(titleRow(p.name, p.when, MAIN))
-    const line = [link(p.link, url(p.link))]
-    if (p.study) line.push(text('  ·  ', { color: ACCENT }), text(`${d.studyLabel}: `, { size: BASE - 3, color: GREY }), link(p.study, url(p.study)))
+    // a project may carry a repo link, a write-up, or only one of the two
+    const line = p.link ? [link(p.link, url(p.link))] : []
+    if (p.study) {
+      if (line.length) line.push(text('  ·  ', { color: ACCENT }))
+      line.push(text(`${d.studyLabel}: `, { size: BASE - 3, color: GREY }), link(p.study, url(p.study)))
+    }
     out.push(where(line), ...bullets(p.points))
   }
   return out
