@@ -120,10 +120,13 @@ function html(d) {
     <section>${head(d.labels.projects)}${d.projects
       .map(
         (p) =>
-          `<div class="item"><div class="row"><span class="role">${esc(p.name)}</span><span class="when">${esc(p.when)}</span></div><p class="where">${a(p.link, url(p.link))}${
-            // a project with a write-up carries the link to it, so a reader can go one click deeper
-            p.study ? ` <b>·</b> ${esc(d.studyLabel)}: ${a(p.study, url(p.study))}` : ''
-          }</p>${list(p.points)}</div>`,
+          `<div class="item"><div class="row"><span class="role">${esc(p.name)}</span><span class="when">${esc(p.when)}</span></div><p class="where">${[
+            // a project may carry a repo link, a write-up, or only one of the two
+            p.link && a(p.link, url(p.link)),
+            p.study && `${esc(d.studyLabel)}: ${a(p.study, url(p.study))}`,
+          ]
+            .filter(Boolean)
+            .join(' <b>·</b> ')}</p>${list(p.points)}</div>`,
       )
       .join('')}</section>
     <section>${head(d.labels.skills)}${d.skills.map(pair).join('')}</section>
