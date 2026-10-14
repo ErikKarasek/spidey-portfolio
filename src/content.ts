@@ -1,4 +1,4 @@
-// Všechen text webu v obou jazycích — uprav cokoli tady, komponenty se nemusí měnit.
+// Every piece of the site's copy in both languages. Edit anything here and the components stay as they are.
 
 export type Lang = 'cs' | 'en'
 export type SocialId = 'twitch' | 'kick' | 'youtube' | 'tiktok' | 'instagram' | 'donate'
@@ -18,7 +18,7 @@ export const profile = {
   stack: ['React', 'TypeScript', 'Tauri', 'React Native', 'Supabase', 'Node.js'],
 }
 
-// Z linktr.ee/erickos007. `live` = u které platformy se ukáže LIVE, když zrovna streamuješ.
+// From linktr.ee/erickos007. `live` = which platform shows LIVE while a stream is running.
 export const socials: { id: SocialId; label: string; href: string; live?: 'twitch' | 'kick' }[] = [
   { id: 'kick', label: 'Kick', href: 'https://kick.com/erickos007', live: 'kick' },
   { id: 'twitch', label: 'Twitch', href: 'https://www.twitch.tv/erickos007', live: 'twitch' },
