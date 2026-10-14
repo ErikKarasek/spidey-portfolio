@@ -157,6 +157,7 @@ function sidebar(d) {
       new Paragraph({ spacing: { before: 55 }, children: [text(e.what, { bold: true, size: BASE - 1, color: INK })] }),
       new Paragraph({ children: [text(e.where, { size: BASE - 2, color: GREY })] }),
       new Paragraph({ spacing: { after: 14 }, children: [text(e.when, { size: BASE - 2, color: GREY })] }),
+      ...(e.points ? bullets(e.points) : []),
     )
   }
   out.push(heading(d.labels.other), ...pairs(d.other))

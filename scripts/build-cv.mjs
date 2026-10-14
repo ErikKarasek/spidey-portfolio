@@ -161,6 +161,7 @@ function html(d) {
     <section>${head(d.labels.experience)}${d.jobs
       .map((j) => `<div class="item"><div class="row"><span class="role">${esc(j.role)}</span><span class="when">${esc(j.when)}</span></div><p class="where">${esc(j.where)}</p>${list(j.points)}</div>`)
       .join('')}</section>
+    <section>${head(d.labels.strengths)}${d.strengths.map(pair).join('')}</section>
     <section>${head(d.labels.projects)}${d.projects
       .map(
         (p) =>
@@ -175,9 +176,11 @@ function html(d) {
       .join('')}</section>
     <section>${head(d.labels.skills)}${d.skills.map(pair).join('')}</section>
     <section>${head(d.labels.education)}${d.education
-      .map((e) => `<p class="edu"><b>${esc(e.what)}</b>, <span>${esc(e.where)}, ${esc(e.when)}</span></p>`)
+      .map(
+        (e) =>
+          `<div class="edu"><p><b>${esc(e.what)}</b>, <span>${esc(e.where)}, ${esc(e.when)}</span></p>${e.points ? list(e.points) : ''}</div>`,
+      )
       .join('')}</section>
-    <section>${head(d.labels.strengths)}${d.strengths.map(pair).join('')}</section>
     <section>${head(d.labels.other)}${d.other.map(pair).join('')}</section>
   </main>
 </div></body></html>`
