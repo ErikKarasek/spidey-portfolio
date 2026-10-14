@@ -938,7 +938,7 @@ const subscriptions: Record<Lang, CaseStudyContent> = {
       heading: 'Kde to je teď',
       body: [
         'Běží to jako Worker na Cloudflare a je hotové od databáze přes naplánovanou úlohu a e-maily až po grafy. Snímky výše jsou z ukázkových dat.',
-        'Živá appka je schválně za Cloudflare Access, takže si ji nemůžeš otevřít, jsou v ní údaje o mých vlastních platbách o mých vlastních platbách. Kód je ale celý veřejný na GitHubu.',
+        'Živá appka je schválně za Cloudflare Access, takže si ji nemůžeš otevřít, jsou v ní údaje o mých vlastních platbách. Kód je ale celý veřejný na GitHubu.',
       ],
     },
     cta: { text: 'Chceš se podívat na kód?', button: 'Otevřít na GitHubu', href: 'https://github.com/ErikKarasek/subscription-tracker' },

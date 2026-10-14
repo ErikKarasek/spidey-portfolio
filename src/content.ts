@@ -254,7 +254,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Subscription Tracker',
           description:
-            'Přehled všeho, co ti měsíčně odchází z účtu. Jednou denně se program sám probudí, posune datum další platby a pošle e-mail na to, co se blíží nebo co dlouho nepoužíváš. Screenshot platby za tebe přečte AI model na Cloudflare.',
+            'Přehled všeho, co ti měsíčně odchází z účtu. Jednou denně se program sám probudí, posune datum další platby a pošle e-mail o tom, co se blíží nebo co dlouho nepoužíváš. Screenshot platby za tebe přečte AI model na Cloudflare.',
           tags: ['React', 'Hono', 'Cloudflare Workers', 'D1', 'Workers AI'],
           image: `${IMG}/subscriptions.webp`,
           link: 'https://github.com/ErikKarasek/subscription-tracker',
