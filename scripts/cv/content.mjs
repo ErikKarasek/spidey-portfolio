@@ -33,7 +33,7 @@ export const cv = {
       qr: 'Portfolio',
     },
     profile:
-      'Junior vývojář, který staví AI automatizace a aplikace od nápadu po nasazení. Mám vlastní AI agenty, kteří sami procházejí nabídky práce a hlídají moje projekty, a řídicí panel nad nimi pro Mac a iPhone. Výstupy modelu ověřuji kódem, ne slepou důvěrou. Pracuji jako analytik / tester na projektu ENTSO-E ve společnosti Unicorn, dřív IT podpora (helpdesk L1, Active Directory). Hledám roli v AI automatizaci nebo vývoji.',
+      'Junior vývojář, který staví AI automatizace a aplikace od nápadu po nasazení. Mám vlastní AI agenty, kteří sami procházejí nabídky práce a hlídají moje projekty, a řídicí panel nad nimi pro Mac a iPhone. Výstupy modelu ověřuji kódem, ne slepou důvěrou. Naposledy jsem dělal analytika / testera na projektu ENTSO-E ve společnosti Unicorn, předtím IT podporu (helpdesk L1, Active Directory). Teď hledám roli v AI automatizaci nebo vývoji.',
     strengths: [
       ['Rychlé učení a samostatnost', 'v nových technologiích a procesech se zorientuju rychle.'],
       ['AI-first přístup', 'běžně využívám AI k rychlejšímu a kvalitnějšímu vývoji.'],
@@ -42,7 +42,7 @@ export const cv = {
     jobs: [
       {
         role: 'Analytik / Tester',
-        when: 'červenec 2026 – současnost',
+        when: 'červenec – listopad 2026',
         where: 'Unicorn · projekt ENTSO-E Transparency Platform · Hradec Králové (hybridně)',
         points: [
           'Psaní testovacích scénářů (test cases) pro datová rozšíření platformy.',
@@ -178,7 +178,7 @@ export const cv = {
       qr: 'Portfolio',
     },
     profile:
-      "A junior developer who builds AI automations and applications from idea to deployment. I run my own AI agents that read job postings and watch over my projects, plus a dashboard for them on Mac and iPhone. I check what the model returns with code rather than trusting it blindly. I work as an analyst / tester on the ENTSO-E project at Unicorn, previously IT support (L1 helpdesk, Active Directory). I'm looking for a role in AI automation or development.",
+      "A junior developer who builds AI automations and applications from idea to deployment. I run my own AI agents that read job postings and watch over my projects, plus a dashboard for them on Mac and iPhone. I check what the model returns with code rather than trusting it blindly. Most recently I worked as an analyst / tester on the ENTSO-E project at Unicorn, and before that in IT support (L1 helpdesk, Active Directory). I'm now looking for a role in AI automation or development.",
     strengths: [
       ['Fast learner, self-driven', 'I find my way around new technologies and processes quickly.'],
       ['AI-first', 'I use AI every day to build faster and better.'],
@@ -187,7 +187,7 @@ export const cv = {
     jobs: [
       {
         role: 'Analyst / Tester',
-        when: 'July 2026 – present',
+        when: 'July – November 2026',
         where: 'Unicorn · ENTSO-E Transparency Platform project · Hradec Králové (hybrid)',
         points: [
           'Writing test cases for data extensions of the platform.',

@@ -144,9 +144,8 @@ export const content: Record<Lang, Content> = {
         {
           role: 'Analytik / Tester',
           company: 'Unicorn · ENTSO-E Transparency Platform · Hradec Králové',
-          when: 'červenec 2026 – současnost',
-          current: true,
-          points: ['Píšu testovací scénáře pro datová rozšíření platformy a testuju je na DEV prostředí.', 'Tickety a postupy vedu v Jira, scénáře revidujeme se seniorními testery.'],
+          when: 'červenec – listopad 2026',
+          points: ['Psal jsem testovací scénáře pro datová rozšíření platformy a testoval je na DEV prostředí.', 'Tickety a postupy jsem vedl v Jira, scénáře jsme revidovali se seniorními testery.'],
         },
         {
           role: 'ICT Technik L1',
@@ -353,9 +352,8 @@ export const content: Record<Lang, Content> = {
         {
           role: 'Analyst / Tester',
           company: 'Unicorn · ENTSO-E Transparency Platform · Hradec Králové',
-          when: 'July 2026 – present',
-          current: true,
-          points: ['I write test cases for data extensions of the platform and run them on the DEV environment.', 'Tickets and processes live in Jira; we review scenarios with senior testers.'],
+          when: 'July – November 2026',
+          points: ['I wrote test cases for data extensions of the platform and ran them on the DEV environment.', 'Tickets and processes lived in Jira, and we reviewed scenarios with senior testers.'],
         },
         {
           role: 'ICT Technician L1',
