@@ -35,7 +35,7 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
     title: 'Nexus Grind.',
     lead: 'Tracker produktivity pro Mac, Windows, iPhone i Android. Úkoly, návyky, spánek a ranked hry na jednom místě, a za splněnou práci ti roste sakura. Dělám ho sám od logiky až po to, jak vypadá.',
     stats: [
-      { value: 'v1.2.0', label: 'Aktuální verze' },
+      { value: 'v1.3.0', label: 'Aktuální verze' },
       { value: '4', label: 'Platformy' },
       { value: '2', label: 'Klienti, jedna logika' },
       { value: '9', label: 'Motivů vzhledu' },
@@ -131,8 +131,9 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
     status: {
       heading: 'Kde to je teď',
       body: [
-        'Appka běží ve verzi 1.2.0 na Macu, Windows i telefonu a používám ji každý den. Cloudová synchronizace je hotová včetně databázových migrací.',
-        'Teď řeším podpis aplikace, účty v obchodech a hostování aktualizací, aby šla instalace bez varování systému.',
+        'Appka běží ve verzi 1.3.0 na Macu, Windows i telefonu a používám ji každý den. Cloudová synchronizace je hotová včetně databázových migrací.',
+        'Nové verze si appka hlídá sama: tag v gitu spustí build, ten vydá instalačky do veřejného repozitáře s vydáními a appka si aktualizaci stáhne, jen když sedí podpis.',
+        'Zbývá podepsat appku u Applu a Microsoftu a založit účty v obchodech, aby instalace neházela varování systému.',
       ],
     },
     cta: { text: 'Chceš si to zkusit?', button: 'Stáhnout Nexus Grind' },
@@ -147,7 +148,7 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
     title: 'Nexus Grind.',
     lead: 'A productivity tracker for Mac, Windows, iPhone and Android. Tasks, habits, sleep and ranked games in one place, with a sakura tree that grows as you get things done. I build all of it, from the logic to the way it looks.',
     stats: [
-      { value: 'v1.2.0', label: 'Current version' },
+      { value: 'v1.3.0', label: 'Current version' },
       { value: '4', label: 'Platforms' },
       { value: '2', label: 'Clients, one core' },
       { value: '9', label: 'Themes' },
@@ -243,8 +244,9 @@ const nexusGrind: Record<Lang, CaseStudyContent> = {
     status: {
       heading: 'Where it is now',
       body: [
-        'The app runs at version 1.2.0 on Mac, Windows and phones, and I use it every day. Cloud sync is finished, database migrations included.',
-        'Right now I am working on code signing, store accounts and update hosting, so installing it does not come with a system warning.',
+        'The app runs at version 1.3.0 on Mac, Windows and phones, and I use it every day. Cloud sync is finished, database migrations included.',
+        'The app keeps itself current: a git tag starts the build, which publishes the installers to a public releases repository, and the app only takes an update whose signature checks out.',
+        'What is left is signing the app with Apple and Microsoft and opening the store accounts, so installing it does not come with a system warning.',
       ],
     },
     cta: { text: 'Want to try it?', button: 'Download Nexus Grind' },
@@ -1282,7 +1284,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
     title: 'Wisp.',
     lead: 'Řídicí panel nad agenty, které mi běží na pozadí. Každý z nich je postavička a její obličej ukazuje, co zrovna dělá: pracuje, spí do dalšího běhu, spadla, nebo na mě čeká. Žije v notchi Macu a ten samý stav mám i v iPhonu, včetně widgetů a Dynamic Islandu.',
     stats: [
-      { value: '3', label: 'AI předplatná vedle sebe' },
+      { value: '4', label: 'AI předplatná vedle sebe' },
       { value: '2', label: 'Appky: Mac a iPhone' },
       { value: '1', label: 'Relay mezi nimi' },
       { value: '20', label: 'Tvarů postaviček' },
@@ -1338,8 +1340,8 @@ const wisp: Record<Lang, CaseStudyContent> = {
           text: 'Mezi Macem a telefonem je Cloudflare Worker s databází D1. Mac do něj posílá stav a vybírá si příkazy, telefon stav čte a příkazy nechává. Nikdo nikomu neotevírá port a telefon funguje i když je Mac zrovna uspaný: příkaz počká, až se probudí.',
         },
         {
-          title: 'Tři předplatná v jednom pohledu',
-          text: 'Claude běží přes svoje CLI, ChatGPT přes Codex CLI a Gemini přes agy. Každý agent si nese, na čem běží, a Wisp u každého předplatného ukazuje spotřebu i čas resetu. Když tempo vychází na to, že limit dojde dřív než okno skončí, kolečko zežloutne.',
+          title: 'Čtyři předplatná v jednom pohledu',
+          text: 'Claude běží přes svoje CLI, ChatGPT přes Codex CLI, Gemini přes agy a Grok Bot si pracuje na svém počítači v cloudu. Každý agent si nese, na čem běží, a Wisp u každého předplatného ukazuje spotřebu i čas resetu. Když tempo vychází na to, že limit dojde dřív než okno skončí, kolečko zežloutne.',
         },
         {
           title: 'Kroky z Claude Code přes hooky',
@@ -1416,7 +1418,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
     title: 'Wisp.',
     lead: 'A dashboard for the agents running in the background. Each one is a little character whose face shows what it is doing: working, asleep until its next run, failed, or waiting for me. It lives in the Mac\'s notch, and the same state travels to my iPhone, widgets and Dynamic Island included.',
     stats: [
-      { value: '3', label: 'AI subscriptions in one view' },
+      { value: '4', label: 'AI subscriptions in one view' },
       { value: '2', label: 'Apps: Mac and iPhone' },
       { value: '1', label: 'Relay between them' },
       { value: '20', label: 'Character shapes' },
@@ -1472,8 +1474,8 @@ const wisp: Record<Lang, CaseStudyContent> = {
           text: 'Between the Mac and the phone sits a Cloudflare Worker with a D1 database. The Mac pushes its state and picks up commands; the phone reads the state and leaves commands. Nobody opens a port to anybody, and the phone still works while the Mac is asleep: the command waits for it to wake.',
         },
         {
-          title: 'Three subscriptions in one view',
-          text: 'Claude runs through its own CLI, ChatGPT through the Codex CLI and Gemini through agy. Every agent carries the engine it runs on, and Wisp shows each subscription\'s usage and reset time. When the pace would run the limit out before the window ends, the ring turns amber.',
+          title: 'Four subscriptions in one view',
+          text: 'Claude runs through its own CLI, ChatGPT through the Codex CLI, Gemini through agy, and Grok Bot works on its own machine in the cloud. Every agent carries the engine it runs on, and Wisp shows each subscription\'s usage and reset time. When the pace would run the limit out before the window ends, the ring turns amber.',
         },
         {
           title: 'Steps from Claude Code through hooks',

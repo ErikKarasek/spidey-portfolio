@@ -10,6 +10,11 @@ The section names in the table are the Czech headings used on the live site.
 | `web.webp`            | the webs                                                   |
 | `projects/*.webp`     | project thumbnails                                         |
 
+`projects/nerv.webp`, `projects/sklep.webp` and `projects/odnuly.webp` are rendered, not shot:
+those three projects have no UI worth a screenshot, so `npm run art` (`scripts/build-project-art.mjs`)
+draws nerv's HUD and a readout of what sklep and odnuly actually printed. Every number in them comes
+from those projects' own READMEs.
+
 ## Your own photos
 
 | File             | What it does                                                             |

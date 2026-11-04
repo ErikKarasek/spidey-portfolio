@@ -99,7 +99,7 @@ const skills = (l: Lang): Skill[] => [
   { name: 'TypeScript', category: l === 'cs' ? 'Jazyky' : 'Languages', level: ADV[l] },
   { name: 'Tauri & Rust', category: 'Desktop', level: PRO[l] },
   { name: 'React Native & Expo', category: l === 'cs' ? 'Mobil' : 'Mobile', level: ADV[l] },
-  { name: 'Swift & SwiftUI', category: l === 'cs' ? 'Mobil' : 'Mobile', level: PRO[l] },
+  { name: 'Swift & SwiftUI', category: l === 'cs' ? 'Apple platformy' : 'Apple platforms', level: PRO[l] },
   { name: 'Supabase & PostgreSQL', category: 'Backend', level: PRO[l] },
   { name: 'Python & Flask', category: 'Backend', level: PRO[l] },
   { name: l === 'cs' ? 'AI agenti (volání nástrojů)' : 'AI agents (tool calling)', category: 'AI', level: PRO[l] },
@@ -117,7 +117,7 @@ export const content: Record<Lang, Content> = {
   cs: {
     meta: {
       title: 'Erik Karásek | full-stack vývojář',
-      description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web. Devět vlastních projektů v Reactu, TypeScriptu a na Cloudflare, u každého i popis, jak vznikl.',
+      description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web. Třináct vlastních projektů v Reactu, TypeScriptu, Rustu a na Cloudflare, u většiny i popis, jak vznikly.',
     },
     nav: { about: 'O mně', experience: 'Zkušenosti', skills: 'Dovednosti', projects: 'Projekty', contact: 'Kontakt', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Vypnout zvuk', soundOff: 'Zapnout zvuk' },
     loader: 'Nasazuju masku',
@@ -126,8 +126,8 @@ export const content: Record<Lang, Content> = {
     about: {
       label: 'Za maskou',
       paragraphs: [
-        'Ahoj, jsem Erik. Dělám appky pro počítač, mobil i web a nejvíc mě baví, když si můžu udělat všechno sám, od logiky až po to, jak to vypadá. Můj největší projekt je Nexus Grind, tracker produktivity, ve kterém ti za splněné úkoly roste sakura.',
-        'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Poslední dobou mě nejvíc baví dávat do svých appek AI tam, kde ušetří rutinu. Na tomhle webu ti vpravo dole odpoví asistent, který zná moje projekty. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
+        'Ahoj, jsem Erik. Dělám appky pro počítač, mobil i web a nejvíc mě baví, když si můžu udělat všechno sám, od logiky až po to, jak to vypadá. Nejvíc práce mám ve Wispu, řídicím panelu nad mými AI agenty, který mi žije v notchi Macu a v iPhonu. Vedle něj je Nexus Grind, tracker produktivity, ve kterém ti za splněné úkoly roste sakura.',
+        'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Dávám do svých appek AI tam, kde ušetří rutinu, a na tomhle webu ti vpravo dole odpoví asistent, který zná moje projekty. Poslední dobou mě k tomu chytlo stavět věci od nuly, abych viděl dovnitř: vlastní databázi v Rustu, vlastní jazykový model a ovládání Macu rukou před kamerou. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
       ],
       stack: 'Co používám nejvíc',
       source: 'Kód tohoto webu na GitHubu',
@@ -197,6 +197,27 @@ export const content: Record<Lang, Content> = {
           study: '/nexus-grind/',
         },
         {
+          title: 'nerv',
+          description:
+            'Ovládání Macu holou rukou před kamerou. Ukazovák vede kurzor, štípnutí palcem a ukazovákem klikne, plochá dlaň scrolluje a mávnutí přepne plochu. Sledování ruky počítá sám Mac přes Vision, takže se nic nestahuje, nic neposílá ven a nepotřebuje to žádný účet. V rohu obrazovky je malý panel s kostrou ruky a čísly, podle kterých se appka rozhodla.',
+          tags: ['Swift', 'Vision', 'macOS', 'CoreGraphics'],
+          image: `${IMG}/nerv.webp`,
+        },
+        {
+          title: 'sklep',
+          description:
+            'Vlastní databáze a SQL server psaný od nuly v Rustu, bez jediné knihovny. Chtěl jsem vidět dovnitř věci, nad kterou mám postavenou většinu projektů. Zatím umí soubor rozsekaný na stránky a B-strom nad nimi: sto tisíc klíčů a najít kterýkoli z nich stojí tři čtení stránky. Dál je v plánu cache stránek, transakce s logem, SQL a nakonec protokol Postgresu, aby se k tomu připojilo psql.',
+          tags: ['Rust', 'B-tree', 'Pager', 'SQL'],
+          image: `${IMG}/sklep.webp`,
+        },
+        {
+          title: 'odnuly',
+          description:
+            'Jazykový model napsaný od nuly a natrénovaný jenom na textu z mých vlastních repozitářů. Žádné stažené váhy, žádné API, jen PyTorch. Nejlepší běh má 11 milionů parametrů a 1,947 bitu na bajt, čímž o fous přeskočil bzip2. Cestou se dalo změřit, proč čeština stojí skoro dvakrát víc tokenů než angličtina, a že za to nemůže jazyk, ale rozpočet slovníku.',
+          tags: ['Python', 'PyTorch', 'Transformer', 'BPE'],
+          image: `${IMG}/odnuly.webp`,
+        },
+        {
           title: 'LoL Stats',
           description:
             'Moje statistiky z ranked her přes Riot API. Tierlist šampionů podle winrate a KDA, statistiky podle pozice, historie her a detail zápasu jako na op.gg. Klíč k API zůstává jen v prohlížeči.',
@@ -234,7 +255,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'GitHub Reels',
           description:
-            'Každé ráno projde GitHub Trending a AI novinky, seřadí je podle toho, co má šanci zaujmout, a nechá model napsat scénáře na krátká videa v češtině. Hotové scénáře i zdroje si otevřu v mobilu na webu, který se nasadí spolu s nimi.',
+            'Projde GitHub Trending a AI novinky, seřadí je podle toho, co má šanci zaujmout, a nechá model napsat scénáře na krátká videa v češtině. Hotové scénáře i zdroje si otevřu v mobilu na webu, který se nasadí spolu s nimi. Ranní běh mám teď vypnutý, protože reely netočím a zbytečně to ujídalo denní limity modelů. Web jede dál a spustit se to dá kdykoliv ručně.',
           tags: ['Node.js', 'Claude', 'Web scraping', 'Cloudflare Workers', 'PWA'],
           image: `${IMG}/reels.webp`,
           link: 'https://github.com/ErikKarasek/github-reels',
@@ -305,7 +326,7 @@ export const content: Record<Lang, Content> = {
   en: {
     meta: {
       title: 'Erik Karásek | full-stack developer',
-      description: "Erik Karásek's portfolio. Desktop, mobile and web apps. Nine projects of my own in React, TypeScript and on Cloudflare, each with a write-up of how it was built.",
+      description: "Erik Karásek's portfolio. Desktop, mobile and web apps. Thirteen projects of my own in React, TypeScript, Rust and on Cloudflare, most with a write-up of how they were built.",
     },
     nav: { about: 'About', experience: 'Experience', skills: 'Skills', projects: 'Projects', contact: 'Contact', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Mute sound', soundOff: 'Turn sound on' },
     loader: 'Suiting up',
@@ -314,8 +335,8 @@ export const content: Record<Lang, Content> = {
     about: {
       label: 'Behind the mask',
       paragraphs: [
-        "Hey, I'm Erik. I build apps for desktop, mobile and the web, and I like doing the whole thing myself, from the logic to how it looks. My biggest project is Nexus Grind, a productivity tracker where a sakura tree grows as you finish your tasks.",
-        'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. Lately what I enjoy most is putting AI into my apps where it takes routine work off my hands. The assistant in the bottom right of this site knows my projects and will answer your questions. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
+        "Hey, I'm Erik. I build apps for desktop, mobile and the web, and I like doing the whole thing myself, from the logic to how it looks. Most of my work goes into Wisp, a dashboard for my AI agents that lives in the Mac's notch and on my iPhone. Next to it is Nexus Grind, a productivity tracker where a sakura tree grows as you finish your tasks.",
+        'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. I put AI into my apps where it takes routine work off my hands, and the assistant in the bottom right of this site knows my projects and will answer your questions. Lately I have been building things from scratch to see inside them: my own database in Rust, my own language model, and hand control for the Mac through the webcam. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
       ],
       stack: 'What I use most',
       source: "This site's code on GitHub",
@@ -385,6 +406,27 @@ export const content: Record<Lang, Content> = {
           study: '/nexus-grind/',
         },
         {
+          title: 'nerv',
+          description:
+            'Controlling a Mac with a bare hand in front of the webcam. The index finger moves the cursor, a thumb-and-index pinch clicks, a flat hand scrolls and a sideways flick switches desktop. The Mac does the hand tracking itself through Vision, so nothing is downloaded, nothing leaves the machine and no account is needed. A small panel in the corner shows the skeleton it sees and the numbers behind each decision.',
+          tags: ['Swift', 'Vision', 'macOS', 'CoreGraphics'],
+          image: `${IMG}/nerv.webp`,
+        },
+        {
+          title: 'sklep',
+          description:
+            'A database and SQL server written from scratch in Rust, with no dependencies at all. I wanted to see inside the thing most of my projects are built on top of. So far it has a file cut into pages and a B-tree over them: a hundred thousand keys, and finding any one of them costs three page reads. A buffer pool, transactions with a log, SQL and finally the Postgres wire protocol, so psql can connect to it, are next.',
+          tags: ['Rust', 'B-tree', 'Pager', 'SQL'],
+          image: `${IMG}/sklep.webp`,
+        },
+        {
+          title: 'odnuly',
+          description:
+            'A language model written from scratch and trained only on text from my own repositories. No downloaded weights, no API, just PyTorch. The best run has 11 million parameters and 1.947 bits per byte, which edges past bzip2. Along the way it measured why Czech costs almost twice as many tokens as English, and that the language is not to blame: the vocabulary budget is.',
+          tags: ['Python', 'PyTorch', 'Transformer', 'BPE'],
+          image: `${IMG}/odnuly.webp`,
+        },
+        {
           title: 'LoL Stats',
           description:
             'My ranked stats from the Riot API. A champion tier list by win rate and KDA, stats per lane, match history and a match view like on op.gg. The API key stays in your browser.',
@@ -422,7 +464,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'GitHub Reels',
           description:
-            'Every morning it goes through GitHub Trending and the AI news, ranks them by what stands a chance of landing, and has a model write short-video scripts in Czech. The scripts and their sources open on my phone, on a site deployed alongside them.',
+            'It goes through GitHub Trending and the AI news, ranks them by what stands a chance of landing, and has a model write short-video scripts in Czech. The scripts and their sources open on my phone, on a site deployed alongside them. The morning run is switched off for now: I am not making reels, and it was eating the daily model limits for nothing. The site is still up and a run can be started by hand any time.',
           tags: ['Node.js', 'Claude', 'Web scraping', 'Cloudflare Workers', 'PWA'],
           image: `${IMG}/reels.webp`,
           link: 'https://github.com/ErikKarasek/github-reels',

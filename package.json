@@ -10,7 +10,8 @@
     "deploy": "npm run build && npx --yes wrangler@4 pages deploy --branch main --commit-dirty=true",
     "cv": "node scripts/build-cv.mjs",
     "cv:docx": "node scripts/build-cv-docx.mjs",
-    "banner": "node scripts/build-banner.mjs"
+    "banner": "node scripts/build-banner.mjs",
+    "art": "node scripts/build-project-art.mjs"
   },
   "dependencies": {
     "@fontsource-variable/outfit": "^5.3.0",
