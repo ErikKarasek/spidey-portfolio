@@ -128,6 +128,7 @@ export const content: Record<Lang, Content> = {
       paragraphs: [
         'Ahoj, jsem Erik. Dělám appky pro počítač, mobil i web a nejvíc mě baví, když si můžu udělat všechno sám, od logiky až po to, jak to vypadá. Nejvíc práce mám ve Wispu, řídicím panelu nad mými AI agenty, který mi žije v notchi Macu a v iPhonu. Vedle něj je Nexus Grind, tracker produktivity, ve kterém ti za splněné úkoly roste sakura.',
         'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Dávám do svých appek AI tam, kde ušetří rutinu, a na tomhle webu ti vpravo dole odpoví asistent, který zná moje projekty. Poslední dobou mě chytlo stavět věci od nuly, abych viděl dovnitř: vlastní databázi v Rustu, vlastní jazykový model a ovládání Macu rukou před kamerou. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
+        'Teď hledám práci v AI automatizaci nebo vývoji. Jestli máš něco, co by mi sedělo, ozvi se dole přes formulář.',
       ],
       stack: 'Co používám nejvíc',
       source: 'Kód tohoto webu na GitHubu',
@@ -336,6 +337,7 @@ export const content: Record<Lang, Content> = {
       paragraphs: [
         "Hey, I'm Erik. I build apps for desktop, mobile and the web, and I like doing the whole thing myself, from the logic to how it looks. Most of my work goes into Wisp, a dashboard for my AI agents that lives in the Mac's notch and on my iPhone. Next to it is Nexus Grind, a productivity tracker where a sakura tree grows as you finish your tasks.",
         'I also made LoL Stats to go through my ranked games, and Monster Watch, which tells me where Monster is on sale. I put AI into my apps where it takes routine work off my hands, and the assistant in the bottom right of this site knows my projects and will answer your questions. Lately I have been building things from scratch to see inside them: my own database in Rust, my own language model, and hand control for the Mac through the webcam. In the evenings I sometimes stream League of Legends and Overwatch, mostly on Kick.',
+        "I'm now looking for a job in AI automation or development. If you have something that fits, get in touch through the form below.",
       ],
       stack: 'What I use most',
       source: "This site's code on GitHub",
