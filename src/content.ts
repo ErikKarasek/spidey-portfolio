@@ -116,13 +116,13 @@ const skills = (l: Lang): Skill[] => [
 export const content: Record<Lang, Content> = {
   cs: {
     meta: {
-      title: 'Erik Karásek | full-stack vývojář',
+      title: 'Erik Karásek | junior vývojář, AI automatizace',
       description: 'Portfolio Erika Karáska. Appky pro počítač, mobil i web. Třináct vlastních projektů v Reactu, TypeScriptu, Rustu a na Cloudflare, u většiny i popis, jak vznikly.',
     },
     nav: { about: 'O mně', experience: 'Zkušenosti', skills: 'Dovednosti', projects: 'Projekty', contact: 'Kontakt', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Vypnout zvuk', soundOff: 'Zapnout zvuk' },
     loader: 'Nasazuju masku',
     hero: { tagline: 'Tvůj přátelský sousedský vývojář', cta: 'Prozkoumat projekty', cv: 'Životopis.pdf', cvHref: '/cv/erik-karasek-zivotopis.pdf' },
-    marquee: ['Frontend vývoj', 'UI/UX design', 'GSAP animace', 'React Native', 'Desktop appky', 'AI agenti', 'Full stack'],
+    marquee: ['AI agenti', 'AI automatizace', 'Full stack', 'React & TypeScript', 'React Native', 'Desktop appky', 'UI/UX design'],
     about: {
       label: 'Za maskou',
       paragraphs: [
@@ -325,13 +325,13 @@ export const content: Record<Lang, Content> = {
   },
   en: {
     meta: {
-      title: 'Erik Karásek | full-stack developer',
+      title: 'Erik Karásek | junior developer, AI automation',
       description: "Erik Karásek's portfolio. Desktop, mobile and web apps. Thirteen projects of my own in React, TypeScript, Rust and on Cloudflare, most with a write-up of how they were built.",
     },
     nav: { about: 'About', experience: 'Experience', skills: 'Skills', projects: 'Projects', contact: 'Contact', symbiote: 'Symbiote mode', menu: 'Menu', soundOn: 'Mute sound', soundOff: 'Turn sound on' },
     loader: 'Suiting up',
     hero: { tagline: 'Your friendly neighborhood developer', cta: 'Explore projects', cv: 'Resume.pdf', cvHref: '/cv/erik-karasek-resume.pdf' },
-    marquee: ['Frontend development', 'UI/UX design', 'GSAP animations', 'React Native', 'Desktop apps', 'AI agents', 'Full stack'],
+    marquee: ['AI agents', 'AI automation', 'Full stack', 'React & TypeScript', 'React Native', 'Desktop apps', 'UI/UX design'],
     about: {
       label: 'Behind the mask',
       paragraphs: [
