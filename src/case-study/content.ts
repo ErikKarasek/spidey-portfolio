@@ -321,7 +321,7 @@ const lolStats: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Raději pomalu než zablokovaně',
-          text: 'Riot API má přísné limity na počet dotazů. Načítání sta her proto trvá minutu až dvě a web to dopředu říká, místo aby to vypadalo, že zamrzl.',
+          text: 'Riot API má přísné limity na počet dotazů. Načítání dvou set her proto trvá minutu až dvě a web to dopředu říká, místo aby to vypadalo, že zamrzl.',
         },
         {
           title: 'Vlastní čísla místo cizích průměrů',
@@ -402,7 +402,7 @@ const lolStats: Record<Lang, CaseStudyContent> = {
       items: [
         {
           title: 'Slow beats blocked',
-          text: 'The Riot API limits how many requests you may make. Loading a hundred games therefore takes a minute or two, and the page says so in advance instead of looking frozen.',
+          text: 'The Riot API limits how many requests you may make. Loading two hundred games therefore takes a minute or two, and the page says so in advance instead of looking frozen.',
         },
         {
           title: "My numbers, not someone else's averages",
@@ -568,7 +568,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     stats: [
       { value: '5', label: 'Fází náboru' },
       { value: '30', label: 'Ohodnocených inzerátů denně' },
-      { value: '4', label: 'AI agenti v provozu' },
+      { value: '4', label: 'AI funkce v provozu' },
       { value: 'D1', label: 'Databáze u Cloudflare' },
     ],
     problem: {
@@ -668,7 +668,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Model až jako poslední krok',
-          text: 'Levné filtry běží první: inzeráty se seniorem v názvu nebo mimo IT vypadnou dřív, než na ně padne jediné volání modelu, a stránka se přečte ještě předtím, než se model vůbec zavolá. A model se volí podle úkolu: skóre shody dává malý model (Llama 3.1 8B) za zhruba dvacetinu ceny a řadí nabídky stejně jako ten velký, jenže si u tří ze čtyř inzerátů bez mzdy mzdu vymyslel. Mzdu proto čte kód přímo z řádku „Plat“ na Jobs.cz. Průvodní dopis píše větší model, a jen když o něj u nabídky požádám. Každá AI funkce má navíc v D1 vlastní denní rozpočet, takže žádná nevyčerpá den za ostatní.',
+          text: 'Levné filtry běží první: inzeráty se seniorem v názvu nebo mimo IT vypadnou dřív, než na ně padne jediné volání modelu, a stránka se přečte ještě předtím, než se model vůbec zavolá. A model se volí podle úkolu: skóre shody dává malý model za zlomek ceny a řadí nabídky stejně jako ten velký. Jenže si u tří ze čtyř inzerátů bez mzdy mzdu vymyslel. Mzdu proto čte kód přímo z řádku „Plat“ na Jobs.cz. Průvodní dopis píše větší model, a jen když o něj u nabídky požádám. Každá AI funkce má navíc v D1 vlastní denní rozpočet, takže žádná nevyčerpá den za ostatní.',
         },
         {
           title: 'Nic se na nástěnku nedostane beze mě',
@@ -693,7 +693,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       body: [
         'Běží to na Cloudflare Pages a je to funkční od schématu databáze až po grafy. Snímky výše jsou z ukázkových dat, ne ze skutečných přihlášek.',
         'Board je schválně veřejně čitelný: když sem někdo přijde z portfolia, má si ho prohlédnout. Měnit data ale může jen ten, kdo zná klíč: zápisy chtějí sdílené heslo v hlavičce, prohlížeč si ho drží jen u sebe a v samotné appce není. Bez klíče se ovládací prvky vůbec neukážou.',
-        'Tři modely dělají tři různé práce: agent z inzerátu (nástroje, pevná cesta), jedno volání na životopis na míru a navigující agent na přípravu k pohovoru. Všechny běží na Workers AI, takže se nikde neválí API klíč a všechny sdílejí jeden denní příděl.',
+        'AI tu dělá čtyři různé práce: scout hodnotí inzeráty, agent z inzerátu skládá kartu (nástroje, pevná cesta), jedno volání přeskládá životopis na míru a navigující agent píše přípravu k pohovoru. Od října běží všechno na Gemini s bezplatným klíčem z Google AI Studia. Když u Gemini dojde limit, volání přejde na Cloudflare Workers AI, kde to běželo původně, takže se nic nezastaví.',
         'Na odpovědi z mailu navazuje druhý nástroj: každou hodinu čte schránku, pozná pozvánku na pohovor nebo zamítnutí a pošle mi ji na Telegram s návrhem, kam kartu posunout. Tlačítko pod zprávou to provede, sám o sobě nic nemění.',
         'Scout jede od 24. září 2026: prochází tři IT obory na Jobs.cz pro Hradec Králové s okolím a pro práci z domova, shrnutí mi v deset ráno přijde do Telegramu. Z inzerátů, které projdou filtry, jich třicet denně dostane skóre.',
         'Když si ho otevřeš, najdeš prázdné sloupce. Není to chyba: svoje skutečné přihlášky si tam nechávám pro sebe a vymýšlet si data jen kvůli tomu, aby screenshot vypadal líp, se mi nechtělo. Jak to vypadá naplněné, ukazují snímky výše.',
@@ -713,7 +713,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
     stats: [
       { value: '5', label: 'Hiring stages' },
       { value: '30', label: 'Postings scored a day' },
-      { value: '4', label: 'AI agents running' },
+      { value: '4', label: 'AI features running' },
       { value: 'D1', label: 'SQLite on the edge' },
     ],
     problem: {
@@ -813,7 +813,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'The model comes last',
-          text: 'The cheap filters run first: a posting with "senior" in the title, or one outside IT, is dropped before a single model call lands on it, and the page is read before the model is called at all. And the model fits the task: a small model (Llama 3.1 8B) gives the fit score at about a twentieth of the cost and ranks postings the same way the big one does, but it invented a salary for three of four postings that state none, so the salary is read by code from Jobs.cz\'s own "Plat" line. The cover letter comes from the larger model, and only when I ask for it on a posting. Every AI feature also has its own daily budget in D1, so none can spend the day for the others.',
+          text: 'The cheap filters run first: a posting with "senior" in the title, or one outside IT, is dropped before a single model call lands on it, and the page is read before the model is called at all. And the model fits the task: a small model gives the fit score at a fraction of the cost and ranks postings the same way the big one does, but it invented a salary for three of four postings that state none, so the salary is read by code from Jobs.cz\'s own "Plat" line. The cover letter comes from the larger model, and only when I ask for it on a posting. Every AI feature also has its own daily budget in D1, so none can spend the day for the others.',
         },
         {
           title: 'Nothing reaches the board without me',
@@ -838,7 +838,7 @@ const jobTracker: Record<Lang, CaseStudyContent> = {
       body: [
         'It runs on Cloudflare Pages and works end to end, from the database schema to the charts. The screenshots above use sample data, not real applications.',
         'The board is deliberately public to read: someone arriving from the portfolio is meant to look at it. Changing it is another matter: writes want a shared secret in a header, the browser keeps it to itself, and it is never in the bundle. Without the key the editing controls do not appear at all.',
-        'Three models do three different jobs: the posting agent (tools, a fixed path), a single call for the fitted résumé, and the navigating agent for interview prep. All of them run on Workers AI, so there is no API key lying around and they share one daily allowance.',
+        'AI does four different jobs here: the scout scores postings, the posting agent builds a card (tools, a fixed path), a single call fits the résumé, and the navigating agent writes the interview prep. Since October all of it runs on Gemini with a free Google AI Studio key. When Gemini hits its limit, the call moves to Cloudflare Workers AI, where it all ran at first, so nothing stops.',
         'Replies by e-mail are picked up by a companion tool: every hour it reads the inbox, recognises an interview invitation or a rejection, and sends it to Telegram with a suggestion for where the card should move. A button under the message carries it out; on its own it changes nothing.',
         'The scout has been running since 24 September 2026: three IT fields on Jobs.cz, for Hradec Králové and its surroundings and for work from home, with a digest in Telegram at ten in the morning. Of the postings that pass the filters, thirty a day are scored.',
         'Open it and you will find empty columns. That is not a fault: my real applications stay mine, and inventing data just to make the live version look busier was not worth doing. The screenshots above show it with something in it.',
@@ -1144,7 +1144,7 @@ const automation: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'Bez dalších poplatků',
-          text: 'Claude běží přes předplatné, které stejně platím, a nebere z denního limitu Workers AI, o který se dělí scout s chatbotem na tomhle webu. Program na Cloudflare se vejde do bezplatného tarifu. Navíc to nestojí ani korunu.',
+          text: 'Claude běží přes předplatné, které stejně platím, a program na Cloudflare se vejde do bezplatného tarifu. Takže mě to navíc nestojí ani korunu.',
         },
       ],
     },
@@ -1257,7 +1257,7 @@ const automation: Record<Lang, CaseStudyContent> = {
         },
         {
           title: 'No new subscriptions',
-          text: 'Claude runs on the subscription I already have and stays off the daily Workers AI allowance that the scout shares with the assistant on this site. The Worker and its state store fit in Cloudflare\'s free plan. Running it costs nothing extra.',
+          text: 'Claude runs on the subscription I already have, and the Worker and its state store fit in Cloudflare\'s free plan. Running it costs nothing extra.',
         },
       ],
     },
@@ -1277,7 +1277,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
   cs: {
     meta: {
       title: 'Wisp | o projektu | Erik Karásek',
-      description: 'Řídicí panel nad AI agenty: Mac appka v notchi, iPhone klient v SwiftUI s widgety a Cloudflare relay mezi nimi. Claude, ChatGPT i Gemini vedle sebe.',
+      description: 'Řídicí panel nad AI agenty: Mac appka v notchi, iPhone klient v SwiftUI s widgety a Cloudflare relay mezi nimi. Claude, ChatGPT, Gemini i Grok vedle sebe.',
     },
     back: 'Zpět na portfolio',
     label: 'O projektu',
@@ -1308,12 +1308,12 @@ const wisp: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/wisp-mac.webp',
         title: 'Mac',
-        text: 'Celá parta na jedné obrazovce: vlevo filtry podle stavu a podle toho, kde co běží, a pod nimi zbývající limity Clauda, ChatGPT a Gemini. Karty ukazují, co která úloha dělá a kdy běžela naposledy, ať je to launchd na Macu, agent na Paperclipu nebo worker na Cloudflare.',
+        text: 'Celá parta na jedné obrazovce: vlevo filtry podle stavu a podle toho, kde co běží, a pod nimi zbývající limity předplatných. Karty ukazují, co která úloha dělá a kdy běžela naposledy, ať je to launchd na Macu, agent na Paperclipu nebo worker na Cloudflare.',
       },
       {
         src: '/img/case/wisp-notch.webp',
         title: 'Notch',
-        text: 'Overlay přes výřez kamery, rozbalený najetím myši. Vlevo agent, který pracuje, a jeho kroky, vedle něj parta se stavem: Fixer čeká na mě, site-watch hotovo, Job mail spí. Napravo karty, co si tam dám sám, třeba přehrávač a kalendář. Zbývající limity tří předplatných sedí v horní liště.',
+        text: 'Overlay přes výřez kamery, rozbalený najetím myši. Vlevo agent, který pracuje, a jeho kroky, vedle něj parta se stavem: Fixer čeká na mě, site-watch hotovo, Job mail spí. Napravo karty, co si tam dám sám, třeba přehrávač a kalendář. Zbývající limity předplatných sedí v horní liště.',
       },
       {
         src: '/img/case/wisp-phone.webp',
@@ -1389,7 +1389,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
           text: 'Každá úloha má obličej a ten nese stav. Je to rychlejší než číst tabulku: červenou postavičku v notchi si všimnu koutkem oka, řádek v seznamu ne. Tvarů je dvacet a postavy si skládám sám, takže si agenty pamatuju podle obličeje, ne podle názvu služby.'
         },
         {
-          title: 'Kdo pracuje, se ptám napřímo',
+          title: 'Na běžící agenty se ptám napřímo',
           text: 'První verze poznávala běžící agenty přes stránku uvnitř appky. Jenže se zhasnutým displejem ji macOS přiškrtí, a tak Wisp jednu noc uspal Mac pár vteřin poté, co se agenti rozběhli. Všechny jejich běhy spadly a zkoušely se znovu do každého krátkého probuzení. Teď se jádro v Rustu ptá Paperclipu samo každých pět vteřin a stránka do toho nemluví.',
         },
         {
@@ -1411,7 +1411,7 @@ const wisp: Record<Lang, CaseStudyContent> = {
   en: {
     meta: {
       title: 'Wisp | about the project | Erik Karásek',
-      description: 'A dashboard for AI agents: a Mac app in the notch, a SwiftUI iPhone client with widgets, and a Cloudflare relay between them. Claude, ChatGPT and Gemini side by side.',
+      description: 'A dashboard for AI agents: a Mac app in the notch, a SwiftUI iPhone client with widgets, and a Cloudflare relay between them. Claude, ChatGPT, Gemini and Grok side by side.',
     },
     back: 'Back to portfolio',
     label: 'About the project',
@@ -1442,12 +1442,12 @@ const wisp: Record<Lang, CaseStudyContent> = {
       {
         src: '/img/case/wisp-mac.webp',
         title: 'Mac',
-        text: 'The whole crew on one screen: filters by state and by where each job runs on the left, with what is left of the Claude, ChatGPT and Gemini subscriptions under them. Each card says what that job is doing and when it last ran, whether it is launchd on the Mac, an agent on Paperclip or a worker on Cloudflare.',
+        text: 'The whole crew on one screen: filters by state and by where each job runs on the left, with what is left of each subscription under them. Each card says what that job is doing and when it last ran, whether it is launchd on the Mac, an agent on Paperclip or a worker on Cloudflare.',
       },
       {
         src: '/img/case/wisp-notch.webp',
         title: 'The notch',
-        text: 'An overlay across the camera housing, opened by moving the mouse up to it. On the left the agent that is working and its steps, beside it the crew with their state: Fixer waiting on me, site-watch done, Job mail asleep. On the right the cards I choose to keep there, a player and a calendar. The rings with what is left of three subscriptions sit in the menu bar.',
+        text: 'An overlay across the camera housing, opened by moving the mouse up to it. On the left the agent that is working and its steps, beside it the crew with their state: Fixer waiting on me, site-watch done, Job mail asleep. On the right the cards I choose to keep there, a player and a calendar. The rings with what is left of each subscription sit in the menu bar.',
       },
       {
         src: '/img/case/wisp-phone.webp',

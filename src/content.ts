@@ -127,7 +127,7 @@ export const content: Record<Lang, Content> = {
       label: 'Za maskou',
       paragraphs: [
         'Ahoj, jsem Erik. Dělám appky pro počítač, mobil i web a nejvíc mě baví, když si můžu udělat všechno sám, od logiky až po to, jak to vypadá. Nejvíc práce mám ve Wispu, řídicím panelu nad mými AI agenty, který mi žije v notchi Macu a v iPhonu. Vedle něj je Nexus Grind, tracker produktivity, ve kterém ti za splněné úkoly roste sakura.',
-        'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Dávám do svých appek AI tam, kde ušetří rutinu, a na tomhle webu ti vpravo dole odpoví asistent, který zná moje projekty. Poslední dobou mě k tomu chytlo stavět věci od nuly, abych viděl dovnitř: vlastní databázi v Rustu, vlastní jazykový model a ovládání Macu rukou před kamerou. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
+        'Pro sebe jsem si udělal taky LoL Stats, kde si procházím svoje ranked hry, a Monster Watch, který hlídá, kde je zrovna Monster ve slevě. Dávám do svých appek AI tam, kde ušetří rutinu, a na tomhle webu ti vpravo dole odpoví asistent, který zná moje projekty. Poslední dobou mě chytlo stavět věci od nuly, abych viděl dovnitř: vlastní databázi v Rustu, vlastní jazykový model a ovládání Macu rukou před kamerou. Večer občas streamuju League of Legends a Overwatch, hlavně na Kicku.',
       ],
       stack: 'Co používám nejvíc',
       source: 'Kód tohoto webu na GitHubu',
@@ -151,7 +151,7 @@ export const content: Record<Lang, Content> = {
           role: 'ICT Technik L1',
           company: 'BEDNAR FMT s.r.o. · Rychnov nad Kněžnou',
           when: 'duben – červen 2026',
-          points: ['Bral jsem helpdesk první úrovně v JIRA a diagnostikoval i měnil hardware.', 'Připravoval jsem stanice s Windows, přidával je do Active Directory a pomáhal lidem na dálku přes RDP a TeamViewer.', 'Staral jsem se i o síť. Přepojoval jsem ethernetové kabely v rozvaděči, propojoval patch panely se switchi a hledal, proč zásuvka nebo Wi-Fi nejedou.'],
+          points: ['Bral jsem helpdesk první úrovně v Jira a diagnostikoval i měnil hardware.', 'Připravoval jsem stanice s Windows, přidával je do Active Directory a pomáhal lidem na dálku přes RDP a TeamViewer.', 'Staral jsem se i o síť. Přepojoval jsem ethernetové kabely v rozvaděči, propojoval patch panely se switchi a hledal, proč zásuvka nebo Wi-Fi nejedou.'],
         },
         {
           role: 'Odborná stáž, 3D grafika',
@@ -171,7 +171,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Wisp',
           description:
-            'Řídicí panel nad mými AI agenty. Každý agent je postavička a její obličej ukazuje, jestli pracuje, spí, spadla, nebo na mě čeká. Na Macu žije v notchi a vidíš jeho kroky živě, včetně dotazu, jestli smí spustit příkaz. To samé mám v iPhonu ve widgetech a v Dynamic Islandu, mezi oběma je Cloudflare relay. Claude, ChatGPT i Gemini vedle sebe, i se zbývajícími limity. A drží Mac vzhůru, dokud agenti pracují, i se zavřeným víkem. Postavičky si upravuju na Macu i v telefonu a žijí: točí se, cukají ušima a když agent dodělá úkol, udělají kotrmelec. Úkol, který mu večer napíšu do Telegramu, udělá Claude přes noc a ráno čeká jako draft PR.',
+            'Řídicí panel nad mými AI agenty. Každý agent je postavička a její obličej ukazuje, jestli pracuje, spí, spadla, nebo na mě čeká. Na Macu žije v notchi a vidíš jeho kroky živě, včetně dotazu, jestli smí spustit příkaz. To samé mám v iPhonu ve widgetech a v Dynamic Islandu, mezi oběma je Cloudflare relay. Vedle sebe vidím Claude, ChatGPT, Gemini i Groka a kolik mi u kterého zbývá z limitu. Dokud agenti pracují, drží Mac vzhůru, i se zavřeným víkem. Postavičky si upravuju na Macu i v telefonu a žijí: točí se, cukají ušima a když agent dodělá úkol, udělají kotrmelec. Úkol, který mu večer napíšu do Telegramu, udělá Claude přes noc a ráno čeká jako draft PR.',
           tags: ['Tauri', 'Rust', 'SwiftUI', 'TypeScript', 'Cloudflare Workers', 'D1'],
           image: `${IMG}/wisp.webp`,
           link: 'https://github.com/ErikKarasek/wisp',
@@ -189,7 +189,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Nexus Grind',
           description:
-            'Aplikace pro Mac a Windows, která hlídá úkoly, návyky, spánek i ranked hry v LoLku. Za každou splněnou věc ti roste sakura. Data se synchronizují přes cloud.',
+            'Aplikace pro Mac a Windows, která hlídá úkoly, návyky, spánek i ranked hry v LoLku. Za každou splněnou věc ti roste sakura. Funguje i bez účtu, a když se přihlásíš, data se synchronizují přes cloud.',
           tags: ['React', 'Tauri', 'Rust', 'Supabase'],
           image: `${IMG}/nexusgrind.webp`,
           downloads: true,
@@ -228,7 +228,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Monster Watch',
           description:
-            'Hlídá, kde je Monster zrovna v akci. Ukazuje všech 20 příchutí s cenami z aktuálních letáků. Slevy z kupi.cz stahuje backend v Pythonu a appka je ukazuje jako mřížku příchutí.',
+            'Hlídá, kde je Monster zrovna v akci. Všech 20 příchutí na jedné obrazovce, každá s cenou z aktuálních letáků. Slevy z kupi.cz stahuje backend v Pythonu.',
           tags: ['React Native', 'Expo', 'Python', 'Flask'],
           image: `${IMG}/monsterwatch.webp`,
           link: 'https://monster-watch.onrender.com',
@@ -238,7 +238,7 @@ export const content: Record<Lang, Content> = {
           title: 'Job Tracker',
           description:
             'Nástěnka na hledání práce, která si nabídky hledá sama. Každé ráno projde inzeráty na Jobs.cz i otevřená data Úřadu práce, levnější AI model je předtřídí a přísnější přeměří ty nadějné podle toho, co mi v požadavcích chybí. Ke každé nabídce umí složit životopis na míru a před pohovorem projde web firmy a napíše přípravu. Běží to celé na Cloudflare a po každé změně kódu se samo otestuje.',
-          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
+          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Gemini API'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
           study: '/job-tracker/',
@@ -359,7 +359,7 @@ export const content: Record<Lang, Content> = {
           role: 'ICT Technician L1',
           company: 'BEDNAR FMT s.r.o. · Rychnov nad Kněžnou',
           when: 'April – June 2026',
-          points: ['I ran first-level helpdesk in JIRA, and diagnosed and replaced hardware.', 'I set up Windows workstations, added them to Active Directory and helped people remotely over RDP and TeamViewer.', 'I looked after the network too. I patched ethernet cables in the rack, wired patch panels to switches and traced why a socket or the Wi-Fi had gone dead.'],
+          points: ['I ran first-level helpdesk in Jira, and diagnosed and replaced hardware.', 'I set up Windows workstations, added them to Active Directory and helped people remotely over RDP and TeamViewer.', 'I looked after the network too. I patched ethernet cables in the rack, wired patch panels to switches and traced why a socket or the Wi-Fi had gone dead.'],
         },
         {
           role: 'Internship, 3D graphics',
@@ -379,7 +379,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Wisp',
           description:
-            'A dashboard for my AI agents. Each agent is a character whose face shows whether it is working, asleep, failed or waiting for me. On the Mac it lives in the notch, where its steps arrive live and it asks before running a command. The same state is on my iPhone, in widgets and the Dynamic Island, with a Cloudflare relay in between. Claude, ChatGPT and Gemini side by side, with what is left of each. And it keeps the Mac awake while they work, lid closed or not. I edit the characters on the Mac or the phone, and they are alive: they spin, twitch their ears and do a somersault when an agent finishes a task. A task I send it on Telegram in the evening, Claude does overnight, and it waits as a draft PR in the morning.',
+            'A dashboard for my AI agents. Each agent is a character whose face shows whether it is working, asleep, failed or waiting for me. On the Mac it lives in the notch, where its steps arrive live and it asks before running a command. The same state is on my iPhone, in widgets and the Dynamic Island, with a Cloudflare relay in between. Claude, ChatGPT, Gemini and Grok sit side by side, with what is left of each limit. While the agents work, it keeps the Mac awake, lid closed or not. I edit the characters on the Mac or the phone, and they are alive: they spin, twitch their ears and do a somersault when an agent finishes a task. A task I send it on Telegram in the evening, Claude does overnight, and it waits as a draft PR in the morning.',
           tags: ['Tauri', 'Rust', 'SwiftUI', 'TypeScript', 'Cloudflare Workers', 'D1'],
           image: `${IMG}/wisp.webp`,
           link: 'https://github.com/ErikKarasek/wisp',
@@ -397,7 +397,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Nexus Grind',
           description:
-            'A productivity tracker for Mac and Windows. It keeps track of tasks, habits, sleep and even your LoL ranked games, and a sakura tree grows with everything you get done. Your data syncs through the cloud.',
+            'A productivity tracker for Mac and Windows. It keeps track of tasks, habits, sleep and even your LoL ranked games, and a sakura tree grows with everything you get done. It works without an account, and once you sign in, your data syncs through the cloud.',
           tags: ['React', 'Tauri', 'Rust', 'Supabase'],
           image: `${IMG}/nexusgrind.webp`,
           downloads: true,
@@ -436,7 +436,7 @@ export const content: Record<Lang, Content> = {
         {
           title: 'Monster Watch',
           description:
-            'Shows where Monster Energy is on sale. All 20 flavours with prices from the current store flyers. A Python backend pulls the deals from kupi.cz and the app shows them as a grid of flavours.',
+            'Shows where Monster Energy is on sale. All 20 flavours on one screen, each with its price from the current store flyers. A Python backend pulls the deals from kupi.cz.',
           tags: ['React Native', 'Expo', 'Python', 'Flask'],
           image: `${IMG}/monsterwatch.webp`,
           link: 'https://monster-watch.onrender.com',
@@ -446,7 +446,7 @@ export const content: Record<Lang, Content> = {
           title: 'Job Tracker',
           description:
             'A board for a job hunt that finds the postings itself. Every morning it reads Jobs.cz and the Labour Office\'s open data, a cheaper AI model sorts what it finds and a stricter one re-measures the promising ones against the requirements I do not meet. It can fit the résumé to any posting, and before an interview it reads the company\'s site and writes a prep brief. All of it runs on Cloudflare and tests itself after every change to the code.',
-          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Workers AI'],
+          tags: ['React', 'TypeScript', 'Hono', 'Cloudflare D1', 'Gemini API'],
           image: `${IMG}/jobtracker.webp`,
           link: 'https://job-tracker-10s.pages.dev',
           study: '/job-tracker/',
